@@ -1,0 +1,2 @@
+openglden c# kısmı için generic input sistemi
+dll için path sıkıntısı (herkes için farklılık göstermemeli)

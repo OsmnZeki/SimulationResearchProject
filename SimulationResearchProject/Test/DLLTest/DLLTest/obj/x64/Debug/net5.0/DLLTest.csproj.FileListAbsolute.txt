@@ -1,0 +1,16 @@
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\bin\x64\Debug\net5.0\DLLTest.exe
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\bin\x64\Debug\net5.0\DLLTest.deps.json
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\bin\x64\Debug\net5.0\DLLTest.runtimeconfig.json
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\bin\x64\Debug\net5.0\DLLTest.runtimeconfig.dev.json
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\bin\x64\Debug\net5.0\DLLTest.dll
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\bin\x64\Debug\net5.0\ref\DLLTest.dll
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\bin\x64\Debug\net5.0\DLLTest.pdb
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.csprojAssemblyReference.cache
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.AssemblyInfoInputs.cache
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.AssemblyInfo.cs
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.csproj.CoreCompileInputs.cache
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.dll
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\ref\DLLTest.dll
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.pdb
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.genruntimeconfig.cache
