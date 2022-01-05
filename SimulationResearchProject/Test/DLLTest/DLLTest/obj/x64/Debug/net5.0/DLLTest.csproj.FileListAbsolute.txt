@@ -14,3 +14,4 @@ D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLL
 D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\ref\DLLTest.dll
 D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.pdb
 D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\obj\x64\Debug\net5.0\DLLTest.genruntimeconfig.cache
+D:\GitRepos\SimulationResearchProject\SimulationResearchProject\Test\DLLTest\DLLTest\bin\x64\Debug\net5.0\RenderProgramDLL.dll

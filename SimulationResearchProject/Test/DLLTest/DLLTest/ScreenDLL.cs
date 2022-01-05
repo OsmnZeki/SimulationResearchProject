@@ -3,21 +3,26 @@ using System.Runtime.InteropServices;
 
 namespace DLLTest
 {
-    static class ScreenDLL
+    class ScreenDLL
     {
-        [DllImport("RenderProgramDLL.dll", CallingConvention = CallingConvention.Cdecl)]
+        protected const string RenderProgramDLL = "RenderProgramDLL.dll";
+
+        [DllImport(RenderProgramDLL, EntryPoint = "CreateScreen")]
         public static extern IntPtr CreateScreen();
-        [DllImport("RenderProgramDLL.dll", CallingConvention = CallingConvention.Cdecl)]
+
+        [DllImport(RenderProgramDLL, EntryPoint = "ScreenShouldClose")]
         public static extern bool ScreenShouldClose(IntPtr screen);
-        [DllImport("RenderProgramDLL.dll", CallingConvention = CallingConvention.Cdecl)]
+
+        [DllImport(RenderProgramDLL, EntryPoint = "ScreenUpdate")]
         public static extern void ScreenUpdate(IntPtr screen);
-        [DllImport("RenderProgramDLL.dll", CallingConvention = CallingConvention.Cdecl)]
+
+        [DllImport(RenderProgramDLL, EntryPoint = "ScreenNewFrame")]
         public static extern void ScreenNewFrame(IntPtr screen);
-        [DllImport("RenderProgramDLL.dll", CallingConvention = CallingConvention.Cdecl)]
+
+        [DllImport(RenderProgramDLL, EntryPoint = "ScreenTerminate")]
         public static extern void ScreenTerminate(IntPtr screen);
-        [DllImport("RenderProgramDLL.dll", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int ScreenReturnWidth(IntPtr screen);
-        [DllImport("RenderProgramDLL.dll", CallingConvention = CallingConvention.Cdecl)]
+
+        [DllImport(RenderProgramDLL, EntryPoint = "ScreenProcessInput")]
         public static extern void ScreenProcessInput(IntPtr screen);
     }
 }
