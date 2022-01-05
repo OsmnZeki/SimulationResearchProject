@@ -7,20 +7,28 @@ namespace DLLTest
     {
         static void Main(string[] args)
         {
-            IntPtr screen = ScreenDLL.CreateScreen();
+            IntPtr screen = RenderProgramDLL.CreateScreen();
             if (screen == IntPtr.Zero) return;
 
-            while (!ScreenDLL.ScreenShouldClose(screen))
+            Shader shader = new Shader("D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs", "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.fs");
+
+            while (!RenderProgramDLL.ScreenShouldClose(screen))
             {
-                ScreenDLL.ScreenProcessInput(screen);
+                RenderProgramDLL.ScreenProcessInput(screen);
+
+                if (Input.GetMouseKeyDown(2))
+                {
+                    Console.WriteLine("Pressed D");
+                }
+
                 // render
                 // ------
-                ScreenDLL.ScreenUpdate(screen);
+                RenderProgramDLL.ScreenUpdate(screen);
 
-                ScreenDLL.ScreenNewFrame(screen);
+                RenderProgramDLL.ScreenNewFrame(screen);
             }
 
-            ScreenDLL.ScreenTerminate(screen);
+            RenderProgramDLL.ScreenTerminate(screen);
         }
     }
 }
