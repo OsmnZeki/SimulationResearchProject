@@ -36,6 +36,22 @@ namespace DLLTest
 
         #endregion
 
+        #region ModelFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewModel")]
+        public static extern IntPtr NewModel();
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LoadModel")]
+        public static extern void LoadModel(IntPtr model, string modelPath);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "Render")]
+        public static extern void Render(IntPtr model, IntPtr shader);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "CleanUp")]
+        public static extern void CleanUp(IntPtr model);
+
+        #endregion
+
         #region InputFunctions
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "GetKeyDown")]

@@ -223,4 +223,6 @@ project.lock.json
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
-SimulationResearchProject/Test/DLLTest/.vs
+#SimulationResearchProject/Test/DLLTest/.vs
+#SimulationResearchProject/Test/DLLTest/DLLTest/obj
+#SimulationResearchProject/Test/DLLTest/DLLTest/bin

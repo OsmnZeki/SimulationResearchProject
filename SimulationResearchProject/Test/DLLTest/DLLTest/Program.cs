@@ -11,7 +11,8 @@ namespace DLLTest
             if (screen == IntPtr.Zero) return;
 
             Shader shader = new Shader("D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs", "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.fs");
-
+            
+            
             while (!RenderProgramDLL.ScreenShouldClose(screen))
             {
                 RenderProgramDLL.ScreenProcessInput(screen);
@@ -20,6 +21,8 @@ namespace DLLTest
                 {
                     Console.WriteLine("Pressed D");
                 }
+                
+                
 
                 // render
                 // ------

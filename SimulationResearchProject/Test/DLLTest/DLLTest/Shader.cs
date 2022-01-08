@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DLLTest
 {
-    class Shader
+    public class Shader
     {
-        IntPtr shaderAdress;
+        public IntPtr shaderAdress;
 
         public Shader(string vertexShaderPath, string fragmentShaderPath)
         {
