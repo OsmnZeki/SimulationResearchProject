@@ -13,10 +13,19 @@ namespace DLLTest
 
         public Model()
         {
+            position = Vector3.Zero;
+            this.size = Vector3.One;
             modelAdress = RenderProgramDLL.NewModel();
         }
-
-        public void LoadModel(string path)
+        
+        public Model(Vector3 pos , Vector3 size)
+        {
+            position = pos;
+            this.size = size;
+            modelAdress = RenderProgramDLL.NewModel();
+        }
+        
+        public void LoadModelWithAssimp(string path)
         {
             RenderProgramDLL.LoadModel(modelAdress, path);
         }

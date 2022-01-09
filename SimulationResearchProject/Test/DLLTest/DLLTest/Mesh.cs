@@ -7,7 +7,5 @@ namespace DLLTest
     {
         MeshVertex vertices;
         uint indices;
-        
-        
     }
 }

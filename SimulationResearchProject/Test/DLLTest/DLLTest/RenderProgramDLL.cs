@@ -33,6 +33,28 @@ namespace DLLTest
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "NewShader")]
         public static extern IntPtr NewShader(string vertexShaderPath, string fragmentShaderPath);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetInt")]
+        public static extern void ShaderSetInt(IntPtr shaderAdress, string name, int value);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetFloat")]
+        public static extern void ShaderSetFloat(IntPtr shaderAdress, string name, float value);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSet3Float")]
+        public static extern void ShaderSet3Float(IntPtr shaderAdress, string name, float value, float value1, float value2);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSet4Float")]
+        public static extern void ShaderSet4Float(IntPtr shaderAdress, string name, float value, float value1, float value2, float value3);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetBool")]
+        public static extern void ShaderSetBool(IntPtr shaderAdress, string name, bool value);
+        
+        #endregion
+
+        #region TextureFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewTexture")]
+        public static extern IntPtr NewTexture(string directory, string path, int aiType);
 
         #endregion
 
