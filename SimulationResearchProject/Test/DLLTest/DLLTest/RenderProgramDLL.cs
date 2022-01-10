@@ -55,6 +55,43 @@ namespace DLLTest
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "NewTexture")]
         public static extern IntPtr NewTexture(string directory, string path, int aiType);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "TextureLoad")]
+        public static extern IntPtr TextureLoad(IntPtr texture, bool flip);
+
+        #endregion
+
+        #region MeshFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "CreateMesh")]
+        public static extern IntPtr CreateMesh();
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetVerticesPos")]
+        public static extern void MeshSetVerticesPos(IntPtr mesh, float[] pos, int sizeOfVertices);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetIndices")]
+        public static extern void MeshSetIndices(IntPtr mesh, int[] indices);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetVerticesNormal")]
+        public static extern void MeshSetVerticesNormal(IntPtr mesh, float[] normal);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetVerticesTexCoord")]
+        public static extern void MeshSetVerticesTexCoord(IntPtr mesh, float[] texCoord);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "AddTextureToMesh")]
+        public static extern void AddTextureToMesh(IntPtr mesh, IntPtr texture);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshCleanUp")]
+        public static extern void MeshCleanUp(IntPtr mesh);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetup")]
+        public static extern void MeshSetup(IntPtr mesh,int setupConfig);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetDiffuse")]
+        public static extern void MeshSetDiffuse(IntPtr mesh,float[] diffuse);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetSpecular")]
+        public static extern void MeshSetSpecular(IntPtr mesh,float[] specular);
 
         #endregion
 
@@ -66,11 +103,14 @@ namespace DLLTest
         [DllImport(RenderProgramDLLPath, EntryPoint = "LoadModel")]
         public static extern void LoadModel(IntPtr model, string modelPath);
         
-        [DllImport(RenderProgramDLLPath, EntryPoint = "Render")]
-        public static extern void Render(IntPtr model, IntPtr shader);
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ModelRender")]
+        public static extern void ModelRender(IntPtr model, IntPtr shader);
         
-        [DllImport(RenderProgramDLLPath, EntryPoint = "CleanUp")]
-        public static extern void CleanUp(IntPtr model);
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ModelCleanUp")]
+        public static extern void ModelCleanUp(IntPtr model);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "AddMeshToModel")]
+        public static extern void AddMeshToModel(IntPtr model, IntPtr mesh);
 
         #endregion
 

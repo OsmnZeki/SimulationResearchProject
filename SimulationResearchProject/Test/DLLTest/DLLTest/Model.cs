@@ -11,6 +11,8 @@ namespace DLLTest
 
         public IntPtr modelAdress;
 
+        private List<Mesh> meshes;
+
         public Model()
         {
             position = Vector3.Zero;
@@ -24,6 +26,11 @@ namespace DLLTest
             this.size = size;
             modelAdress = RenderProgramDLL.NewModel();
         }
+
+        public void AddMesh(Mesh mesh)
+        {
+            RenderProgramDLL.AddMeshToModel(modelAdress, mesh.meshAdress);
+        }
         
         public void LoadModelWithAssimp(string path)
         {
@@ -32,12 +39,12 @@ namespace DLLTest
 
         public void Render(Shader shader)
         {
-            RenderProgramDLL.Render(modelAdress, shader.shaderAdress);
+            RenderProgramDLL.ModelRender(modelAdress, shader.shaderAdress);
         }
 
         public void CleanUp()
         {
-            RenderProgramDLL.CleanUp(modelAdress);
+            RenderProgramDLL.ModelCleanUp(modelAdress);
         }
 
 

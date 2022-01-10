@@ -11,6 +11,11 @@ namespace DLLTest
             RenderProgramDLL.NewTexture(directory, name, (int) textureType);
         }
 
+        public void Load(bool flip)
+        {
+            RenderProgramDLL.TextureLoad(textureAdress, flip);
+        }
+
         public enum TextureType
         {
             Ambient=0,

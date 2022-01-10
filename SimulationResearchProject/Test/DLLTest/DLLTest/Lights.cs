@@ -9,9 +9,9 @@ namespace DLLTest
 	        public Vector3 position;
 
             // attenuation constants
-            public float k0;
-            public float k1;
-            public float k2;
+            public const float k0 = 1.0f;
+            public const float k1 = 0.07f;
+            public const float k2 = 0.032f;
 	
             public Vector4 ambient;
             public Vector4 diffuse;
@@ -34,7 +34,6 @@ namespace DLLTest
         public struct DirectionalLight {
 	
 	        public Vector3 direction;
-
 	        public Vector4 ambient;
 	        public Vector4 diffuse;
 	        public Vector4 specular;
@@ -59,9 +58,9 @@ namespace DLLTest
 	        public float outerCutOff;
 
 	        // attenuation constants
-	        public float k0;
-	        public float k1;
-	        public float k2;
+	        public const float k0 = 1.0f;
+	        public const float k1 = 0.07f;
+	        public const float k2 = 0.032f;
 
 	        public Vector4 ambient;
 	        public Vector4 diffuse;
