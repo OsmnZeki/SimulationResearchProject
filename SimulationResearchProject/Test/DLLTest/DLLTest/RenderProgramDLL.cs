@@ -10,7 +10,7 @@ namespace DLLTest
         #region ScreenFunctions
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "CreateScreen")]
-        public static extern IntPtr CreateScreen();
+        public static extern IntPtr CreateScreen(int width, int height);
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenShouldClose")]
         public static extern bool ScreenShouldClose(IntPtr screen);
@@ -48,6 +48,12 @@ namespace DLLTest
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetBool")]
         public static extern void ShaderSetBool(IntPtr shaderAdress, string name, bool value);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetMat4")]
+        public static extern void ShaderSetMat4(IntPtr shaderAdress, string name, IntPtr mat4Adress);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderActivate")]
+        public static extern void ShaderActivate(IntPtr shaderAdress);
         
         #endregion
 
@@ -111,6 +117,12 @@ namespace DLLTest
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "AddMeshToModel")]
         public static extern void AddMeshToModel(IntPtr model, IntPtr mesh);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetPosAndSize")]
+        public static extern void SetPosAndSize(IntPtr model, float[] pos, float[] size);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetMesh")]
+        public static extern IntPtr GetMesh(IntPtr model, int meshIdx);
 
         #endregion
 
@@ -133,6 +145,44 @@ namespace DLLTest
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "GetMouseKey")]
         public static extern bool GetMouseKey(int keyCode);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetMouseX")]
+        public static extern double GetMouseX();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetMouseY")]
+        public static extern double GetMouseY();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetDx")]
+        public static extern double GetDx();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetDy")]
+        public static extern double GetDy();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetScrollDx")]
+        public static extern double GetScrollDx();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetScrollDy")]
+        public static extern double GetScrollDy();
+
+        #endregion
+
+        #region GLMatrixFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ReturnMat4")]
+        public static extern IntPtr ReturnMat4(float value);
+
+        #endregion
+
+        #region GLMathFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LookAt")]
+        public static extern IntPtr LookAt(float[] cameraPos, float[] cameraFront, float[] cameraUp);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "Perspective")]
+        public static extern IntPtr Perspective(float fovy, float aspect, float near, float far);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "Rotate")]
+        public static extern void Rotate(IntPtr modelMatrix, float degree, float[] axisOfRot, float[] newDirection);
 
         #endregion
     }

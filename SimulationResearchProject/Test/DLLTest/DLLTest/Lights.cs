@@ -17,7 +17,7 @@ namespace DLLTest
             public Vector4 diffuse;
             public Vector4 specular;
 
-            void Render(Shader shader, int idx)
+            public void Render(Shader shader, int idx)
             {
                 	string name = "pointLight[" + idx.ToString() + "]";
                 
@@ -38,7 +38,7 @@ namespace DLLTest
 	        public Vector4 diffuse;
 	        public Vector4 specular;
 
-	        void Render(Shader shader)
+	        public void Render(Shader shader)
 	        {
 		        string name = "directionalLight";
 
@@ -66,7 +66,7 @@ namespace DLLTest
 	        public Vector4 diffuse;
 	        public Vector4 specular;
 
-	        void Render(Shader shader, int idx)
+	        public void Render(Shader shader, int idx)
 	        {
 		        string name = "spotLight[" + idx.ToString() + "]";
 

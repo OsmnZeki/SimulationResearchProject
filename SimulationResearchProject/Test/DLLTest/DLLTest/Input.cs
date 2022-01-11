@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace DLLTest
 {
@@ -36,6 +37,36 @@ namespace DLLTest
         public static bool GetMouseKey(int key)
         {
             return RenderProgramDLL.GetMouseKey(key);
+        }
+
+        public static double GetMouseDx()
+        {
+            return RenderProgramDLL.GetDx();
+        }
+
+        public static double GetMouseDy()
+        {
+            return RenderProgramDLL.GetDy();
+        }
+
+        public static double GetMousePosX()
+        {
+            return RenderProgramDLL.GetMouseX();
+        }
+
+        public static double GetMousePosY()
+        {
+            return RenderProgramDLL.GetMouseY();
+        }
+
+        public static double GetMouseScrolDx()
+        {
+            return RenderProgramDLL.GetScrollDx();
+        }
+
+        public static double GetMouseScrolDy()
+        {
+            return RenderProgramDLL.GetScrollDy();
         }
     }
 
@@ -77,5 +108,7 @@ namespace DLLTest
  	    X = 88,
  	    Y = 89,
  	    Z = 90,
+        Space = 32,
+        LeftShift = 340,
     }
 }

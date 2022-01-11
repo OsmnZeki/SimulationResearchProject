@@ -1,41 +1,46 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace DLLTest
 {
     public class GeneralVertexData {
         
-        public static void SetVertices(List<float> vertices,out Vector3[] vertexPos,out Vector3[] vertexNormal, out Vector2[] texCoord)
+        public static void SetVertices(List<float> vertices,out Vector3[] vertexPos,out Vector3[] vertexNormal, out Vector2[] texCoord, int verticesSize)
         {
-            SetVertices(vertices.ToArray(),out vertexPos,out vertexNormal,out texCoord);
+            SetVertices(vertices.ToArray(),out vertexPos,out vertexNormal,out texCoord,verticesSize);
         }
         
-        public static void SetVertices(float[] vertices,out Vector3[] vertexPos,out Vector3[] vertexNormal, out Vector2[] texCoord)
+        public static void SetVertices(float[] vertices,out Vector3[] vertexPos,out Vector3[] vertexNormal, out Vector2[] texCoord, int verticesSize)
         {
-            vertexPos = new Vector3[3 * vertices.Length];
-            vertexNormal = new Vector3[3 * vertices.Length];
-            texCoord = new Vector2[2 * vertices.Length];
+            vertexPos = new Vector3[verticesSize];
+            vertexNormal = new Vector3[verticesSize];
+            texCoord = new Vector2[verticesSize];
 
-            for (int i = 0; i < vertices.Length; i+=8)
+            int v = 0;
+
+            for (int i = 0; i < verticesSize; i++)
             {
-                vertexPos[i] = new Vector3(
-                    vertices[i  + 0],
-                    vertices[i  + 1],
-                    vertices[i  + 2]
+                vertexPos[v] = new Vector3(
+                    vertices[i *8 + 0],
+                    vertices[i * 8 + 1],
+                    vertices[i * 8 + 2]
                 );
 
-                vertexNormal[i] = new Vector3(
-                    vertices[i  + 3],
-                    vertices[i  + 4],
-                    vertices[i  + 5]
+                vertexNormal[v] = new Vector3(
+                    vertices[i * 8 + 3],
+                    vertices[i * 8 + 4],
+                    vertices[i * 8 + 5]
 
                 );
 
-                texCoord[i] = new Vector2(
-                    vertices[i  + 6],
-                    vertices[i  + 7]
+                texCoord[v] = new Vector2(
+                    vertices[i * 8 + 6],
+                    vertices[i * 8 + 7]
                 );
+                v++;
             }
+           
         }
     };
 }

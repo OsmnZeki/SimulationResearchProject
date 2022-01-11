@@ -64,6 +64,7 @@ namespace DLLTest
             if (pos.Length != normal.Length)
             {
                 Console.WriteLine("The vertices and normals sizes of mesh must be equal!");
+                Console.WriteLine("Vertices lenght: " + pos.Length + "\nNormal Lenght: " + normal.Length);
                 return;
             }
             
@@ -103,6 +104,7 @@ namespace DLLTest
             if (pos.Length != indices.Length)
             {
                 Console.WriteLine("The vertices and indices sizes of mesh must be equal!");
+                Console.WriteLine("Vertices lenght: " + pos.Length + "\nIndices Lenght: " + indices.Length);
                 return;
             }
             

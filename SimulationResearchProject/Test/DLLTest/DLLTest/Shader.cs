@@ -16,6 +16,16 @@ namespace DLLTest
             shaderAdress = RenderProgramDLL.NewShader(vertexShaderPath, fragmentShaderPath);
         }
 
+        public void Activate()
+        {
+            RenderProgramDLL.ShaderActivate(shaderAdress);
+        }
+        
+        public void SetMat4(string name, Mat4 mat4)
+        {
+            RenderProgramDLL.ShaderSetMat4(shaderAdress,name,mat4.matrixAdress);
+        }
+        
         public void SetInt(string name, int value)
         {
             RenderProgramDLL.ShaderSetInt(shaderAdress,name,value);

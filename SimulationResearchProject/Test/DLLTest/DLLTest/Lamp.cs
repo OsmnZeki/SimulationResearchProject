@@ -15,5 +15,14 @@ namespace DLLTest
             this.pointLight = pointLight;
         }
 
+        public void Render(Shader shader)
+        {
+            //set light color
+
+            shader.Set3Float("lightColor", lightColor);
+
+            base.Render(shader);
+        }
+
     }
 }
