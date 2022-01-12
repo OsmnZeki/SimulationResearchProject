@@ -11,9 +11,19 @@ namespace ECSTest
     {
         static void Main(string[] args)
         {
-            World world = new World();
-            SystemManager systemManager;
+            
+            
+            
             
         }
+
+        public void OnPressedButton()
+        {
+            
+            
+            
+            
+        }
+        
     }
 }

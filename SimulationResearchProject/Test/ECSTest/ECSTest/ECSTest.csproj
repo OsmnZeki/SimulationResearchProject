@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EcsSystemController.cs" />
     <Compile Include="EcsDalak\BitSet.cs" />
     <Compile Include="EcsDalak\ComponentIdx.cs" />
     <Compile Include="EcsDalak\ComponentPool.cs" />
