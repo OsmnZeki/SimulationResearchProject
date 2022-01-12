@@ -25,3 +25,6 @@ gl math fonksiyonları (rotate, scale, transform) entegre edilecek
 model loading olunca c#taki sistem hiçbir şeyden etkilenmiyor
 
 *DLL test projesi içerisindeki scriptleri kategorileştir namespaceleri ayarla
+
+*ECS
+	*entegresyon için kapatılan debug.assertleri daha sonrasında aç
