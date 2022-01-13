@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Numerics;
-using System;
+﻿using System.Numerics;
+using MESPSimulation.Graphics.Model;
 
-namespace DLLTest
+namespace MESPSimulation.Graphics.Objects
 {
-	public class Cube : Model
+	public class Cube : Model.Model
 	{
 		public int numbOfVertices;
 		public Vector3[] pos;

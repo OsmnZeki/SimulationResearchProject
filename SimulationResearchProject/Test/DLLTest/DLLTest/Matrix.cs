@@ -1,6 +1,7 @@
 ﻿using System;
+using MESPSimulation.DLL;
 
-namespace DLLTest
+namespace MESPLibrary.MESPMath
 {
     public class Mat4
     {

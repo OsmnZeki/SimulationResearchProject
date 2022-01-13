@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Numerics;
+using MESPLibrary.MESPMath;
+using MESPSimulation.Graphics.Model;
+using MESPSimulation.Graphics.Objects;
+using MESPSimulation.Graphics.Rendering;
+using MESPSimulation.IO;
+using MESPSimulation.Window;
 
 
 namespace DLLTest
@@ -19,15 +25,15 @@ namespace DLLTest
             if (screen.screenAdress == IntPtr.Zero) return;
 
             Shader shader = new Shader(
-                "C:/Unity/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
-                "C:/Unity/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.fs");
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.fs");
 
             Shader lampShader = new Shader(
-                "C:/Unity/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
-                "C:/Unity/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/lamp.fs");
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/lamp.fs");
 
             Model trolModel = new Model(Vector3.Zero, new Vector3(0.5f));
-            trolModel.LoadModelWithAssimp("C:/Unity/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Models/Trol/scene.gltf");
+            trolModel.LoadModelWithAssimp("D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Models/Trol/scene.gltf");
             trolModel.SetPosAndSize(Vector3.Zero, new Vector3(0.05f));
 
             Camera camera = new Camera(new Vector3(0.0f, 0.0f, 3.0f));

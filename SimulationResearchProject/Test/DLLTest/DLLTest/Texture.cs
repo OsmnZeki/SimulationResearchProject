@@ -1,6 +1,7 @@
 ﻿using System;
+using MESPSimulation.DLL;
 
-namespace DLLTest
+namespace MESPSimulation.Graphics.Rendering
 {
     public class Texture
     {

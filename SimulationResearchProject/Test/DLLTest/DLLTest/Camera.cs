@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Numerics;
+using MESPLibrary.MESPMath;
+using MESPSimulation.DLL;
 
 
-namespace DLLTest
+namespace MESPSimulation.IO
 {
     public enum CameraDirection
     {

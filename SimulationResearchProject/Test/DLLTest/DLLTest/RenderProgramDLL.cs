@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace DLLTest
+namespace MESPSimulation.DLL
 {
     class RenderProgramDLL
     {

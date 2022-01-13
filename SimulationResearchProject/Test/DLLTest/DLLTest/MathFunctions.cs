@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Numerics;
-using System.Runtime.InteropServices;
+using MESPSimulation.DLL;
 
-namespace DLLTest
+namespace MESPLibrary.MESPMath
 {
     public static class MathFunctions
     {

@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace DLLTest
+namespace MESPSimulation.Graphics.Rendering
 {
     public struct Material {
         // lighting values

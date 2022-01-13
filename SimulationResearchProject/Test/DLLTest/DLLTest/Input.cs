@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
+using MESPSimulation.DLL;
 
-namespace DLLTest
+namespace MESPSimulation.IO
 {
     class Input
     {

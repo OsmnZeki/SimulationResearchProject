@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
+using MESPSimulation.DLL;
+using MESPSimulation.Graphics.Rendering;
 
-namespace DLLTest
+namespace MESPSimulation.Graphics.Model
 {
     public class Model
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 
-namespace DLLTest
+namespace MESPSimulation.Graphics.Model
 {
     public class GeneralVertexData {
         

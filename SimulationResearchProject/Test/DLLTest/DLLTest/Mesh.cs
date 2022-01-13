@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
-using System.Runtime.Loader;
+using MESPSimulation.DLL;
+using MESPSimulation.Graphics.Rendering;
 
-namespace DLLTest
+namespace MESPSimulation.Graphics.Model
 {
     public class Mesh
     {

@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
+using MESPSimulation.Graphics.Rendering;
 
-namespace DLLTest
+namespace MESPSimulation.Graphics.Objects
 {
     public class Lamp : Cube
     {

@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using MESPLibrary.MESPMath;
+using MESPSimulation.DLL;
 
-namespace DLLTest
+namespace MESPSimulation.Graphics.Rendering
 {
     public class Shader
     {
