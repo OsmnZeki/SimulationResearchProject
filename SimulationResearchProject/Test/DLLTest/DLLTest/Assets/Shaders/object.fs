@@ -1,15 +1,14 @@
 #version 330 core
 
+#define MAX_POINT_LIGHTS 20
+#define MAX_SPOT_LIGHTS 5
+
 struct Material{
 	vec4 diffuse;
 	vec4 specular;
 	float shininess;
 };
 
-uniform sampler2D diffuse0;
-uniform sampler2D specular0;
-
-#define MAX_POINT_LIGHTS 20
 struct PointLight{
 	vec3 position;
 	float k0;
@@ -19,8 +18,6 @@ struct PointLight{
 	vec4 diffuse;
 	vec4 specular;
 };
-uniform PointLight pointLight[MAX_POINT_LIGHTS];
-uniform int numbPointLights;
 
 struct DirectionalLight{
 	vec3 direction;
@@ -29,9 +26,7 @@ struct DirectionalLight{
 	vec4 diffuse;
 	vec4 specular;
 };
-uniform DirectionalLight directionalLight;
 
-#define MAX_SPOT_LIGHTS 5
 struct SpotLight{
 	vec3 direction;
 	vec3 position;
@@ -46,18 +41,25 @@ struct SpotLight{
 	vec4 diffuse;
 	vec4 specular;
 };
+
+uniform sampler2D diffuse0;
+uniform sampler2D specular0;
+
+uniform PointLight pointLight[MAX_POINT_LIGHTS];
 uniform SpotLight spotLight[MAX_SPOT_LIGHTS];
+uniform DirectionalLight directionalLight;
+
+uniform int numbPointLights;
 uniform int numbSpotLights;
+
+uniform Material material;
+uniform int noTex;
 
 out vec4 FragColor;
 
 in vec3 fragPos;
 in vec3 normal;
 in vec2 texCoord;
-
-uniform Material material;
-uniform int noTex;
-
 uniform vec3 viewPos;
 
 vec4 CalcPointLight(int idx, vec3 norm, vec3 viewDir, vec4 diffMap, vec4 specMap);
