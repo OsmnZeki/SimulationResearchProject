@@ -32,9 +32,8 @@ namespace DLLTest
                 "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
                 "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/lamp.fs");
 
-            Model trolModel = new Model(Vector3.Zero, new Vector3(0.5f));
-            trolModel.LoadModelWithAssimp("D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Models/Trol/scene.gltf");
-            trolModel.SetPosAndSize(Vector3.Zero, new Vector3(0.05f));
+            ModelLoading trolModel = new ModelLoading();
+            trolModel.LoadModel("D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Models/Trol/scene.gltf");
 
             Camera camera = new Camera(new Vector3(0.0f, 0.0f, 3.0f));
 
@@ -79,14 +78,6 @@ namespace DLLTest
                 diffuse = Vector4.One,
                 specular = Vector4.One,
             };
-
-           /* Cube cube = new Cube();
-            cube.SetPosAndSize(new Vector3(1f, 1f, 1f), new Vector3(.25f, .25f, .25f));
-            cube.Initialize();
-            cube.SetDiffuse(Material.emerald.diffuse);
-            cube.SetSpecular(Material.emerald.specular);
-            cube.SetPosAndSize(Vector3.Zero, Vector3.One);*/
-
 
             Stopwatch sw = new Stopwatch();
             sw.Start();

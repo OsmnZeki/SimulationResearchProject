@@ -8,46 +8,20 @@ namespace MESPSimulation.Graphics.Model
 {
     public class Mesh
     {
-        public enum MeshSetupConfiguration {
-            PosSetup = 0,
-            PosNormalSetup = 1,
-            PosNormalTexCoordSetup = 2
-        };
+        private IntPtr meshAdress;
 
-        public IntPtr meshAdress;
+        private int sizeOfVertices;
         
-        Vector3[] pos;
-        Vector3[] normal;
-        Vector2[] texCoord;
-        private int[] indices;
-        
-        Vector4 diffuse;
-        Vector4 specular;
-
-        private List<Texture> textures;
-        private bool noTex;
-
         public Mesh()
         {
-            noTex = true;
-            meshAdress = RenderProgramDLL.CreateMesh();
+            //TODO: RenderDLL.NewMesh()
         }
-
-        public void Setup(MeshSetupConfiguration setupConfiguration)
-        {
-            RenderProgramDLL.MeshSetup(meshAdress,(int)setupConfiguration);
-        }
-
-        public void CleanUp()
-        {
-            RenderProgramDLL.MeshCleanUp(meshAdress);
-        }
+        
 
         public void SetVerticesPos(Vector3[] pos)
         {
-            this.pos = pos;
-
             float[] posF = new float[pos.Length * 3];
+            sizeOfVertices = pos.Length;
             int v = 0;
             
             for (int i = 0; i < pos.Length; i++)
@@ -56,22 +30,20 @@ namespace MESPSimulation.Graphics.Model
                 posF[v++] = pos[i].Y;
                 posF[v++] = pos[i].Z;
             }
-            
-            RenderProgramDLL.MeshSetVerticesPos(meshAdress,posF,pos.Length);
+            //TODO: RenderDLL.MeshSetVerticesPosition
         }
         
         public void SetVerticesNormal( Vector3[] normal)
         {
-            if (pos.Length != normal.Length)
+            if (sizeOfVertices != normal.Length)
             {
                 Console.WriteLine("The vertices and normals sizes of mesh must be equal!");
-                Console.WriteLine("Vertices lenght: " + pos.Length + "\nNormal Lenght: " + normal.Length);
+                Console.WriteLine("Vertices lenght: " + sizeOfVertices + "\nNormal Lenght: " + normal.Length);
                 return;
             }
             
-            this.normal = normal;
             
-            float[] posF = new float[pos.Length * 3];
+            float[] posF = new float[sizeOfVertices * 3];
             int v = 0;
             
             for (int i = 0; i < normal.Length; i++)
@@ -80,15 +52,12 @@ namespace MESPSimulation.Graphics.Model
                 posF[v++] = normal[i].Y;
                 posF[v++] = normal[i].Z;
             }
-            
-            RenderProgramDLL.MeshSetVerticesNormal(meshAdress,posF);
+//TODO: RenderDLL.MeshSetVerticesNormal
         }
         
-        public void SetVerticesTexCoordl(Vector2[] texCoord)
+        public void SetVerticesTexCoord(Vector2[] texCoord)
         {
-            this.texCoord = texCoord;
-                
-            float[] posF = new float[pos.Length * 2];
+            float[] posF = new float[sizeOfVertices* 2];
             int v = 0;
             
             for (int i = 0; i < texCoord.Length; i++)
@@ -96,44 +65,18 @@ namespace MESPSimulation.Graphics.Model
                 posF[v++] = texCoord[i].X;
                 posF[v++] = texCoord[i].Y;
             }
-            
-            RenderProgramDLL.MeshSetVerticesTexCoord(meshAdress,posF);
+//TODO: RenderDLL.MeshSetVerticesTexCoord
         }
 
         public void SetIndices(int[] indices)
         {
-            if (pos.Length != indices.Length)
+            if (sizeOfVertices != indices.Length)
             {
                 Console.WriteLine("The vertices and indices sizes of mesh must be equal!");
-                Console.WriteLine("Vertices lenght: " + pos.Length + "\nIndices Lenght: " + indices.Length);
+                Console.WriteLine("Vertices lenght: " + sizeOfVertices + "\nIndices Lenght: " + indices.Length);
                 return;
             }
-            
-            this.indices = indices;
-            RenderProgramDLL.MeshSetIndices(meshAdress,indices);
+            //TODO: RenderDLL.MeshSetVerticesIndices
         }
-
-        public void AddTexture(Texture texture, bool flip)
-        {
-            if(noTex) noTex = false;
-            texture.Load(flip);
-            textures.Add(texture);
-            RenderProgramDLL.AddTextureToMesh(meshAdress, texture.textureAdress);
-        }
-
-        public void SetDiffuse(Vector4 diffuse)
-        {
-            this.diffuse = diffuse;
-            RenderProgramDLL.MeshSetDiffuse(meshAdress, new float[]{diffuse.X,diffuse.Y,diffuse.Z,diffuse.W});
-        }
-
-        public void SetSpecular(Vector4 specular)
-        {
-            this.specular = specular;
-            RenderProgramDLL.MeshSetSpecular(meshAdress, new float[]{specular.X,specular.Y,specular.Z,specular.W});
-        }
-
-
-        
     }
 }

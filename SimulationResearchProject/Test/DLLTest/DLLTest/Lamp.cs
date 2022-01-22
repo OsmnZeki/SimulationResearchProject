@@ -3,7 +3,7 @@ using MESPSimulation.Graphics.Rendering;
 
 namespace MESPSimulation.Graphics.Objects
 {
-    public class Lamp : Cube
+    public class Lamp : CubeMesh
     {
         public Vector3 lightColor;
         public Lights.PointLight pointLight;
@@ -15,15 +15,5 @@ namespace MESPSimulation.Graphics.Objects
             this.lightColor = lightColor;
             this.pointLight = pointLight;
         }
-
-        public void Render(Shader shader)
-        {
-            //set light color
-
-            shader.Set3Float("lightColor", lightColor);
-
-            base.Render(shader);
-        }
-
     }
 }

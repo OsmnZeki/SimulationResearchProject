@@ -7,7 +7,7 @@ namespace MESPSimulation.Graphics.Rendering
 {
     public class Shader
     {
-        public IntPtr shaderAdress;
+        private IntPtr shaderAdress;
 
         public Shader(string vertexShaderPath,string fragmentShaderPath)
         {
