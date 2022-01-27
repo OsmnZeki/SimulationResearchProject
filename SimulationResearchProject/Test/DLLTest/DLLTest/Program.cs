@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Numerics;
 using MESPLibrary.MESPMath;
+using MESPSimulation.Graphics.Materials;
 using MESPSimulation.Graphics.Model;
 using MESPSimulation.Graphics.Objects;
 using MESPSimulation.Graphics.Rendering;
@@ -26,15 +27,28 @@ namespace DLLTest
 
             Shader shader = new Shader(
                 "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
-                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.fs");
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/lit.fs");
 
             Shader lampShader = new Shader(
                 "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
-                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/lamp.fs");
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/unlit.fs");
+
+            LitMaterial litMaterial = new LitMaterial();
+            litMaterial.SetShader(shader);
+            UnlitMaterial unlitMaterial = new UnlitMaterial();
+            unlitMaterial.SetColor(Vector4.One);
+            unlitMaterial.SetShader(lampShader);
 
             ModelLoading trolModel = new ModelLoading();
             trolModel.LoadModel("D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Models/Trol/scene.gltf");
-
+            Transform trolTransfrom = new Transform(Vector3.Zero, Vector3.One *.05f, Vector3.Zero);
+            MeshRenderer trolMeshRenderer = new MeshRenderer();
+            trolMeshRenderer.SetMesh(trolModel.GetMesh(0));
+            var trolMat = trolModel.GetMaterial(0);
+            trolMat.SetShader(shader);
+            trolMeshRenderer.SetMaterial(trolMat);
+            trolMeshRenderer.Setup();
+            
             Camera camera = new Camera(new Vector3(0.0f, 0.0f, 3.0f));
 
             Lights.DirectionalLight dirLight = new Lights.DirectionalLight()
@@ -45,13 +59,14 @@ namespace DLLTest
                 specular = new Vector4(0.75f, 0.75f, 0.75f, 1.0f)
             };
 
-            Vector3[] pointLightPositions =
+            Transform[] lambTransforms = new []
             {
-                new Vector3(0.7f, 0.2f, 2.0f),
-                new Vector3(2.3f, -3.3f, -4.0f),
-                new Vector3(-4.0f, 2.0f, -12.0f),
-                new Vector3(0.0f, 0.0f, -3.0f),
+                new Transform(new Vector3(0.7f, 0.2f, 2.0f),new Vector3(.25f), Vector3.Zero),
+                new Transform(new Vector3(2.3f, -3.3f, -4.0f),new Vector3(.25f), Vector3.Zero),
+                new Transform(new Vector3(-4.0f, 2.0f, -12.0f),new Vector3(.25f), Vector3.Zero),
+                new Transform(new Vector3(0.0f, 0.0f, -3.0f),new Vector3(.25f), Vector3.Zero),
             };
+            MeshRenderer[] lampMeshRenderers = new MeshRenderer[4];
 
             Lamp[] lamps = new Lamp[4];
             for (int i = 0; i < 4; i++)
@@ -61,10 +76,12 @@ namespace DLLTest
                     ambient = new Vector4(0.05f, 0.05f, 0.05f, 1.0f),
                     diffuse = new Vector4(0.8f, 0.8f, 0.8f, 1.0f),
                     specular = new Vector4(1.0f),
-                    position = pointLightPositions[i]
+                    position = lambTransforms[i].position
                 });
-                lamps[i].SetPosAndSize(pointLightPositions[i], new Vector3(.25f));
-                lamps[i].Initialize();
+                lampMeshRenderers[i] = new MeshRenderer();
+                lampMeshRenderers[i].SetMesh(lamps[i]);
+                lampMeshRenderers[i].SetMaterial(unlitMaterial);
+                lampMeshRenderers[i].Setup();
             }
 
             spotLightOn = true;
@@ -129,14 +146,14 @@ namespace DLLTest
                 shader.SetMat4("projection", projection);
 
                 //cube.Render(shader);
-                trolModel.Render(shader);
+                trolMeshRenderer.Render(trolTransfrom);
 
                 lampShader.Activate();
                 lampShader.SetMat4("view", view);
                 lampShader.SetMat4("projection", projection);
                 for (int i = 0; i < 4; i++)
                 {
-                    lamps[i].Render(lampShader);
+                    lampMeshRenderers[i].Render(lambTransforms[i]);
                 }
 
                 screen.NewFrame();
@@ -144,11 +161,11 @@ namespace DLLTest
 
             sw.Stop();
 
-            trolModel.CleanUp();
+            trolMeshRenderer.CleanUp();
             //cube.CleanUp();
             for (int i = 0; i < 4; i++)
             {
-                lamps[i].CleanUp();
+                lampMeshRenderers[i].CleanUp();
             }
 
             screen.Terminate();

@@ -1,11 +1,26 @@
 ﻿using System;
+using MESPSimulation.DLL;
 using MESPSimulation.Graphics.Rendering;
 
 namespace DLLTest
 {
-    public abstract class Material
+    public class Material
     {
         protected IntPtr materialAdress;
-        protected Shader shader;
+
+        public void SetShader(Shader shader)
+        {
+            RenderProgramDLL.SetShaderToMaterial(materialAdress,shader.GetShaderAdress());
+        }
+        
+        public void SetAdress(IntPtr materialAdress)
+        {
+            this.materialAdress = materialAdress;
+        }
+
+        public IntPtr GetAdress()
+        {
+            return materialAdress;
+        }
     }
 }

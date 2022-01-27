@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Numerics;
 using DLLTest;
+using MESPSimulation.DLL;
 using MESPSimulation.Graphics.Rendering;
 
 namespace MESPSimulation.Graphics.Materials
@@ -8,8 +9,7 @@ namespace MESPSimulation.Graphics.Materials
     public class LitMaterial : Material{
         public LitMaterial()
         {
-            //TODO: yorum satırlarını yaz
-            //materialAdress = RenderDLL.NewLitMaterial();
+            materialAdress = RenderProgramDLL.NewLitMaterial();
         }
 
         public LitMaterial(Vector3 ambient, Vector3 diffuse, Vector3 specular, float shininess)
@@ -61,36 +61,35 @@ namespace MESPSimulation.Graphics.Materials
 
         public void SetAmbient(Vector3 ambient)
         {
-            //TODO: yorum satırlarını doldur
-            //RenderDLL.SetMaterialAmbient()
+            float[] ambientF = new[] {ambient.X, ambient.Y, ambient.Z};
+            RenderProgramDLL.SetAmbientToMaterial(materialAdress, ambientF);
         }
         
         public void SetDiffuse(Vector3 diffuse)
         {
-            //TODO: yorum satırlarını doldur
-            //RenderDLL.SetMaterialDiffuse()
+            float[] diffuseF = new[] {diffuse.X, diffuse.Y, diffuse.Z};
+            RenderProgramDLL.SetDiffuseToMaterial(materialAdress, diffuseF);
         }
         
         public void SetSpecular(Vector3 specular)
         {
-            //TODO: yorum satırlarını doldur
-            //RenderDLL.SetMaterialAmbient()
+            float[] specularF = new[] {specular.X, specular.Y, specular.Z};
+            RenderProgramDLL.SetSpecularToMaterial(materialAdress, specularF);
         }
         
         public void SetShininess(float shininess)
         {
-            //TODO: yorum satırlarını doldur
-            //RenderDLL.SetMaterialShininess()
+            RenderProgramDLL.SetShininessToMaterial(materialAdress,shininess);
         }
 
         public void AddTexture(Texture texture)
         {
-            //TODO: yorum satırlarını doldur
-            //RenderDLL.AddMaterialTexture();
+            RenderProgramDLL.AddTextureToMaterial(materialAdress,texture.textureAdress);
         }
         
+        //TODO: material get fonksiyonlarını ekle
         
-        public Vector3 GetAmbient()
+        /*public Vector3 GetAmbient()
         {
             //TODO: yorum satırlarını doldur
             //RenderDLL.SetMaterialAmbient()
@@ -123,7 +122,7 @@ namespace MESPSimulation.Graphics.Materials
             //TODO: yorum satırlarını doldur
             //RenderDLL.AddMaterialTexture();
             //return texture
-        }
+        }*/
         
     }
 

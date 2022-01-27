@@ -8,7 +8,7 @@ namespace MESPSimulation.Graphics.Rendering
     public class Shader
     {
         private IntPtr shaderAdress;
-
+        
         public Shader(string vertexShaderPath,string fragmentShaderPath)
         {
             shaderAdress = RenderProgramDLL.NewShader(vertexShaderPath, fragmentShaderPath);
@@ -59,6 +59,12 @@ namespace MESPSimulation.Graphics.Rendering
         {
             RenderProgramDLL.ShaderSetBool(shaderAdress,name,value);
         }
+        
+        public IntPtr GetShaderAdress()
+        {
+            return shaderAdress;
+        }
+
         
     }
 }

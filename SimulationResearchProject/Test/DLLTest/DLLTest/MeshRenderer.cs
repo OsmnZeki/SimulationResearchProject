@@ -1,4 +1,6 @@
 ﻿using System;
+using MESPSimulation.DLL;
+using MESPSimulation.Graphics.Model;
 
 namespace DLLTest
 {//TODO: test amaçlı sonrasında ecs için entegre et
@@ -8,20 +10,21 @@ namespace DLLTest
 
         public MeshRenderer()
         {
-            //TODO: meshRendererAdress = RenderDLL.NewMeshRenderer();
+            meshRendererAdress = RenderProgramDLL.NewMeshRenderer();
         }
 
-        public void SetMesh()
+        public void SetMesh(Mesh mesh)
         {
-            //TODO: RenderDLL.SetMeshToRenderer();
+            RenderProgramDLL.SetMeshToMeshRenderer(meshRendererAdress, mesh.GetMeshAdress());
         }
 
-        public void SetMaterial()
+        public void SetMaterial(Material material)
         {
-            //TODO: RenderDLL.SetMaterialToRenderer();
+            RenderProgramDLL.SetMaterialToMeshRenderer(meshRendererAdress, material.GetAdress());
         }
         
-        public void GetMesh()
+        //TODO: get fonksiyonlarını ayarla
+     /*   public void GetMesh()
         {
             //TODO: RenderDLL.GetMeshFromRenderer();
         }
@@ -29,21 +32,21 @@ namespace DLLTest
         public void GetMaterial()
         {
             //TODO: RenderDLL.GetMaterialFromRenderer();
-        }
+        }*/
 
         public void Setup()
         {
-            //TODO: RenderDLL.RendererSetup();
+            RenderProgramDLL.SetupMeshRenderer(meshRendererAdress);
         }
 
         public void Render(Transform transform)
         {
-            //TODO: RenderDLL.MeshRender(transform);
+            RenderProgramDLL.RenderMeshRenderer(meshRendererAdress,transform.GetAdress());
         }
 
         public void CleanUp()
         {
-            //TODO: RenderDLL.CleanUp();
+            RenderProgramDLL.CleanUpMeshRenderer(meshRendererAdress);
         }
         
     }

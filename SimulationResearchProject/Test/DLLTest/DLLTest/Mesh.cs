@@ -9,12 +9,11 @@ namespace MESPSimulation.Graphics.Model
     public class Mesh
     {
         private IntPtr meshAdress;
-
         private int sizeOfVertices;
         
         public Mesh()
         {
-            //TODO: RenderDLL.NewMesh()
+            meshAdress = RenderProgramDLL.CreateMesh();
         }
         
 
@@ -30,7 +29,7 @@ namespace MESPSimulation.Graphics.Model
                 posF[v++] = pos[i].Y;
                 posF[v++] = pos[i].Z;
             }
-            //TODO: RenderDLL.MeshSetVerticesPosition
+            RenderProgramDLL.MeshSetVerticesPos(meshAdress,posF,sizeOfVertices);
         }
         
         public void SetVerticesNormal( Vector3[] normal)
@@ -52,7 +51,7 @@ namespace MESPSimulation.Graphics.Model
                 posF[v++] = normal[i].Y;
                 posF[v++] = normal[i].Z;
             }
-//TODO: RenderDLL.MeshSetVerticesNormal
+            RenderProgramDLL.MeshSetVerticesNormal(meshAdress,posF);
         }
         
         public void SetVerticesTexCoord(Vector2[] texCoord)
@@ -65,7 +64,7 @@ namespace MESPSimulation.Graphics.Model
                 posF[v++] = texCoord[i].X;
                 posF[v++] = texCoord[i].Y;
             }
-//TODO: RenderDLL.MeshSetVerticesTexCoord
+            RenderProgramDLL.MeshSetVerticesTexCoord(meshAdress,posF);
         }
 
         public void SetIndices(int[] indices)
@@ -76,7 +75,19 @@ namespace MESPSimulation.Graphics.Model
                 Console.WriteLine("Vertices lenght: " + sizeOfVertices + "\nIndices Lenght: " + indices.Length);
                 return;
             }
-            //TODO: RenderDLL.MeshSetVerticesIndices
+            RenderProgramDLL.MeshSetIndices(meshAdress,indices);
         }
+
+        public void SetMeshAdress(IntPtr adress)
+        {
+            meshAdress = adress;
+        }
+
+        public IntPtr GetMeshAdress()
+        {
+            return meshAdress;
+        }
+        
+        //TODO:mesh get fonksiyonlarını ekle
     }
 }

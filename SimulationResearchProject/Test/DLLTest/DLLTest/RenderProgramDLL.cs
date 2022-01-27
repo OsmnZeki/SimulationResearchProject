@@ -83,46 +83,26 @@ namespace MESPSimulation.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetVerticesTexCoord")]
         public static extern void MeshSetVerticesTexCoord(IntPtr mesh, float[] texCoord);
-        
-        [DllImport(RenderProgramDLLPath, EntryPoint = "AddTextureToMesh")]
-        public static extern void AddTextureToMesh(IntPtr mesh, IntPtr texture);
-        
-        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshCleanUp")]
-        public static extern void MeshCleanUp(IntPtr mesh);
-        
-        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetup")]
-        public static extern void MeshSetup(IntPtr mesh,int setupConfig);
-        
-        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetDiffuse")]
-        public static extern void MeshSetDiffuse(IntPtr mesh,float[] diffuse);
-        
-        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetSpecular")]
-        public static extern void MeshSetSpecular(IntPtr mesh,float[] specular);
 
         #endregion
 
         #region ModelFunctions
 
-        [DllImport(RenderProgramDLLPath, EntryPoint = "NewModel")]
-        public static extern IntPtr NewModel();
-        
         [DllImport(RenderProgramDLLPath, EntryPoint = "LoadModel")]
-        public static extern void LoadModel(IntPtr model, string modelPath);
+        public static extern IntPtr LoadModel(string path);
         
-        [DllImport(RenderProgramDLLPath, EntryPoint = "ModelRender")]
-        public static extern void ModelRender(IntPtr model, IntPtr shader);
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetTotalMeshCount")]
+        public static extern int GetTotalMeshCount(IntPtr modelLoadingAdress);
         
-        [DllImport(RenderProgramDLLPath, EntryPoint = "ModelCleanUp")]
-        public static extern void ModelCleanUp(IntPtr model);
-        
-        [DllImport(RenderProgramDLLPath, EntryPoint = "AddMeshToModel")]
-        public static extern void AddMeshToModel(IntPtr model, IntPtr mesh);
-        
-        [DllImport(RenderProgramDLLPath, EntryPoint = "SetPosAndSize")]
-        public static extern void SetPosAndSize(IntPtr model, float[] pos, float[] size);
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetTotalMaterialCount")]
+        public static extern int GetTotalMaterialCount(IntPtr modelLoadingAdress);
 
-        [DllImport(RenderProgramDLLPath, EntryPoint = "GetMesh")]
-        public static extern IntPtr GetMesh(IntPtr model, int meshIdx);
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetIdxMeshesFromModel")]
+        public static extern IntPtr GetIdxMeshesFromModel(IntPtr modelLoadingAdress, int idx);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetIdxMaterialFromModel")]
+        public static extern IntPtr GetIdxMaterialFromModel(IntPtr modelLoadingAdress, int idx);
+
 
         #endregion
 
@@ -183,6 +163,76 @@ namespace MESPSimulation.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "Rotate")]
         public static extern void Rotate(IntPtr modelMatrix, float degree, float[] axisOfRot, float[] newDirection);
+
+        #endregion
+
+        #region MaterialFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewLitMaterial")]
+        public static extern IntPtr NewLitMaterial();
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetShaderToMaterial")]
+        public static extern void SetShaderToMaterial(IntPtr matAdress, IntPtr shader);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetAmbientToMaterial")]
+        public static extern void SetAmbientToMaterial(IntPtr matAdress, float[] ambient);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetDiffuseToMaterial")]
+        public static extern void SetDiffuseToMaterial(IntPtr matAdress, float[] diffuse);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetSpecularToMaterial")]
+        public static extern void SetSpecularToMaterial(IntPtr matAdress, float[] specular);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetShininessToMaterial")]
+        public static extern void SetShininessToMaterial(IntPtr matAdress, float shininess);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "AddTextureToMaterial")]
+        public static extern void AddTextureToMaterial(IntPtr matAdress, IntPtr textureAdress);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewUnlitMaterial")]
+        public static extern IntPtr NewUnlitMaterial();
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetColorToMaterial")]
+        public static extern void SetColorToMaterial(IntPtr matAdress, float[] color);
+        
+        #endregion
+
+        #region MeshRendererFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewMeshRenderer")]
+        public static extern IntPtr NewMeshRenderer();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetMeshToMeshRenderer")]
+        public static extern void SetMeshToMeshRenderer(IntPtr meshRendererAdress, IntPtr meshAdress);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetMaterialToMeshRenderer")]
+        public static extern void SetMaterialToMeshRenderer(IntPtr meshRendererAdress, IntPtr materialAdress);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetupMeshRenderer")]
+        public static extern void SetupMeshRenderer(IntPtr meshRendererAdress);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "RenderMeshRenderer")]
+        public static extern void RenderMeshRenderer(IntPtr meshRendererAdress, IntPtr transfromAdress);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "CleanUpMeshRenderer")]
+        public static extern void CleanUpMeshRenderer(IntPtr meshRendererAdress);
+        
+        #endregion
+
+        
+        #region TransformFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewTransform")]
+        public static extern IntPtr NewTransform();
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetTransformPosition")]
+        public static extern void SetTransformPosition(IntPtr transformAdress, float[] pos);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetTransformSize")]
+        public static extern void SetTransformSize(IntPtr transformAdress, float[] size);
+        
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetTransformRotation")]
+        public static extern void SetTransformRotation(IntPtr transformAdress, float[] rotation);
 
         #endregion
     }

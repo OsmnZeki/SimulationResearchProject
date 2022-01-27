@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using MESPSimulation.DLL;
 
 namespace DLLTest
 {
@@ -6,20 +7,21 @@ namespace DLLTest
     {
         public UnlitMaterial()
         {
-            //TODO: yorum satırlarını yaz
-            // materialAdress = RenderDLL.NewUnlitMaterial();
+            materialAdress = RenderProgramDLL.NewUnlitMaterial();
         }
 
         public void SetColor(Vector4 color)
         {
-            //TODO: RenderDLL.SetMaterialColor(color)
+            float[] colorF = new[] {color.X, color.Y, color.Z, color.W};
+            RenderProgramDLL.SetColorToMaterial(materialAdress,colorF);
         }
 
-        public Vector4 GetColor()
+        //TODO: get fonksiyonunu yaz
+        /*public Vector4 GetColor()
         {
             //TODO: RenderDLL.GetColor
             //TODO: return color
-        }
+        }*/
         
     }
 }

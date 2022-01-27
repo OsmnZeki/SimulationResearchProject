@@ -1,16 +1,18 @@
 ﻿using System;
 using DLLTest;
+using MESPSimulation.DLL;
 
 
 namespace MESPSimulation.Graphics.Model
 {
+
     public class ModelLoading
     {
         private IntPtr modelAdress;
 
-        public Mesh[] meshes;
-        public Material[] materials;
-        private int totalMesh;
+        public int meshCount;
+        public int materialCount;
+
 
         public ModelLoading()
         {
@@ -18,20 +20,23 @@ namespace MESPSimulation.Graphics.Model
 
         public void LoadModel(string path)
         {
-            //TODO: yorum satırlarını yaz
-            //RenderDLL.LoadModel(path)
-            //meshes = RenderDLL.GetMeshesFromModel(modelAdress);
-            //materials = RenderDLL.GetMaterialsFromModel(modelAdress);
+            modelAdress = RenderProgramDLL.LoadModel(path);
+            meshCount = RenderProgramDLL.GetTotalMeshCount(modelAdress);
+            materialCount = RenderProgramDLL.GetTotalMaterialCount(modelAdress);
         }
 
         public Mesh GetMesh(int idx)
         {
-            return meshes[idx];
+            Mesh mesh = new Mesh();
+            mesh.SetMeshAdress(RenderProgramDLL.GetIdxMeshesFromModel(modelAdress, idx));
+            return mesh;
         }
 
         public Material GetMaterial(int idx)
         {
-            return materials[idx];
+            Material material = new Material();
+            material.SetAdress(RenderProgramDLL.GetIdxMaterialFromModel(modelAdress, idx));
+            return material;
         }
     }
 }

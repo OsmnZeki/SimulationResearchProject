@@ -8,7 +8,8 @@ namespace MESPSimulation.Graphics.Objects
         public Vector3 lightColor;
         public Lights.PointLight pointLight;
         
-        public Lamp(){}
+        public Lamp() : base()
+        {}
 
         public Lamp(Vector3 lightColor,Lights.PointLight pointLight) : base()
         {
