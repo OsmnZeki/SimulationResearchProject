@@ -12,7 +12,8 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
-
+using SimulationSystem;
+using SimulationSystem.ECS.Entegration;
 
 namespace SimulationWFA
 {
@@ -177,6 +178,67 @@ namespace SimulationWFA
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             MessageBox.Show("TextChanged");
+        }
+
+        private void addObjectButton_Click(object sender, EventArgs e)
+        {
+            var simObject = SimObject.NewSimObject();
+
+            HierarchySimButton hierarchyButton = new HierarchySimButton();
+            hierarchyButton.Location = new System.Drawing.Point(hieararchyPanel.Location.X + 5, hieararchyPanel.Location.Y + 40);
+            hierarchyButton.Name = "hierarchyButton";
+            hierarchyButton.Size = new System.Drawing.Size(75, 23);
+            hierarchyButton.Text = simObject.objectData.name;
+            hierarchyButton.BackColor = Color.White;
+            hierarchyButton.simObject = simObject;
+            hierarchyButton.Click += new System.EventHandler(hierarchyButton_Click);
+            hieararchyPanel.SendToBack();
+            Controls.Add(hierarchyButton);
+
+        }
+
+        private void hierarchyButton_Click(object sender, EventArgs e)
+        {
+            Panel panel = new Panel();
+            panel.Location = new Point(inspectorPanel.Location.X + 5, inspectorPanel.Location.Y + 40); ;
+            Control[] control =  Controls.Find("hierarchyButton", true);
+            HierarchySimButton simButton = (HierarchySimButton)control[0];
+            TextBox[] textBox = new TextBox[simButton.simObject.objectData.serializedComponentList.Count];
+            int idx = 0;
+
+            foreach (var item in simButton.simObject.objectData.serializedComponentList)
+            {
+                var data = simButton.simObject.objectData.serializedComponentList[idx].GetType();
+                textBox[idx] = new TextBox();
+                textBox[idx].Location = new Point(10,20);
+                textBox[idx].Text = item.GetName();
+                textBox[idx].BackColor = Color.Red;
+                textBox[idx].Size = new Size(150, 60);
+                textBox[idx].BringToFront();
+                panel.Controls.Add(textBox[idx]);
+                idx++;
+
+            }
+           // panel.SendToBack();
+            panel.Name = control[0].Name + "Panel";
+            panel.Size = new System.Drawing.Size(180, 200);
+            panel.BackColor = Color.White;
+            inspectorPanel.SendToBack();
+
+            Controls.Add(panel);
+
+            //TextBox textBox1 = new TextBox();
+            //textBox1.Location = new Point(10, 10);
+            //textBox1.Text = "I am a TextBox5";
+            //textBox1.Size = new Size(200, 30);
+            //CheckBox checkBox1 = new CheckBox();
+            //checkBox1.Location = new Point(10, 50);
+            //checkBox1.Text = "Check Me";
+            //checkBox1.Size = new Size(200, 30);
+            //panel.Controls.Add(textBox1);
+            //panel.Controls.Add(checkBox1);
+
+            Controls.Add(panel);
         }
     }
 

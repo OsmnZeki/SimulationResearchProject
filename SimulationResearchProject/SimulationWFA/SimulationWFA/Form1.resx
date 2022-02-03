@@ -189,43 +189,43 @@
     <value>Options</value>
   </data>
   <data name="editToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>94, 22</value>
   </data>
   <data name="editToolStripMenuItem.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="undoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="undoToolStripMenuItem.Text" xml:space="preserve">
     <value>Undo</value>
   </data>
   <data name="redoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="redoToolStripMenuItem.Text" xml:space="preserve">
     <value>Redo</value>
   </data>
   <data name="cutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="cutToolStripMenuItem.Text" xml:space="preserve">
     <value>Cut</value>
   </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
   <data name="pasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
   <data name="findAndReplaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="findAndReplaceToolStripMenuItem.Text" xml:space="preserve">
     <value>Find and Replace</value>
@@ -265,38 +265,38 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAA4
-        CAAAAk1TRnQBSQFMAgEBAgEAAXABAAFwAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        CAAAAk1TRnQBSQFMAgEBAgEAAYgBAAGIAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEgBgABEBIAAxkBIwMtAUYDLQFGAy0BRgMtAUYDLQFGAy0BRgMtAUYDLQFGAy0BRgMt
         AUYDLQFGAy0BRgMtAUYDLQFGAxkBIwgAA1wB3ANTAaoDUwGqA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGq
-        A1MBqgNTAaoDXAHciAABYgFwAXYB7wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFY
-        Ac8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFVAc4C/wFQAW4BdgHvCAADUwGq
-        KAADUwGqiAABWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHP
-        Av8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BHwG9Av8IAANTAaooAANTAaqIAAFY
-        Ac8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFY
-        Ac8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wEfAb0C/wgAA1MBqgwAAyABLgMnAToUAANTAaqIAAFY
-        Ac8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFY
-        Ac8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wEfAb0C/wgAA1MBqgQAAwQBBgNUAa4DDQESA1ABowgA
-        A1QBrgMEAQYEAANTAaqIAAFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFY
-        Ac8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wEfAb0C/wgAA1MBqgQA
-        A0cBggMvAUoEAANQAaMDDQESBAADLwFKA0cBggQAA1MBqogAAVgBzwL/AVgBzwL/AVgBzwL/AVgBzwL/
-        AVgBzwL/AVgBzwL/AVgBzwL/AVgBzwL/AVgBzwL/AVgBzwL/AVgBzwL/AVgBzwL/AVgBzwL/AVgBzwL/
-        AVgBzwL/AR8BvQL/CAADUwGqBAADWQHEAwQBBgQAAzABSwM+AWsEAAMEAQYDWQHEBAADUwGqiAABWAHP
-        Av8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHP
-        Av8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BHwG9Av8IAANTAaoEAAMvAUoDRwGCBAADAwEEA1UBsQQA
-        A0cBggMvAUoEAANTAaqIAAFXAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFY
-        Ac8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wFYAc8C/wEfAb0C/wgAA1MBqggA
-        A0ABcAgAA0oBigMdASoDPwFvCAADUwGqiAABMgHDAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHo
-        Av8BtQHoAv8BtQHoAv8BbQHWAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BWAHPAv8BHwG9
-        Av8IAANTAaoUAAMQARYDEAEWDAADUwGqiAABJAG+Hv8B7QH6Av8BbQHWAv8BWAHPAv8BWAHPAv8BWAHP
-        Av8BWAHPAv8BWAHPAv8BHwG8Av8IAANTAaooAANTAaqIAAEkAb4B/gL/AfcB2AL/AfcB2AL/AfcB2AL/
+        A1MBqgNTAaoDXAHciAABYgFoAW4B7wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFV
+        Ac8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFSAc4C/wFVAWYBbgHvCAADUwGq
+        KAADUwGqiAABVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHP
+        Av8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BHAG9Av8IAANTAaooAANTAaqIAAFV
+        Ac8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFV
+        Ac8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wEcAb0C/wgAA1MBqgwAAyABLgMnAToUAANTAaqIAAFV
+        Ac8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFV
+        Ac8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wEcAb0C/wgAA1MBqgQAAwQBBgNUAa4DDQESA1ABowgA
+        A1QBrgMEAQYEAANTAaqIAAFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFV
+        Ac8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wEcAb0C/wgAA1MBqgQA
+        A0cBggMvAUoEAANQAaMDDQESBAADLwFKA0cBggQAA1MBqogAAVUBzwL/AVUBzwL/AVUBzwL/AVUBzwL/
+        AVUBzwL/AVUBzwL/AVUBzwL/AVUBzwL/AVUBzwL/AVUBzwL/AVUBzwL/AVUBzwL/AVUBzwL/AVUBzwL/
+        AVUBzwL/ARwBvQL/CAADUwGqBAADWQHEAwQBBgQAAzABSwM+AWsEAAMEAQYDWQHEBAADUwGqiAABVQHP
+        Av8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHP
+        Av8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BHAG9Av8IAANTAaoEAAMvAUoDRwGCBAADAwEEA1UBsQQA
+        A0cBggMvAUoEAANTAaqIAAFUAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFV
+        Ac8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wFVAc8C/wEcAb0C/wgAA1MBqggA
+        A0ABcAgAA0oBigMdASoDPwFvCAADUwGqiAABLwHDAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHo
+        Av8BtQHoAv8BtQHoAv8BagHWAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BVQHPAv8BHAG9
+        Av8IAANTAaoUAAMQARYDEAEWDAADUwGqiAABIQG+Hv8B7QH6Av8BagHWAv8BVQHPAv8BVQHPAv8BVQHP
+        Av8BVQHPAv8BVQHPAv8BHAG8Av8IAANTAaooAANTAaqIAAEhAb4B/gL/AfcB2AL/AfcB2AL/AfcB2AL/
         AfcB2AL/AfcB2AL/AfcB2AL/AfcB2AL/AfcB2AH/AfAB8wHYAf8BwQHkAdgB/wHAAeQB2AH/AcAB5AHY
-        Af8BwAHkAdgB/wHAAd4BvQH/ASoBqwH9Af8IAANYAd0DUwGqA1MBqgNTAaoDPgFrGAADUwGqiAABIAG9
-        Af4B/wFtAdAB5gH/AW0B0AHmAf8BbQHQAeYB/wFtAdAB5gH/AW0B0AHmAf8BbQHQAeYB/wFtAdAB5gH/
-        AW0B0AHmAf8BbQHQAeYB/wFtAdAB5gH/AW0B0AHmAf8BbQHQAeYB/wFtAdAB5gH/AW4BzAHUAf8BTAFx
-        AYcB8wgAAzMBUwNPAZsDAQECBAADUwGqGAADUwGqiAABHQG8Av8BHQG8Av8BHQG8Av8BHQG8Av8BHQG8
-        Av8BHQG8Av8BHQG8Av8DWwHIATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFY
-        AyEBMAwAAzMBUwNPAZsDAQECA1MBqhgAA1MBqogAAVABbgF2Ae8BHQG8Av8BHQG8Av8BHQG8Av8BHQG8
-        Av8BHQG8Av8DWwHIAwsBDzAAAzMBUwNPAZsDUwGqGAADUwGqiAADGQEjAy0BRgMtAUYDLQFGAy0BRgMt
+        Af8BwAHkAdgB/wHAAd4BvQH/AScBqwH9Af8IAANYAd0DUwGqA1MBqgNTAaoDPgFrGAADUwGqiAABHQG9
+        Af4B/wFqAdAB5gH/AWoB0AHmAf8BagHQAeYB/wFqAdAB5gH/AWoB0AHmAf8BagHQAeYB/wFqAdAB5gH/
+        AWoB0AHmAf8BagHQAeYB/wFqAdAB5gH/AWoB0AHmAf8BagHQAeYB/wFqAdAB5gH/AWsBzAHUAf8BTAFu
+        AYAB8wgAAzMBUwNPAZsDAQECBAADUwGqGAADUwGqiAABGgG8Av8BGgG8Av8BGgG8Av8BGgG8Av8BGgG8
+        Av8BGgG8Av8BGgG8Av8DWwHIATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFY
+        AyEBMAwAAzMBUwNPAZsDAQECA1MBqhgAA1MBqogAAVUBZgFuAe8BGgG8Av8BGgG8Av8BGgG8Av8BGgG8
+        Av8BGgG8Av8DWwHIAwsBDzAAAzMBUwNPAZsDUwGqGAADUwGqiAADGQEjAy0BRgMtAUYDLQFGAy0BRgMt
         AUUDCAELOAADMwFTA1gB3QNTAaoDUwGqA1MBqgNTAaoDUwGqA1MBqgNcAdyIAAFCAU0BPgcAAT4DAAEo
         AwABQAMAARADAAEBAQABAQUAAYAXAAP/AwABwAEDBgAB3wH7BgAB3wH7BgAB3AH7BgAB0AHLBgAB0gFL
         BgAB0gFLBgAB0gFLBgAB2wEbBgAB3wE7BgAB3wH7BgABwQH7BgABxQH7BgAB4QH7BQAB/wHxAfsEAAEB
@@ -309,51 +309,6 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="projectsPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
-  </data>
-  <data name="&gt;&gt;projectsTreeView.Name" xml:space="preserve">
-    <value>projectsTreeView</value>
-  </data>
-  <data name="&gt;&gt;projectsTreeView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;projectsTreeView.Parent" xml:space="preserve">
-    <value>projectsPanel</value>
-  </data>
-  <data name="&gt;&gt;projectsTreeView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;projectsLabel.Name" xml:space="preserve">
-    <value>projectsLabel</value>
-  </data>
-  <data name="&gt;&gt;projectsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;projectsLabel.Parent" xml:space="preserve">
-    <value>projectsPanel</value>
-  </data>
-  <data name="&gt;&gt;projectsLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="projectsPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>823, 389</value>
-  </data>
-  <data name="projectsPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 241</value>
-  </data>
-  <data name="projectsPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;projectsPanel.Name" xml:space="preserve">
-    <value>projectsPanel</value>
-  </data>
-  <data name="&gt;&gt;projectsPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;projectsPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;projectsPanel.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="projectsTreeView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -368,7 +323,7 @@
     <value>0</value>
   </data>
   <data name="projectsTreeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 194</value>
+    <value>159, 182</value>
   </data>
   <data name="projectsTreeView.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -414,6 +369,27 @@
   </data>
   <data name="&gt;&gt;projectsLabel.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="projectsPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>823, 389</value>
+  </data>
+  <data name="projectsPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 241</value>
+  </data>
+  <data name="projectsPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;projectsPanel.Name" xml:space="preserve">
+    <value>projectsPanel</value>
+  </data>
+  <data name="&gt;&gt;projectsPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;projectsPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;projectsPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="inspectorPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -484,16 +460,16 @@
   <data name="hieararchyPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left</value>
   </data>
-  <data name="&gt;&gt;insanButton.Name" xml:space="preserve">
-    <value>insanButton</value>
+  <data name="&gt;&gt;addObjectButton.Name" xml:space="preserve">
+    <value>addObjectButton</value>
   </data>
-  <data name="&gt;&gt;insanButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;addObjectButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;insanButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;addObjectButton.Parent" xml:space="preserve">
     <value>hieararchyPanel</value>
   </data>
-  <data name="&gt;&gt;insanButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;addObjectButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;hierarchyLabel.Name" xml:space="preserve">
@@ -529,28 +505,31 @@
   <data name="&gt;&gt;hieararchyPanel.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="insanButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 29</value>
+  <data name="addObjectButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="insanButton.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="addObjectButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>46, 326</value>
+  </data>
+  <data name="addObjectButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="insanButton.TabIndex" type="System.Int32, mscorlib">
+  <data name="addObjectButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="insanButton.Text" xml:space="preserve">
-    <value>Insan</value>
+  <data name="addObjectButton.Text" xml:space="preserve">
+    <value>Add Object</value>
   </data>
-  <data name="&gt;&gt;insanButton.Name" xml:space="preserve">
-    <value>insanButton</value>
+  <data name="&gt;&gt;addObjectButton.Name" xml:space="preserve">
+    <value>addObjectButton</value>
   </data>
-  <data name="&gt;&gt;insanButton.Type" xml:space="preserve">
+  <data name="&gt;&gt;addObjectButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;insanButton.Parent" xml:space="preserve">
+  <data name="&gt;&gt;addObjectButton.Parent" xml:space="preserve">
     <value>hieararchyPanel</value>
   </data>
-  <data name="&gt;&gt;insanButton.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;addObjectButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="hierarchyLabel.AutoSize" type="System.Boolean, mscorlib">
@@ -585,6 +564,51 @@
   </data>
   <data name="simulationWindowPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left</value>
+  </data>
+  <data name="&gt;&gt;simulationWindowLabel.Name" xml:space="preserve">
+    <value>simulationWindowLabel</value>
+  </data>
+  <data name="&gt;&gt;simulationWindowLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;simulationWindowLabel.Parent" xml:space="preserve">
+    <value>simulationWindowPanel</value>
+  </data>
+  <data name="&gt;&gt;simulationWindowLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;simulateButton.Name" xml:space="preserve">
+    <value>simulateButton</value>
+  </data>
+  <data name="&gt;&gt;simulateButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;simulateButton.Parent" xml:space="preserve">
+    <value>simulationWindowPanel</value>
+  </data>
+  <data name="&gt;&gt;simulateButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="simulationWindowPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 27</value>
+  </data>
+  <data name="simulationWindowPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>809, 602</value>
+  </data>
+  <data name="simulationWindowPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;simulationWindowPanel.Name" xml:space="preserve">
+    <value>simulationWindowPanel</value>
+  </data>
+  <data name="&gt;&gt;simulationWindowPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;simulationWindowPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;simulationWindowPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="simulationWindowLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -623,7 +647,7 @@
     <value>NoControl</value>
   </data>
   <data name="simulateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>327, 460</value>
+    <value>321, 448</value>
   </data>
   <data name="simulateButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 30</value>
@@ -645,30 +669,6 @@
   </data>
   <data name="&gt;&gt;simulateButton.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="simulationWindowPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 27</value>
-  </data>
-  <data name="simulationWindowPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>809, 602</value>
-  </data>
-  <data name="simulationWindowPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="simulationWindowPanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;simulationWindowPanel.Name" xml:space="preserve">
-    <value>simulationWindowPanel</value>
-  </data>
-  <data name="&gt;&gt;simulationWindowPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;simulationWindowPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;simulationWindowPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

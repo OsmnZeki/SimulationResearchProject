@@ -54,6 +54,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Insan.cs" />
+    <Compile Include="HierarchySimButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
     <Compile Include="Program.cs" />
