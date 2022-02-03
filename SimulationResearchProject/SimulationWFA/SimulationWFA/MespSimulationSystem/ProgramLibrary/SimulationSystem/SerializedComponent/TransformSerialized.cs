@@ -1,5 +1,7 @@
 ﻿using System.Numerics;
 using Dalak.Ecs;
+using RenderLibrary.Transform;
+using SimulationSystem.Components;
 using SimulationSystem.ECS.Entegration;
 
 namespace TheSimulation.SerializedComponent
@@ -12,6 +14,10 @@ namespace TheSimulation.SerializedComponent
         
         public override void AddComponent(Entity entity, World world)
         {
+            entity.AddComponent<TransformComp>() = new TransformComp()
+            {
+                transform = new Transform(pos,scale,rotation),
+            };
             
         }
 

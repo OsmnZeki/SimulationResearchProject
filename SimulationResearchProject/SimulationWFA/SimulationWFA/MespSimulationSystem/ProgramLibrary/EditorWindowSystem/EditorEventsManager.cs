@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using SimulationSystem;
+using SimulationSystem.ECS.Entegration;
 
 namespace SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem
 {
@@ -11,6 +12,12 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem
     }
 
     public struct OnEditorAddCompSimObjEvent : IEditorEvent
+    {
+        public SimObject simObject;
+        public SerializedComponent serializedComponent;
+    }
+    
+    public struct OnEditorChangeCompSimObjEvent : IEditorEvent
     {
         public SimObject simObject;
     }

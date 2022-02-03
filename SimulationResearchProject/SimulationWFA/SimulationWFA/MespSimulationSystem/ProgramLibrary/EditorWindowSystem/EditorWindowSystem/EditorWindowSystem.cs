@@ -49,8 +49,14 @@ namespace SimulationSystem
             
             if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))
             {
-                createData.simObject.RemoveAllComponents();
-                createData.simObject.AddAllSerializedComponents(world);
+                addCompData.simObject.AddNewComponent(world,addCompData.serializedComponent);
+               
+            }
+            
+            if(eventManager.ListenEvent<OnEditorChangeCompSimObjEvent>(out var changeData))
+            {
+                changeData.simObject.RemoveAllComponents();
+                changeData.simObject.AddAllSerializedComponents(world);
             }
         }
     }

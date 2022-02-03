@@ -32,6 +32,12 @@ namespace SimulationSystem
             newParent.child.Add(this);
         }
 
+        public void AddNewComponent(World world, SerializedComponent serializedComponent)
+        {
+            objectData.serializedComponentList.Add(serializedComponent);
+            serializedComponent.AddComponent(entity,world);
+        }
+
         public void AddAllSerializedComponents(World world)
         {
             foreach (var serializedComponent in objectData.serializedComponentList)
