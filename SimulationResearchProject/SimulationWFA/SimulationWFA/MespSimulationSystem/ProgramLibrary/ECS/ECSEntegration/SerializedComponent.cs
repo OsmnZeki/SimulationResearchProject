@@ -15,6 +15,11 @@ namespace SimulationSystem.ECS.Entegration
         {
             entity.AddComponent<T>() = t;
         }
+
+        public string GetName()
+        {
+            return typeof(T).ToString();
+        }
     }
 
     public abstract class SerializedTag<T> : SerializedComponent where T : struct

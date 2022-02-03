@@ -31,6 +31,7 @@ namespace SimulationSystem
             newSimObject.objectData = new SimObjectData();
             newSimObject.objectData.serializedComponentList = new List<SerializedComponent>();
             newSimObject.child = new List<SimObject>();
+            newSimObject.parent = Hiearchy;
 
             newSimObject.objectData.name = "Empty SimObject";
             newSimObject.objectData.serializedComponentList.Add(new TransformSerialized() {
@@ -42,18 +43,32 @@ namespace SimulationSystem
             return newSimObject;
         }
 
+        public void SetParent(SimObject newParent)
+        {
+            parent = newParent;
+            newParent.child.Add(this);
+        }
+
         public static SimObject[] GetChildren(SimObject parentObject)
         {
             return parentObject.child.ToArray();
         }
 
-        /*public static int GetSimObjectCount()
+        public static int GetSimObjectCountInScene()
         {
-            
-        }*/
-        
-        
-        
+            return SearchDFS(Hiearchy,0);
+        }
+
+        private static int SearchDFS(SimObject simObject,int count)
+        {
+            count++;
+            foreach (var child in simObject.child)
+            {
+                return count =SearchDFS(child,count);
+            }
+
+            return count;
+        }
     }
     
 
