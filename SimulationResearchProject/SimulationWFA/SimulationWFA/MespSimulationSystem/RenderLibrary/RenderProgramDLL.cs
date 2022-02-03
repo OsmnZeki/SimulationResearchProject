@@ -1,11 +1,13 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace RenderLibrary.DLL
 {
     class RenderProgramDLL
     {
-        protected const string RenderProgramDLLPath = "MespSimulationSystem/RenderLibrary/RenderProgramDLL.dll";
+
+        protected const string RenderProgramDLLPath = "RenderProgramDLL.dll";
 
         #region ScreenFunctions
 
