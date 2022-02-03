@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
+using System.Security.Policy;
 using Dalak.Ecs;
 using SimulationSystem.ECS.Entegration;
 using TheSimulation.SerializedComponent;
@@ -12,7 +13,7 @@ namespace SimulationSystem
     public struct SimObjectData
     {
         public string name;
-        public List<SerializedComponent> serializedComponentList;
+        public HashSet<SerializedComponent> serializedComponentList;
     }
     
     
@@ -32,7 +33,7 @@ namespace SimulationSystem
             newParent.child.Add(this);
         }
 
-        public void AddNewComponent(World world, SerializedComponent serializedComponent)
+        public void AddNewSerializedComponent(World world, SerializedComponent serializedComponent)
         {
             objectData.serializedComponentList.Add(serializedComponent);
             serializedComponent.AddComponent(entity,world);
@@ -57,7 +58,7 @@ namespace SimulationSystem
         {
             SimObject newSimObject = new SimObject();
             newSimObject.objectData = new SimObjectData();
-            newSimObject.objectData.serializedComponentList = new List<SerializedComponent>();
+            newSimObject.objectData.serializedComponentList = new HashSet<SerializedComponent>();
             newSimObject.child = new List<SimObject>();
             newSimObject.parent = Hiearchy;
 
