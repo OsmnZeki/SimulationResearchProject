@@ -5,7 +5,7 @@ namespace MESPSimulation.DLL
 {
     class RenderProgramDLL
     {
-        protected const string RenderProgramDLLPath = "RenderProgramDLL.dll";
+        protected const string RenderProgramDLLPath = "RenderLibrary/RenderProgramDLL.dll";
 
         #region ScreenFunctions
 
