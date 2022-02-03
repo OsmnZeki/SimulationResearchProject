@@ -1,4 +1,5 @@
 ﻿using Dalak.Ecs;
+using TheSimulation.SerializedComponent;
 
 namespace SimulationSystem.Systems
 {
@@ -6,19 +7,15 @@ namespace SimulationSystem.Systems
     {
         public override void Awake()
         {
-            var simObjectCount = SimObject.GetSimObjectCountInScene();
-            Entity[] entities = new Entity[simObjectCount];
+            var simObjects = SimObject.FindObjectsOfType<TransformSerialized>();
+            Entity[] entities = new Entity[simObjects.Length];
             
-            /*for (int i = 0; i < gameObjectEntities.Length; i++)
+            for (int i = 0; i < simObjects.Length; i++)
             {
                 entities[i] = world.NewEntity();
-                gameObjectEntities[i].entity = entities[i];
+                simObjects[i].entity = entities[i];
             }
 
-            for (int i = 0; i < gameObjectEntities.Length; i++)
-            {
-                gameObjectEntities[i].CreateEntity(world,entities[i]);
-            }*/
         }
     }
 }

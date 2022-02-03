@@ -23,7 +23,7 @@ namespace SimulationSystem
         public SimObjectData objectData;
         public SimObject parent;
         public List<SimObject> child;
-
+        public Entity entity;
 
         public static SimObject NewSimObject()
         {
@@ -54,20 +54,28 @@ namespace SimulationSystem
             return parentObject.child.ToArray();
         }
 
-        public static int GetSimObjectCountInScene()
+        private static void SearchDFS<T>(SimObject simObject,List<SimObject> simObjList)
         {
-            return SearchDFS(Hiearchy,0);
-        }
-
-        private static int SearchDFS(SimObject simObject,int count)
-        {
-            count++;
+            foreach (var item in simObject.objectData.serializedComponentList)
+            {
+                if (item.GetType() == typeof(T))
+                {
+                    simObjList.Add(simObject);
+                    break;
+                }
+            }
+            
             foreach (var child in simObject.child)
             {
-                return count =SearchDFS(child,count);
+                SearchDFS<T>(child,simObjList);
             }
+        }
 
-            return count;
+        public static SimObject[] FindObjectsOfType<T>()
+        {
+            List<SimObject> simObjList = new List<SimObject>();
+            SearchDFS<T>(Hiearchy,simObjList);
+            return simObjList.ToArray();
         }
     }
     
