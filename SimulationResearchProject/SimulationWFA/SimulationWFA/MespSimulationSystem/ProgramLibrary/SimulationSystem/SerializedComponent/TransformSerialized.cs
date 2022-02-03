@@ -14,5 +14,10 @@ namespace TheSimulation.SerializedComponent
         {
             
         }
+
+        public override string GetName()
+        {
+            return "Transform Serialized";
+        }
     }
 }

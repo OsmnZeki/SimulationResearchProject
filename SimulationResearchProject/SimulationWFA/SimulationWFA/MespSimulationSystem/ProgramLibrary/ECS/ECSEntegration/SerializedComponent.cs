@@ -6,6 +6,7 @@ namespace SimulationSystem.ECS.Entegration
     {
         public bool add = true;
         public abstract void AddComponent(Entity entity,World world);
+        public abstract string GetName();
     }
     
     public abstract class SerializedComponent<T> : SerializedComponent where T : struct
@@ -16,10 +17,7 @@ namespace SimulationSystem.ECS.Entegration
             entity.AddComponent<T>() = t;
         }
 
-        public string GetName()
-        {
-            return typeof(T).ToString();
-        }
+        
     }
 
     public abstract class SerializedTag<T> : SerializedComponent where T : struct
