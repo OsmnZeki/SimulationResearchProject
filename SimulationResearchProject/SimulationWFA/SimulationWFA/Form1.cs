@@ -17,10 +17,10 @@ namespace SimulationWFA
         {
             InitializeComponent();
             ShowProjectFiles();
-            Task.Run(() => EditorWindow());
+            Task.Run(() => RunEditorWindow());
         }
 
-        private void ShowProjectFiles()
+        private void ShowProjectFiles() //program açıldığı anda projectste istenilen path içindeki dosyaları gosterir.
         {
             Cursor.Current = Cursors.WaitCursor;
             projectsTreeView.Nodes.Clear();
@@ -46,7 +46,7 @@ namespace SimulationWFA
             }
 
         }
-        private void EditorWindow()
+        private void RunEditorWindow() //Editor window oluşturulup çalıştırılır.
         {
             EditorWindowSystem editorWindow = new EditorWindowSystem();
             editorWindow.CreateEditorWindow();
