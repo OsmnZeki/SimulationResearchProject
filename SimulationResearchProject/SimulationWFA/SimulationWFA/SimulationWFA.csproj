@@ -76,7 +76,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Insan.cs" />
     <Compile Include="HierarchySimButton.cs">
       <SubType>Component</SubType>
     </Compile>

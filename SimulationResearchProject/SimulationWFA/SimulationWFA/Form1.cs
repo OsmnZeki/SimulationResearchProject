@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using SimulationSystem;
-using SimulationSystem.ECS.Entegration;
 using System.Dynamic;
-using System.Numerics;
 
 namespace SimulationWFA
 {
@@ -27,38 +19,6 @@ namespace SimulationWFA
             ShowProjectFiles();
             Task.Run(() => EditorWindow());
         }
-
-        private void EditorWindow()
-        {
-            EditorWindowSystem editorWindow = new EditorWindowSystem();
-            editorWindow.CreateEditorWindow();
-        }
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (sender.ToString() == "New")
-            {
-                MessageBox.Show("New");
-            }
-        }
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-
-        private void simulateButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        [DllImport("user32.dll")]
-        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
         private void ShowProjectFiles()
         {
@@ -84,6 +44,31 @@ namespace SimulationWFA
 
                 Cursor.Current = Cursors.Default;
             }
+
+        }
+        private void EditorWindow()
+        {
+            EditorWindowSystem editorWindow = new EditorWindowSystem();
+            editorWindow.CreateEditorWindow();
+        }
+
+        #region ClickEvents
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender.ToString() == "New")
+            {
+                MessageBox.Show("New");
+            }
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void simulateButton_Click(object sender, EventArgs e)
+        {
 
         }
 
@@ -143,11 +128,6 @@ namespace SimulationWFA
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void insanButton_Click(object sender, EventArgs e)
         {
             Panel panel = new Panel();
@@ -182,11 +162,6 @@ namespace SimulationWFA
             //classesPanel.Visible = true;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show("TextChanged");
-        }
-
         private void addObjectButton_Click(object sender, EventArgs e)
         {
             var simObject = SimObject.NewSimObject();
@@ -204,10 +179,6 @@ namespace SimulationWFA
 
         }
 
-        public static dynamic Cast(dynamic obj, Type castTo)
-        {
-            return Convert.ChangeType(obj, castTo);
-        }
         private void hierarchyButton_Click(object sender, EventArgs e)
         {
             Panel panel = new Panel();
@@ -263,6 +234,8 @@ namespace SimulationWFA
 
             Controls.Add(panel);
         }
+        
+        #endregion
     }
 
 
