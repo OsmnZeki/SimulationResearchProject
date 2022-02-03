@@ -2,7 +2,7 @@
 {
     public class SimulationLifecyleMethods
     {
-        private EasyECSController ecsController;
+        public EasyECSController ecsController;
 
         public SimulationLifecyleMethods(EasyECSController ecsController)
         {

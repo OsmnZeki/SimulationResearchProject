@@ -81,6 +81,7 @@
     </Compile>
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorEventsManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorLoadingSystem.cs" />
@@ -146,17 +147,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="MespSimulationSystem\Assets\Models\m4a1\scene.bin" />
-    <None Include="MespSimulationSystem\Assets\Models\m4a1\scene.gltf" />
-    <None Include="MespSimulationSystem\Assets\Models\plane\scene.bin" />
-    <None Include="MespSimulationSystem\Assets\Models\plane\scene.gltf" />
-    <None Include="MespSimulationSystem\Assets\Models\tank\scene.bin" />
-    <None Include="MespSimulationSystem\Assets\Models\tank\scene.gltf" />
-    <None Include="MespSimulationSystem\Assets\Models\Trol\scene.bin" />
-    <None Include="MespSimulationSystem\Assets\Models\Trol\scene.gltf" />
-    <None Include="MespSimulationSystem\Assets\Shaders\lit.fs" />
-    <None Include="MespSimulationSystem\Assets\Shaders\object.vs" />
-    <None Include="MespSimulationSystem\Assets\Shaders\unlit.fs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -169,33 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MespSimulationSystem\Assets\Images\image1.png" />
-    <Content Include="MespSimulationSystem\Assets\Images\image2.jpg" />
-    <Content Include="MespSimulationSystem\Assets\Images\image3.jpg" />
-    <Content Include="MespSimulationSystem\Assets\Images\image3_specular.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\m4a1\license.txt" />
-    <Content Include="MespSimulationSystem\Assets\Models\plane\license.txt" />
-    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_1_baseColor.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_1_metallicRoughness.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_1_normal.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_2_baseColor.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_2_metallicRoughness.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_2_normal.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\body_baseColor.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\body_emissive.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\body_normal.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\track_baseColor.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\track_emissive.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\track_normal.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_pants_baseColor.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_pants_metallicRoughness.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_pants_normal.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_Troll_baseColor.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_Troll_emissive.jpeg" />
-    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_Troll_metallicRoughness.png" />
-    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_Troll_normal.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
