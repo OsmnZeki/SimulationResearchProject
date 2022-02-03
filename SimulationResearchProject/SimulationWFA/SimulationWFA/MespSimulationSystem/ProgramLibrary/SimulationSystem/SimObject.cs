@@ -35,7 +35,7 @@ namespace SimulationSystem
 
             newSimObject.objectData.name = "Empty SimObject";
             newSimObject.objectData.serializedComponentList.Add(new TransformSerialized() {
-                pos = Vector3.Zero,
+                pos = Vector3.One *2,
                 rotation = Vector3.Zero,
                 scale = Vector3.One,
             });
