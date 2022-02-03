@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Dalak.Ecs;
 using SimulationSystem.ECS.Entegration;
 using TheSimulation.SerializedComponent;
@@ -32,7 +33,11 @@ namespace SimulationSystem
             newSimObject.child = new List<SimObject>();
 
             newSimObject.objectData.name = "Empty SimObject";
-            newSimObject.objectData.serializedComponentList.Add(new TransformSerialized());
+            newSimObject.objectData.serializedComponentList.Add(new TransformSerialized() {
+                pos = Vector3.Zero,
+                rotation = Vector3.Zero,
+                scale = Vector3.One,
+            });
 
             return newSimObject;
         }
@@ -41,6 +46,11 @@ namespace SimulationSystem
         {
             return parentObject.child.ToArray();
         }
+
+        /*public static int GetSimObjectCount()
+        {
+            
+        }*/
         
         
         
