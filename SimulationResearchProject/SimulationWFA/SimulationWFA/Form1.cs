@@ -26,7 +26,6 @@ namespace SimulationWFA
             InitializeComponent();
             ShowProjectFiles();
             Task.Run(() => EditorWindow());
-            EditorWindow();
         }
 
         private void EditorWindow()
@@ -67,7 +66,7 @@ namespace SimulationWFA
             projectsTreeView.Nodes.Clear();
             if (folderBrowserDialog1.SelectedPath == "")
             {
-                foreach (var item in Directory.GetDirectories("C:/Unity/SimulationResearchProject"/*folderBrowserDialog1.SelectedPath*/))
+                foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory()))
                 {
                     DirectoryInfo directoryInfo = new DirectoryInfo(item);
                     var node = projectsTreeView.Nodes.Add(directoryInfo.Name, directoryInfo.Name, 0, 0);
@@ -75,7 +74,7 @@ namespace SimulationWFA
                     node.ForeColor = Color.FromArgb(255, 255, 255);
                 }
 
-                foreach (var item in Directory.GetFiles("C:/Unity/SimulationResearchProject"))
+                foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory()))
                 {
                     FileInfo fileInfo = new FileInfo(item);
                     var node = projectsTreeView.Nodes.Add(fileInfo.Name, fileInfo.Name, 1, 1);
@@ -219,31 +218,29 @@ namespace SimulationWFA
             TextBox[] posText = new TextBox[3];
             int idx = 0;
             dynamic parameters = new ExpandoObject();
+            parameters = simButton.simObject.objectData.serializedComponentList;
 
             foreach (var item in simButton.simObject.objectData.serializedComponentList)
             {
-                parameters = item;
-
-                for (int i = 0; i < posText.Length; i++)
-                {
-                    posText[i] = new TextBox();
-                    posText[i].Location = new Point(10 + (i * 30), + 40);
-                    posText[i].Text = parameters.pos.X.ToString();
-                    posText[i].BackColor = Color.Yellow;
-                    posText[i].Size = new Size(30, 60);
-                    posText[i].BringToFront();
-                    panel.Controls.Add(posText[i]);
-                }
-
                 textBox[idx] = new TextBox();
-                textBox[idx].Location = new Point(10, 20);
+                textBox[idx].Location = new Point(0, 0);
                 textBox[idx].Text = item.GetName();
                 textBox[idx].BackColor = Color.Red;
                 textBox[idx].Size = new Size(150, 60);
                 textBox[idx].BringToFront();
                 panel.Controls.Add(textBox[idx]);
                 idx++;
+            }
 
+            for (int i = 0; i < posText.Length; i++)
+            {
+                posText[i] = new TextBox();
+                posText[i].Location = new Point((i * 30), + 20);
+                posText[i].Text = parameters[0].pos.X.ToString();
+                posText[i].BackColor = Color.Yellow;
+                posText[i].Size = new Size(30, 60);
+                posText[i].BringToFront();
+                panel.Controls.Add(posText[i]);
             }
             // panel.SendToBack();
             panel.Name = control[0].Name + "Panel";
