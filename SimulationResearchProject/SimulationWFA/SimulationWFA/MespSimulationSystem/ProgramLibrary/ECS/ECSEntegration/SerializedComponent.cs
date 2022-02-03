@@ -8,11 +8,6 @@ namespace SimulationSystem.ECS.Entegration
         public abstract void AddComponent(Entity entity,World world);
         public abstract string GetName();
         
-        
-        public static T ReturnSerialized<T>(T data) where T : struct
-        {
-            return data;
-        }
     }
     
     public abstract class SerializedComponent<T> : SerializedComponent where T : struct
