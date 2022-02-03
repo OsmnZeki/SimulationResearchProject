@@ -13,7 +13,8 @@ namespace SimulationSystem
     public struct SimObjectData
     {
         public string name;
-        public HashSet<SerializedComponent> serializedComponentList;
+        public List<SerializedComponent> serializedComponentList;
+        //TODO: aynı serializedlar listeye eklenebilir !
     }
     
     
@@ -58,7 +59,7 @@ namespace SimulationSystem
         {
             SimObject newSimObject = new SimObject();
             newSimObject.objectData = new SimObjectData();
-            newSimObject.objectData.serializedComponentList = new HashSet<SerializedComponent>();
+            newSimObject.objectData.serializedComponentList = new List<SerializedComponent>();
             newSimObject.child = new List<SimObject>();
             newSimObject.parent = Hiearchy;
 

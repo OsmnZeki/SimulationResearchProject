@@ -11,5 +11,5 @@ renderProgramdan çıkartılan dll içerisinde assimpin dll'ini göremiyor --> (
 
 
 
-editor window ve editor system arasında event sistemi
+simObject içerisine aynı serializedComponentleri almamalı !
 Directory otomatik alınacak

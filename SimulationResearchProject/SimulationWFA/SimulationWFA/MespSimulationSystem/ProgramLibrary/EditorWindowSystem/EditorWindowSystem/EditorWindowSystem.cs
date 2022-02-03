@@ -55,6 +55,7 @@ namespace SimulationSystem
             
             if(eventManager.ListenEvent<OnEditorChangeCompSimObjEvent>(out var changeData))
             {
+                //TODO: serialized değişikliğinde tüm componentler silinip tekrardan yükleniyor düzelt
                 changeData.simObject.RemoveAllComponents();
                 changeData.simObject.AddAllSerializedComponents(world);
             }
