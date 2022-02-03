@@ -61,7 +61,7 @@ namespace SimulationWFA
             this.inspectorPanel = new System.Windows.Forms.Panel();
             this.inspectorLabel = new System.Windows.Forms.Label();
             this.hieararchyPanel = new System.Windows.Forms.Panel();
-            this.insanButton = new System.Windows.Forms.Button();
+            this.addObjectButton = new System.Windows.Forms.Button();
             this.hierarchyLabel = new System.Windows.Forms.Label();
             this.simulationWindowPanel = new System.Windows.Forms.Panel();
             this.simulationWindowLabel = new System.Windows.Forms.Label();
@@ -249,16 +249,16 @@ namespace SimulationWFA
             resources.ApplyResources(this.hieararchyPanel, "hieararchyPanel");
             this.hieararchyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
             this.hieararchyPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.hieararchyPanel.Controls.Add(this.insanButton);
+            this.hieararchyPanel.Controls.Add(this.addObjectButton);
             this.hieararchyPanel.Controls.Add(this.hierarchyLabel);
             this.hieararchyPanel.Name = "hieararchyPanel";
             // 
-            // insanButton
+            // addObjectButton
             // 
-            resources.ApplyResources(this.insanButton, "insanButton");
-            this.insanButton.Name = "insanButton";
-            this.insanButton.UseVisualStyleBackColor = true;
-            this.insanButton.Click += new System.EventHandler(this.insanButton_Click);
+            resources.ApplyResources(this.addObjectButton, "addObjectButton");
+            this.addObjectButton.Name = "addObjectButton";
+            this.addObjectButton.UseVisualStyleBackColor = true;
+            this.addObjectButton.Click += new System.EventHandler(this.addObjectButton_Click);
             // 
             // hierarchyLabel
             // 
@@ -351,7 +351,7 @@ namespace SimulationWFA
         private System.Windows.Forms.Panel simulationWindowPanel;
         private System.Windows.Forms.Label simulationWindowLabel;
         private System.Windows.Forms.Button simulateButton;
-        private System.Windows.Forms.Button insanButton;
+        private System.Windows.Forms.Button addObjectButton;
     }
 }
 
