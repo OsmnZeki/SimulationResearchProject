@@ -24,6 +24,23 @@ namespace SimulationSystem
         public SimObject parent;
         public List<SimObject> child;
         public Entity entity;
+        
+        
+        public void SetParent(SimObject newParent)
+        {
+            parent = newParent;
+            newParent.child.Add(this);
+        }
+
+        /*public void InitializeComponents()
+        {
+
+            foreach (var serializedComponent in objectData.serializedComponentList)
+            {
+                if(!serializedComponent.add){continue;}
+                serializedComponent.AddComponent(entity,world);
+            }
+        }*/
 
         public static SimObject NewSimObject()
         {
@@ -41,12 +58,6 @@ namespace SimulationSystem
             });
 
             return newSimObject;
-        }
-
-        public void SetParent(SimObject newParent)
-        {
-            parent = newParent;
-            newParent.child.Add(this);
         }
 
         public static SimObject[] GetChildren(SimObject parentObject)

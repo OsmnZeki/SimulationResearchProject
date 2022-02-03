@@ -56,6 +56,9 @@
     <Compile Include="Insan.cs" />
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorLoadingSystem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\BitSet.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentIdx.cs" />
@@ -79,8 +82,6 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TransformComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\MeshRenderSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\SceneLoadingSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\EditorWindowSystem\ECSEditorController.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SerializedComponent\TransformSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimObject.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationLifecyleMethods.cs" />
