@@ -2,7 +2,7 @@
 
 namespace SimulationSystem
 {
-    public class ECSController : EasyECSController
+    public class ECSSimulationController : EasyECSController
     {
         public const int GenericSystemGroup = 0; // Always active systems
         

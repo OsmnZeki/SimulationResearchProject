@@ -2,7 +2,12 @@
 {
     public class SimulationEvents
     {
-        private ECSController ecsController;
+        private EasyECSController ecsController;
+
+        public SimulationEvents(EasyECSController ecsController)
+        {
+            this.ecsController = ecsController;
+        }
         
         public void Awake()
         {
