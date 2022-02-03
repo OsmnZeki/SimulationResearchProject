@@ -11,7 +11,7 @@
 
         public override void AddSystems()
         {
-            systemManager.AddSystem(new SceneLoadingSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new SceneLoadingSystem(), GenericSystemGroup);
             
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
         }

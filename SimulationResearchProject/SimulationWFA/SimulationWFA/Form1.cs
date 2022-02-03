@@ -8,6 +8,8 @@ using System.Threading;
 using System.IO;
 using SimulationSystem;
 using System.Dynamic;
+using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem;
+using SimulationWFA.MespSimulationSystem.ProgramLibrary;
 
 namespace SimulationWFA
 {
@@ -26,7 +28,8 @@ namespace SimulationWFA
             projectsTreeView.Nodes.Clear();
             if (folderBrowserDialog1.SelectedPath == "")
             {
-                foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory()))
+                //Directory.GetParent(Directory.GetCurrentDirectory());
+                foreach (var item in Directory.GetFiles( Directory.GetCurrentDirectory()))
                 {
                     DirectoryInfo directoryInfo = new DirectoryInfo(item);
                     var node = projectsTreeView.Nodes.Add(directoryInfo.Name, directoryInfo.Name, 0, 0);
@@ -167,6 +170,8 @@ namespace SimulationWFA
             var simObject = SimObject.NewSimObject();
 
             HierarchySimButton hierarchyButton = new HierarchySimButton();
+            EditorWindowSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
+            //EditorWindowSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent { simObject = simObject }); component eklediğinde çağır.
             hierarchyButton.Location = new System.Drawing.Point(hieararchyPanel.Location.X + 5, hieararchyPanel.Location.Y + 40);
             hierarchyButton.Name = "hierarchyButton";
             hierarchyButton.Size = new System.Drawing.Size(75, 23);
@@ -190,7 +195,7 @@ namespace SimulationWFA
             int idx = 0;
             dynamic parameters = new ExpandoObject();
             parameters = simButton.simObject.objectData.serializedComponentList;
-
+            
             foreach (var item in simButton.simObject.objectData.serializedComponentList)
             {
                 textBox[idx] = new TextBox();
@@ -216,25 +221,54 @@ namespace SimulationWFA
             // panel.SendToBack();
             panel.Name = control[0].Name + "Panel";
             panel.Size = new System.Drawing.Size(180, 200);
-            panel.BackColor = Color.White;
+            panel.BackColor = Color.DarkSalmon;
             inspectorPanel.SendToBack();
 
+            Button addComponentButton = new Button();
+            addComponentButton.Location = new Point(40,180);
+            addComponentButton.Size = new Size(100, 20);
+            addComponentButton.BackColor = Color.White;
+            addComponentButton.Text = "Add Component";
+            addComponentButton.Name = "AddComponentButton";
+            addComponentButton.Click += (sender2, e2) => addComponentButton_Click(sender2, e2, panel); // new System.EventHandler(addComponentButton_Click);
+            addComponentButton.BringToFront();
+            panel.Controls.Add(addComponentButton);
+
             Controls.Add(panel);
-
-            //TextBox textBox1 = new TextBox();
-            //textBox1.Location = new Point(10, 10);
-            //textBox1.Text = "I am a TextBox5";
-            //textBox1.Size = new Size(200, 30);
-            //CheckBox checkBox1 = new CheckBox();
-            //checkBox1.Location = new Point(10, 50);
-            //checkBox1.Text = "Check Me";
-            //checkBox1.Size = new Size(200, 30);
-            //panel.Controls.Add(textBox1);
-            //panel.Controls.Add(checkBox1);
-
             Controls.Add(panel);
         }
-        
+
+        private void addComponentButton_Click(object sender, EventArgs e, Panel panel)
+        {
+            Button[] buttons = new Button[AllSerializedComponents.SerializedCompTypes.Count];
+            int idx = 0;
+            foreach (var item in AllSerializedComponents.SerializedCompTypes)
+            {
+                buttons[idx] = new Button();
+                buttons[idx].Location = new Point(40, 140 - (idx * 20));
+                buttons[idx].Size = new Size(100, 20);
+                buttons[idx].Text = item.Value.GetName();
+                buttons[idx].BackColor = Color.White;
+                buttons[idx].BringToFront();
+                panel.Controls.Add(buttons[idx]);
+                buttons[idx].Click += (sender2,e2) => componentsButton_Click(sender2, e2 ,item.Key);
+                
+                idx++;
+            }
+        }
+
+        private void componentsButton_Click(object sender, EventArgs e , int idx)
+        {
+            Control[] control = Controls.Find("hierarchyButton", true);
+            HierarchySimButton simButton = (HierarchySimButton)control[0];
+
+            EditorWindowSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
+                simObject = simButton.simObject,
+                serializedComponent = AllSerializedComponents.ReturnNewComponentFromList(idx),
+            });
+           
+        }
+
         #endregion
     }
 

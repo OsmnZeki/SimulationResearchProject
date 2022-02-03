@@ -1,4 +1,5 @@
-﻿using Dalak.Ecs;
+﻿using System;
+using Dalak.Ecs;
 using RenderLibrary.Graphics;
 using RenderLibrary.Transform;
 using SimulationSystem.Components;
@@ -16,6 +17,14 @@ namespace SimulationSystem.Systems
             UpdateMeshRenders();
         }
 
+        public override void Update()
+        {
+            foreach(var m in meshRendererFilter)
+            {
+                Console.WriteLine("YARRRRRRRRRRRRAK");
+            }
+            
+        }
         public override void Render()
         {
             for (int i = 0; i < meshRendererCount; i++)
