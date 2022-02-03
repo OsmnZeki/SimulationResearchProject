@@ -8,7 +8,7 @@ namespace SimulationSystem
     {
         
         
-        public void CreateSimulationSystem()
+        public void CreateEditorWindow()
         {
             Screen screen = new Screen();
             screen.Create(800, 600);

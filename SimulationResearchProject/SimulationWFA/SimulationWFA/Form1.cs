@@ -32,7 +32,7 @@ namespace SimulationWFA
         private void EditorWindow()
         {
             EditorWindowSystem editorWindow = new EditorWindowSystem();
-            editorWindow.CreateSimulationSystem();
+            editorWindow.CreateEditorWindow();
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -67,7 +67,7 @@ namespace SimulationWFA
             projectsTreeView.Nodes.Clear();
             if (folderBrowserDialog1.SelectedPath == "")
             {
-                foreach (var item in Directory.GetDirectories("D://SimulationResearchProject"/*folderBrowserDialog1.SelectedPath*/))
+                foreach (var item in Directory.GetDirectories("C:/Unity/SimulationResearchProject"/*folderBrowserDialog1.SelectedPath*/))
                 {
                     DirectoryInfo directoryInfo = new DirectoryInfo(item);
                     var node = projectsTreeView.Nodes.Add(directoryInfo.Name, directoryInfo.Name, 0, 0);
@@ -75,7 +75,7 @@ namespace SimulationWFA
                     node.ForeColor = Color.FromArgb(255, 255, 255);
                 }
 
-                foreach (var item in Directory.GetFiles("D://SimulationResearchProject"))
+                foreach (var item in Directory.GetFiles("C:/Unity/SimulationResearchProject"))
                 {
                     FileInfo fileInfo = new FileInfo(item);
                     var node = projectsTreeView.Nodes.Add(fileInfo.Name, fileInfo.Name, 1, 1);

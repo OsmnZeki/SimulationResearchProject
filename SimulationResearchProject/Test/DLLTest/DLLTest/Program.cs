@@ -26,12 +26,12 @@ namespace DLLTest
             if (screen.screenAdress == IntPtr.Zero) return;
 
             Shader shader = new Shader(
-                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
-                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/lit.fs");
+                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/object.vs",
+                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/lit.fs");
 
             Shader lampShader = new Shader(
-                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
-                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/unlit.fs");
+                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/object.vs",
+                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/unlit.fs");
 
             LitMaterial litMaterial = new LitMaterial();
             litMaterial.SetShader(shader);
@@ -40,7 +40,7 @@ namespace DLLTest
             unlitMaterial.SetShader(lampShader);
 
             ModelLoading trolModel = new ModelLoading();
-            trolModel.LoadModel("D:/GitRepos/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Models/Trol/scene.gltf");
+            trolModel.LoadModel("C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Models/Trol/scene.gltf");
             Transform trolTransfrom = new Transform(Vector3.Zero, Vector3.One *.05f, Vector3.Zero);
             MeshRenderer trolMeshRenderer = new MeshRenderer();
             trolMeshRenderer.SetMesh(trolModel.GetMesh(0));
