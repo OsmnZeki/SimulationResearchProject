@@ -12,7 +12,7 @@ namespace TheSimulation.SerializedComponent
         
         public override void AddComponent(Entity entity, World world)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

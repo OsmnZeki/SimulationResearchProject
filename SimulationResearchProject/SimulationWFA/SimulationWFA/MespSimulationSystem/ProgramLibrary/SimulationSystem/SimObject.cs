@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Dalak.Ecs;
 using SimulationSystem.ECS.Entegration;
+using TheSimulation.SerializedComponent;
 
 namespace SimulationSystem
 {
@@ -28,6 +29,9 @@ namespace SimulationSystem
             SimObject newSimObject = new SimObject();
             newSimObject.objectData = new SimObjectData();
             newSimObject.child = new List<SimObject>();
+
+            newSimObject.objectData.name = "Empty SimObject";
+            newSimObject.objectData.serializedComponentList.Add(new TransformSerialized());
 
             return newSimObject;
         }
