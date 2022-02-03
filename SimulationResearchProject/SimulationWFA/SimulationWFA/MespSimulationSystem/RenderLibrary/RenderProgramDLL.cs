@@ -5,7 +5,7 @@ namespace RenderLibrary.DLL
 {
     class RenderProgramDLL
     {
-        protected const string RenderProgramDLLPath = "RenderLibrary/RenderProgramDLL.dll";
+        protected const string RenderProgramDLLPath = "MespSimulationSystem/RenderLibrary/RenderProgramDLL.dll";
 
         #region ScreenFunctions
 

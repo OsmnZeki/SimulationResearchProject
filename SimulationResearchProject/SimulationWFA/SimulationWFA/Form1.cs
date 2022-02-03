@@ -14,6 +14,8 @@ using System.Threading;
 using System.IO;
 using SimulationSystem;
 using SimulationSystem.ECS.Entegration;
+using System.Dynamic;
+using System.Numerics;
 
 namespace SimulationWFA
 {
@@ -23,9 +25,14 @@ namespace SimulationWFA
         {
             InitializeComponent();
             ShowProjectFiles();
-
+            EditorWindow();
         }
 
+        private void EditorWindow()
+        {
+            EditorWindowSystem editorWindow = new EditorWindowSystem();
+            editorWindow.CreateSimulationSystem();
+        }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (sender.ToString() == "New")
@@ -159,7 +166,7 @@ namespace SimulationWFA
             checkBox1.Size = new Size(200, 30);
             panel.Controls.Add(textBox1);
             panel.Controls.Add(checkBox1);
-            
+
             Controls.Add(panel);
             //Insan insan = new Insan();
 
@@ -197,20 +204,38 @@ namespace SimulationWFA
 
         }
 
+        public static dynamic Cast(dynamic obj, Type castTo)
+        {
+            return Convert.ChangeType(obj, castTo);
+        }
         private void hierarchyButton_Click(object sender, EventArgs e)
         {
             Panel panel = new Panel();
             panel.Location = new Point(inspectorPanel.Location.X + 5, inspectorPanel.Location.Y + 40); ;
-            Control[] control =  Controls.Find("hierarchyButton", true);
+            Control[] control = Controls.Find("hierarchyButton", true);
             HierarchySimButton simButton = (HierarchySimButton)control[0];
             TextBox[] textBox = new TextBox[simButton.simObject.objectData.serializedComponentList.Count];
+            TextBox[] posText = new TextBox[3];
             int idx = 0;
+            dynamic parameters = new ExpandoObject();
 
             foreach (var item in simButton.simObject.objectData.serializedComponentList)
             {
-                var data = simButton.simObject.objectData.serializedComponentList[idx].GetType();
+                parameters = item;
+
+                for (int i = 0; i < posText.Length; i++)
+                {
+                    posText[i] = new TextBox();
+                    posText[i].Location = new Point(10 + (i * 30), + 40);
+                    posText[i].Text = parameters.pos.X.ToString();
+                    posText[i].BackColor = Color.Yellow;
+                    posText[i].Size = new Size(30, 60);
+                    posText[i].BringToFront();
+                    panel.Controls.Add(posText[i]);
+                }
+
                 textBox[idx] = new TextBox();
-                textBox[idx].Location = new Point(10,20);
+                textBox[idx].Location = new Point(10, 20);
                 textBox[idx].Text = item.GetName();
                 textBox[idx].BackColor = Color.Red;
                 textBox[idx].Size = new Size(150, 60);
@@ -219,7 +244,7 @@ namespace SimulationWFA
                 idx++;
 
             }
-           // panel.SendToBack();
+            // panel.SendToBack();
             panel.Name = control[0].Name + "Panel";
             panel.Size = new System.Drawing.Size(180, 200);
             panel.BackColor = Color.White;
