@@ -23,6 +23,8 @@ namespace Dalak.Ecs
         public virtual  void LateUpdate(){}
         public virtual void Render(){}
         public virtual void OnDestroy(){}
+        
+        public virtual void OnApplicationQuit(){}
 
         public SystemManager manager = null;
 

@@ -50,6 +50,11 @@ namespace SimulationSystem
             systemManager.OnDestroy();
         }
 
+        public void OnApplicationQuit()
+        {
+            systemManager.OnApplicationQuit();
+        }
+
 
         public abstract void OnInject();
         public abstract void AddSystems();

@@ -83,7 +83,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SerializedComponent\TransformSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimObject.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationEvents.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationLifecyleMethods.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationWindowSystem\ECSSimulationController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationWindowSystem\SimulationSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

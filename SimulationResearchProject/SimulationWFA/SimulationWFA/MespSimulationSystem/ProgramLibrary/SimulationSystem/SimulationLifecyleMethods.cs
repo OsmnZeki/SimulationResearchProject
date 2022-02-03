@@ -1,10 +1,10 @@
 ﻿namespace SimulationSystem
 {
-    public class SimulationEvents
+    public class SimulationLifecyleMethods
     {
         private EasyECSController ecsController;
 
-        public SimulationEvents(EasyECSController ecsController)
+        public SimulationLifecyleMethods(EasyECSController ecsController)
         {
             this.ecsController = ecsController;
         }
@@ -36,9 +36,11 @@
             ecsController.Render();
         }
 
+        //TODO: on destroy
+        
         public void OnSimulationQuit()
         {
-            ecsController.OnDestroy();
+            ecsController.OnApplicationQuit();
         }
     }
 }

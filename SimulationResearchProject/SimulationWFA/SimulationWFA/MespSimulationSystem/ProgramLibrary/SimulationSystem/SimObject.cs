@@ -16,9 +16,9 @@ namespace SimulationSystem
     
     public class SimObject
     {
-        public SimObjectData objectData;
-        
         public static SimObject Hiearchy = new SimObject();
+        
+        public SimObjectData objectData;
         public SimObject parent;
         public List<SimObject> child;
 

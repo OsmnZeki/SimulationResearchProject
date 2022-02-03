@@ -12,7 +12,7 @@ namespace SimulationSystem
             screen.Create(800, 600);
             if (screen.screenAdress == IntPtr.Zero) return;
 
-            SimulationEvents simulationEvents = new SimulationEvents(new ECSSimulationController());
+            SimulationLifecyleMethods simulationEvents = new SimulationLifecyleMethods(new ECSSimulationController());
 
             simulationEvents.Awake();
             simulationEvents.Start();

@@ -208,6 +208,15 @@ namespace Dalak.Ecs
                 system.OnDestroy();
             }
         }
+        
+        public void OnApplicationQuit()
+        {
+            foreach (var system in systems)
+            {
+                system.OnApplicationQuit();
+            }
+        }
+
 
     }
 

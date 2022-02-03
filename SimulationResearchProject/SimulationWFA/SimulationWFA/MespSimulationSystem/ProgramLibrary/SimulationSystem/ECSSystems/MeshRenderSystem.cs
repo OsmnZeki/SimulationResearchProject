@@ -25,6 +25,13 @@ namespace SimulationSystem.Systems
             }
         }
 
+        public override void OnApplicationQuit()
+        {
+            for (int i = 0; i < meshRendererCount; i++)
+            {
+                meshRenderers[i].CleanUp();
+            }
+        }
 
         public void UpdateMeshRenders()
         {

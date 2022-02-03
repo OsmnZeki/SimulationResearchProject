@@ -14,23 +14,23 @@ namespace SimulationSystem
             screen.Create(800, 600);
             if (screen.screenAdress == IntPtr.Zero) return;
 
-            SimulationEvents editorWindowEvents = new SimulationEvents(new ECSEditorController());
+            SimulationLifecyleMethods editorWindowLifecycle = new SimulationLifecyleMethods(new ECSEditorController());
 
-            editorWindowEvents.Awake();
-            editorWindowEvents.Start();
+            editorWindowLifecycle.Awake();
+            editorWindowLifecycle.Start();
             
             while (!screen.ShouldClose())
             {
                 screen.ProcessWindowInput();
-                editorWindowEvents.Update();
-                editorWindowEvents.LateUpdate();
+                editorWindowLifecycle.Update();
+                editorWindowLifecycle.LateUpdate();
                 
                 screen.Update();
-                editorWindowEvents.Render();
+                editorWindowLifecycle.Render();
                 screen.NewFrame();
             }
             
-            editorWindowEvents.OnSimulationQuit();
+            editorWindowLifecycle.OnSimulationQuit();
             screen.Terminate();
         }
     }
