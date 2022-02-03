@@ -25,6 +25,7 @@ namespace SimulationWFA
         {
             InitializeComponent();
             ShowProjectFiles();
+            Task.Run(() => EditorWindow());
             EditorWindow();
         }
 
