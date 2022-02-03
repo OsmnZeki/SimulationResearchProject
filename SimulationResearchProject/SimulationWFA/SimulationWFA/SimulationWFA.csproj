@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE36F29A-2501-4781-9431-AD340AA6052C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SimulationWFA</RootNamespace>
+    <AssemblyName>SimulationWFA</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Insan.cs" />
+    <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
+    <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\BitSet.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentIdx.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentPool.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\DTime.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\DynamicArray.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ECSEntegration\SerializedComponent.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\Entity.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\EntityComponentList.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\EntityData.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\Filter.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\FilterList.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\FilterMap.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\FilterMask.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\System.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\SystemManager.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\UniqueIdDic.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\World.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\EasyECSController.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\MeshRendererComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TransformComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\MeshRenderSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\SceneLoadingSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\EditorWindowSystem\ECSEditorController.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\EditorWindowSystem\EditorWindowSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SerializedComponent\TransformSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimObject.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationEvents.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationWindowSystem\ECSSimulationController.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationWindowSystem\SimulationSystem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\MeshRenderer.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\ModelLoading.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\CubeMesh.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\Lamp.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\RenderData\GeneralVertexData.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\RenderData\Mesh.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\Lights.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\LitMaterial.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\Material.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\Shader.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\Texture.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\UnlitMaterial.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\IO\Camera.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\IO\Input.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\IO\Screen.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\RenderProgramDLL.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Transform.cs" />
+    <EmbeddedResource Include="Form1.aa-ER.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="MespSimulationSystem\Assets\Models\m4a1\scene.bin" />
+    <None Include="MespSimulationSystem\Assets\Models\m4a1\scene.gltf" />
+    <None Include="MespSimulationSystem\Assets\Models\plane\scene.bin" />
+    <None Include="MespSimulationSystem\Assets\Models\plane\scene.gltf" />
+    <None Include="MespSimulationSystem\Assets\Models\tank\scene.bin" />
+    <None Include="MespSimulationSystem\Assets\Models\tank\scene.gltf" />
+    <None Include="MespSimulationSystem\Assets\Models\Trol\scene.bin" />
+    <None Include="MespSimulationSystem\Assets\Models\Trol\scene.gltf" />
+    <None Include="MespSimulationSystem\Assets\Shaders\lit.fs" />
+    <None Include="MespSimulationSystem\Assets\Shaders\object.vs" />
+    <None Include="MespSimulationSystem\Assets\Shaders\unlit.fs" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MespSimulationSystem\Assets\Images\image1.png" />
+    <Content Include="MespSimulationSystem\Assets\Images\image2.jpg" />
+    <Content Include="MespSimulationSystem\Assets\Images\image3.jpg" />
+    <Content Include="MespSimulationSystem\Assets\Images\image3_specular.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\m4a1\license.txt" />
+    <Content Include="MespSimulationSystem\Assets\Models\plane\license.txt" />
+    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_1_baseColor.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_1_metallicRoughness.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_1_normal.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_2_baseColor.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_2_metallicRoughness.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\plane\textures\part_2_normal.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\body_baseColor.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\body_emissive.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\body_normal.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\track_baseColor.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\track_emissive.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\tank\textures\track_normal.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_pants_baseColor.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_pants_metallicRoughness.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_pants_normal.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_Troll_baseColor.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_Troll_emissive.jpeg" />
+    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_Troll_metallicRoughness.png" />
+    <Content Include="MespSimulationSystem\Assets\Models\Trol\textures\TEX_Troll_normal.png" />
+    <Content Include="MespSimulationSystem\RenderLibrary\RenderProgramDLL.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
