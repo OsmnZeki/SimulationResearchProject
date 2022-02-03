@@ -28,6 +28,7 @@ namespace SimulationSystem
         {
             SimObject newSimObject = new SimObject();
             newSimObject.objectData = new SimObjectData();
+            newSimObject.objectData.serializedComponentList = new List<SerializedComponent>();
             newSimObject.child = new List<SimObject>();
 
             newSimObject.objectData.name = "Empty SimObject";
