@@ -81,7 +81,7 @@
     </Compile>
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\AllSerializedComponents.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponentPool.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorEventsManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />

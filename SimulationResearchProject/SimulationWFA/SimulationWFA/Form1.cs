@@ -243,9 +243,9 @@ namespace SimulationWFA
 
         private void addComponentButton_Click(object sender, EventArgs e, Panel panel)
         {
-            Button[] buttons = new Button[AllSerializedComponents.SerializedCompTypes.Count];
+            Button[] buttons = new Button[SerializedComponentPool.SerializedCompTypes.Count];
             int idx = 0;
-            foreach (var item in AllSerializedComponents.SerializedCompTypes)
+            foreach (var item in SerializedComponentPool.SerializedCompTypes)
             {
                 buttons[idx] = new Button();
                 buttons[idx].Location = new Point(40, 140 - (idx * 20));
@@ -267,7 +267,7 @@ namespace SimulationWFA
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
                 simObject = simButton.simObject,
-                serializedComponent = AllSerializedComponents.ReturnNewComponentFromList(idx),
+                serializedComponent = SerializedComponentPool.ReturnNewComponentFromList(idx),
             });
 
         }

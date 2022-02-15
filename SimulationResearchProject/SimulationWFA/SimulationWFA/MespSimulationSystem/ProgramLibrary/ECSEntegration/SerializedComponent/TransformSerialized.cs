@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using Dalak.Ecs;
 using RenderLibrary.Transform;
 using SimulationSystem.Components;
@@ -6,6 +7,7 @@ using SimulationSystem.ECS.Entegration;
 
 namespace TheSimulation.SerializedComponent
 {
+    [Serializable]
     public class TransformSerialized : SimulationSystem.ECS.Entegration.SerializedComponent
     {
         public Vector3 pos;

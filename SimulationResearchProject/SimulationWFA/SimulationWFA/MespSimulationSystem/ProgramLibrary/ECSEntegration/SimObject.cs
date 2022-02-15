@@ -10,11 +10,31 @@ namespace SimulationSystem
 {
 
     [Serializable]
-    public struct SimObjectData
+    public class SimObjectData
     {
         public string name;
-        public List<SerializedComponent> serializedComponentList;
-        //TODO: aynı serializedlar listeye eklenebilir !
+        private List<SerializedComponent> serializedComponentList;
+
+        public SimObjectData()
+        {
+            name = "Empty SimObject";
+            serializedComponentList = new List<SerializedComponent>();
+        }
+
+        public void AddSerializedComponent<T>(T serializedComponent) where T : SerializedComponent
+        {
+            foreach(var comp in serializedComponentList)
+            {
+                if (comp.GetType() == typeof(T)) return;
+            }
+
+            serializedComponentList.Add(serializedComponent);
+        }
+
+        public SerializedComponent[] GetSerializedComponents()
+        {
+            return serializedComponentList.ToArray();
+        }
     }
     
     
@@ -44,12 +64,12 @@ namespace SimulationSystem
 
         public void AddNewSerializedComponent(World world, SerializedComponent serializedComponent)
         {
-            objectData.serializedComponentList.Add(serializedComponent);
+            objectData.AddSerializedComponent(serializedComponent);
         }
 
         public void AddAllSerializedComponents(World world)
         {
-            foreach (var serializedComponent in objectData.serializedComponentList)
+            foreach (var serializedComponent in objectData.GetSerializedComponents())
             {
                 if(!serializedComponent.add){continue;}
                 serializedComponent.AddComponent(entity,world);
@@ -68,10 +88,9 @@ namespace SimulationSystem
             newSimObject.parent = Hiearchy;
             Hiearchy.child.Add(newSimObject);
 
-            newSimObject.objectData.serializedComponentList = new List<SerializedComponent>();
-            newSimObject.objectData.name = "Empty SimObject";
+            newSimObject.objectData = new SimObjectData();
 
-            newSimObject.objectData.serializedComponentList.Add(new TransformSerialized() {
+            newSimObject.objectData.AddSerializedComponent(new TransformSerialized() {
                 pos = Vector3.Zero,
                 rotation = Vector3.Zero,
                 scale = Vector3.One,
@@ -89,7 +108,7 @@ namespace SimulationSystem
         {
             if (simObject != SimObject.Hiearchy)
             {
-                foreach (var item in simObject.objectData.serializedComponentList)
+                foreach (var item in simObject.objectData.GetSerializedComponents())
                 {
                     if (item.GetType() == typeof(T))
                     {

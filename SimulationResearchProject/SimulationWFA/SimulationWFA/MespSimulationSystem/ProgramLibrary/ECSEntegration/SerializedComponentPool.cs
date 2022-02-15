@@ -5,7 +5,7 @@ using TheSimulation.SerializedComponent;
 
 namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
 {
-    public static class AllSerializedComponents
+    public static class SerializedComponentPool
     {
         public static Dictionary<int, SerializedComponent> SerializedCompTypes = new Dictionary<int, SerializedComponent>() {
 
