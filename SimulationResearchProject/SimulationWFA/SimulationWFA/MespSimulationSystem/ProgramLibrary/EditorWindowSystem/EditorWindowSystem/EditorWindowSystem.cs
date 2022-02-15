@@ -8,8 +8,7 @@ namespace SimulationSystem
 {
     public class EditorWindowSystem
     {
-        public static EditorEventsManager eventManager = new EditorEventsManager();
-        
+       
         public void CreateEditorWindow()
         {
             Screen screen = new Screen();
@@ -30,35 +29,12 @@ namespace SimulationSystem
                 screen.Update();
                 editorWindowLifecycle.Render();
                 screen.NewFrame();
-                
-                ListenEditorEvents(editorWindowLifecycle.ecsController.world);
             }
             
             editorWindowLifecycle.OnSimulationQuit();
             screen.Terminate();
         }
 
-        private void ListenEditorEvents(World world) {
-
-            if (eventManager.ListenEvent<OnEditorCreateSimObjEvent>(out var createData))
-            {
-                var entity = world.NewEntity();
-                createData.simObject.entity = entity;
-                createData.simObject.AddAllSerializedComponents(world);
-            }
-            
-            if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))
-            {
-                addCompData.simObject.AddNewSerializedComponent(world,addCompData.serializedComponent);
-               
-            }
-            
-            if(eventManager.ListenEvent<OnEditorChangeCompSimObjEvent>(out var changeData))
-            {
-                //TODO: serialized değişikliğinde tüm componentler silinip tekrardan yükleniyor düzelt
-                changeData.simObject.RemoveAllComponents();
-                changeData.simObject.AddAllSerializedComponents(world);
-            }
-        }
+      
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SimulationSystem;
 using SimulationSystem.ECS.Entegration;
 
-namespace SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem
+namespace SimulationSystem.EditorEvents
 {
     public interface IEditorEvent {}
 
@@ -18,7 +18,7 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem
         public SerializedComponent serializedComponent;
     }
     
-    public struct OnEditorChangeCompSimObjEvent : IEditorEvent
+    public struct OnEditorRefresh : IEditorEvent
     {
         public SimObject simObject;
     }
