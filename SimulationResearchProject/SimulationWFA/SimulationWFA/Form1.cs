@@ -193,13 +193,13 @@ namespace SimulationWFA
             panel.Location = new Point(inspectorPanel.Location.X + 5, inspectorPanel.Location.Y + 40); ;
             Control[] control = Controls.Find("hierarchyButton", true);
             HierarchySimButton simButton = (HierarchySimButton)control[0];
-            TextBox[] textBox = new TextBox[simButton.simObject.objectData.serializedComponentList.Count];
+            TextBox[] textBox = new TextBox[simButton.simObject.objectData.GetSerializedComponents().Length];
             TextBox[] posText = new TextBox[3];
             int idx = 0;
             dynamic parameters = new ExpandoObject();
-            parameters = simButton.simObject.objectData.serializedComponentList;
+            parameters = simButton.simObject.objectData.GetSerializedComponents();
 
-            foreach (var item in simButton.simObject.objectData.serializedComponentList)
+            foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
             {
                 textBox[idx] = new TextBox();
                 textBox[idx].Location = new Point(0, 0);
