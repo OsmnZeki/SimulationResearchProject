@@ -186,7 +186,8 @@ namespace SimulationWFA
             this.Refresh();
             Application.DoEvents();
         }
-
+        TextBox[] posText = new TextBox[3];
+        dynamic parameters = new ExpandoObject();
         private void hierarchyButton_Click(object sender, EventArgs e)
         {
             Panel panel = new Panel();
@@ -194,9 +195,9 @@ namespace SimulationWFA
             Control[] control = Controls.Find("hierarchyButton", true);
             HierarchySimButton simButton = (HierarchySimButton)control[0];
             TextBox[] textBox = new TextBox[simButton.simObject.objectData.GetSerializedComponents().Length];
-            TextBox[] posText = new TextBox[3];
+            
             int idx = 0;
-            dynamic parameters = new ExpandoObject();
+
             parameters = simButton.simObject.objectData.GetSerializedComponents();
 
             foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
@@ -218,7 +219,7 @@ namespace SimulationWFA
                 posText[i].Text = parameters[0].pos.X.ToString();
                 posText[i].BackColor = Color.Yellow;
                 posText[i].Size = new Size(30, 60);
-                //posText[i].TextChanged += SimulationProject_TextChanged;
+                posText[i].TextChanged += simulationProject_TextChanged;
                 posText[i].BringToFront();
                 panel.Controls.Add(posText[i]);
             }
@@ -240,6 +241,14 @@ namespace SimulationWFA
 
             Controls.Add(panel);
             Controls.Add(panel);
+        }
+
+        private void simulationProject_TextChanged(object sender, EventArgs e)
+        {
+           TextBox textBox = sender as TextBox;
+           posText[textBox.TabIndex - 1].Text = textBox.Text;
+            float a = float.Parse(posText[textBox.TabIndex - 1].Text);
+            parameters[0].pos.X = a;
         }
 
         private void addComponentButton_Click(object sender, EventArgs e, Panel panel)
