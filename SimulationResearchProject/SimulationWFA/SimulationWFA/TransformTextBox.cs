@@ -7,8 +7,7 @@ using System.Windows.Forms;
 
 namespace SimulationWFA
 {
-    class SimProjectTextBox : TextBox
+    public class TransformTextBox : TextBox
     {
-        
     }
 }
