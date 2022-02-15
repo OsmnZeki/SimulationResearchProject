@@ -8,9 +8,9 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
     public static class AllSerializedComponents
     {
         public static Dictionary<int, SerializedComponent> SerializedCompTypes = new Dictionary<int, SerializedComponent>() {
-            
-            {0, new MeshRendererSerialized()},
-            {1, new TransformSerialized()},
+
+            {0, new TransformSerialized()},
+            {1, new MeshRendererSerialized()},
 
         };
 

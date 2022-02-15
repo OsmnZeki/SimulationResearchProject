@@ -45,7 +45,6 @@ namespace SimulationSystem
         public void AddNewSerializedComponent(World world, SerializedComponent serializedComponent)
         {
             objectData.serializedComponentList.Add(serializedComponent);
-            serializedComponent.AddComponent(entity,world);
         }
 
         public void AddAllSerializedComponents(World world)
@@ -73,13 +72,13 @@ namespace SimulationSystem
             newSimObject.objectData.name = "Empty SimObject";
 
             newSimObject.objectData.serializedComponentList.Add(new TransformSerialized() {
-                pos = Vector3.One *2,
+                pos = Vector3.Zero,
                 rotation = Vector3.Zero,
                 scale = Vector3.One,
             });
 
             return newSimObject;
-        }
+        } 
 
         public static SimObject[] GetChildren(SimObject parentObject)
         {

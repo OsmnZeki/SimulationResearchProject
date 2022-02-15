@@ -14,6 +14,8 @@
             //systemManager.AddSystem(new SceneLoadingSystem(), GenericSystemGroup);
             systemManager.AddSystem(new EcsEditorTestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
+
+            systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
         }
     }
 }
