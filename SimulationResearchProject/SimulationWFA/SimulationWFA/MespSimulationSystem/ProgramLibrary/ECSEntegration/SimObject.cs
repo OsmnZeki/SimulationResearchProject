@@ -23,8 +23,8 @@ namespace SimulationSystem
         public static SimObject Hiearchy = new SimObject();
         
         public SimObjectData objectData;
-        public SimObject parent;
-        public List<SimObject> child;
+        private SimObject parent;
+        private List<SimObject> child;
         public Entity entity;
 
         public SimObject()
@@ -36,6 +36,8 @@ namespace SimulationSystem
         
         public void SetParent(SimObject newParent)
         {
+            parent.child.Remove(this);
+
             parent = newParent;
             newParent.child.Add(this);
         }
