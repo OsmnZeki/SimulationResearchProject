@@ -81,20 +81,21 @@
     </Compile>
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\AllSerializedComponents.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\AllSerializedComponents.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorEventsManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EcsEditorTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorEventListenSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorLoadingSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SerializedComponent\MeshRendererSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\MeshRendererSerialized.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\BitSet.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentIdx.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentPool.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\DTime.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\DynamicArray.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ECSEntegration\SerializedComponent.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\Entity.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\EntityComponentList.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\EntityData.cs" />
@@ -111,8 +112,8 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TransformComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\MeshRenderSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\SceneLoadingSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SerializedComponent\TransformSerialized.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimObject.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TransformSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SimObject.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationLifecyleMethods.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationWindowSystem\ECSSimulationController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationWindowSystem\SimulationSystem.cs" />

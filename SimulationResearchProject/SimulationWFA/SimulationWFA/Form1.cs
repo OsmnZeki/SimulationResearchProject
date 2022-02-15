@@ -8,8 +8,9 @@ using System.Threading;
 using System.IO;
 using SimulationSystem;
 using System.Dynamic;
-using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary;
+using SimulationSystem.Systems;
+using SimulationSystem.EditorEvents;
 
 namespace SimulationWFA
 {
@@ -171,7 +172,7 @@ namespace SimulationWFA
             var simObject = SimObject.NewSimObject();
 
             HierarchySimButton hierarchyButton = new HierarchySimButton();
-            EditorWindowSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
             //EditorWindowSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent { simObject = simObject }); component eklediğinde çağır.
             hierarchyButton.Location = new System.Drawing.Point(hieararchyPanel.Location.X + 5, hieararchyPanel.Location.Y + 40);
             hierarchyButton.Name = "hierarchyButton";
@@ -264,7 +265,7 @@ namespace SimulationWFA
             Control[] control = Controls.Find("hierarchyButton", true);
             HierarchySimButton simButton = (HierarchySimButton)control[0];
 
-            EditorWindowSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
                 simObject = simButton.simObject,
                 serializedComponent = AllSerializedComponents.ReturnNewComponentFromList(idx),
             });

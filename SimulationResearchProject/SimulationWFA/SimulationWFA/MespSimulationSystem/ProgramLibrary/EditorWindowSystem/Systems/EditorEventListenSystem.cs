@@ -23,11 +23,11 @@ namespace SimulationSystem.Systems
                 createData.simObject.AddAllSerializedComponents(world);
             }
 
-           /* if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))
+           if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))
             {
                 addCompData.simObject.AddNewSerializedComponent(world, addCompData.serializedComponent);
 
-            }*/
+            }
 
             if (eventManager.ListenEvent<OnEditorRefresh>(out var changeData))
             {
