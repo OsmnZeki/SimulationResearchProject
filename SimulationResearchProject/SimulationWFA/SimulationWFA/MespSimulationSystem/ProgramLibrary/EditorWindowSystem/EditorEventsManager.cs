@@ -20,7 +20,7 @@ namespace SimulationSystem.EditorEvents
     
     public struct OnEditorRefresh : IEditorEvent
     {
-        public SimObject simObject;
+
     }
     
     public class EditorEventsManager
@@ -35,7 +35,6 @@ namespace SimulationSystem.EditorEvents
         public void SendEvent(IEditorEvent e)
         {
             events.Add(e);
-            Console.WriteLine(events.Count);
         }
 
         public bool ListenEvent<T>(out T eventData) where T : IEditorEvent

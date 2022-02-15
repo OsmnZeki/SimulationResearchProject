@@ -1,4 +1,5 @@
-﻿using Dalak.Ecs;
+﻿using System;
+using Dalak.Ecs;
 using SimulationSystem.EditorEvents;
 using TheSimulation.SerializedComponent;
 
@@ -31,6 +32,7 @@ namespace SimulationSystem.Systems
 
             if (eventManager.ListenEvent<OnEditorRefresh>(out var changeData))
             {
+                Console.WriteLine("Refresh");
                 var allSimObj = SimObject.FindObjectsOfType<TransformSerialized>();
 
                 foreach(var simObj in allSimObj)

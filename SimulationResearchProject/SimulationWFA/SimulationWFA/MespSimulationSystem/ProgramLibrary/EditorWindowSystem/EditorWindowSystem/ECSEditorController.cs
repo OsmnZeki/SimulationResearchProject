@@ -1,4 +1,6 @@
-﻿namespace SimulationSystem.Systems
+﻿using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.Systems;
+
+namespace SimulationSystem.Systems
 {
     public class ECSEditorController : EasyECSController
     {
@@ -16,6 +18,7 @@
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
         }
     }
 }
