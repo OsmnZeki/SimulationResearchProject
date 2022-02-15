@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace SimulationWFA
 {
-    partial class Form1
+    partial class SimulationProject
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@ namespace SimulationWFA
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimulationProject));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,6 +64,7 @@ namespace SimulationWFA
             this.addObjectButton = new System.Windows.Forms.Button();
             this.hierarchyLabel = new System.Windows.Forms.Label();
             this.simulationWindowPanel = new System.Windows.Forms.Panel();
+            this.refresh = new System.Windows.Forms.Button();
             this.simulationWindowLabel = new System.Windows.Forms.Label();
             this.simulateButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -248,6 +249,7 @@ namespace SimulationWFA
             resources.ApplyResources(this.hieararchyPanel, "hieararchyPanel");
             this.hieararchyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
             this.hieararchyPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.hieararchyPanel.Controls.Add(this.refresh);
             this.hieararchyPanel.Controls.Add(this.addObjectButton);
             this.hieararchyPanel.Controls.Add(this.hierarchyLabel);
             this.hieararchyPanel.Name = "hieararchyPanel";
@@ -275,6 +277,13 @@ namespace SimulationWFA
             this.simulationWindowPanel.Controls.Add(this.simulateButton);
             this.simulationWindowPanel.Name = "simulationWindowPanel";
             // 
+            // refresh
+            // 
+            resources.ApplyResources(this.refresh, "refresh");
+            this.refresh.Name = "refresh";
+            this.refresh.UseVisualStyleBackColor = true;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // simulationWindowLabel
             // 
             resources.ApplyResources(this.simulationWindowLabel, "simulationWindowLabel");
@@ -289,7 +298,7 @@ namespace SimulationWFA
             this.simulateButton.UseVisualStyleBackColor = false;
             this.simulateButton.Click += new System.EventHandler(this.simulateButton_Click);
             // 
-            // Form1
+            // SimulationProject
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
@@ -300,7 +309,7 @@ namespace SimulationWFA
             this.Controls.Add(this.projectsPanel);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "SimulationProject";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.projectsPanel.ResumeLayout(false);
@@ -351,6 +360,7 @@ namespace SimulationWFA
         private System.Windows.Forms.Label simulationWindowLabel;
         private System.Windows.Forms.Button simulateButton;
         private System.Windows.Forms.Button addObjectButton;
+        private System.Windows.Forms.Button refresh;
     }
 }
 

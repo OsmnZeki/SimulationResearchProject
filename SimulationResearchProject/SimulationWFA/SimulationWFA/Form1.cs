@@ -13,9 +13,9 @@ using SimulationWFA.MespSimulationSystem.ProgramLibrary;
 
 namespace SimulationWFA
 {
-    public partial class Form1 : Form
+    public partial class SimulationProject : Form
     {
-        public Form1()
+        public SimulationProject()
         {
             InitializeComponent();
             ShowProjectFiles();
@@ -29,7 +29,7 @@ namespace SimulationWFA
             if (folderBrowserDialog1.SelectedPath == "")
             {
                 //Directory.GetParent(Directory.GetCurrentDirectory());
-                foreach (var item in Directory.GetFiles( Directory.GetCurrentDirectory()))
+                foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory()))
                 {
                     DirectoryInfo directoryInfo = new DirectoryInfo(item);
                     var node = projectsTreeView.Nodes.Add(directoryInfo.Name, directoryInfo.Name, 0, 0);
@@ -167,6 +167,7 @@ namespace SimulationWFA
 
         private void addObjectButton_Click(object sender, EventArgs e)
         {
+
             var simObject = SimObject.NewSimObject();
 
             HierarchySimButton hierarchyButton = new HierarchySimButton();
@@ -181,7 +182,8 @@ namespace SimulationWFA
             hierarchyButton.Click += new System.EventHandler(hierarchyButton_Click);
             hieararchyPanel.SendToBack();
             Controls.Add(hierarchyButton);
-
+            this.Refresh();
+            Application.DoEvents();
         }
 
         private void hierarchyButton_Click(object sender, EventArgs e)
@@ -195,7 +197,7 @@ namespace SimulationWFA
             int idx = 0;
             dynamic parameters = new ExpandoObject();
             parameters = simButton.simObject.objectData.serializedComponentList;
-            
+
             foreach (var item in simButton.simObject.objectData.serializedComponentList)
             {
                 textBox[idx] = new TextBox();
@@ -211,7 +213,7 @@ namespace SimulationWFA
             for (int i = 0; i < posText.Length; i++)
             {
                 posText[i] = new TextBox();
-                posText[i].Location = new Point((i * 30), + 20);
+                posText[i].Location = new Point((i * 30), +20);
                 posText[i].Text = parameters[0].pos.X.ToString();
                 posText[i].BackColor = Color.Yellow;
                 posText[i].Size = new Size(30, 60);
@@ -225,7 +227,7 @@ namespace SimulationWFA
             inspectorPanel.SendToBack();
 
             Button addComponentButton = new Button();
-            addComponentButton.Location = new Point(40,180);
+            addComponentButton.Location = new Point(40, 180);
             addComponentButton.Size = new Size(100, 20);
             addComponentButton.BackColor = Color.White;
             addComponentButton.Text = "Add Component";
@@ -251,13 +253,13 @@ namespace SimulationWFA
                 buttons[idx].BackColor = Color.White;
                 buttons[idx].BringToFront();
                 panel.Controls.Add(buttons[idx]);
-                buttons[idx].Click += (sender2,e2) => componentsButton_Click(sender2, e2 ,item.Key);
-                
+                buttons[idx].Click += (sender2, e2) => componentsButton_Click(sender2, e2, item.Key);
+
                 idx++;
             }
         }
 
-        private void componentsButton_Click(object sender, EventArgs e , int idx)
+        private void componentsButton_Click(object sender, EventArgs e, int idx)
         {
             Control[] control = Controls.Find("hierarchyButton", true);
             HierarchySimButton simButton = (HierarchySimButton)control[0];
@@ -266,10 +268,15 @@ namespace SimulationWFA
                 simObject = simButton.simObject,
                 serializedComponent = AllSerializedComponents.ReturnNewComponentFromList(idx),
             });
-           
+
         }
 
         #endregion
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
