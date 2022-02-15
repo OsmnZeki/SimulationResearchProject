@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SimulationSystem;
 using SimulationSystem.ECS.Entegration;
 
@@ -34,6 +35,7 @@ namespace SimulationSystem.EditorEvents
         public void SendEvent(IEditorEvent e)
         {
             events.Add(e);
+            Console.WriteLine(events.Count);
         }
 
         public bool ListenEvent<T>(out T eventData) where T : IEditorEvent
