@@ -21,7 +21,7 @@ namespace SimulationSystem.Systems
         {
             foreach(var m in meshRendererFilter)
             {
-                Console.WriteLine("YARRRRRRRRRRRRAK");
+                Console.WriteLine("Hello");
             }
             
         }

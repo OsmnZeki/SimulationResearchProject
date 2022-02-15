@@ -26,6 +26,12 @@ namespace SimulationSystem
         public SimObject parent;
         public List<SimObject> child;
         public Entity entity;
+
+        public SimObject()
+        {
+            child = new List<SimObject>();
+            objectData = new SimObjectData();
+        }
         
         
         public void SetParent(SimObject newParent)
@@ -58,12 +64,12 @@ namespace SimulationSystem
         public static SimObject NewSimObject()
         {
             SimObject newSimObject = new SimObject();
-            newSimObject.objectData = new SimObjectData();
-            newSimObject.objectData.serializedComponentList = new List<SerializedComponent>();
-            newSimObject.child = new List<SimObject>();
             newSimObject.parent = Hiearchy;
+            Hiearchy.child.Add(newSimObject);
 
+            newSimObject.objectData.serializedComponentList = new List<SerializedComponent>();
             newSimObject.objectData.name = "Empty SimObject";
+
             newSimObject.objectData.serializedComponentList.Add(new TransformSerialized() {
                 pos = Vector3.One *2,
                 rotation = Vector3.Zero,
@@ -105,8 +111,4 @@ namespace SimulationSystem
             return simObjList.ToArray();
         }
     }
-    
-
-
-    
 }
