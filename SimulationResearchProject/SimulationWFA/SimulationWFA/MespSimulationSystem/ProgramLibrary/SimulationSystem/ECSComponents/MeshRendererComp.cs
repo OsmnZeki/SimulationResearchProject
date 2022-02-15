@@ -1,4 +1,5 @@
-﻿using RenderLibrary.Graphics.RenderData;
+﻿using RenderLibrary.Graphics;
+using RenderLibrary.Graphics.RenderData;
 using RenderLibrary.Graphics.Rendering;
 
 namespace SimulationSystem.Components
@@ -7,5 +8,6 @@ namespace SimulationSystem.Components
     {
         public Mesh mesh;
         public Material material;
+        public MeshRenderer meshRenderer;
     }
 }

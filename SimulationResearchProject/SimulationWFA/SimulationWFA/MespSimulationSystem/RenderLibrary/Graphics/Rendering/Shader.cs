@@ -8,6 +8,11 @@ namespace RenderLibrary.Graphics.Rendering
     public class Shader
     {
         private IntPtr shaderAdress;
+
+        public Shader(IntPtr shaderAdress)
+        {
+            this.shaderAdress = shaderAdress;
+        }
         
         public Shader(string vertexShaderPath,string fragmentShaderPath)
         {

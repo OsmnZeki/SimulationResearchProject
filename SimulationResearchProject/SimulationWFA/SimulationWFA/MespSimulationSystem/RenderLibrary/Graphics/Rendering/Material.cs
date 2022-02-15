@@ -11,6 +11,12 @@ namespace RenderLibrary.Graphics.Rendering
         {
             RenderProgramDLL.SetShaderToMaterial(materialAdress,shader.GetShaderAdress());
         }
+
+        public Shader GetShader()
+        {
+            var shader = new Shader(RenderProgramDLL.GetShaderFromMaterial(materialAdress));
+            return shader;
+        }
         
         public void SetAdress(IntPtr materialAdress)
         {

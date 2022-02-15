@@ -1,5 +1,6 @@
 ﻿using System;
 using Dalak.Ecs;
+using MESPSimulationSystem.Math;
 using RenderLibrary.Graphics;
 using RenderLibrary.Transform;
 using SimulationSystem.Components;
@@ -9,51 +10,52 @@ namespace SimulationSystem.Systems
     public class MeshRenderSystem : Dalak.Ecs.System
     {
         private Filter<MeshRendererComp, TransformComp> meshRendererFilter = null;
-        private MeshRenderer[] meshRenderers;
-        
-        private int meshRendererCount;
+        private Filter<CameraComp> cameraFilter = null; //TODO: tek kamera var arttırılabilir
+
         public override void Awake()
         {
-            UpdateMeshRenders();
+
         }
 
         public override void Update()
         {
             foreach(var m in meshRendererFilter)
             {
-                Console.WriteLine("Hello");
+               
             }
-            
         }
+
         public override void Render()
         {
-            for (int i = 0; i < meshRendererCount; i++)
+            ref var cameraComp = ref cameraFilter.Get1(0);
+
+            Mat4 view = cameraComp.camera.GetViewMatrix();
+            Mat4 projection = cameraComp.camera.Perspective(800f / 600f);
+
+            foreach (var m in meshRendererFilter)
             {
-                var transformComp = meshRendererFilter.Get2(i);
-                meshRenderers[i].Render(transformComp.transform);
+                var transformComp = meshRendererFilter.Get2(m);
+                var meshRendererComp = meshRendererFilter.Get1(m);
+
+                var shader = meshRendererComp.material.GetShader();
+                shader.Activate();
+                shader.Set3Float("viewPos", cameraComp.camera.cameraPos);
+
+                shader.SetMat4("view", view);
+                shader.SetMat4("projection", projection);
+
+                meshRendererComp.meshRenderer.Render(transformComp.transform);
             }
         }
 
         public override void OnApplicationQuit()
         {
-            for (int i = 0; i < meshRendererCount; i++)
+            foreach (var m in meshRendererFilter)
             {
-                meshRenderers[i].CleanUp();
+                var meshRendererComp = meshRendererFilter.Get1(m);
+                meshRendererComp.meshRenderer.CleanUp();
             }
         }
 
-        public void UpdateMeshRenders()
-        {
-            meshRendererCount = meshRendererFilter.NumberOfEntities;
-            meshRenderers = new MeshRenderer[meshRendererCount];
-            for (int i = 0; i < meshRendererCount; i++)
-            {
-                ref var meshComp = ref meshRendererFilter.Get1(i);
-                meshRenderers[i] = new MeshRenderer();
-                meshRenderers[i].SetMesh(meshComp.mesh);
-                meshRenderers[i].SetMaterial(meshComp.material);
-                meshRenderers[i].Setup();
-            }
-        }
     }
 }

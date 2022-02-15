@@ -31,9 +31,9 @@ namespace RenderLibrary.IO
         public float speed;
         public float zoom;
 
-        public Camera(Vector3 position)
+        public Camera()
         {
-            cameraPos = position;
+            cameraPos = Vector3.Zero;
             worldUp = new Vector3(0, 1, 0);
             yaw = -90f;
             pitch = 0;

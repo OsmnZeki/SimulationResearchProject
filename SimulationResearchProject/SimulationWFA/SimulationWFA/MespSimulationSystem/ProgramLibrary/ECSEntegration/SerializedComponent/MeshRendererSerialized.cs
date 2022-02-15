@@ -1,5 +1,6 @@
 ﻿using System;
 using Dalak.Ecs;
+using RenderLibrary.Graphics;
 using RenderLibrary.Graphics.RenderData;
 using RenderLibrary.Graphics.Rendering;
 using SimulationSystem.Components;
@@ -14,7 +15,12 @@ namespace TheSimulation.SerializedComponent
 
         public override void AddComponent(Entity entity, World world)
         {
-            entity.AddComponent<MeshRendererComp>() = new MeshRendererComp() {material = material, mesh = mesh,};
+            MeshRenderer meshRenderer = new MeshRenderer();
+            meshRenderer.SetMesh(mesh);
+            meshRenderer.SetMaterial(material);
+            meshRenderer.Setup();
+
+            entity.AddComponent<MeshRendererComp>() = new MeshRendererComp() {meshRenderer = meshRenderer, material = material, mesh = mesh,};
         }
 
         public override string GetName()

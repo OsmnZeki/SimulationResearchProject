@@ -175,7 +175,10 @@ namespace RenderLibrary.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetShaderToMaterial")]
         public static extern void SetShaderToMaterial(IntPtr matAdress, IntPtr shader);
-        
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetShaderFromMaterial")]
+        public static extern IntPtr GetShaderFromMaterial(IntPtr matAdress);
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetAmbientToMaterial")]
         public static extern void SetAmbientToMaterial(IntPtr matAdress, float[] ambient);
         

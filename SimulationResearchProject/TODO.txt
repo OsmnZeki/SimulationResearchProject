@@ -10,6 +10,10 @@ renderProgramdan çıkartılan dll içerisinde assimpin dll'ini göremiyor --> (
 	*entegresyon için kapatılan debug.assertleri daha sonrasında aç
 
 
-
-simObject içerisine aynı serializedComponentleri almamalı !
 Directory otomatik alınacak
+
+
+Camera
+------
+Camera renderlama layerları
+Camera posizyon ve hesaplamaları sistem içerisinde olmalı
