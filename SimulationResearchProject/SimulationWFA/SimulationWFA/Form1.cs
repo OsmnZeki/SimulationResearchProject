@@ -218,6 +218,7 @@ namespace SimulationWFA
                 posText[i].Text = parameters[0].pos.X.ToString();
                 posText[i].BackColor = Color.Yellow;
                 posText[i].Size = new Size(30, 60);
+                //posText[i].TextChanged += SimulationProject_TextChanged;
                 posText[i].BringToFront();
                 panel.Controls.Add(posText[i]);
             }
@@ -276,7 +277,10 @@ namespace SimulationWFA
 
         private void refresh_Click(object sender, EventArgs e)
         {
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
 
+
+            });
         }
     }
 

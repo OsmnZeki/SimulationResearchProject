@@ -7,7 +7,7 @@ namespace SimulationSystem
 {
     public class EditorWindowSystem
     {
-       
+
         public void CreateEditorWindow()
         {
             Screen screen = new Screen();
@@ -18,22 +18,23 @@ namespace SimulationSystem
 
             editorWindowLifecycle.Awake();
             editorWindowLifecycle.Start();
-            
+
             while (!screen.ShouldClose())
             {
+
                 screen.ProcessWindowInput();
                 editorWindowLifecycle.Update();
                 editorWindowLifecycle.LateUpdate();
-                
+
                 screen.Update();
                 editorWindowLifecycle.Render();
                 screen.NewFrame();
             }
-            
+
             editorWindowLifecycle.OnSimulationQuit();
             screen.Terminate();
         }
 
-      
+
     }
 }
