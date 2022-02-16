@@ -61,10 +61,10 @@ namespace SimulationWFA
             this.inspectorPanel = new System.Windows.Forms.Panel();
             this.inspectorLabel = new System.Windows.Forms.Label();
             this.hieararchyPanel = new System.Windows.Forms.Panel();
+            this.refresh = new System.Windows.Forms.Button();
             this.addObjectButton = new System.Windows.Forms.Button();
             this.hierarchyLabel = new System.Windows.Forms.Label();
             this.simulationWindowPanel = new System.Windows.Forms.Panel();
-            this.refresh = new System.Windows.Forms.Button();
             this.simulationWindowLabel = new System.Windows.Forms.Label();
             this.simulateButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -254,6 +254,13 @@ namespace SimulationWFA
             this.hieararchyPanel.Controls.Add(this.hierarchyLabel);
             this.hieararchyPanel.Name = "hieararchyPanel";
             // 
+            // refresh
+            // 
+            resources.ApplyResources(this.refresh, "refresh");
+            this.refresh.Name = "refresh";
+            this.refresh.UseVisualStyleBackColor = true;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // addObjectButton
             // 
             resources.ApplyResources(this.addObjectButton, "addObjectButton");
@@ -276,13 +283,6 @@ namespace SimulationWFA
             this.simulationWindowPanel.Controls.Add(this.simulationWindowLabel);
             this.simulationWindowPanel.Controls.Add(this.simulateButton);
             this.simulationWindowPanel.Name = "simulationWindowPanel";
-            // 
-            // refresh
-            // 
-            resources.ApplyResources(this.refresh, "refresh");
-            this.refresh.Name = "refresh";
-            this.refresh.UseVisualStyleBackColor = true;
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // simulationWindowLabel
             // 

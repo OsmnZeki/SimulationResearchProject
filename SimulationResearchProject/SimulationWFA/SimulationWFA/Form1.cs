@@ -168,34 +168,29 @@ namespace SimulationWFA
 
         private void addObjectButton_Click(object sender, EventArgs e)
         {
-
-            var simObject = SimObject.NewSimObject();
-
-            HierarchySimButton hierarchyButton = new HierarchySimButton();
-            EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
-            //EditorWindowSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent { simObject = simObject }); component eklediğinde çağır.
-            hierarchyButton.Location = new System.Drawing.Point(hieararchyPanel.Location.X + 5, hieararchyPanel.Location.Y + 40);
-            hierarchyButton.Name = "hierarchyButton";
-            hierarchyButton.Size = new System.Drawing.Size(75, 23);
-            hierarchyButton.Text = simObject.objectData.name;
-            hierarchyButton.BackColor = Color.White;
-            hierarchyButton.simObject = simObject;
-            hierarchyButton.Click += new System.EventHandler(hierarchyButton_Click);
-            hieararchyPanel.SendToBack();
-            Controls.Add(hierarchyButton);
-            this.Refresh();
-            Application.DoEvents();
+                var simObject = SimObject.NewSimObject();
+                HierarchySimButton hierarchyButton = new HierarchySimButton();
+                EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
+                hierarchyButton.Location = new Point(10, 30); //new System.Drawing.Point(hieararchyPanel.Location.X + 5, hieararchyPanel.Location.Y + 40);
+                hierarchyButton.Name = "hierarchyButton";
+                hierarchyButton.Size = new System.Drawing.Size(75, 23);
+                hierarchyButton.Text = simObject.objectData.name;
+                hierarchyButton.BackColor = Color.White;
+                hierarchyButton.simObject = simObject;
+                hierarchyButton.BringToFront();
+                hierarchyButton.Click += (sender2, e2) => hierarchyButton_Click(sender2, e2);//new System.EventHandler(hierarchyButton_Click);
+                hieararchyPanel.Controls.Add(hierarchyButton);
         }
         TextBox[] posText = new TextBox[3];
         dynamic parameters = new ExpandoObject();
         private void hierarchyButton_Click(object sender, EventArgs e)
         {
             Panel panel = new Panel();
-            panel.Location = new Point(inspectorPanel.Location.X + 5, inspectorPanel.Location.Y + 40); ;
+            panel.Location = new Point(5, 30);
             Control[] control = Controls.Find("hierarchyButton", true);
             HierarchySimButton simButton = (HierarchySimButton)control[0];
             TextBox[] textBox = new TextBox[simButton.simObject.objectData.GetSerializedComponents().Length];
-            
+
             int idx = 0;
 
             parameters = simButton.simObject.objectData.GetSerializedComponents();
@@ -224,11 +219,9 @@ namespace SimulationWFA
                 posText[i].BringToFront();
                 panel.Controls.Add(posText[i]);
             }
-            // panel.SendToBack();
             panel.Name = control[0].Name + "Panel";
             panel.Size = new System.Drawing.Size(180, 200);
             panel.BackColor = Color.DarkSalmon;
-            inspectorPanel.SendToBack();
 
             Button addComponentButton = new Button();
             addComponentButton.Location = new Point(40, 180);
@@ -240,15 +233,16 @@ namespace SimulationWFA
             addComponentButton.BringToFront();
             panel.Controls.Add(addComponentButton);
 
-            Controls.Add(panel);
-            Controls.Add(panel);
+            inspectorPanel.Controls.Add(panel);
+           
         }
 
         private void simulationProject_TextChanged(object sender, EventArgs e)
         {
-           TextBox textBox = sender as TextBox;
-           posText[textBox.TabIndex - 1].Text = textBox.Text;
+            TextBox textBox = sender as TextBox;
+            posText[textBox.TabIndex - 1].Text = textBox.Text;
             float a = float.Parse(posText[textBox.TabIndex - 1].Text);
+            Console.WriteLine(a);
             parameters[0].pos.X = a;
         }
 
@@ -292,6 +286,8 @@ namespace SimulationWFA
 
             });
         }
+
+
     }
 
 
