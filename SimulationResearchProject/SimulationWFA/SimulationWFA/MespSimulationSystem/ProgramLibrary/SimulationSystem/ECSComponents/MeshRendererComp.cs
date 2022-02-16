@@ -9,5 +9,18 @@ namespace SimulationSystem.Components
         public Mesh mesh;
         public Material material;
         public MeshRenderer meshRenderer;
+
+
+        public void SetMeshRenderer()
+        {
+            if(meshRenderer == null)
+            {
+                meshRenderer = new MeshRenderer();
+                meshRenderer.SetMesh(mesh);
+                meshRenderer.SetMaterial(material);
+                meshRenderer.Setup();
+            }
+        }
+
     }
 }

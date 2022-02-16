@@ -8,7 +8,7 @@ namespace RenderLibrary.Transform
     {
         private IntPtr transformAdress;
         private Vector3 refPosition;
-        private Vector3 refSize;
+        private Vector3 refScale;
         private Vector3 refRotation;
 
         public Vector3 position
@@ -24,16 +24,16 @@ namespace RenderLibrary.Transform
             }
         }
         
-        public Vector3 size
+        public Vector3 scale
         {
             get
             {
-                return refSize;
+                return refScale;
             }
             set
             {
-                refSize = value;
-                SetSize(refSize);
+                refScale = value;
+                SetSize(refScale);
             }
         }
         
@@ -54,7 +54,7 @@ namespace RenderLibrary.Transform
         {
             transformAdress = RenderProgramDLL.NewTransform();
             position = Vector3.Zero;
-            size = Vector3.Zero;
+            scale = Vector3.Zero;
             rotation = Vector3.Zero;
         }
         
@@ -62,7 +62,7 @@ namespace RenderLibrary.Transform
         {
             transformAdress = RenderProgramDLL.NewTransform();
             this.position = position;
-            this.size = size;
+            this.scale = size;
             this.rotation = rotation;
         }
 

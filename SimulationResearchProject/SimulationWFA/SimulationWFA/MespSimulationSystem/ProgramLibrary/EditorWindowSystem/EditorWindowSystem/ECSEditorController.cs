@@ -14,13 +14,13 @@ namespace SimulationSystem.Systems
         public override void AddSystems() // Ecs Sistemleri
         {
             //systemManager.AddSystem(new SceneLoadingSystem(), GenericSystemGroup);
-            //systemManager.AddSystem(new EcsEditorTestSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new EcsEditorTestSystem(), GenericSystemGroup);
 
-            //systemManager.AddSystem(new MainCameraSystem(), GenericSystemGroup);
-            //systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
         }
     }
 }

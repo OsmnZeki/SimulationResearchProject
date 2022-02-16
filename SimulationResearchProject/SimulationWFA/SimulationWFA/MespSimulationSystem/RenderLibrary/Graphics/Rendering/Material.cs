@@ -14,8 +14,7 @@ namespace RenderLibrary.Graphics.Rendering
 
         public Shader GetShader()
         {
-            var shader = new Shader(RenderProgramDLL.GetShaderFromMaterial(materialAdress));
-            return shader;
+            return new Shader(RenderProgramDLL.GetShaderFromMaterial(materialAdress));
         }
         
         public void SetAdress(IntPtr materialAdress)

@@ -15,38 +15,49 @@ namespace SimulationSystem.Systems
         readonly Filter<TransformComp> transformFilter = null;
 
         Shader shader;
-        LitMaterial litMaterial;
+        Material trolMat;
         ModelLoading trolModel;
+
+        SimObject simObj;
 
         public override void Awake()
         {
-            var simObj = SimObject.NewSimObject();
-            EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent() { simObject = simObj });
+            var camSimObj = SimObject.NewSimObject();
+            camSimObj.CreateEntity(world);
+            CameraSerializedComponent camSerialized = new CameraSerializedComponent();
+            camSimObj.AddNewSerializedComponent(world,camSerialized);
+            camSimObj.AddAllComponents(world);
+
+            simObj = SimObject.NewSimObject();
+            simObj.CreateEntity(world);
+            simObj.AddAllComponents(world);
+            simObj.entity.GetComponent<TransformComp>().transform.scale = new System.Numerics.Vector3(.05f);
+            simObj.entity.GetComponent<TransformComp>().transform.position = new System.Numerics.Vector3(0, 0, -10);
+            
 
             shader = new Shader(
                 "C:/Unity/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/object.vs",
                 "C:/Unity/SimulationResearchProject/SimulationResearchProject/Test/DLLTest/DLLTest/Assets/Shaders/lit.fs");
-
-            litMaterial = new LitMaterial();
-            litMaterial.SetShader(shader);
+     
 
             trolModel = new ModelLoading();
             trolModel.LoadModel("C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Models/Trol/scene.gltf");
-
-            MeshRendererSerialized meshRendererSerialized = new MeshRendererSerialized {
-                mesh = trolModel.GetMesh(0),
-                material = trolModel.GetMaterial(0),
-            };
+            trolMat = trolModel.GetMaterial(0);
+            trolMat.SetShader(shader);
 
         }
 
 
         public override void Update()
         {
-            Console.WriteLine(transformFilter.NumberOfEntities);
             if (Input.GetKeyDown(KeyCode.D))
             {
-                
+                simObj.entity.AddComponent < MeshRendererComp >() = new MeshRendererComp {
+                    material = trolMat,
+                    mesh = trolModel.GetMesh(0),
+                };
+
+                simObj.entity.GetComponent<MeshRendererComp>().SetMeshRenderer();
             }
         }
     }

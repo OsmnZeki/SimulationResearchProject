@@ -1,10 +1,10 @@
 ﻿namespace SimulationSystem
 {
-    public class SimulationLifecyleMethods
+    public class WindowEcsManager
     {
         public EasyECSController ecsController;
 
-        public SimulationLifecyleMethods(EasyECSController ecsController)
+        public WindowEcsManager(EasyECSController ecsController)
         {
             this.ecsController = ecsController;
         }

@@ -3,7 +3,12 @@ renderProgramdan çıkartılan dll içerisinde assimpin dll'ini göremiyor --> (
 	*ilk dll çıkartırken ki hatalar da glwf3.dll'den dolayı olabilir mi ? nasıl çözüldü ?
 
 
-
+Osman
+------
+EventManager sorunlarını çöz
+Kamera kontrolü
+Işıklar
+Grid sistemi
 
 
 *ECS
@@ -17,3 +22,4 @@ Camera
 ------
 Camera renderlama layerları
 Camera posizyon ve hesaplamaları sistem içerisinde olmalı
+
