@@ -202,6 +202,7 @@ namespace SimulationWFA
 
             foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
             {
+                Console.WriteLine(item.GetType());
                 textBox[idx] = new TextBox();
                 textBox[idx].Location = new Point(0, 0);
                 textBox[idx].Text = item.GetName();
