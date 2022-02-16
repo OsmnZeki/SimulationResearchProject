@@ -180,6 +180,7 @@ namespace SimulationWFA
                 hierarchyButton.BringToFront();
                 hierarchyButton.Click += (sender2, e2) => hierarchyButton_Click(sender2, e2);//new System.EventHandler(hierarchyButton_Click);
                 hieararchyPanel.Controls.Add(hierarchyButton);
+
         }
         TextBox[] posText = new TextBox[3];
         dynamic parameters = new ExpandoObject();
