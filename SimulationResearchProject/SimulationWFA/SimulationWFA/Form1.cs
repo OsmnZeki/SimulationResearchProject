@@ -11,6 +11,7 @@ using System.Dynamic;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary;
 using SimulationSystem.Systems;
 using SimulationSystem.EditorEvents;
+using System.Numerics;
 
 namespace SimulationWFA
 {
@@ -202,7 +203,7 @@ namespace SimulationWFA
 
             foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
             {
-                Console.WriteLine(item.GetType());
+              
                 textBox[idx] = new TextBox();
                 textBox[idx].Location = new Point(0, 0);
                 textBox[idx].Text = item.GetName();
@@ -211,6 +212,11 @@ namespace SimulationWFA
                 textBox[idx].BringToFront();
                 panel.Controls.Add(textBox[idx]);
                 idx++;
+
+                var type = item.GetType();
+                var fields = type.GetFields();
+
+                fields[0].SetValue(item, new Vector3(1, 1, 1));
             }
 
             for (int i = 0; i < posText.Length; i++)
@@ -224,6 +230,7 @@ namespace SimulationWFA
                 posText[i].BringToFront();
                 panel.Controls.Add(posText[i]);
             }
+
             // panel.SendToBack();
             panel.Name = control[0].Name + "Panel";
             panel.Size = new System.Drawing.Size(180, 200);
