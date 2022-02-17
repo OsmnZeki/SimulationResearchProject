@@ -95,8 +95,10 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorEventListenSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorLoadingSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\MeshRendererSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\FlashLightSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\LightSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TransformSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\CameraComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\DirectionalLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\PointLightComp.cs" />
@@ -143,7 +145,6 @@
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\Shader.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\Texture.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\UnlitMaterial.cs" />
-    <Compile Include="MespSimulationSystem\RenderLibrary\IO\Camera.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\IO\Input.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\IO\Screen.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\RenderProgramDLL.cs" />

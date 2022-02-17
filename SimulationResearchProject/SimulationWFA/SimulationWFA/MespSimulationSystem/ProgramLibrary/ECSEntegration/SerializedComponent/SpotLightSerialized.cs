@@ -11,12 +11,17 @@ namespace TheSimulation.SerializedComponent
         public Vector4 diffuse;
         public Vector4 specular;
 
+        public float cutOff;
+        public float outerCutOff;
+
         public override void AddComponent(Entity entity, World world)
         {
             SpotLight spotLight = new SpotLight() {
                 ambient = ambient,
                 diffuse = diffuse,
-                specular = specular
+                specular = specular,
+                cutOff = cutOff,
+                outerCutOff= outerCutOff,
             };
 
             entity.AddComponent<SpotLightComp>() = new SpotLightComp() {

@@ -9,7 +9,8 @@ namespace SimulationSystem.Systems
     public class MeshRenderSystem : Dalak.Ecs.System
     {
         private Filter<MeshRendererComp, TransformComp> meshRendererFilter = null;
-        private Filter<CameraComp> cameraFilter = null;
+
+        private Filter<CameraComp,TransformComp> cameraFilter = null;
 
         ShaderReferences shaderReferences = null;
 
@@ -18,30 +19,35 @@ namespace SimulationSystem.Systems
 
         }
 
-        public override void Update()
-        {
-            foreach(var m in meshRendererFilter)
-            {
-               
-            }
-        }
 
         public override void Render()
         {
             ref var cameraComp = ref cameraFilter.Get1(0);
+            ref var camTransformComp = ref cameraFilter.Get2(0);
 
-            Mat4 view = cameraComp.camera.GetViewMatrix();
-            Mat4 projection = cameraComp.camera.Perspective(800f / 600f);
+            Mat4 view = cameraComp.GetViewMatrix(camTransformComp.transform);
+            Mat4 projection = cameraComp.Perspective(800f / 600f);
 
             shaderReferences.defaultLitShader.Activate();
             shaderReferences.defaultLitShader.SetMat4("view", view);
             shaderReferences.defaultLitShader.SetMat4("projection", projection);
 
+            shaderReferences.defaultUnlitShader.Activate();
+            shaderReferences.defaultUnlitShader.SetMat4("view", view);
+            shaderReferences.defaultUnlitShader.SetMat4("projection", projection);
+
             foreach (var m in meshRendererFilter)
             {
-                var transformComp = meshRendererFilter.Get2(m);
-                var meshRendererComp = meshRendererFilter.Get1(m);
+                ref var transformComp = ref meshRendererFilter.Get2(m);
+                ref var meshRendererComp = ref meshRendererFilter.Get1(m);
 
+                if (meshRendererComp.meshRenderer == null)
+                {
+                    Console.WriteLine("sds");
+                    meshRendererComp.SetMeshRenderer();
+                }
+
+                meshRendererComp.material.GetShader().Activate();
                 meshRendererComp.meshRenderer.Render(transformComp.transform);
             }
         }

@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
+using MESPSimulationSystem.Math;
 
 namespace RenderLibrary.Graphics.Rendering
 {
@@ -57,6 +59,9 @@ namespace RenderLibrary.Graphics.Rendering
 	        public float cutOff;
 	        public float outerCutOff;
 
+            private float thetaCutOff;
+            private float thetaOuterCutOff;
+
 	        // attenuation constants
 	        public const float k0 = 1.0f;
 	        public const float k1 = 0.07f;
@@ -67,7 +72,14 @@ namespace RenderLibrary.Graphics.Rendering
 	        public Vector4 specular;
 
 	        public void Render(Shader shader, int idx)
-	        {
+            {
+                if (thetaCutOff == 0 || thetaOuterCutOff == 0)
+                {
+                    thetaCutOff = (float) Math.Cos(MathFunctions.ConvertToRadians(cutOff));
+                    thetaOuterCutOff = (float) Math.Cos(MathFunctions.ConvertToRadians(outerCutOff));
+                }
+               
+
 		        string name = "spotLight[" + idx.ToString() + "]";
 
 		        shader.Set3Float(name + ".position", position);
@@ -76,8 +88,8 @@ namespace RenderLibrary.Graphics.Rendering
 		        shader.SetFloat(name + ".k0", k0);
 		        shader.SetFloat(name + ".k1", k1);
 		        shader.SetFloat(name + ".k2", k2);
-		        shader.SetFloat(name + ".cutOff", cutOff);
-		        shader.SetFloat(name + ".outerCutOff", outerCutOff);
+		        shader.SetFloat(name + ".cutOff", thetaCutOff);
+		        shader.SetFloat(name + ".outerCutOff", thetaOuterCutOff);
 
 		        shader.Set4Float(name + ".ambient", ambient);
 		        shader.Set4Float(name + ".diffuse", diffuse);

@@ -11,6 +11,12 @@ namespace RenderLibrary.Transform
         private Vector3 refScale;
         private Vector3 refRotation;
 
+        public Vector3 forward;
+        public Vector3 up;
+        public Vector3 right;
+
+        readonly public static Vector3 WorldUp = new Vector3(0,1,0);
+
         public Vector3 position
         {
             get

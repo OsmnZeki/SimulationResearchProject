@@ -21,10 +21,12 @@ Directory otomatik alınacak
 Camera
 ------
 Camera renderlama layerları
-Camera posizyon ve hesaplamaları sistem içerisinde olmalı
+Camera hesaplamaları update içerisinde geçiyor titreme yaratır mı ?
 
-Shader
+shader
 ------
-Mesh renderer sistem içerisinde mesh içerisindeki shaderlar ayrı ayrı mı ayarlanmalı yoksa ShaderReferences içerisinden mi ayarlanmalı ? -> mesh ref içerisinden ayarlanmalı
-
 Lit için sadece tek shader uyumlu
+
+Transform
+---------
+Transform sistem içerisinde yönleri hesapla
