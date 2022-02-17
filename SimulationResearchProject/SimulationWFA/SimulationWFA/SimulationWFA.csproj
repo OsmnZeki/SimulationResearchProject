@@ -91,6 +91,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ShaderReferences.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ClearColorTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\RotationTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorCameraSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EcsEditorTestSystem.cs" />

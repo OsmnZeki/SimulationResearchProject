@@ -1,15 +1,7 @@
-﻿using System;
-using System.Diagnostics;
-using System.Numerics;
-using Dalak.Ecs;
-using MESPSimulationSystem.Math;
+﻿using System.Numerics;
 using RenderLibrary.Graphics;
-using RenderLibrary.Graphics.PreparedModels;
 using RenderLibrary.Graphics.Rendering;
-using RenderLibrary.IO;
-using RenderLibrary.Transform;
 using SimulationSystem.Components;
-using SimulationSystem.EditorEvents;
 using SimulationSystem.SharedData;
 using TheSimulation.SerializedComponent;
 
@@ -31,6 +23,8 @@ namespace SimulationSystem.Systems
             CameraSerialized camSerialized = new CameraSerialized() {
                 speed = 2.5f,
                 zoom = 45f,
+                near = 0.1f,
+                far = 100f,
             };
             camSimObj.AddNewSerializedComponent(world,camSerialized);
             camSimObj.AddAllComponents(world);
@@ -55,7 +49,7 @@ namespace SimulationSystem.Systems
             dirLightSimObj.AddAllComponents(world);
 
             //Lamba entitileri
-            UnlitMaterial unlitMaterial = new UnlitMaterial();
+            /*UnlitMaterial unlitMaterial = new UnlitMaterial();
             unlitMaterial.SetColor(Vector4.One);
             unlitMaterial.SetShader(shaderReferences.defaultUnlitShader);
             Transform[] lambTransforms = new[]
@@ -103,7 +97,7 @@ namespace SimulationSystem.Systems
             simObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
                 material = trolMat,
                 mesh = trolModel.GetMesh(0),
-            };
+            };*/
         }
 
 

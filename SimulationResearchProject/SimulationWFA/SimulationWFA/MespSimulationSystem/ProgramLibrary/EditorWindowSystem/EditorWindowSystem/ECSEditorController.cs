@@ -37,6 +37,7 @@ namespace SimulationSystem.Systems
             //RenderSystems
             systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
 
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);

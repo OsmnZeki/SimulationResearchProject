@@ -10,7 +10,8 @@ namespace SimulationSystem.Components
     {
         public float speed;
         public float zoom;
-        //public Camera camera;
+        public float near;
+        public float far;
 
         public Mat4 GetViewMatrix(Transform transform)
         {
@@ -48,7 +49,7 @@ namespace SimulationSystem.Components
         public Mat4 Perspective(float aspect)
         {
             Mat4 mat4 = new Mat4();
-            mat4.matrixAdress = RenderProgramDLL.Perspective(zoom, aspect, 0.1f, 100.0f);
+            mat4.matrixAdress = RenderProgramDLL.Perspective(zoom, aspect, near, far);
             return mat4;
         }
     }

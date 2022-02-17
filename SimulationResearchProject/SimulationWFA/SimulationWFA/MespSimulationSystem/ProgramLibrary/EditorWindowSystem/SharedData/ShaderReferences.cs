@@ -11,5 +11,9 @@ namespace SimulationSystem.SharedData
         public Shader defaultUnlitShader = new Shader(
                 "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/object.vs",
                 "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/unlit.fs");
+
+        public Shader infiniteGridShader = new Shader(
+                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/InfiniteGridShader/infiniteGrid.vs",
+                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/InfiniteGridShader/infiniteGrid.fs");
     }
 }

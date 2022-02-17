@@ -33,7 +33,7 @@ namespace SimulationSystem.Systems
 
                 var rotation = transformComp.transform.rotation;
                 rotation.X += speed * Time.deltaTime;
-                rotation.Y += speed*2 * Time.deltaTime;
+                //rotation.Y += speed*2 * Time.deltaTime;
                 transformComp.transform.rotation = rotation;
             }*/
         }

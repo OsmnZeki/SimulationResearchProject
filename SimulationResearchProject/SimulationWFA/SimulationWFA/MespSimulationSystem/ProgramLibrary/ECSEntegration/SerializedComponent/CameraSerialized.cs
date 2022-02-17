@@ -12,12 +12,16 @@ namespace TheSimulation.SerializedComponent
     {
         public float speed;
         public float zoom;
+        public float near;
+        public float far;
 
         public override void AddComponent(Entity entity, World world)
         {
             entity.AddComponent<CameraComp>() = new CameraComp() {
                 speed = speed,
                 zoom = zoom,
+                near = near,
+                far = far,
             };
         }
 

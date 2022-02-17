@@ -33,4 +33,7 @@ Transform sistem içerisinde yönleri hesapla
 
 input
 ------
-input çok problemli getkeydown olduğu zaman sıfırlanıyor ? frame sonunda sıfırlanmıyor ecs için düzenle
+
+screen
+------
+800/600 ratiosu c# perspective fonksiyonunda manuel olarak veriliyor c++'tan verilmeli
