@@ -1,16 +1,25 @@
 ﻿using System;
+using System.Numerics;
 using RenderLibrary.DLL;
 
 
 namespace RenderLibrary.IO
 {
-    class Screen
+    public class Screen
     {
         public IntPtr screenAdress;
+
+        public Vector4 clearColor = new Vector4(0f, 0f, 0f, 1.0f);
 
         public void Create(int widht, int height)
         {
             screenAdress = RenderProgramDLL.CreateScreen(widht,height);
+        }
+
+        public void SetClearColor(Vector4 clearColor)
+        {
+            this.clearColor = clearColor;
+            RenderProgramDLL.SetClearColor(screenAdress, new float[]{ clearColor.X,clearColor.Y,clearColor.Z,clearColor.W});
         }
 
         public bool ShouldClose()

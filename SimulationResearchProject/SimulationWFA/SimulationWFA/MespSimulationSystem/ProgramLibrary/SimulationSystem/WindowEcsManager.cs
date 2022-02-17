@@ -1,4 +1,6 @@
-﻿namespace SimulationSystem
+﻿using RenderLibrary.IO;
+
+namespace SimulationSystem
 {
     public class WindowEcsManager
     {

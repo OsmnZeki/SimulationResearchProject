@@ -30,3 +30,7 @@ Lit için sadece tek shader uyumlu
 Transform
 ---------
 Transform sistem içerisinde yönleri hesapla
+
+input
+------
+input çok problemli getkeydown olduğu zaman sıfırlanıyor ? frame sonunda sıfırlanmıyor ecs için düzenle

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using Dalak.Ecs;
 using RenderLibrary.IO;
 using SimulationSystem.Systems;
@@ -14,8 +15,9 @@ namespace SimulationSystem
             Screen screen = new Screen();
             screen.Create(800, 600);
             if (screen.screenAdress == IntPtr.Zero) return;
+            screen.SetClearColor(screen.clearColor);
 
-            windowEcsManager = new WindowEcsManager(new ECSEditorController());
+            windowEcsManager = new WindowEcsManager(new ECSEditorController(screen));
             Time.StartTimer();
 
             windowEcsManager.Awake();
@@ -25,9 +27,11 @@ namespace SimulationSystem
             {
                 Time.UpdateTimer();
                 screen.ProcessWindowInput();
+
                 windowEcsManager.Update();
                 windowEcsManager.LateUpdate();
 
+                //Render
                 screen.Update();
                 windowEcsManager.Render();
                 screen.NewFrame();

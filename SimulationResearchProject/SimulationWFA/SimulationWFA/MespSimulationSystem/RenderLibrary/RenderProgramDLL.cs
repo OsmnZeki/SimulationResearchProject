@@ -29,6 +29,9 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenProcessInput")]
         public static extern void ScreenProcessInput(IntPtr screen);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetClearColor")]
+        public static extern void SetClearColor(IntPtr screen,float[] clearColor);
+
         #endregion
 
         #region ShaderFunction

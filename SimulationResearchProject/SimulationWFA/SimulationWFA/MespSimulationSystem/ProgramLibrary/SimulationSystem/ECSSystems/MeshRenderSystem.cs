@@ -43,7 +43,6 @@ namespace SimulationSystem.Systems
 
                 if (meshRendererComp.meshRenderer == null)
                 {
-                    Console.WriteLine("sds");
                     meshRendererComp.SetMeshRenderer();
                 }
 

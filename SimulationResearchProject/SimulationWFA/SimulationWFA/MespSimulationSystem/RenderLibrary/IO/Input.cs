@@ -1,4 +1,5 @@
 ﻿using RenderLibrary.DLL;
+using SimulationSystem.Systems;
 
 namespace RenderLibrary.IO
 {
@@ -6,12 +7,30 @@ namespace RenderLibrary.IO
     {
         public static bool GetKeyDown(KeyCode keycode)
         {
-            return RenderProgramDLL.GetKeyDown((int)keycode);
+            if (InputSystem.keyDownMask.IsSet((int)keycode))
+            {
+                return true;
+            }
+            else if (RenderProgramDLL.GetKeyDown((int)keycode))
+            {
+                InputSystem.keyDownMask.SetBit((int)keycode);
+            }
+
+            return InputSystem.keyDownMask.IsSet((int)keycode);
         }
 
         public static bool GetKeyUp(KeyCode keycode)
         {
-            return RenderProgramDLL.GetKeyUp((int)keycode);
+            if (InputSystem.keyUpMask.IsSet((int)keycode))
+            {
+                return true;
+            }
+            else if (RenderProgramDLL.GetKeyUp((int)keycode))
+            {
+                InputSystem.keyUpMask.SetBit((int)keycode);
+            }
+
+            return InputSystem.keyUpMask.IsSet((int)keycode);
         }
 
         public static bool GetKey(KeyCode keycode)
@@ -21,12 +40,30 @@ namespace RenderLibrary.IO
 
         public static bool GetMouseKeyDown(int key)
         {
-            return RenderProgramDLL.GetMouseKeyDown(key);
+            if (InputSystem.mouseKeyDownMask.IsSet(key))
+            {
+                return true;
+            }
+            else if (RenderProgramDLL.GetMouseKeyDown(key))
+            {
+                InputSystem.mouseKeyDownMask.SetBit(key);
+            }
+
+            return InputSystem.mouseKeyDownMask.IsSet(key);
         }
 
         public static bool GetMouseKeyUp(int key)
         {
-            return RenderProgramDLL.GetMouseKeyUp(key);
+            if (InputSystem.mouseKeyUpMask.IsSet(key))
+            {
+                return true;
+            }
+            else if (RenderProgramDLL.GetMouseKeyUp(key))
+            {
+                InputSystem.mouseKeyUpMask.SetBit(key);
+            }
+
+            return InputSystem.mouseKeyUpMask.IsSet(key);
         }
 
         public static bool GetMouseKey(int key)

@@ -27,12 +27,16 @@ namespace SimulationSystem.Systems
                 float velocity = cameraComp.speed * Time.deltaTime;
                 CameraMoveInput(transformComp.transform, velocity);
 
-                double dx = Input.GetMouseDx();
-                double dy = Input.GetMouseDy();
-                if (dx != 0 || dy != 0)
+                if (Input.GetMouseKey(1))
                 {
-                    UpdateCameraDirection(transformComp.transform, dx, dy);
+                    double dx = Input.GetMouseDx();
+                    double dy = Input.GetMouseDy();
+                    if (dx != 0 || dy != 0)
+                    {
+                        UpdateCameraDirection(transformComp.transform, dx, dy);
+                    }
                 }
+                
 
                 double scrollDy = Input.GetMouseScrolDy();
                 if (scrollDy != 0)
@@ -83,8 +87,6 @@ namespace SimulationSystem.Systems
             {
                 transform.position -= transform.forward * velocity;
             }
-
-            
         }
 
         public void UpdateCameraDirection(Transform transform,double dx, double dy)

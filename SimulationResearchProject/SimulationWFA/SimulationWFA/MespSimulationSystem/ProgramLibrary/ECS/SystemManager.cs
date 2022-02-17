@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using SimulationSystem.Timer;
 
 namespace Dalak.Ecs
 {
@@ -162,7 +163,7 @@ namespace Dalak.Ecs
             {
                 for (int i = 0; i < system.callLaterActions.numberOfItems; i++)
                 {
-                    system.callLaterActions[i].timer -= DTime.deltaTime;
+                    system.callLaterActions[i].timer -= Time.deltaTime;
                     if (system.callLaterActions[i].timer <= 0)
                     {
                         system.callLaterActions[i].action.Invoke();

@@ -95,31 +95,21 @@ namespace SimulationSystem.Systems
             simObj.entity.GetComponent<TransformComp>().transform.position = new System.Numerics.Vector3(0, 0, -10);
             simObj.entity.GetComponent<TransformComp>().transform.rotation = new System.Numerics.Vector3(0, 0, 0);
             
-
             trolModel = new ModelLoading();
             trolModel.LoadModel("C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Models/Trol/scene.gltf");
             trolMat = trolModel.GetMaterial(0);
             trolMat.SetShader(shaderReferences.defaultLitShader);
 
+            simObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                material = trolMat,
+                mesh = trolModel.GetMesh(0),
+            };
         }
 
 
         public override void Update()
         {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                simObj.entity.AddComponent < MeshRendererComp >() = new MeshRendererComp {
-                    material = trolMat,
-                    mesh = trolModel.GetMesh(0),
-                };
-            }
-
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                
-                
-                
-            }
+            
         }
     }
 }
