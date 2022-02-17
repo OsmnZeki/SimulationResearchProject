@@ -8,7 +8,7 @@ using SimulationSystem.Components;
 
 namespace TheSimulation.SerializedComponent
 {
-    class CameraSerializedComponent : SimulationSystem.ECS.Entegration.SerializedComponent
+    class CameraSerialized : SimulationSystem.ECS.Entegration.SerializedComponent
     {
         public override void AddComponent(Entity entity, World world)
         {

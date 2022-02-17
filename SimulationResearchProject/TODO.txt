@@ -23,3 +23,8 @@ Camera
 Camera renderlama layerları
 Camera posizyon ve hesaplamaları sistem içerisinde olmalı
 
+Shader
+------
+Mesh renderer sistem içerisinde mesh içerisindeki shaderlar ayrı ayrı mı ayarlanmalı yoksa ShaderReferences içerisinden mi ayarlanmalı ? -> mesh ref içerisinden ayarlanmalı
+
+Lit için sadece tek shader uyumlu

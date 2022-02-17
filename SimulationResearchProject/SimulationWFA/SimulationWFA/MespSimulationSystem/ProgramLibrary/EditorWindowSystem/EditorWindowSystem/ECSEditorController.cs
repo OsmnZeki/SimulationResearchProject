@@ -1,4 +1,5 @@
-﻿using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.Systems;
+﻿using SimulationSystem.SharedData;
+using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.Systems;
 
 namespace SimulationSystem.Systems
 {
@@ -8,7 +9,7 @@ namespace SimulationSystem.Systems
         
         public override void OnInject()
         {
-            
+            systemManager.Inject(new ShaderReferences());
         }
 
         public override void AddSystems() // Ecs Sistemleri
@@ -17,6 +18,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new EcsEditorTestSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
