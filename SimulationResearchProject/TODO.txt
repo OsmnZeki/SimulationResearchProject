@@ -5,9 +5,6 @@ renderProgramdan çıkartılan dll içerisinde assimpin dll'ini göremiyor --> (
 
 Osman
 ------
-EventManager sorunlarını çöz
-Kamera kontrolü
-Işıklar
 Grid sistemi
 
 
@@ -57,3 +54,4 @@ screen fonksiyonları (opengl screen.setparameters içerisindeki) dll için par�
 simobj
 ------
 simobj ve entity ayrı mı olmalı ? yoksa aynı anda createlenebilir mi ?
+addcomponent, simobj için serailizedcomp list entegre çalışmıyor
