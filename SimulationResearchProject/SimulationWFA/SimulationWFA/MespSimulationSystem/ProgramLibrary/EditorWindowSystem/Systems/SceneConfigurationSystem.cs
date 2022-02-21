@@ -2,6 +2,7 @@
 using RenderLibrary.Graphics;
 using RenderLibrary.Graphics.PreparedModels;
 using RenderLibrary.Graphics.Rendering;
+using RenderLibrary.Shaders;
 using RenderLibrary.Transform;
 using SimulationSystem.Components;
 using SimulationSystem.SharedData;
@@ -9,17 +10,27 @@ using TheSimulation.SerializedComponent;
 
 namespace SimulationSystem.Systems
 {
-    public class EcsEditorTestSystem : Dalak.Ecs.System
+    public class SceneConfigurationSystem : Dalak.Ecs.System
     {
-        ShaderReferences shaderReferences = null;
-        Material trolMat;
-        ModelLoading trolModel;
-
-        SimObject simObj;
+        ShaderDatas shaderDatas = null;
+        ModelPaths modelReferences = null;
 
         public override void Awake()
         {
-            //Camera entity
+            CreateCamera();
+
+            CreateDirectionalLight();
+
+            CreateLambs();
+
+            //CreateTrol();
+
+            CreatePlane();
+        }
+
+        //Camera entity
+        public void CreateCamera()
+        {
             var camSimObj = SimObject.NewSimObject();
             camSimObj.CreateEntity(world);
             CameraSerialized camSerialized = new CameraSerialized() {
@@ -28,7 +39,7 @@ namespace SimulationSystem.Systems
                 near = 0.1f,
                 far = 100f,
             };
-            camSimObj.AddNewSerializedComponent(world,camSerialized);
+            camSimObj.AddNewSerializedComponent(world, camSerialized);
             camSimObj.AddAllComponents(world);
             camSimObj.entity.AddComponent<SpotLightComp>() = new SpotLightComp() {
                 spotLight = new Lights.SpotLight() {
@@ -39,8 +50,11 @@ namespace SimulationSystem.Systems
                     specular = Vector4.One,
                 },
             };
-            
-            //Directional light entity
+        }
+
+        //Directional light entity
+        public void CreateDirectionalLight()
+        {
             var dirLightSimObj = SimObject.NewSimObject();
             dirLightSimObj.CreateEntity(world);
             DirectionalLightSerialized dirLightSerialized = new DirectionalLightSerialized();
@@ -49,11 +63,17 @@ namespace SimulationSystem.Systems
             dirLightSerialized.specular = new Vector4(0.75f, 0.75f, 0.75f, 1.0f);
             dirLightSimObj.AddNewSerializedComponent(world, dirLightSerialized);
             dirLightSimObj.AddAllComponents(world);
+        }
 
-            //Lamba entitileri
+        //Lamba entitileri
+        public void CreateLambs()
+        {
+            UnlitShader lambShader = new UnlitShader();
+            shaderDatas.unlitShaders.Add(lambShader);
+
             UnlitMaterial unlitMaterial = new UnlitMaterial();
             unlitMaterial.SetColor(Vector4.One);
-            unlitMaterial.SetShader(shaderReferences.defaultUnlitShader);
+            unlitMaterial.SetShader(lambShader.shader);
             Transform[] lambTransforms = new[]
             {
                 new Transform(new Vector3(0.7f, 0.2f, 2.0f),new Vector3(.25f), Vector3.Zero),
@@ -64,7 +84,7 @@ namespace SimulationSystem.Systems
 
             CubeMesh cubeModel = new CubeMesh();
             SimObject[] lambSimObj = new SimObject[4];
-            for(int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
                 lambSimObj[i] = SimObject.NewSimObject();
                 lambSimObj[i].CreateEntity(world);
@@ -82,19 +102,25 @@ namespace SimulationSystem.Systems
                     mesh = cubeModel,
                 };
             }
+        }
 
-            //Trol entity
-            simObj = SimObject.NewSimObject();
+        //Trol entity
+        public void CreateTrol()
+        {
+            var simObj = SimObject.NewSimObject();
             simObj.CreateEntity(world);
             simObj.AddAllComponents(world);
             simObj.entity.GetComponent<TransformComp>().transform.scale = new System.Numerics.Vector3(.05f);
             simObj.entity.GetComponent<TransformComp>().transform.position = new System.Numerics.Vector3(0, 0, -10);
             simObj.entity.GetComponent<TransformComp>().transform.rotation = new System.Numerics.Vector3(0, 0, 0);
-            
-            trolModel = new ModelLoading();
-            trolModel.LoadModel("C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Models/Trol/scene.gltf");
-            trolMat = trolModel.GetMaterial(0);
-            trolMat.SetShader(shaderReferences.defaultLitShader);
+
+            LitShader trolShader = new LitShader();
+            shaderDatas.litShaders.Add(trolShader);
+
+            var trolModel = new ModelLoading();
+            trolModel.LoadModel(modelReferences.TrolModelPath);
+            var trolMat = trolModel.GetMaterial(0);
+            trolMat.SetShader(trolShader.shader);
 
             simObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
                 material = trolMat,
@@ -102,10 +128,28 @@ namespace SimulationSystem.Systems
             };
         }
 
-
-        public override void Update()
+        public void CreatePlane()
         {
-            
+            var planeSimObj = SimObject.NewSimObject();
+            planeSimObj.CreateEntity(world);
+            planeSimObj.AddAllComponents(world);
+
+            var groundShader = new LitShader();
+            shaderDatas.litShaders.Add(groundShader);
+
+            CubeMesh cubeModel = new CubeMesh();
+            LitMaterial groundMaterial = LitMaterial.gold;
+            groundMaterial.SetShader(groundShader.shader);
+
+            ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
+            transform.position = new Vector3(0, -1f, 10);
+            transform.scale = new Vector3(10, .1f, 10); ;
+
+            planeSimObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                material = groundMaterial,
+                mesh = cubeModel,
+            };
         }
+
     }
 }

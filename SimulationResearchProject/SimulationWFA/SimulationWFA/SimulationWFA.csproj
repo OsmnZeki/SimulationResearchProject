@@ -89,12 +89,13 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorEventsManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ShaderReferences.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ModelPaths.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ShaderDatas.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ClearColorTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\RotationTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorCameraSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EcsEditorTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\SceneConfigurationSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorEventListenSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorLoadingSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\MeshRendererSerialized.cs" />
@@ -107,6 +108,8 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\PointLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SpotLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\LitShader.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\UnlitShader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\BitSet.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentIdx.cs" />

@@ -25,7 +25,7 @@ Camera hesaplamaları update içerisinde geçiyor titreme yaratır mı ?
 
 shader
 ------
-Lit için sadece tek shader uyumlu
+
 
 Transform
 ---------
@@ -47,3 +47,13 @@ opengl daha tam bitmedi (opacity ve depth). bitirdikten sonra devam et
 render
 ------
 sadece triangle çizdirtiyor ve mesh gerekiyor. meshsiz çizgi çizdirebilmek için güzel bir sistem bul
+
+
+screen
+------
+screen fonksiyonları (opengl screen.setparameters içerisindeki) dll için parçalanabilir
+
+
+simobj
+------
+simobj ve entity ayrı mı olmalı ? yoksa aynı anda createlenebilir mi ?

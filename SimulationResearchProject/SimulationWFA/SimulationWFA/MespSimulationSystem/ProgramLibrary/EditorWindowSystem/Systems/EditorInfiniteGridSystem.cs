@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+﻿/*using System.Numerics;
 using Dalak.Ecs;
 using MESPSimulationSystem.Math;
 using RenderLibrary.Graphics;
@@ -15,7 +15,7 @@ namespace SimulationSystem.Systems
     { 
         private Filter<CameraComp, TransformComp> cameraFilter = null;
 
-        ShaderReferences shaderReferences;
+        ShaderDatas shaderReferences;
         UnlitMaterial infiniteMaterial;
         MeshRenderer meshRenderer;
         Transform transform;
@@ -70,4 +70,4 @@ namespace SimulationSystem.Systems
             return infiniteGridMesh;
         }
     }
-}
+}*/

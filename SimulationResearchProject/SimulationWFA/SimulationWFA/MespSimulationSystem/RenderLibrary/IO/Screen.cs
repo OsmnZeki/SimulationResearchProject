@@ -9,7 +9,7 @@ namespace RenderLibrary.IO
     {
         public IntPtr screenAdress;
 
-        public Vector4 clearColor = new Vector4(0f, 0f, 0f, 1.0f);
+        public Vector4 clearColor = new Vector4(.2f, .2f, .5f, 1.0f);
 
         public void Create(int widht, int height)
         {

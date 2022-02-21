@@ -17,7 +17,8 @@ namespace SimulationSystem.Systems
         public override void OnInject()
         {
             systemManager.Inject(screen);
-            systemManager.Inject(new ShaderReferences());
+            systemManager.Inject(new ShaderDatas());
+            systemManager.Inject(new ModelPaths());
         }
 
         public override void AddSystems() // Ecs Sistemleri
@@ -25,8 +26,8 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
 
             //Custom Systems
-            systemManager.AddSystem(new EcsEditorTestSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new RotationTestSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new SceneConfigurationSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new RotationTestSystem(), GenericSystemGroup);
             //systemManager.AddSystem(new ClearColorTestSystem(), GenericSystemGroup);
 
             //

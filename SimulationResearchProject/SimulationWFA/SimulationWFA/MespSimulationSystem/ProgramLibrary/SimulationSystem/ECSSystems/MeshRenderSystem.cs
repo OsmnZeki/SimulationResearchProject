@@ -12,7 +12,7 @@ namespace SimulationSystem.Systems
 
         private Filter<CameraComp,TransformComp> cameraFilter = null;
 
-        ShaderReferences shaderReferences = null;
+        ShaderDatas shaderDatas = null;
 
         public override void Awake()
         {
@@ -28,13 +28,22 @@ namespace SimulationSystem.Systems
             Mat4 view = cameraComp.GetViewMatrix(camTransformComp.transform);
             Mat4 projection = cameraComp.Perspective(800f / 600f);
 
-            shaderReferences.defaultLitShader.Activate();
-            shaderReferences.defaultLitShader.SetMat4("view", view);
-            shaderReferences.defaultLitShader.SetMat4("projection", projection);
+            for(int i = 0; i< shaderDatas.litShaders.Count; i++)
+            {
+                shaderDatas.litShaders[i].shader.Activate();
+                shaderDatas.litShaders[i].shader.SetMat4("view", view);
+                shaderDatas.litShaders[i].shader.SetMat4("projection", projection);
+            }
 
-            shaderReferences.defaultUnlitShader.Activate();
-            shaderReferences.defaultUnlitShader.SetMat4("view", view);
-            shaderReferences.defaultUnlitShader.SetMat4("projection", projection);
+            for(int i = 0;i< shaderDatas.unlitShaders.Count; i++)
+            {
+                shaderDatas.unlitShaders[i].shader.Activate();
+                shaderDatas.unlitShaders[i].shader.SetMat4("view", view);
+                shaderDatas.unlitShaders[i].shader.SetMat4("projection", projection);
+            }
+            
+
+           
 
             foreach (var m in meshRendererFilter)
             {
