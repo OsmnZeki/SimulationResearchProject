@@ -1,6 +1,8 @@
 ﻿using System.Numerics;
 using RenderLibrary.Graphics;
+using RenderLibrary.Graphics.PreparedModels;
 using RenderLibrary.Graphics.Rendering;
+using RenderLibrary.Transform;
 using SimulationSystem.Components;
 using SimulationSystem.SharedData;
 using TheSimulation.SerializedComponent;
@@ -49,7 +51,7 @@ namespace SimulationSystem.Systems
             dirLightSimObj.AddAllComponents(world);
 
             //Lamba entitileri
-            /*UnlitMaterial unlitMaterial = new UnlitMaterial();
+            UnlitMaterial unlitMaterial = new UnlitMaterial();
             unlitMaterial.SetColor(Vector4.One);
             unlitMaterial.SetShader(shaderReferences.defaultUnlitShader);
             Transform[] lambTransforms = new[]
@@ -97,7 +99,7 @@ namespace SimulationSystem.Systems
             simObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
                 material = trolMat,
                 mesh = trolModel.GetMesh(0),
-            };*/
+            };
         }
 
 

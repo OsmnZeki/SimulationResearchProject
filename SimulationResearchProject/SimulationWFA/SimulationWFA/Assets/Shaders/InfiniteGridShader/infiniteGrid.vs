@@ -7,16 +7,21 @@ out vec3 fragPos;
 out vec3 normal;
 out vec2 texCoord;
 
+out vec3 nearPoint;
+out vec3 farPoint;
 
 uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-void main(){
-    fragPos = vec3(model*vec4(aPos,1.0f));
-    normal = mat3(transpose(inverse(model))) * aNormal;
-    
-    gl_Position = projection * view * vec4(fragPos,1.0f);
-    texCoord = aTexCoord;
 
+
+void main(){
+    
+    fragPos = aPos.xyz;
+    vec3 p = aPos.xyz;
+    nearPoint = vec3(p.x,p.y,0.1);
+    farPoint = vec3(p.x,p.y,100.0);
+    
+    gl_Position = vec4(aPos,1.0f);
 }

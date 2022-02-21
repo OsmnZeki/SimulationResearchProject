@@ -37,3 +37,13 @@ input
 screen
 ------
 800/600 ratiosu c# perspective fonksiyonunda manuel olarak veriliyor c++'tan verilmeli
+
+
+infiniteGrid
+------------
+opengl daha tam bitmedi (opacity ve depth). bitirdikten sonra devam et
+
+
+render
+------
+sadece triangle çizdirtiyor ve mesh gerekiyor. meshsiz çizgi çizdirebilmek için güzel bir sistem bul
