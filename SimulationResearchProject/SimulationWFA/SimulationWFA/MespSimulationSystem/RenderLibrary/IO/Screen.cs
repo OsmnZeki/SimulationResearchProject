@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using RenderLibrary.DLL;
-
+using RenderLibrary.OpenGLCustomFunctions;
 
 namespace RenderLibrary.IO
 {
@@ -14,6 +14,11 @@ namespace RenderLibrary.IO
         public void Create(int widht, int height)
         {
             screenAdress = RenderProgramDLL.CreateScreen(widht,height);
+        }
+
+        public void SetParameters()
+        {
+            RenderProgramDLL.ScreenSetParameters(screenAdress);
         }
 
         public void SetClearColor(Vector4 clearColor)
@@ -35,6 +40,7 @@ namespace RenderLibrary.IO
         public void Update()
         {
             RenderProgramDLL.ScreenUpdate(screenAdress);
+            OpenGLCustomFunctions.OpenGLFunctions.GLClear(OpenGLEnum.GL_COLOR_BUFFER_BIT | OpenGLEnum.GL_DEPTH_BUFFER_BIT | OpenGLEnum.GL_STENCIL_BUFFER_BIT);
         }
 
         public void NewFrame()

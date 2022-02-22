@@ -2,13 +2,14 @@
 using Dalak.Ecs;
 using MESPSimulationSystem.Math;
 using SimulationSystem.Components;
+using SimulationSystem.ECSComponents;
 using SimulationSystem.SharedData;
 
 namespace SimulationSystem.Systems
 {
     public class MeshRenderSystem : Dalak.Ecs.System
     {
-        private Filter<MeshRendererComp, TransformComp> meshRendererFilter = null;
+        private Filter<MeshRendererComp, TransformComp>.Exclude<OutlineBorderRenderComp> meshRendererFilter = null;
 
         private Filter<CameraComp,TransformComp> cameraFilter = null;
 
@@ -28,23 +29,8 @@ namespace SimulationSystem.Systems
             Mat4 view = cameraComp.GetViewMatrix(camTransformComp.transform);
             Mat4 projection = cameraComp.Perspective(800f / 600f);
 
-            for(int i = 0; i< shaderDatas.litShaders.Count; i++)
-            {
-                shaderDatas.litShaders[i].shader.Activate();
-                shaderDatas.litShaders[i].shader.SetMat4("view", view);
-                shaderDatas.litShaders[i].shader.SetMat4("projection", projection);
-            }
-
-            for(int i = 0;i< shaderDatas.unlitShaders.Count; i++)
-            {
-                shaderDatas.unlitShaders[i].shader.Activate();
-                shaderDatas.unlitShaders[i].shader.SetMat4("view", view);
-                shaderDatas.unlitShaders[i].shader.SetMat4("projection", projection);
-            }
+            shaderDatas.SetupDefaultShadersToRender(view,projection);
             
-
-           
-
             foreach (var m in meshRendererFilter)
             {
                 ref var transformComp = ref meshRendererFilter.Get2(m);

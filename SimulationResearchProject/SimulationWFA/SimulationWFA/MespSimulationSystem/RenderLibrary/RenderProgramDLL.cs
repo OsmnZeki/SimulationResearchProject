@@ -14,6 +14,9 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "CreateScreen")]
         public static extern IntPtr CreateScreen(int width, int height);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenSetParameters")]
+        public static extern void ScreenSetParameters(IntPtr screen);
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenShouldClose")]
         public static extern bool ScreenShouldClose(IntPtr screen);
 
@@ -226,7 +229,6 @@ namespace RenderLibrary.DLL
         public static extern void CleanUpMeshRenderer(IntPtr meshRendererAdress);
         
         #endregion
-
         
         #region TransformFunctions
 
@@ -243,5 +245,28 @@ namespace RenderLibrary.DLL
         public static extern void SetTransformRotation(IntPtr transformAdress, float[] rotation);
 
         #endregion
+
+        #region OpenGLFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLEnable")]
+        public static extern void OpenGLEnable(int glEnum);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLDisable")]
+        public static extern void OpenGLDisable(int glEnum);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLClear")]
+        public static extern void OpenGLClear(int glEnum);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLStencilMask")]
+        public static extern void OpenGLStencilMask(int mask);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLStencilFunc")]
+        public static extern void OpenGLStencilFunc(int func, int refValue, int mask);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLStencilOp")]
+        public static extern void OpenGLStencilOp(int sfail, int dpfail, int dppass);
+
+        #endregion
+
     }
 }

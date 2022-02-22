@@ -2,6 +2,7 @@ renderProgramdan çıkartılan dll içerisinde assimpin dll'ini göremiyor --> (
 	*cmake ile assimp.dll'in ana dllye bağlanması gerekiyor (aynı şekilde opengl.dll'de)
 	*ilk dll çıkartırken ki hatalar da glwf3.dll'den dolayı olabilir mi ? nasıl çözüldü ?
 
+renderprogramDLL manuel olarak atılmamalı ?
 
 Osman
 ------
@@ -12,7 +13,7 @@ Grid sistemi
 	*entegresyon için kapatılan debug.assertleri daha sonrasında aç
 
 
-Directory otomatik alınacak
+Directory otomatik alınacak (asset folderi için)
 
 
 Camera

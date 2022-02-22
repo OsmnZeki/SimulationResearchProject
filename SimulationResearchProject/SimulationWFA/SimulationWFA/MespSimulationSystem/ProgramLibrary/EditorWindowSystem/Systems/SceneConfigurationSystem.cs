@@ -5,6 +5,7 @@ using RenderLibrary.Graphics.Rendering;
 using RenderLibrary.Shaders;
 using RenderLibrary.Transform;
 using SimulationSystem.Components;
+using SimulationSystem.ECSComponents;
 using SimulationSystem.SharedData;
 using TheSimulation.SerializedComponent;
 
@@ -149,6 +150,8 @@ namespace SimulationSystem.Systems
                 material = groundMaterial,
                 mesh = cubeModel,
             };
+
+            planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
         }
 
     }
