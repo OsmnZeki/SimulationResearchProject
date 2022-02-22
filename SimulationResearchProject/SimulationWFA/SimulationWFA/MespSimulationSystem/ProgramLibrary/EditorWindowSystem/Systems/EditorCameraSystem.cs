@@ -51,6 +51,10 @@ namespace SimulationSystem.Systems
             foreach(var c in cameraFilter)
             {
                 ref var cameraComp = ref cameraFilter.Get1(c);
+                ref var transformComp = ref cameraFilter.Get2(c);
+
+                cameraComp.view = cameraComp.GetViewMatrix(transformComp.transform);
+                cameraComp.projection = cameraComp.Perspective(800f / 600f);
             }
         }
 

@@ -5,8 +5,8 @@ namespace RenderLibrary.Shaders
     public class UnlitShader
     {
         public Shader shader = new Shader(
-                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/object.vs",
-                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/unlit.fs");
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/object.vs",
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/unlit.fs");
 
 
         //TODO: grid sistemi hazır olduğu zaman aç

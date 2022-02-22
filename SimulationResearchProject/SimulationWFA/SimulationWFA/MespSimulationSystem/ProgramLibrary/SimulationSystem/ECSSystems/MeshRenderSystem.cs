@@ -11,7 +11,7 @@ namespace SimulationSystem.Systems
     {
         private Filter<MeshRendererComp, TransformComp>.Exclude<OutlineBorderRenderComp> meshRendererFilter = null;
 
-        private Filter<CameraComp,TransformComp> cameraFilter = null;
+        private Filter<CameraComp> cameraFilter = null;
 
         ShaderDatas shaderDatas = null;
 
@@ -24,12 +24,8 @@ namespace SimulationSystem.Systems
         public override void Render()
         {
             ref var cameraComp = ref cameraFilter.Get1(0);
-            ref var camTransformComp = ref cameraFilter.Get2(0);
 
-            Mat4 view = cameraComp.GetViewMatrix(camTransformComp.transform);
-            Mat4 projection = cameraComp.Perspective(800f / 600f);
-
-            shaderDatas.SetupDefaultShadersToRender(view,projection);
+            shaderDatas.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
             
             foreach (var m in meshRendererFilter)
             {
@@ -41,8 +37,7 @@ namespace SimulationSystem.Systems
                     meshRendererComp.SetMeshRenderer();
                 }
 
-                meshRendererComp.material.GetShader().Activate();
-                meshRendererComp.meshRenderer.Render(transformComp.transform);
+                meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
             }
         }
 

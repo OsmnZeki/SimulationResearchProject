@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
+using ProgramLibrary;
 using RenderLibrary.Graphics;
 using RenderLibrary.Graphics.PreparedModels;
 using RenderLibrary.Graphics.Rendering;
@@ -18,6 +20,8 @@ namespace SimulationSystem.Systems
 
         public override void Awake()
         {
+            Console.WriteLine(SimPath.currentDirectory);
+
             CreateCamera();
 
             CreateDirectionalLight();

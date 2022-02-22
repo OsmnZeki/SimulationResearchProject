@@ -27,7 +27,7 @@ shader
 
 Transform
 ---------
-Transform sistem içerisinde yönleri hesapla
+
 
 input
 ------

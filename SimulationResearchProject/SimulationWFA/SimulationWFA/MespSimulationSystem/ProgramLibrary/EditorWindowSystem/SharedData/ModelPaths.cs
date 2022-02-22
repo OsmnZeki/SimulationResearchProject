@@ -8,6 +8,6 @@ namespace SimulationSystem.SharedData
 {
     class ModelPaths
     {
-        public string TrolModelPath = "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Models/Trol/scene.gltf";
+        public string TrolModelPath = "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Models/Trol/scene.gltf";
     }
 }

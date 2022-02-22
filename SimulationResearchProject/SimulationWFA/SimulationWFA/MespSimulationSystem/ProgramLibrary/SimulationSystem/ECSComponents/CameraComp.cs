@@ -13,6 +13,9 @@ namespace SimulationSystem.Components
         public float near;
         public float far;
 
+        public Mat4 view;
+        public Mat4 projection;
+
         public Mat4 GetViewMatrix(Transform transform)
         {
             float[] camPos = { transform.position.X, transform.position.Y, transform.position.Z };

@@ -19,7 +19,6 @@ namespace SimulationSystem.Components
             {
                 meshRenderer = new MeshRenderer();
                 meshRenderer.SetMesh(mesh);
-                meshRenderer.SetMaterial(material);
                 meshRenderer.Setup();
             }
         }

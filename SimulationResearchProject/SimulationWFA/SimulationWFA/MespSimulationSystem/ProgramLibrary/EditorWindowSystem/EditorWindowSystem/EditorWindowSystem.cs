@@ -3,6 +3,7 @@ using RenderLibrary.IO;
 using SimulationSystem.Systems;
 using SimulationSystem.Timer;
 using RenderLibrary.OpenGLCustomFunctions;
+using RenderLibrary.DLL;
 
 namespace SimulationSystem
 {
@@ -20,8 +21,6 @@ namespace SimulationSystem
             OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
             OpenGLFunctions.GLEnable(OpenGLEnum.GL_STENCIL_TEST);
             OpenGLFunctions.GLStencilMask(0);
-            
-            
 
             windowEcsManager = new WindowEcsManager(new ECSEditorController(screen));
             Time.StartTimer();

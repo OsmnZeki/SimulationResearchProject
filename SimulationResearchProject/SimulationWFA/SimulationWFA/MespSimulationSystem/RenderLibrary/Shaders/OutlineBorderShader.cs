@@ -5,7 +5,7 @@ namespace RenderLibrary.Shaders
     public class OutlineBorderShader
     {
         public Shader shader = new Shader(
-                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/object.vs",
-                "C:/Unity/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/OutlineShader/Outline.fs");
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/object.vs",
+                "D:/GitRepos/SimulationResearchProject/SimulationResearchProject/SimulationWFA/SimulationWFA/Assets/Shaders/OutlineShader/Outline.fs");
     }
 }

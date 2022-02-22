@@ -104,6 +104,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\LightSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TransformSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimPath.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\CameraComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\DirectionalLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\OutlineBorderRenderComp.cs" />

@@ -216,14 +216,11 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetMeshToMeshRenderer")]
         public static extern void SetMeshToMeshRenderer(IntPtr meshRendererAdress, IntPtr meshAdress);
         
-        [DllImport(RenderProgramDLLPath, EntryPoint = "SetMaterialToMeshRenderer")]
-        public static extern void SetMaterialToMeshRenderer(IntPtr meshRendererAdress, IntPtr materialAdress);
-        
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetupMeshRenderer")]
         public static extern void SetupMeshRenderer(IntPtr meshRendererAdress);
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "RenderMeshRenderer")]
-        public static extern void RenderMeshRenderer(IntPtr meshRendererAdress, IntPtr transfromAdress);
+        public static extern void RenderMeshRenderer(IntPtr meshRendererAdress, IntPtr transfromAdress, IntPtr materialAdress);
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "CleanUpMeshRenderer")]
         public static extern void CleanUpMeshRenderer(IntPtr meshRendererAdress);
@@ -265,6 +262,9 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLStencilOp")]
         public static extern void OpenGLStencilOp(int sfail, int dpfail, int dppass);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLCheckStencil")]
+        public static extern void OpenGLCheckStencil();
 
         #endregion
 

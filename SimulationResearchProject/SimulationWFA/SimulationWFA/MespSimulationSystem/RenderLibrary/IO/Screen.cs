@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing.Imaging;
 using System.Numerics;
 using RenderLibrary.DLL;
 using RenderLibrary.OpenGLCustomFunctions;
@@ -40,7 +41,7 @@ namespace RenderLibrary.IO
         public void Update()
         {
             RenderProgramDLL.ScreenUpdate(screenAdress);
-            OpenGLCustomFunctions.OpenGLFunctions.GLClear(OpenGLEnum.GL_COLOR_BUFFER_BIT | OpenGLEnum.GL_DEPTH_BUFFER_BIT | OpenGLEnum.GL_STENCIL_BUFFER_BIT);
+            OpenGLFunctions.GLClear(OpenGLEnum.GL_COLOR_BUFFER_BIT | OpenGLEnum.GL_DEPTH_BUFFER_BIT | OpenGLEnum.GL_STENCIL_BUFFER_BIT);
         }
 
         public void NewFrame()
