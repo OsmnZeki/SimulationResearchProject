@@ -15,12 +15,11 @@ namespace SimulationSystem.Systems
 {
     public class SceneConfigurationSystem : Dalak.Ecs.System
     {
-        ShaderDatas shaderDatas = null;
+        SceneShaderManager sceneShaderManager = null;
         ModelPaths modelReferences = null;
 
         public override void Awake()
         {
-            Console.WriteLine(SimPath.currentDirectory);
 
             CreateCamera();
 
@@ -74,7 +73,7 @@ namespace SimulationSystem.Systems
         public void CreateLambs()
         {
             UnlitShader lambShader = new UnlitShader();
-            shaderDatas.unlitShaders.Add(lambShader);
+            sceneShaderManager.unlitShaders.Add(lambShader);
 
             UnlitMaterial unlitMaterial = new UnlitMaterial();
             unlitMaterial.SetColor(Vector4.One);
@@ -120,7 +119,7 @@ namespace SimulationSystem.Systems
             simObj.entity.GetComponent<TransformComp>().transform.rotation = new System.Numerics.Vector3(0, 0, 0);
 
             LitShader trolShader = new LitShader();
-            shaderDatas.litShaders.Add(trolShader);
+            sceneShaderManager.litShaders.Add(trolShader);
 
             var trolModel = new ModelLoading();
             trolModel.LoadModel(modelReferences.TrolModelPath);
@@ -140,7 +139,7 @@ namespace SimulationSystem.Systems
             planeSimObj.AddAllComponents(world);
 
             var groundShader = new LitShader();
-            shaderDatas.litShaders.Add(groundShader);
+            sceneShaderManager.litShaders.Add(groundShader);
 
             CubeMesh cubeModel = new CubeMesh();
             LitMaterial groundMaterial = LitMaterial.gold;

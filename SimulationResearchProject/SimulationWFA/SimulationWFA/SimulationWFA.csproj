@@ -90,7 +90,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ModelPaths.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ShaderDatas.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\SceneShaderManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ClearColorTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\OutlineBorderRenderSystem.cs" />

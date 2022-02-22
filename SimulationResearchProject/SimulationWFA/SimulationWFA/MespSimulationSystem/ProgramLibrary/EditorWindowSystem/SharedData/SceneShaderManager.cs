@@ -5,13 +5,13 @@ using RenderLibrary.Shaders;
 
 namespace SimulationSystem.SharedData
 {
-    public class ShaderDatas
+    public class SceneShaderManager
     {
         public List<LitShader> litShaders;
         public List<UnlitShader> unlitShaders;
 
         public OutlineBorderShader outLineShader;
-        public ShaderDatas()
+        public SceneShaderManager()
         {
             litShaders = new List<LitShader>();
             unlitShaders = new List<UnlitShader>();
@@ -35,6 +35,13 @@ namespace SimulationSystem.SharedData
                 unlitShaders[i].shader.SetMat4("view", view);
                 unlitShaders[i].shader.SetMat4("projection", projection);
             }
+        }
+
+        public void SetupOutlineShader(Mat4 view, Mat4 projection)
+        {
+            outLineShader.shader.Activate();
+            outLineShader.shader.SetMat4("view", view);
+            outLineShader.shader.SetMat4("projection", projection);
         }
     }
 }

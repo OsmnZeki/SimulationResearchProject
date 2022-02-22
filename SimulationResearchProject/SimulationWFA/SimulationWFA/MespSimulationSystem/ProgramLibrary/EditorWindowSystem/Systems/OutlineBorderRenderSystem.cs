@@ -16,23 +16,22 @@ namespace SimulationSystem
 
         private Filter<CameraComp> cameraFilter = null;
 
-        ShaderDatas shaderDatas = null;
+        SceneShaderManager sceneShaderManager = null;
         UnlitMaterial outlineMaterial;
+
         public override void Awake()
         {
             outlineMaterial = new UnlitMaterial();
-            outlineMaterial.SetShader(shaderDatas.outLineShader.shader);
+            outlineMaterial.SetShader(sceneShaderManager.outLineShader.shader);
         }
 
         public override void Render()
         {
             ref var cameraComp = ref cameraFilter.Get1(0);
 
-            shaderDatas.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
-
-            shaderDatas.outLineShader.shader.Activate();
-            shaderDatas.outLineShader.shader.SetMat4("view", cameraComp.view);
-            shaderDatas.outLineShader.shader.SetMat4("projection", cameraComp.projection);
+            sceneShaderManager.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
+            sceneShaderManager.SetupOutlineShader(cameraComp.view, cameraComp.projection);
+            
             
             foreach (var m in renderFilter)
             {

@@ -12,7 +12,7 @@ namespace SimulationSystem.Systems
 
         private Filter<CameraComp,TransformComp> cameraFilter = null;
 
-        ShaderDatas shaderDatas = null;
+        SceneShaderManager shaderDatas = null;
 
         public override void Render()
         {

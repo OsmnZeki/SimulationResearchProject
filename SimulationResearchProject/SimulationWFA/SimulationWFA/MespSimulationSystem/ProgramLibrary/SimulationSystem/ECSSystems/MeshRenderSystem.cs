@@ -13,7 +13,7 @@ namespace SimulationSystem.Systems
 
         private Filter<CameraComp> cameraFilter = null;
 
-        ShaderDatas shaderDatas = null;
+        SceneShaderManager sceneShaderManager = null;
 
         public override void Awake()
         {
@@ -25,7 +25,7 @@ namespace SimulationSystem.Systems
         {
             ref var cameraComp = ref cameraFilter.Get1(0);
 
-            shaderDatas.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
+            sceneShaderManager.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
             
             foreach (var m in meshRendererFilter)
             {
