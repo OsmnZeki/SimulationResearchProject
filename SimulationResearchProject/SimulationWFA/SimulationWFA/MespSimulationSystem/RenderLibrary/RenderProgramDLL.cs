@@ -205,7 +205,10 @@ namespace RenderLibrary.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetColorToMaterial")]
         public static extern void SetColorToMaterial(IntPtr matAdress, float[] color);
-        
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "AddTextureToUnlitMaterial")]
+        public static extern void AddTextureToUnlitMaterial(IntPtr matAdress, IntPtr textureAdress);
+
         #endregion
 
         #region MeshRendererFunctions

@@ -1,6 +1,4 @@
-﻿
-
-using RenderLibrary.Graphics.RenderData;
+﻿using RenderLibrary.Graphics.RenderData;
 
 namespace RenderLibrary.Graphics.PreparedModels
 {

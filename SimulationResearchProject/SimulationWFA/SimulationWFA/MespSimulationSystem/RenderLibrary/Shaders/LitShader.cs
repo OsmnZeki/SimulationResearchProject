@@ -5,6 +5,13 @@ namespace RenderLibrary.Shaders
 {
     public class LitShader
     {
-        public Shader shader = new Shader(SimPath.GetAssetPath + "/Shaders/object.vs", SimPath.GetAssetPath + "/Shaders/lit.fs");
+        public Shader shader;
+
+        public LitShader()
+        {
+            shader = new Shader(SimPath.GetAssetPath + "/Shaders/object.vs", SimPath.GetAssetPath + "/Shaders/lit.fs");
+        }
+
     }
+
 }

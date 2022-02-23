@@ -17,6 +17,7 @@ void main(){
 	}
 	else{
 		currentColor = texture(texture0,texCoord);
+		if(currentColor.a < 0.1f) discard;
 	}
 
 	FragColor = currentColor;

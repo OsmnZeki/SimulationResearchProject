@@ -112,9 +112,11 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\PointLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SpotLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\QuadPlane.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\OpenGLFunctions\OpenGLFunctions.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\LitShader.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\OutlineBorderShader.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\TransTestShader.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\UnlitShader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\BitSet.cs" />

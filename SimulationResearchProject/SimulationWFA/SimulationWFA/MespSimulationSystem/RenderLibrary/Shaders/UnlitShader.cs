@@ -5,8 +5,12 @@ namespace RenderLibrary.Shaders
 {
     public class UnlitShader
     {
-        public Shader shader = new Shader(SimPath.GetAssetPath + "/Shaders/object.vs", SimPath.GetAssetPath + "/Shaders/unlit.fs");
+        public Shader shader;
 
+        public UnlitShader()
+        {
+            shader = new Shader(SimPath.GetAssetPath + "/Shaders/object.vs", SimPath.GetAssetPath + "/Shaders/unlit.fs");
+        }
 
         //TODO: grid sistemi hazır olduğu zaman aç
         /*        public Shader infiniteGridShader = new Shader(
