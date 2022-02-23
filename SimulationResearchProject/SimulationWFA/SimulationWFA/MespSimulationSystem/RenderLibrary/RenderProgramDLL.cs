@@ -73,6 +73,9 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "TextureLoad")]
         public static extern IntPtr TextureLoad(IntPtr texture, bool flip);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "TextureSetWrapParameters")]
+        public static extern IntPtr TextureSetWrapParameters(IntPtr texture, int wrapSParameter, int wrapTParameter);
+
         #endregion
 
         #region MeshFunctions

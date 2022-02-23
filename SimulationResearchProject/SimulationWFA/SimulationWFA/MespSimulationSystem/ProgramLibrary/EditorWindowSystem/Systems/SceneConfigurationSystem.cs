@@ -21,7 +21,6 @@ namespace SimulationSystem.Systems
 
         public override void Awake()
         {
-            textureRef.grassTexture.Load(true);
 
             CreateEditorCamera();
 
