@@ -56,3 +56,19 @@ simobj
 ------
 simobj ve entity ayrı mı olmalı ? yoksa aynı anda createlenebilir mi ?
 addcomponent, simobj için serailizedcomp list entegre çalışmıyor
+
+Material
+--------
+c++ materialleri neden texture vektörü tutuyor ? bir texturede birden fazla texture olabilir mi ? diffuse ve specular neden aynı listede ve onlar da 1 den fazla olabilir mi ?
+
+texture
+-------
+texturelar constructorunda mı loadlanmalı ?
+
+camera
+------
+editor camerası için editorcameratag
+
+model loading
+------------
+trol modeli yüklenirken Microsoft C++ exception: DeadlyImportError at hatası veriyor

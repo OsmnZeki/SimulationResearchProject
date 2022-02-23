@@ -19,6 +19,7 @@ namespace SimulationSystem.Systems
             systemManager.Inject(screen);
             systemManager.Inject(new SceneShaderManager());
             systemManager.Inject(new ModelPaths());
+            systemManager.Inject(new TextureReferences());
         }
 
         public override void AddSystems() // Ecs Sistemleri
@@ -38,7 +39,7 @@ namespace SimulationSystem.Systems
             //RenderSystems
             systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
             //systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
 
             //EventSystems

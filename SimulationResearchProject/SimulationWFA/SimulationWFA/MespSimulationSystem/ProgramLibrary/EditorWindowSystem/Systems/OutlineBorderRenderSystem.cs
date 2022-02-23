@@ -42,16 +42,16 @@ namespace SimulationSystem
                 {
                     meshRendererComp.SetMeshRenderer();
                 }
-                
-                OpenGLFunctions.GLStencilOp(OpenGLEnum.GL_KEEP, OpenGLEnum.GL_KEEP, OpenGLEnum.GL_REPLACE);
 
+                OpenGLFunctions.GLStencilOp(OpenGLEnum.GL_KEEP, OpenGLEnum.GL_KEEP, OpenGLEnum.GL_REPLACE);
+                OpenGLFunctions.GLClear(OpenGLEnum.GL_STENCIL_BUFFER_BIT);
                 OpenGLFunctions.GLStencilFunc(OpenGLEnum.GL_ALWAYS, 1, 1);
                 OpenGLFunctions.GLStencilMask(1);
 
                 meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
 
-                OpenGLFunctions.GLStencilFunc(OpenGLEnum.GL_NOTEQUAL, 1, 1);
                 OpenGLFunctions.GLStencilMask(0);
+                OpenGLFunctions.GLStencilFunc(OpenGLEnum.GL_NOTEQUAL, 1, 1);
                 OpenGLFunctions.GLDisable(OpenGLEnum.GL_DEPTH_TEST);
 
                 var tempTransfrom = transformComp.transform;
@@ -64,6 +64,7 @@ namespace SimulationSystem
                 OpenGLFunctions.GLStencilMask(1);
                 OpenGLFunctions.GLStencilFunc(OpenGLEnum.GL_ALWAYS, 1, 1);
                 OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
+                OpenGLFunctions.GLStencilOp(OpenGLEnum.GL_KEEP, OpenGLEnum.GL_KEEP, OpenGLEnum.GL_REPLACE);
             }
 
             

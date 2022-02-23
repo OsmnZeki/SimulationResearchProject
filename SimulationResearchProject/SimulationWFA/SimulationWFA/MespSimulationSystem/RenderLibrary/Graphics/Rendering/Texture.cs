@@ -9,7 +9,7 @@ namespace RenderLibrary.Graphics.Rendering
 
         public Texture(string directory, string name, TextureType textureType)
         {
-            RenderProgramDLL.NewTexture(directory, name, (int) textureType);
+            textureAdress = RenderProgramDLL.NewTexture(directory, name, (int) textureType);
         }
 
         public void Load(bool flip)

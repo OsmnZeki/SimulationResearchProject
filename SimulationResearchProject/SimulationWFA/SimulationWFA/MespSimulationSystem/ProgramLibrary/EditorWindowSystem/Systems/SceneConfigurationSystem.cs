@@ -17,23 +17,27 @@ namespace SimulationSystem.Systems
     {
         SceneShaderManager sceneShaderManager = null;
         ModelPaths modelReferences = null;
+        TextureReferences textureRef = null;
 
         public override void Awake()
         {
+            textureRef.grassTexture.Load(true);
 
-            CreateCamera();
+            CreateEditorCamera();
 
             CreateDirectionalLight();
 
             CreateLambs();
 
-            //CreateTrol();
+            CreateTrol();
 
             CreatePlane();
+
+            //CreateGrass();
         }
 
         //Camera entity
-        public void CreateCamera()
+        public void CreateEditorCamera()
         {
             var camSimObj = SimObject.NewSimObject();
             camSimObj.CreateEntity(world);
@@ -75,9 +79,17 @@ namespace SimulationSystem.Systems
             UnlitShader lambShader = new UnlitShader();
             sceneShaderManager.unlitShaders.Add(lambShader);
 
+            UnlitShader lambShader2 = new UnlitShader();
+            sceneShaderManager.unlitShaders.Add(lambShader2);
+
             UnlitMaterial unlitMaterial = new UnlitMaterial();
             unlitMaterial.SetColor(Vector4.One);
             unlitMaterial.SetShader(lambShader.shader);
+
+            UnlitMaterial unlitMaterial2 = new UnlitMaterial();
+            unlitMaterial2.SetColor(new Vector4(1,0,0,1));
+            unlitMaterial2.SetShader(lambShader2.shader);
+
             Transform[] lambTransforms = new[]
             {
                 new Transform(new Vector3(0.7f, 0.2f, 2.0f),new Vector3(.25f), Vector3.Zero),
@@ -88,7 +100,7 @@ namespace SimulationSystem.Systems
 
             CubeMesh cubeModel = new CubeMesh();
             SimObject[] lambSimObj = new SimObject[4];
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
                 lambSimObj[i] = SimObject.NewSimObject();
                 lambSimObj[i].CreateEntity(world);
@@ -103,6 +115,25 @@ namespace SimulationSystem.Systems
                 };
                 lambSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
                     material = unlitMaterial,
+                    mesh = cubeModel,
+                };
+            }
+
+            for (int i = 2; i < 4; i++)
+            {
+                lambSimObj[i] = SimObject.NewSimObject();
+                lambSimObj[i].CreateEntity(world);
+                lambSimObj[i].AddAllComponents(world);
+                lambSimObj[i].entity.GetComponent<TransformComp>().transform = lambTransforms[i];
+                lambSimObj[i].entity.AddComponent<PointLightComp>() = new PointLightComp {
+                    pointLight = new Lights.PointLight {
+                        ambient = new Vector4(0.05f, 0.05f, 0.05f, 1.0f),
+                        diffuse = new Vector4(0.8f, 0.8f, 0.8f, 1.0f),
+                        specular = new Vector4(1.0f),
+                    }
+                };
+                lambSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                    material = unlitMaterial2,
                     mesh = cubeModel,
                 };
             }
@@ -146,7 +177,7 @@ namespace SimulationSystem.Systems
             groundMaterial.SetShader(groundShader.shader);
 
             ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
-            transform.position = new Vector3(0, -1f, 10);
+            transform.position = new Vector3(0, 0f, 10);
             transform.scale = new Vector3(10, .1f, 10); ;
 
             planeSimObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
@@ -154,8 +185,32 @@ namespace SimulationSystem.Systems
                 mesh = cubeModel,
             };
 
-            planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
+            //planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
         }
 
+        public void CreateGrass()
+        {
+            var grassObj = SimObject.NewSimObject();
+            grassObj.CreateEntity(world);
+            grassObj.AddAllComponents(world);
+
+            var grassShader = new LitShader();
+            sceneShaderManager.litShaders.Add(grassShader);
+
+            CubeMesh cubeModel = new CubeMesh();
+            LitMaterial grassMaterial = new LitMaterial();
+            grassMaterial.AddTexture(textureRef.grassTexture);
+            grassMaterial.SetShader(grassShader.shader);
+
+            ref var transform = ref grassObj.entity.GetComponent<TransformComp>().transform;
+            transform.position = new Vector3(0, .55f, 10);
+            transform.scale = new Vector3(1, 1f, 1); ;
+
+            grassObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                material = grassMaterial,
+                mesh = cubeModel,
+            };
+
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace SimulationSystem
 
             OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
             OpenGLFunctions.GLEnable(OpenGLEnum.GL_STENCIL_TEST);
-            OpenGLFunctions.GLStencilMask(0);
+            
 
             windowEcsManager = new WindowEcsManager(new ECSEditorController(screen));
             Time.StartTimer();

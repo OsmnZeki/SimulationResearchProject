@@ -43,37 +43,34 @@ namespace SimulationSystem.Systems
             //point light calculation
             for (int i = 0; i < shaderDatas.litShaders.Count; i++)
             {
+                shaderDatas.litShaders[i].shader.Activate();
                 shaderDatas.litShaders[i].shader.SetInt("numbPointLights", pointLightFilter.NumberOfEntities);
-            }
-            foreach(var p in pointLightFilter)
-            {
-                ref var pointLightComp = ref pointLightFilter.Get1(p);
-                ref var transformComp = ref pointLightFilter.Get2(p);
-                pointLightComp.pointLight.position = transformComp.transform.position;
-                for (int i = 0; i < shaderDatas.litShaders.Count; i++)
+
+                foreach (var p in pointLightFilter)
                 {
+                    ref var pointLightComp = ref pointLightFilter.Get1(p);
+                    ref var transformComp = ref pointLightFilter.Get2(p);
+                    pointLightComp.pointLight.position = transformComp.transform.position;
                     pointLightComp.pointLight.Render(shaderDatas.litShaders[i].shader, p);
                 }
             }
+            
 
             //spot light calculation
             for (int i = 0; i < shaderDatas.litShaders.Count; i++)
             {
+                shaderDatas.litShaders[i].shader.Activate();
                 shaderDatas.litShaders[i].shader.SetInt("numbSpotLights", spotLightFilter.NumberOfEntities);
-            }
-            foreach (var s in spotLightFilter)
-            {
-                ref var spotLightComp = ref spotLightFilter.Get1(s);
-                ref var transformComp = ref spotLightFilter.Get2(s);
-                spotLightComp.spotLight.position = transformComp.transform.position;
-                spotLightComp.spotLight.direction = transformComp.transform.forward;
-                for (int i = 0; i < shaderDatas.litShaders.Count; i++)
+
+                foreach (var s in spotLightFilter)
                 {
+                    ref var spotLightComp = ref spotLightFilter.Get1(s);
+                    ref var transformComp = ref spotLightFilter.Get2(s);
+                    spotLightComp.spotLight.position = transformComp.transform.position;
+                    spotLightComp.spotLight.direction = transformComp.transform.forward;
                     spotLightComp.spotLight.Render(shaderDatas.litShaders[i].shader, s);
                 }
             }
-
-
         }
 
     }
