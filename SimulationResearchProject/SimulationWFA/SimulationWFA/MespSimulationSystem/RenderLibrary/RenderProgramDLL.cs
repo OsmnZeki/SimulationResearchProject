@@ -212,6 +212,9 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "AddTextureToUnlitMaterial")]
         public static extern void AddTextureToUnlitMaterial(IntPtr matAdress, IntPtr textureAdress);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetTransparent")]
+        public static extern void SetTransparent(IntPtr matAdress, bool isTransparent);
+
         #endregion
 
         #region MeshRendererFunctions
@@ -271,6 +274,9 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLCheckStencil")]
         public static extern void OpenGLCheckStencil();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLBlendFunc")]
+        public static extern void OpenGLBlendFunc(int sfactor, int dfactor);
 
         #endregion
 

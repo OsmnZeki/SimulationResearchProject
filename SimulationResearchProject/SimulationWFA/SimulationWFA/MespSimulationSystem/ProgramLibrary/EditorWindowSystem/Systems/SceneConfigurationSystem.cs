@@ -30,9 +30,12 @@ namespace SimulationSystem.Systems
 
             CreateTrol();
 
+            CreateWindow();
+
             CreatePlane();
 
             CreateGrass();
+
         }
 
         //Camera entity
@@ -185,6 +188,31 @@ namespace SimulationSystem.Systems
                 mesh = quaModel,
             };
 
+        }
+
+        public void CreateWindow()
+        {
+            var windowObj = SimObject.NewSimObject();
+            windowObj.CreateEntity(world);
+            windowObj.AddAllComponents(world);
+
+            var windowShader = new UnlitShader();
+            sceneShaderManager.unlitShaders.Add(windowShader);
+
+            QuadPlane quaModel = new QuadPlane();
+            UnlitMaterial windowMaterial = new UnlitMaterial();
+            windowMaterial.SetTransparent(true);
+            windowMaterial.AddTexture(textureRef.windowTexture);
+            windowMaterial.SetShader(windowShader.shader);
+
+            ref var transform = ref windowObj.entity.GetComponent<TransformComp>().transform;
+            transform.position = new Vector3(0, .55f, 8);
+            transform.scale = new Vector3(1, 1f, 1); ;
+
+            windowObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                material = windowMaterial,
+                mesh = quaModel,
+            };
         }
     }
 }

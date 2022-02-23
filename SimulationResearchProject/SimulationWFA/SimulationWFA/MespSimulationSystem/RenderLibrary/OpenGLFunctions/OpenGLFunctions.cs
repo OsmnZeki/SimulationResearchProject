@@ -34,6 +34,10 @@ namespace RenderLibrary.OpenGLCustomFunctions
             RenderProgramDLL.OpenGLStencilOp((int)sfail, (int)dpfail, (int)dppass);
         }
 
+        public static void GLBlendFunc(OpenGLEnum sfactor, OpenGLEnum dfactor)
+        {
+            RenderProgramDLL.OpenGLBlendFunc((int)sfactor, (int)dfactor);
+        }
     }
 
     public enum OpenGLEnum
@@ -43,6 +47,7 @@ namespace RenderLibrary.OpenGLCustomFunctions
         GL_COLOR_BUFFER_BIT = 16384,
         GL_DEPTH_TEST = 2929,
         GL_STENCIL_TEST = 2960,
+        GL_BLEND = 0x0BE2,
         GL_NEVER = 0x0200,
         GL_LESS = 0x0201,
         GL_EQUAL = 0x0202,
@@ -52,6 +57,7 @@ namespace RenderLibrary.OpenGLCustomFunctions
         GL_GEQUAL = 0x0206,
         GL_ALWAYS = 0x0207,
         GL_ZERO = 0,
+        GL_ONE = 1,
         GL_KEEP = 0x1E00,
         GL_REPLACE = 0x1E01,
         GL_INCR = 0x1E02,
@@ -59,5 +65,17 @@ namespace RenderLibrary.OpenGLCustomFunctions
         GL_INCR_WRAP = 0x8507,
         GL_DECR_WRAP = 0x8508,
         GL_INVERT = 0x150A,
+        GL_SRC_COLOR = 0x0300,
+        GL_ONE_MINUS_SRC_COLOR = 0x0301,
+        GL_SRC_ALPHA = 0x0302,
+        GL_ONE_MINUS_SRC_ALPHA = 0x0303,
+        GL_DST_ALPHA = 0x0304,
+        GL_ONE_MINUS_DST_ALPHA = 0x0305,
+        GL_DST_COLOR = 0x0306,
+        GL_ONE_MINUS_DST_COLOR = 0x0307,
+        GL_CONSTANT_COLOR = 0x8001,
+        GL_ONE_MINUS_CONSTANT_COLOR = 0x8002,
+        GL_CONSTANT_ALPHA = 0x8003,
+        GL_ONE_MINUS_CONSTANT_ALPHA = 0x8004,
     }
 }

@@ -6,6 +6,7 @@ namespace RenderLibrary.Graphics.Rendering
     public class Material
     {
         protected IntPtr materialAdress;
+        public bool transparent = false;
 
         public void SetShader(Shader shader)
         {
@@ -25,6 +26,12 @@ namespace RenderLibrary.Graphics.Rendering
         public IntPtr GetAdress()
         {
             return materialAdress;
+        }
+
+        public void SetTransparent(bool isTransparent)
+        {
+            transparent = isTransparent;
+            RenderProgramDLL.SetTransparent(materialAdress, isTransparent);
         }
     }
 }

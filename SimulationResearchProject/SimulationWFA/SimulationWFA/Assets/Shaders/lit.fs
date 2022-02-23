@@ -54,6 +54,7 @@ uniform int numbSpotLights;
 
 uniform Material material;
 uniform int noTex;
+uniform int transparent;
 
 out vec4 FragColor;
 
@@ -96,6 +97,8 @@ void main(){
 	
 		result += CalcSpotLight(i, norm, viewDir, diffMap, specMap);
 	}
+
+	if(transparent != 1) result.a = 1.0f;
 	
 	
 	FragColor = result;

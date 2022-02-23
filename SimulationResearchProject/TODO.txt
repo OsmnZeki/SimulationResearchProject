@@ -71,3 +71,6 @@ lit shader
 ----------
 tek texture support ediyor
 
+transparency
+------------
+çok sayıda nesne ile test edilmesi gerekiyor

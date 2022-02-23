@@ -20,7 +20,9 @@ namespace SimulationSystem
 
             OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
             OpenGLFunctions.GLEnable(OpenGLEnum.GL_STENCIL_TEST);
-            
+            OpenGLFunctions.GLEnable(OpenGLEnum.GL_BLEND);
+            OpenGLFunctions.GLBlendFunc(OpenGLEnum.GL_SRC_ALPHA, OpenGLEnum.GL_ONE_MINUS_SRC_ALPHA);
+
 
             windowEcsManager = new WindowEcsManager(new ECSEditorController(screen));
             Time.StartTimer();
