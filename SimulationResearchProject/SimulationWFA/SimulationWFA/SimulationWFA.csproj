@@ -138,7 +138,14 @@
     <Compile Include="MespSimulationSystem\RenderLibrary\IO\Screen.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\RenderProgramDLL.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Transform.cs" />
-    <Compile Include="TransformTextBox.cs">
+    <Compile Include="ResetButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SerializedEditor.cs" />
+    <Compile Include="SimTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TransformCompTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Form1.aa-ER.resx">

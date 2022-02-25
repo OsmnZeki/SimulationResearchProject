@@ -9,7 +9,7 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.S
 {
     public class TestSystem : Dalak.Ecs.System
     {
-        /*readonly Dalak.Ecs.Filter<TransformComp> transformFilter = null;
+        readonly Dalak.Ecs.Filter<TransformComp> transformFilter = null;
 
         public override void Update()
         {
@@ -18,6 +18,6 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.S
                 ref var transformComp = ref transformFilter.Get1(t);
                 Console.WriteLine(transformComp.transform.position);
             }
-        }*/
+        }
     }
 }
