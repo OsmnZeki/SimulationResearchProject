@@ -43,7 +43,7 @@ namespace SimulationSystem.Systems
 
 
                 if (meshRendererComp.SetMeshRenderer() == false) continue;
-                Console.WriteLine("Meshhh");
+                //Console.WriteLine("Meshhh");
                 if (meshRendererComp.material.transparent)
                 {
                     float sqrDist = Vector3.DistanceSquared(transformCameraComp.transform.position, transformComp.transform.position);
