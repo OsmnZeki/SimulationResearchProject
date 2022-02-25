@@ -38,10 +38,7 @@ namespace SimulationSystem
                 ref var transformComp = ref renderFilter.Get2(m);
                 ref var meshRendererComp = ref renderFilter.Get1(m);
 
-                if (meshRendererComp.meshRenderer == null)
-                {
-                    meshRendererComp.SetMeshRenderer();
-                }
+                if (meshRendererComp.SetMeshRenderer() == false) continue;
 
                 OpenGLFunctions.GLStencilOp(OpenGLEnum.GL_KEEP, OpenGLEnum.GL_KEEP, OpenGLEnum.GL_REPLACE);
                 OpenGLFunctions.GLClear(OpenGLEnum.GL_STENCIL_BUFFER_BIT);

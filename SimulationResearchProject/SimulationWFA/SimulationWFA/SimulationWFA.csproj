@@ -86,6 +86,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\DirectionalLightSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\PointLightSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\SpotLightSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TestSystemSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorEventsManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\OutlineBorderRenderComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\PointLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SpotLightComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TestSystemComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\QuadPlane.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\OpenGLFunctions\OpenGLFunctions.cs" />

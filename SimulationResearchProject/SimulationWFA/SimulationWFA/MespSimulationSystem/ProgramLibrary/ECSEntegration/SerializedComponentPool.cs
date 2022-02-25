@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SimulationSystem.ECS.Entegration;
+using SimulationWFA.MespSimulationSystem.ProgramLibrary.ECSEntegration.SerializedComponent;
 using TheSimulation.SerializedComponent;
 
 namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
@@ -11,6 +12,7 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
 
             {0, new TransformSerialized()},
             {1, new MeshRendererSerialized()},
+            {2, new TestSystemSerialized()}
 
         };
 

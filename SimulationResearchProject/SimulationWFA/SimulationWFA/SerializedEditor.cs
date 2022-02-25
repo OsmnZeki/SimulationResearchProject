@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimulationSystem.ECS.Entegration;
+using SimulationSystem.EditorEvents;
+using SimulationSystem.Systems;
 
 namespace SimulationWFA
 {
@@ -93,7 +95,7 @@ namespace SimulationWFA
                             for (int j = 0; j < 3; j++)
                             {
                                 serializedFieldTexs[j] = new SimTextBox();
-                                serializedFieldTexs[j].Location = new Point((j * 30), i * 20);
+                                serializedFieldTexs[j].Location = new Point((j * 30), i * 20 + 20);
                                 serializedFieldTexs[j].Text = vecValues[j];
                                 serializedFieldTexs[j].BackColor = Color.Yellow;
                                 serializedFieldTexs[j].Size = new Size(30, 60);
@@ -107,7 +109,7 @@ namespace SimulationWFA
                             SerializedCompTexts.Add(serializedFieldTexs);
 
                             resButton[i] = new ResetButton();
-                            resButton[i].Location = new Point(100, i * 20);
+                            resButton[i].Location = new Point(100, i * 20 + 20);
                             resButton[i].Size = new Size(50, 20);
                             resButton[i].Text = "Reset";
                             resButton[i].item = serializedCompItem;
@@ -134,17 +136,17 @@ namespace SimulationWFA
         private static Vector3 InitializeItemVector(int idx, string text, dynamic obj)
         {
             Vector3 itemVec = new Vector3(obj.X, obj.Y, obj.Z);
-
+            int result = 0;
             switch (idx)
             {
                 case 0:
-                    itemVec.X = Int32.Parse(text);
+                    itemVec.X = Int32.TryParse(text, out result) ? result : 0;
                     break;
                 case 1:
-                    itemVec.Y = Int32.Parse(text);
+                    itemVec.Y = Int32.TryParse(text, out result) ? result : 0;
                     break;
                 case 2:
-                    itemVec.Z = Int32.Parse(text);
+                    itemVec.Z = Int32.TryParse(text, out result) ? result : 0;
                     break;
                 default:
                     break;
@@ -160,7 +162,11 @@ namespace SimulationWFA
                 case "TransformSerialized":
                     var fields = type.GetFields();
                     dynamic obj = fields[textBox.fieldId].GetValue(textBox.serializedItem);
-                    fields[0].SetValue(textBox.serializedItem, InitializeItemVector(textBox.textId, textBox.Text, obj));
+                    fields[textBox.fieldId].SetValue(textBox.serializedItem, InitializeItemVector(textBox.textId, textBox.Text, obj));
+                    EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
+
+
+                    });
                     break;
 
 

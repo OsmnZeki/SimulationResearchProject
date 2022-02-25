@@ -15,11 +15,7 @@ namespace TheSimulation.SerializedComponent
 
         public override void AddComponent(Entity entity, World world)
         {
-            MeshRenderer meshRenderer = new MeshRenderer();
-            meshRenderer.SetMesh(mesh);
-            meshRenderer.Setup();
-
-            entity.AddComponent<MeshRendererComp>() = new MeshRendererComp() {meshRenderer = meshRenderer, material = material, mesh = mesh,};
+            entity.AddComponent<MeshRendererComp>() = new MeshRendererComp() {material = material, mesh = mesh,};
         }
 
         public override string GetName()

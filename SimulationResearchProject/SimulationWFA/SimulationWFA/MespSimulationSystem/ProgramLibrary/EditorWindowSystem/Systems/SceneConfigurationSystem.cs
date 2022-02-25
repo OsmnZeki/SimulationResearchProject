@@ -162,7 +162,7 @@ namespace SimulationSystem.Systems
                 mesh = cubeModel,
             };
 
-            //planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
+            planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
         }
 
         public void CreateGrass()

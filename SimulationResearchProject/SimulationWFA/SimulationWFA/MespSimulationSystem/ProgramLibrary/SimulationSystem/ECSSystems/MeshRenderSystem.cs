@@ -14,7 +14,7 @@ namespace SimulationSystem.Systems
     {
         private Filter<MeshRendererComp, TransformComp>.Exclude<OutlineBorderRenderComp> meshRendererFilter = null;
 
-        private Filter<CameraComp,TransformComp> cameraFilter = null;
+        private Filter<CameraComp, TransformComp> cameraFilter = null;
 
         SceneShaderManager sceneShaderManager = null;
 
@@ -41,11 +41,9 @@ namespace SimulationSystem.Systems
                 ref var transformComp = ref meshRendererFilter.Get2(m);
                 ref var meshRendererComp = ref meshRendererFilter.Get1(m);
 
-                if (meshRendererComp.meshRenderer == null)
-                {
-                    meshRendererComp.SetMeshRenderer();
-                }
 
+                if (meshRendererComp.SetMeshRenderer() == false) continue;
+                Console.WriteLine("Meshhh");
                 if (meshRendererComp.material.transparent)
                 {
                     float sqrDist = Vector3.DistanceSquared(transformCameraComp.transform.position, transformComp.transform.position);
@@ -57,7 +55,7 @@ namespace SimulationSystem.Systems
             }
 
             //transparent render
-            foreach(var m in transparentObjectDist.OrderByDescending(pair => pair.Value))
+            foreach (var m in transparentObjectDist.OrderByDescending(pair => pair.Value))
             {
                 ref var transformComp = ref meshRendererFilter.Get2(m.Key);
                 ref var meshRendererComp = ref meshRendererFilter.Get1(m.Key);

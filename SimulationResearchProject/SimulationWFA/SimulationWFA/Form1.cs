@@ -133,40 +133,6 @@ namespace SimulationWFA
             }
         }
 
-        private void insanButton_Click(object sender, EventArgs e)
-        {
-            Panel panel = new Panel();
-            panel.Location = inspectorPanel.Location;
-            panel.Name = "InsanPanel";
-            panel.Size = new System.Drawing.Size(228, 200);
-            panel.TabIndex = 0;
-            panel.BackColor = Color.LightBlue;
-            TextBox textBox1 = new TextBox();
-            textBox1.Location = new Point(10, 10);
-            textBox1.Text = "I am a TextBox5";
-            textBox1.Size = new Size(200, 30);
-            CheckBox checkBox1 = new CheckBox();
-            checkBox1.Location = new Point(10, 50);
-            checkBox1.Text = "Check Me";
-            checkBox1.Size = new Size(200, 30);
-            panel.Controls.Add(textBox1);
-            panel.Controls.Add(checkBox1);
-
-            Controls.Add(panel);
-            //Insan insan = new Insan();
-
-            //classLabel.Text = insan.ToString();
-            //feature1.Text = "Name: ";
-            //feature2.Text = "Surname: ";
-            //feature3.Text = "Age: ";
-            //feature4.Text = "Weight: ";
-            //textBox1.Text = insan.Name;
-            //textBox2.Text = insan.Surname;
-            //textBox3.Text = insan.Age.ToString();
-            //textBox4.Text = insan.Weight.ToString();
-            //classesPanel.Visible = true;
-        }
-
         private void addObjectButton_Click(object sender, EventArgs e)
         {
             var simObject = SimObject.NewSimObject();
@@ -194,52 +160,11 @@ namespace SimulationWFA
             componentPanel.Size = new System.Drawing.Size(180, 200);
             componentPanel.BackColor = Color.DarkSalmon;
 
-
-           // SimTextBox[] textBox = new SimTextBox[simButton.simObject.objectData.GetSerializedComponents().Length];
-
-            //int idx = 0;
-
-           // SimTextBox[] posText = new SimTextBox[3];
-            //dynamic parameters = new ExpandoObject();
-            //parameters = simButton.simObject.objectData.GetSerializedComponents();
-
             SerializedEditor serializedEditor = new SerializedEditor();
 
             foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
             {
                 serializedEditor.SetSerializedItemOnEditor(item, componentPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
-                //serializedEditor.GetType(item);
-                //textBox[idx] = new SimTextBox();
-                //textBox[idx].Location = new Point(0, 0);
-                //textBox[idx].Text = item.GetName();
-                //textBox[idx].BackColor = Color.Red;
-                //textBox[idx].Size = new Size(150, 60);
-                //textBox[idx].BringToFront();
-                //componentPanel.Controls.Add(textBox[idx]);
-                //idx++;
-                //for (int i = 0; i < posText.Length; i++)
-                //{
-                //    posText[i] = new SimTextBox();
-                //    posText[i].Location = new Point((i * 30), 20);
-                //    posText[i].Text = parameters[0].pos.X.ToString();
-                //    posText[i].BackColor = Color.Yellow;
-                //    posText[i].Size = new Size(30, 60);
-                //    posText[i].textId = i;
-                //    posText[i].serializedItem = item;
-                //    posText[i].TextChanged += simulationProject_TextChanged;
-                //    posText[i].BringToFront();
-                //    componentPanel.Controls.Add(posText[i]);
-                //}
-
-                //ResetButton button = new ResetButton();
-                //button.Location = new Point(100, 0 + idx * 20);
-                //button.Size = new Size(50, 20);
-                //button.Text = "Reset";
-                //button.item = item;
-                //button.simPosText = posText;
-                //button.Click += new System.EventHandler(resetButton_Click);
-                //button.BringToFront();
-                //componentPanel.Controls.Add(button);
             }
 
             Button addComponentButton = new Button();
@@ -298,15 +223,17 @@ namespace SimulationWFA
 
         }
 
+        private void Hierarchy_Click(object sender, EventArgs e)
+        {
+
+        }
+
         #endregion
 
-        private void refresh_Click(object sender, EventArgs e)
-        {
-            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
+        //private void refresh_Click(object sender, EventArgs e)
+        //{
 
-
-            });
-        }
+        //}
 
 
     }

@@ -13,14 +13,17 @@ namespace SimulationSystem.Components
 
 
 
-        public void SetMeshRenderer()
+        public bool SetMeshRenderer()
         {
             if(meshRenderer == null)
             {
+                if (mesh == null || material == null) return false;
                 meshRenderer = new MeshRenderer();
                 meshRenderer.SetMesh(mesh);
                 meshRenderer.Setup();
+                return true;
             }
+            return true;
         }
 
     }

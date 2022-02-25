@@ -61,7 +61,7 @@ namespace SimulationWFA
             this.inspectorPanel = new System.Windows.Forms.Panel();
             this.inspectorLabel = new System.Windows.Forms.Label();
             this.hieararchyPanel = new System.Windows.Forms.Panel();
-            this.refresh = new System.Windows.Forms.Button();
+            this.Hierarchy = new System.Windows.Forms.Button();
             this.addObjectButton = new System.Windows.Forms.Button();
             this.hierarchyLabel = new System.Windows.Forms.Label();
             this.simulationWindowPanel = new System.Windows.Forms.Panel();
@@ -249,17 +249,16 @@ namespace SimulationWFA
             resources.ApplyResources(this.hieararchyPanel, "hieararchyPanel");
             this.hieararchyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
             this.hieararchyPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.hieararchyPanel.Controls.Add(this.refresh);
+            this.hieararchyPanel.Controls.Add(this.Hierarchy);
             this.hieararchyPanel.Controls.Add(this.addObjectButton);
             this.hieararchyPanel.Controls.Add(this.hierarchyLabel);
             this.hieararchyPanel.Name = "hieararchyPanel";
             // 
-            // refresh
+            // Hierarchy
             // 
-            resources.ApplyResources(this.refresh, "refresh");
-            this.refresh.Name = "refresh";
-            this.refresh.UseVisualStyleBackColor = true;
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            this.Hierarchy.ForeColor = System.Drawing.SystemColors.ControlLight;
+            resources.ApplyResources(this.Hierarchy, "Hierarchy");
+            this.Hierarchy.Name = "Hierarchy";
             // 
             // addObjectButton
             // 
@@ -360,7 +359,7 @@ namespace SimulationWFA
         private System.Windows.Forms.Label simulationWindowLabel;
         private System.Windows.Forms.Button simulateButton;
         private System.Windows.Forms.Button addObjectButton;
-        private System.Windows.Forms.Button refresh;
+        private System.Windows.Forms.Button Hierarchy;
     }
 }
 

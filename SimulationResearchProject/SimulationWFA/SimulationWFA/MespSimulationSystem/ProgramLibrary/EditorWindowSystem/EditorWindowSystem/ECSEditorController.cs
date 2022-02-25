@@ -30,6 +30,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new SceneConfigurationSystem(), GenericSystemGroup);
             //systemManager.AddSystem(new RotationTestSystem(), GenericSystemGroup);
             //systemManager.AddSystem(new ClearColorTestSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
 
             //
 
@@ -44,7 +45,6 @@ namespace SimulationSystem.Systems
 
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
-            //systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
         }
     }
 }
