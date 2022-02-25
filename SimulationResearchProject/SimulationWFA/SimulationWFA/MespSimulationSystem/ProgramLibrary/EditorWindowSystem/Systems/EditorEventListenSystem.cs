@@ -19,27 +19,27 @@ namespace SimulationSystem.Systems
 
             if (eventManager.ListenEvent<OnEditorCreateSimObjEvent>(out var createData))
             {
-                var entity = world.NewEntity();
-                createData.simObject.entity = entity;
-                createData.simObject.AddAllSerializedComponents(world);
+                createData.simObject.CreateEntity(world);
+                createData.simObject.AddAllComponents(world);
+                return;
             }
 
            if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))
             {
                 addCompData.simObject.AddNewSerializedComponent(world, addCompData.serializedComponent);
-
+                return;
             }
 
             if (eventManager.ListenEvent<OnEditorRefresh>(out var changeData))
             {
-                Console.WriteLine("Refresh");
                 var allSimObj = SimObject.FindObjectsOfType<TransformSerialized>();
 
                 foreach(var simObj in allSimObj)
                 {
                     simObj.RemoveAllComponents();
-                    simObj.AddAllSerializedComponents(world);
+                    simObj.AddAllComponents(world);
                 }
+                return;
             }
         }
     }

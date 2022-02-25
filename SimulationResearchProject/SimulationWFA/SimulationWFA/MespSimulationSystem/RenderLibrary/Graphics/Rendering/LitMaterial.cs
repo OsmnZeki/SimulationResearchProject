@@ -4,6 +4,7 @@ using RenderLibrary.DLL;
 namespace RenderLibrary.Graphics.Rendering
 {
     public class LitMaterial : Material{
+
         public LitMaterial()
         {
             materialAdress = RenderProgramDLL.NewLitMaterial();
@@ -11,6 +12,7 @@ namespace RenderLibrary.Graphics.Rendering
 
         public LitMaterial(Vector3 ambient, Vector3 diffuse, Vector3 specular, float shininess)
         {
+            materialAdress = RenderProgramDLL.NewLitMaterial();
             SetAmbient(ambient);
             SetDiffuse(diffuse);
             SetDiffuse(diffuse);

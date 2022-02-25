@@ -14,6 +14,9 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "CreateScreen")]
         public static extern IntPtr CreateScreen(int width, int height);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenSetParameters")]
+        public static extern void ScreenSetParameters(IntPtr screen);
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenShouldClose")]
         public static extern bool ScreenShouldClose(IntPtr screen);
 
@@ -28,6 +31,9 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenProcessInput")]
         public static extern void ScreenProcessInput(IntPtr screen);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetClearColor")]
+        public static extern void SetClearColor(IntPtr screen,float[] clearColor);
 
         #endregion
 
@@ -66,6 +72,9 @@ namespace RenderLibrary.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "TextureLoad")]
         public static extern IntPtr TextureLoad(IntPtr texture, bool flip);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "TextureSetWrapParameters")]
+        public static extern IntPtr TextureSetWrapParameters(IntPtr texture, int wrapSParameter, int wrapTParameter);
 
         #endregion
 
@@ -199,7 +208,13 @@ namespace RenderLibrary.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetColorToMaterial")]
         public static extern void SetColorToMaterial(IntPtr matAdress, float[] color);
-        
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "AddTextureToUnlitMaterial")]
+        public static extern void AddTextureToUnlitMaterial(IntPtr matAdress, IntPtr textureAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetTransparent")]
+        public static extern void SetTransparent(IntPtr matAdress, bool isTransparent);
+
         #endregion
 
         #region MeshRendererFunctions
@@ -210,20 +225,16 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetMeshToMeshRenderer")]
         public static extern void SetMeshToMeshRenderer(IntPtr meshRendererAdress, IntPtr meshAdress);
         
-        [DllImport(RenderProgramDLLPath, EntryPoint = "SetMaterialToMeshRenderer")]
-        public static extern void SetMaterialToMeshRenderer(IntPtr meshRendererAdress, IntPtr materialAdress);
-        
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetupMeshRenderer")]
         public static extern void SetupMeshRenderer(IntPtr meshRendererAdress);
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "RenderMeshRenderer")]
-        public static extern void RenderMeshRenderer(IntPtr meshRendererAdress, IntPtr transfromAdress);
+        public static extern void RenderMeshRenderer(IntPtr meshRendererAdress, IntPtr transfromAdress, IntPtr materialAdress);
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "CleanUpMeshRenderer")]
         public static extern void CleanUpMeshRenderer(IntPtr meshRendererAdress);
         
         #endregion
-
         
         #region TransformFunctions
 
@@ -240,5 +251,34 @@ namespace RenderLibrary.DLL
         public static extern void SetTransformRotation(IntPtr transformAdress, float[] rotation);
 
         #endregion
+
+        #region OpenGLFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLEnable")]
+        public static extern void OpenGLEnable(int glEnum);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLDisable")]
+        public static extern void OpenGLDisable(int glEnum);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLClear")]
+        public static extern void OpenGLClear(int glEnum);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLStencilMask")]
+        public static extern void OpenGLStencilMask(int mask);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLStencilFunc")]
+        public static extern void OpenGLStencilFunc(int func, int refValue, int mask);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLStencilOp")]
+        public static extern void OpenGLStencilOp(int sfail, int dpfail, int dppass);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLCheckStencil")]
+        public static extern void OpenGLCheckStencil();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLBlendFunc")]
+        public static extern void OpenGLBlendFunc(int sfactor, int dfactor);
+
+        #endregion
+
     }
 }

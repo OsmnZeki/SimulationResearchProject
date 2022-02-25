@@ -1,50 +1,67 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 using Dalak.Ecs;
 using MESPSimulationSystem.Math;
-using RenderLibrary.Graphics;
-using RenderLibrary.Transform;
 using SimulationSystem.Components;
+using SimulationSystem.ECSComponents;
+using SimulationSystem.SharedData;
 
 namespace SimulationSystem.Systems
 {
     public class MeshRenderSystem : Dalak.Ecs.System
     {
-        private Filter<MeshRendererComp, TransformComp> meshRendererFilter = null;
-        private Filter<CameraComp> cameraFilter = null; //TODO: tek kamera var arttırılabilir
+        private Filter<MeshRendererComp, TransformComp>.Exclude<OutlineBorderRenderComp> meshRendererFilter = null;
+
+        private Filter<CameraComp,TransformComp> cameraFilter = null;
+
+        SceneShaderManager sceneShaderManager = null;
+
+        Dictionary<int, float> transparentObjectDist = new Dictionary<int, float>();
 
         public override void Awake()
         {
 
         }
 
-        public override void Update()
-        {
-            foreach(var m in meshRendererFilter)
-            {
-               
-            }
-        }
 
         public override void Render()
         {
             ref var cameraComp = ref cameraFilter.Get1(0);
+            ref var transformCameraComp = ref cameraFilter.Get2(0);
 
-            Mat4 view = cameraComp.camera.GetViewMatrix();
-            Mat4 projection = cameraComp.camera.Perspective(800f / 600f);
+            sceneShaderManager.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
 
+            transparentObjectDist.Clear();
+
+            //opaque render
             foreach (var m in meshRendererFilter)
             {
-                var transformComp = meshRendererFilter.Get2(m);
-                var meshRendererComp = meshRendererFilter.Get1(m);
+                ref var transformComp = ref meshRendererFilter.Get2(m);
+                ref var meshRendererComp = ref meshRendererFilter.Get1(m);
 
-                var shader = meshRendererComp.material.GetShader();
-                shader.Activate();
-                shader.Set3Float("viewPos", cameraComp.camera.cameraPos);
+                if (meshRendererComp.meshRenderer == null)
+                {
+                    meshRendererComp.SetMeshRenderer();
+                }
 
-                shader.SetMat4("view", view);
-                shader.SetMat4("projection", projection);
+                if (meshRendererComp.material.transparent)
+                {
+                    float sqrDist = Vector3.DistanceSquared(transformCameraComp.transform.position, transformComp.transform.position);
+                    transparentObjectDist.Add(m, sqrDist);
+                    continue;
+                }
 
-                meshRendererComp.meshRenderer.Render(transformComp.transform);
+                meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
+            }
+
+            //transparent render
+            foreach(var m in transparentObjectDist.OrderByDescending(pair => pair.Value))
+            {
+                ref var transformComp = ref meshRendererFilter.Get2(m.Key);
+                ref var meshRendererComp = ref meshRendererFilter.Get1(m.Key);
+                meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
             }
         }
 

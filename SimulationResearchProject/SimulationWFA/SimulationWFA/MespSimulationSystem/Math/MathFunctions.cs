@@ -3,7 +3,7 @@ using RenderLibrary.DLL;
 
 namespace MESPSimulationSystem.Math
 {
-    public static class Mathunctions
+    public static class MathFunctions
     {
         public static double ConvertToRadians(double angle)
         {

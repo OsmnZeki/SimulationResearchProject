@@ -17,7 +17,6 @@ namespace TheSimulation.SerializedComponent
         {
             MeshRenderer meshRenderer = new MeshRenderer();
             meshRenderer.SetMesh(mesh);
-            meshRenderer.SetMaterial(material);
             meshRenderer.Setup();
 
             entity.AddComponent<MeshRendererComp>() = new MeshRendererComp() {meshRenderer = meshRenderer, material = material, mesh = mesh,};

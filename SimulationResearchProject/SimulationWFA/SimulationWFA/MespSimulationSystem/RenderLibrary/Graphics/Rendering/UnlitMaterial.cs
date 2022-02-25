@@ -16,12 +16,17 @@ namespace RenderLibrary.Graphics.Rendering
             RenderProgramDLL.SetColorToMaterial(materialAdress,colorF);
         }
 
+        public void AddTexture(Texture texture)
+        {
+            RenderProgramDLL.AddTextureToUnlitMaterial(materialAdress, texture.textureAdress);
+        }
+
         //TODO: get fonksiyonunu yaz
         /*public Vector4 GetColor()
         {
             //TODO: RenderDLL.GetColor
             //TODO: return color
         }*/
-        
+
     }
 }

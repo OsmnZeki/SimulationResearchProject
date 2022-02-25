@@ -7,9 +7,9 @@ namespace RenderLibrary.Graphics.Rendering
     {
         public IntPtr textureAdress;
 
-        public Texture(string directory, string name, TextureType textureType)
+        public Texture(string directory, string name, TextureMapType textureType)
         {
-            RenderProgramDLL.NewTexture(directory, name, (int) textureType);
+            textureAdress = RenderProgramDLL.NewTexture(directory, name, (int) textureType);
         }
 
         public void Load(bool flip)
@@ -17,11 +17,23 @@ namespace RenderLibrary.Graphics.Rendering
             RenderProgramDLL.TextureLoad(textureAdress, flip);
         }
 
-        public enum TextureType
+        public void SetWrapParameters(TextureWrapType wrapSParameter, TextureWrapType wrapTParameter)
+        {
+            RenderProgramDLL.TextureSetWrapParameters(textureAdress,(int)wrapSParameter,  (int)wrapTParameter);
+        }
+
+        public enum TextureMapType
         {
             Ambient=0,
             Diffuse=1,
             Specular=2
         }
+
+        public enum TextureWrapType
+        {
+            GL_REPEAT = 0x2901,
+            GL_CLAMP_TO_EDGE = 0x812F,
+        }
+
     }
 }

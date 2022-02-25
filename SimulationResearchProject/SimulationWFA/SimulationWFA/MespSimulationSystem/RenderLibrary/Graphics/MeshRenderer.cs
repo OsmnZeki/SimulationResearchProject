@@ -19,10 +19,6 @@ namespace RenderLibrary.Graphics
             RenderProgramDLL.SetMeshToMeshRenderer(meshRendererAdress, mesh.GetMeshAdress());
         }
 
-        public void SetMaterial(Material material)
-        {
-            RenderProgramDLL.SetMaterialToMeshRenderer(meshRendererAdress, material.GetAdress());
-        }
         
         //TODO: get fonksiyonlarını ayarla
      /*   public void GetMesh()
@@ -40,9 +36,9 @@ namespace RenderLibrary.Graphics
             RenderProgramDLL.SetupMeshRenderer(meshRendererAdress);
         }
 
-        public void Render(Transform.Transform transform)
+        public void Render(Transform.Transform transform, Material material)
         {
-            RenderProgramDLL.RenderMeshRenderer(meshRendererAdress,transform.GetAdress());
+            RenderProgramDLL.RenderMeshRenderer(meshRendererAdress,transform.GetAdress(),material.GetAdress());
         }
 
         public void CleanUp()

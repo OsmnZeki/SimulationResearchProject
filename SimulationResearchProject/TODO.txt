@@ -2,18 +2,75 @@ renderProgramdan çıkartılan dll içerisinde assimpin dll'ini göremiyor --> (
 	*cmake ile assimp.dll'in ana dllye bağlanması gerekiyor (aynı şekilde opengl.dll'de)
 	*ilk dll çıkartırken ki hatalar da glwf3.dll'den dolayı olabilir mi ? nasıl çözüldü ?
 
+renderprogramDLL manuel olarak atılmamalı ?
 
-
+Osman
+------
+Grid sistemi
 
 
 *ECS
 	*entegresyon için kapatılan debug.assertleri daha sonrasında aç
 
 
-Directory otomatik alınacak
-
 
 Camera
 ------
 Camera renderlama layerları
-Camera posizyon ve hesaplamaları sistem içerisinde olmalı
+Camera hesaplamaları update içerisinde geçiyor titreme yaratır mı ?
+
+screen
+------
+800/600 ratiosu c# perspective fonksiyonunda manuel olarak veriliyor c++'tan verilmeli
+
+
+infiniteGrid
+------------
+opengl daha tam bitmedi (opacity ve depth). bitirdikten sonra devam et
+
+
+render
+------
+sadece triangle çizdirtiyor ve mesh gerekiyor. meshsiz çizgi çizdirebilmek için güzel bir sistem bul
+mesh zaten c++'ta tutuluyor. C++ meshRenderer diye bir classa gerek var mı ? onun yerine c++ render(mesh,transform,material) alan bir class olsa nasıl olur ?
+
+
+screen
+------
+screen fonksiyonları (opengl screen.setparameters içerisindeki) dll için parçalanabilir
+
+
+simobj
+------
+simobj ve entity ayrı mı olmalı ? yoksa aynı anda createlenebilir mi ?
+addcomponent, simobj için serailizedcomp list entegre çalışmıyor
+
+Material
+--------
+c++ materialleri neden texture vektörü tutuyor ? bir texturede birden fazla texture olabilir mi ? diffuse ve specular neden aynı listede ve onlar da 1 den fazla olabilir mi ?
+materiallere texture eklenebilir fakat çıkartılamaz ?
+
+texture
+-------
+texturelar constructorunda mı loadlanmalı ?
+textureler loadlanırken neden type alıyor ? -> lit materiale eklenirken type eklenmesi daha doğru çünkü texturenin typeı olmaz
+
+camera
+------
+editor camerası için editorcameratag
+
+model loading
+------------
+trol modeli yüklenirken Microsoft C++ exception: DeadlyImportError at hatası veriyor
+
+unlit shader
+------------
+tek texture support ediyor
+
+lit shader
+----------
+tek texture support ediyor
+
+transparency
+------------
+çok sayıda nesne ile test edilmesi gerekiyor

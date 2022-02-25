@@ -67,7 +67,7 @@ namespace SimulationSystem
             objectData.AddSerializedComponent(serializedComponent);
         }
 
-        public void AddAllSerializedComponents(World world)
+        public void AddAllComponents(World world)
         {
             foreach (var serializedComponent in objectData.GetSerializedComponents())
             {
@@ -80,7 +80,12 @@ namespace SimulationSystem
         {
             entity.RemoveAllComponents();
         }
-        
+
+        public void CreateEntity(World world)
+        {
+            entity = world.NewEntity();
+        }
+
 
         public static SimObject NewSimObject()
         {
@@ -98,6 +103,8 @@ namespace SimulationSystem
 
             return newSimObject;
         } 
+
+        
 
         public static SimObject[] GetChildren(SimObject parentObject)
         {

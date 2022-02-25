@@ -1,37 +1,52 @@
 ﻿using System;
-using Dalak.Ecs;
 using RenderLibrary.IO;
 using SimulationSystem.Systems;
+using SimulationSystem.Timer;
+using RenderLibrary.OpenGLCustomFunctions;
+using RenderLibrary.DLL;
 
 namespace SimulationSystem
 {
     public class EditorWindowSystem
     {
-
+        WindowEcsManager windowEcsManager;
         public void CreateEditorWindow()
         {
             Screen screen = new Screen();
             screen.Create(800, 600);
             if (screen.screenAdress == IntPtr.Zero) return;
+            screen.SetParameters();
+            screen.SetClearColor(screen.clearColor);
 
-            SimulationLifecyleMethods editorWindowLifecycle = new SimulationLifecyleMethods(new ECSEditorController());
+            OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
+            OpenGLFunctions.GLEnable(OpenGLEnum.GL_STENCIL_TEST);
+            OpenGLFunctions.GLEnable(OpenGLEnum.GL_BLEND);
+            OpenGLFunctions.GLBlendFunc(OpenGLEnum.GL_SRC_ALPHA, OpenGLEnum.GL_ONE_MINUS_SRC_ALPHA);
 
-            editorWindowLifecycle.Awake();
-            editorWindowLifecycle.Start();
+
+            windowEcsManager = new WindowEcsManager(new ECSEditorController(screen));
+            Time.StartTimer();
+
+            windowEcsManager.Awake();
+            windowEcsManager.Start();
 
             while (!screen.ShouldClose())
             {
-
+                Time.UpdateTimer();
                 screen.ProcessWindowInput();
-                editorWindowLifecycle.Update();
-                editorWindowLifecycle.LateUpdate();
 
+                windowEcsManager.Update();
+                windowEcsManager.LateUpdate();
+
+                //Render
                 screen.Update();
-                editorWindowLifecycle.Render();
+                windowEcsManager.Render();
                 screen.NewFrame();
             }
 
-            editorWindowLifecycle.OnSimulationQuit();
+            windowEcsManager.OnSimulationQuit();
+
+            Time.StopTimer();
             screen.Terminate();
         }
 
