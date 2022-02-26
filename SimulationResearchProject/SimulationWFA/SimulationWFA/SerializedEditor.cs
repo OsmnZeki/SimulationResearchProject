@@ -6,8 +6,11 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RenderLibrary.Graphics.PreparedModels;
+using RenderLibrary.Graphics.Rendering;
 using SimulationSystem.ECS.Entegration;
 using SimulationSystem.EditorEvents;
+using SimulationSystem.SharedData;
 using SimulationSystem.Systems;
 
 namespace SimulationWFA
@@ -23,7 +26,9 @@ namespace SimulationWFA
 
         public List<SimTextBox> SerializedTexts = new List<SimTextBox>();
 
-        public List<SimTextBox[]> SerializedCompTexts = new List<SimTextBox[]>();
+        public List<SimTextBox[]> TransformSerializedCompTexts = new List<SimTextBox[]>();
+        public List<TextBox[]> MeshSerializedCompTexts = new List<TextBox[]>();
+
 
         public void GetType(SerializedComponent serializedComponent)
         {
@@ -46,6 +51,10 @@ namespace SimulationWFA
         private void simulationProject_TextChanged(object sender, EventArgs e)
         {
             SimTextBox textBox = sender as SimTextBox;
+            if (Int32.TryParse(textBox.Text, out int result) == false)
+            {
+                textBox.Text = "0";
+            }
             SerializedEditor.SetItem(textBox);
             //posText[textBox.TabIndex - 1].Text = textBox.Text;
             //float a = float.Parse(posText[textBox.TabIndex - 1].Text);
@@ -59,7 +68,7 @@ namespace SimulationWFA
             {
                 resetButton.simPosText[i].Text = "0";
             }
-            SerializedEditor.ResetItem(resetButton.item);
+            SerializedEditor.ResetItem(resetButton.item, resetButton.fieldId);
         }
 
         public void SetSerializedItemOnEditor(SerializedComponent serializedCompItem, Panel componentPanel, Panel inspectorPanel, int totalCompLenght)
@@ -106,12 +115,14 @@ namespace SimulationWFA
                                 serializedFieldTexs[j].BringToFront();
                                 componentPanel.Controls.Add(serializedFieldTexs[j]);
                             }
-                            SerializedCompTexts.Add(serializedFieldTexs);
+                            TransformSerializedCompTexts.Add(serializedFieldTexs);
 
                             resButton[i] = new ResetButton();
                             resButton[i].Location = new Point(100, i * 20 + 20);
                             resButton[i].Size = new Size(50, 20);
                             resButton[i].Text = "Reset";
+                            resButton[i].BackColor = Color.White;
+                            resButton[i].fieldId = i;
                             resButton[i].item = serializedCompItem;
                             resButton[i].simPosText = serializedFieldTexs;
                             resButton[i].Click += new System.EventHandler(resetButton_Click);
@@ -122,6 +133,51 @@ namespace SimulationWFA
 
                         break;
                     }
+                case "MeshRendererSerialized":
+                    {
+                        SimTextBox serializedText = new SimTextBox();
+                        serializedText.Location = new Point(0, 100);
+                        serializedText.Text = serializedCompItem.GetName();
+                        serializedText.BackColor = Color.Red;
+                        serializedText.Size = new Size(150, 60);
+                        serializedText.BringToFront();
+                        SerializedTexts.Add(serializedText);
+                        componentPanel.Controls.Add(SerializedTexts[SerializedTexts.Count - 1]);
+
+                        var fields = type.GetFields();
+                        //string[] meshValues = new string[2];
+                        TextBox[] meshTextBoxs = new TextBox[2];
+                        Button[] meshButtons = new Button[2];
+                        string[] meshButtonValues = new string[2];
+                        meshButtonValues[0] = "Add Mesh";
+                        meshButtonValues[1] = "Add Material";
+                        for (int i = 0; i < 2; i++)
+                        {
+                            meshTextBoxs[i] = new TextBox();
+                            meshTextBoxs[i].Location = new Point(0, 120 + (i * 20));
+                            meshTextBoxs[i].Text = "None";
+                            meshTextBoxs[i].BackColor = Color.Yellow;
+                            meshTextBoxs[i].Size = new Size(50, 60);
+                            componentPanel.Controls.Add(meshTextBoxs[i]);
+
+                            meshButtons[i] = new Button();
+                            meshButtons[i].Location = new Point(60, 120 + (i * 20));
+                            meshButtons[i].Text = meshButtonValues[i];
+                            meshButtons[i].BackColor = Color.White;
+                            //meshButtons[i].
+                            if (i == 0)
+                            {
+                                meshButtons[i].Click += new EventHandler(addMeshButton_Click);
+                            }
+                            else
+                            {
+                                meshButtons[i].Click += new EventHandler(addMatButton_Click);
+                            }
+                            componentPanel.Controls.Add(meshButtons[i]);
+                        }
+                        MeshSerializedCompTexts.Add(meshTextBoxs);
+                        break;
+                    }
 
 
 
@@ -129,8 +185,18 @@ namespace SimulationWFA
                     break;
             }
 
+            inspectorPanel.Controls.Add(componentPanel);
 
+        }
 
+        private void addMatButton_Click(object sender, EventArgs e)
+        {
+            //Mat ekle
+        }
+
+        private void addMeshButton_Click(object sender, EventArgs e)
+        {
+            //Mesh Ekle
         }
 
         private static Vector3 InitializeItemVector(int idx, string text, dynamic obj)
@@ -175,14 +241,14 @@ namespace SimulationWFA
             }
         }
 
-        public static void ResetItem(SerializedComponent serializedItem)
+        public static void ResetItem(SerializedComponent serializedItem, int fieldId)
         {
             var type = serializedItem.GetType();
             switch (type.Name)
             {
                 case "TransformSerialized":
                     var fields = type.GetFields();
-                    fields[0].SetValue(serializedItem, new Vector3(0, 0, 0));
+                    fields[fieldId].SetValue(serializedItem, new Vector3(0, 0, 0));
                     break;
 
 

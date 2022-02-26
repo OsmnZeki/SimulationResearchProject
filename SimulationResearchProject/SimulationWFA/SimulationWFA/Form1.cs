@@ -17,6 +17,7 @@ namespace SimulationWFA
 {
     public partial class SimulationProject : Form
     {
+        SerializedEditor serializedEditor = new SerializedEditor();
         public SimulationProject()
         {
             InitializeComponent();
@@ -149,6 +150,12 @@ namespace SimulationWFA
             hieararchyPanel.Controls.Add(hierarchyButton);
 
         }
+
+        public void FindAndSetSerializedComp()
+        {
+
+        }
+
         private void hierarchyButton_Click(object sender, EventArgs e)
         {
             Control[] control = Controls.Find("hierarchyButton", true);
@@ -156,19 +163,12 @@ namespace SimulationWFA
 
             Panel componentPanel = new Panel();
             componentPanel.Location = new Point(5, 30);
-            componentPanel.Name = control[0].Name + "Panel";
-            componentPanel.Size = new System.Drawing.Size(180, 200);
+            componentPanel.Name = "ComponentPanel";
+            componentPanel.Size = new System.Drawing.Size(180, 400);
             componentPanel.BackColor = Color.DarkSalmon;
 
-            SerializedEditor serializedEditor = new SerializedEditor();
-
-            foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
-            {
-                serializedEditor.SetSerializedItemOnEditor(item, componentPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
-            }
-
             Button addComponentButton = new Button();
-            addComponentButton.Location = new Point(40, 180);
+            addComponentButton.Location = new Point(40, 380);
             addComponentButton.Size = new Size(100, 20);
             addComponentButton.BackColor = Color.White;
             addComponentButton.Text = "Add Component";
@@ -177,20 +177,15 @@ namespace SimulationWFA
             addComponentButton.BringToFront();
             componentPanel.Controls.Add(addComponentButton);
 
-            inspectorPanel.Controls.Add(componentPanel);
-        }
 
-        private void resetButton_Click(object sender, EventArgs e)
-        {
-            ResetButton resetButton = sender as ResetButton;
-            for (int i = 0; i < resetButton.simPosText.Length; i++)
+
+            foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
             {
-                resetButton.simPosText[i].Text = "0";
+                serializedEditor.SetSerializedItemOnEditor(item, componentPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
             }
-            SerializedEditor.ResetItem(resetButton.item);
+
+
         }
-
-
 
         private void addComponentButton_Click(object sender, EventArgs e, Panel panel)
         {
@@ -199,7 +194,7 @@ namespace SimulationWFA
             foreach (var item in SerializedComponentPool.SerializedCompTypes)
             {
                 buttons[idx] = new Button();
-                buttons[idx].Location = new Point(40, 140 - (idx * 20));
+                buttons[idx].Location = new Point(40, 300 - (idx * 20));
                 buttons[idx].Size = new Size(100, 20);
                 buttons[idx].Text = item.Value.GetName();
                 buttons[idx].BackColor = Color.White;
@@ -213,28 +208,22 @@ namespace SimulationWFA
 
         private void componentsButton_Click(object sender, EventArgs e, int idx)
         {
-            Control[] control = Controls.Find("hierarchyButton", true);
-            HierarchySimButton simButton = (HierarchySimButton)control[0];
+            Control[] hierarchyButtonControl = Controls.Find("hierarchyButton", true);
+            HierarchySimButton simButton = (HierarchySimButton)hierarchyButtonControl[0];
+
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
                 simObject = simButton.simObject,
                 serializedComponent = SerializedComponentPool.ReturnNewComponentFromList(idx),
             });
+            Control[] componentPanelControl = Controls.Find("ComponentPanel", true);
+            Panel compPanel = (Panel)componentPanelControl[0];
 
-        }
 
-        private void Hierarchy_Click(object sender, EventArgs e)
-        {
-
+            serializedEditor.SetSerializedItemOnEditor(SerializedComponentPool.ReturnNewComponentFromList(idx), compPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
         }
 
         #endregion
-
-        //private void refresh_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
 
     }
 
