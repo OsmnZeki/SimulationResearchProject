@@ -8,13 +8,15 @@ namespace RenderLibrary.Graphics.Rendering
         public LitMaterial()
         {
             materialAdress = RenderProgramDLL.NewLitMaterial();
+            materialType = MaterialType.LitMaterial;
+
         }
 
         public LitMaterial(Vector3 ambient, Vector3 diffuse, Vector3 specular, float shininess)
         {
+            materialType = MaterialType.LitMaterial;
             materialAdress = RenderProgramDLL.NewLitMaterial();
             SetAmbient(ambient);
-            SetDiffuse(diffuse);
             SetDiffuse(diffuse);
             SetSpecular(specular);
             SetShininess(shininess);

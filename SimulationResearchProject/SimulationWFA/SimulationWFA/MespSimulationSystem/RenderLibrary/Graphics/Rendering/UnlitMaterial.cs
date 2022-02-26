@@ -8,6 +8,8 @@ namespace RenderLibrary.Graphics.Rendering
         public UnlitMaterial()
         {
             materialAdress = RenderProgramDLL.NewUnlitMaterial();
+            materialType = MaterialType.UnlitMaterial;
+            RenderProgramDLL.SetColorToMaterial(materialAdress, new float[]{1,1,1,1});
         }
 
         public void SetColor(Vector4 color)

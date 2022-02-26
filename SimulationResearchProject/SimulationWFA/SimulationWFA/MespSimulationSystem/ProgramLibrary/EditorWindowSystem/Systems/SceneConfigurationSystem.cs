@@ -15,7 +15,6 @@ namespace SimulationSystem.Systems
 {
     public class SceneConfigurationSystem : Dalak.Ecs.System
     {
-        SceneShaderManager sceneShaderManager = null;
         ModelPaths modelReferences = null;
         TextureReferences textureRef = null;
 
@@ -34,7 +33,7 @@ namespace SimulationSystem.Systems
 
             CreatePlane();
 
-            CreateGrass();
+           // CreateGrass();
 
         }
 
@@ -78,12 +77,9 @@ namespace SimulationSystem.Systems
         //Lamba entitileri
         public void CreateLambs()
         {
-            UnlitShader lambShader = new UnlitShader();
-            sceneShaderManager.unlitShaders.Add(lambShader);
-
             UnlitMaterial unlitMaterial = new UnlitMaterial();
             unlitMaterial.SetColor(Vector4.One);
-            unlitMaterial.SetShader(lambShader.shader);
+            unlitMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.UnlitShader));
 
 
             Transform[] lambTransforms = new[]
@@ -126,13 +122,10 @@ namespace SimulationSystem.Systems
             simObj.entity.GetComponent<TransformComp>().transform.position = new System.Numerics.Vector3(0, 0, -10);
             simObj.entity.GetComponent<TransformComp>().transform.rotation = new System.Numerics.Vector3(0, 0, 0);
 
-            LitShader trolShader = new LitShader();
-            sceneShaderManager.litShaders.Add(trolShader);
-
             var trolModel = new ModelLoading();
             trolModel.LoadModel(modelReferences.TrolModelPath);
             var trolMat = trolModel.GetMaterial(0);
-            trolMat.SetShader(trolShader.shader);
+            trolMat.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
 
             simObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
                 material = trolMat,
@@ -146,12 +139,9 @@ namespace SimulationSystem.Systems
             planeSimObj.CreateEntity(world);
             planeSimObj.AddAllComponents(world);
 
-            var groundShader = new LitShader();
-            sceneShaderManager.litShaders.Add(groundShader);
-
             CubeMesh cubeModel = new CubeMesh();
             LitMaterial groundMaterial = LitMaterial.gold;
-            groundMaterial.SetShader(groundShader.shader);
+            groundMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
 
             ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, 0f, 10);
@@ -162,7 +152,7 @@ namespace SimulationSystem.Systems
                 mesh = cubeModel,
             };
 
-            planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
+            //planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
         }
 
         public void CreateGrass()
@@ -171,13 +161,10 @@ namespace SimulationSystem.Systems
             grassObj.CreateEntity(world);
             grassObj.AddAllComponents(world);
 
-            var grassShader = new TransTestShader();
-            sceneShaderManager.unlitShaders.Add(grassShader);
-
             QuadPlane quaModel = new QuadPlane();
             UnlitMaterial grassMaterial = new UnlitMaterial();
             grassMaterial.AddTexture(textureRef.grassTexture);
-            grassMaterial.SetShader(grassShader.shader);
+            grassMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.TransTestShader));
 
             ref var transform = ref grassObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 10);
@@ -196,14 +183,11 @@ namespace SimulationSystem.Systems
             windowObj.CreateEntity(world);
             windowObj.AddAllComponents(world);
 
-            var windowShader = new UnlitShader();
-            sceneShaderManager.unlitShaders.Add(windowShader);
-
             QuadPlane quaModel = new QuadPlane();
             UnlitMaterial windowMaterial = new UnlitMaterial();
             windowMaterial.SetTransparent(true);
             windowMaterial.AddTexture(textureRef.windowTexture);
-            windowMaterial.SetShader(windowShader.shader);
+            windowMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.UnlitShader));
 
             ref var transform = ref windowObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 8);

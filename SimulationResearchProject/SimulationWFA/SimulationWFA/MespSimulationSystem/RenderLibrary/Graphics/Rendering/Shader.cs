@@ -2,20 +2,23 @@
 using System.Numerics;
 using MESPSimulationSystem.Math;
 using RenderLibrary.DLL;
+using static RenderLibrary.Shaders.ShaderPool;
 
 namespace RenderLibrary.Graphics.Rendering
 {
     public class Shader
     {
         private IntPtr shaderAdress;
+        public ShaderType shaderType;
 
         public Shader(IntPtr shaderAdress)
         {
             this.shaderAdress = shaderAdress;
         }
         
-        public Shader(string vertexShaderPath,string fragmentShaderPath)
+        public Shader(string vertexShaderPath,string fragmentShaderPath, ShaderType shaderType)
         {
+            this.shaderType = shaderType;
             shaderAdress = RenderProgramDLL.NewShader(vertexShaderPath, fragmentShaderPath);
         }
 
@@ -69,7 +72,5 @@ namespace RenderLibrary.Graphics.Rendering
         {
             return shaderAdress;
         }
-
-        
     }
 }

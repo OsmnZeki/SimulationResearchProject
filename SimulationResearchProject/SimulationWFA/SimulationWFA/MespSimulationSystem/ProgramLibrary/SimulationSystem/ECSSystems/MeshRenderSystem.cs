@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using Dalak.Ecs;
 using MESPSimulationSystem.Math;
+using RenderLibrary.Shaders;
 using SimulationSystem.Components;
 using SimulationSystem.ECSComponents;
 using SimulationSystem.SharedData;
@@ -15,8 +16,6 @@ namespace SimulationSystem.Systems
         private Filter<MeshRendererComp, TransformComp>.Exclude<OutlineBorderRenderComp> meshRendererFilter = null;
 
         private Filter<CameraComp, TransformComp> cameraFilter = null;
-
-        SceneShaderManager sceneShaderManager = null;
 
         Dictionary<int, float> transparentObjectDist = new Dictionary<int, float>();
 
@@ -31,7 +30,7 @@ namespace SimulationSystem.Systems
             ref var cameraComp = ref cameraFilter.Get1(0);
             ref var transformCameraComp = ref cameraFilter.Get2(0);
 
-            sceneShaderManager.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
+            ShaderPool.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
 
             transparentObjectDist.Clear();
 
@@ -43,7 +42,7 @@ namespace SimulationSystem.Systems
 
 
                 if (meshRendererComp.SetMeshRenderer() == false) continue;
-                Console.WriteLine("Meshhh");
+
                 if (meshRendererComp.material.transparent)
                 {
                     float sqrDist = Vector3.DistanceSquared(transformCameraComp.transform.position, transformComp.transform.position);

@@ -91,7 +91,6 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ModelPaths.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\SceneShaderManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\TextureReferences.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ClearColorTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
@@ -116,10 +115,8 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\QuadPlane.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\OpenGLFunctions\OpenGLFunctions.cs" />
-    <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\LitShader.cs" />
-    <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\OutlineBorderShader.cs" />
-    <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\TransTestShader.cs" />
-    <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\UnlitShader.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\ShaderPool.cs" />
+    <Compile Include="MespUtils\AssetUtils\AssetUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\BitSet.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentIdx.cs" />

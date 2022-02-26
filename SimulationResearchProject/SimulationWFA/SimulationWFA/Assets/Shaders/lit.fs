@@ -74,15 +74,14 @@ void main(){
 	vec4 diffMap;
 	vec4 specMap;
 
-	if(noTex == 1){
-		diffMap = material.diffuse;
-		specMap = material.specular;
+	diffMap = material.diffuse;
+	specMap = material.specular;
+
+	if(noTex != 1){
+		diffMap = texture(diffuse0, texCoord) * diffMap;
+		specMap = texture(specular0, texCoord) * specMap;
 	}
-	else{
-		diffMap = texture(diffuse0, texCoord);
-		specMap = texture(specular0, texCoord);
-	}
-	
+
 	//placeholder
 	vec4 result;
 	

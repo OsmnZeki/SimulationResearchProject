@@ -17,7 +17,6 @@ namespace SimulationSystem.Systems
         public override void OnInject()
         {
             systemManager.Inject(screen);
-            systemManager.Inject(new SceneShaderManager());
             systemManager.Inject(new ModelPaths());
             systemManager.Inject(new TextureReferences());
         }

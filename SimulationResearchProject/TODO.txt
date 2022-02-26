@@ -70,7 +70,10 @@ tek texture support ediyor
 lit shader
 ----------
 tek texture support ediyor
+lit shader c++ tarafından transparent olmuyor default 1 verikmiş
 
 transparency
 ------------
 çok sayıda nesne ile test edilmesi gerekiyor
+
+editor refres metodu optimize değil

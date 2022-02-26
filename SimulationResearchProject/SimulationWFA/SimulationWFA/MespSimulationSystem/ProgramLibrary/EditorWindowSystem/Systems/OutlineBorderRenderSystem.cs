@@ -7,6 +7,7 @@ using SimulationSystem.SharedData;
 using System.Numerics;
 using System;
 using RenderLibrary.Graphics.Rendering;
+using RenderLibrary.Shaders;
 
 namespace SimulationSystem
 {
@@ -16,22 +17,19 @@ namespace SimulationSystem
 
         private Filter<CameraComp> cameraFilter = null;
 
-        SceneShaderManager sceneShaderManager = null;
         UnlitMaterial outlineMaterial;
 
         public override void Awake()
         {
             outlineMaterial = new UnlitMaterial();
-            outlineMaterial.SetShader(sceneShaderManager.outLineShader.shader);
+         //   outlineMaterial.SetShader(outLineShader.shader);
         }
 
         public override void Render()
         {
             ref var cameraComp = ref cameraFilter.Get1(0);
 
-            sceneShaderManager.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
-            sceneShaderManager.SetupOutlineShader(cameraComp.view, cameraComp.projection);
-            
+            ShaderPool.SetupDefaultShadersToRender(cameraComp.view, cameraComp.projection);
             
             foreach (var m in renderFilter)
             {

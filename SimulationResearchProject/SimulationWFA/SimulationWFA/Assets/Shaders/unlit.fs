@@ -11,13 +11,11 @@ uniform vec3 color;
 
 void main(){
 
-	vec4 currentColor;
+	vec4 currentColor =vec4(color,1.0f);
 
-	if(noTex==1){
-		currentColor = vec4(color,1.0f);
-	}
-	else{
-		currentColor = texture(texture0,texCoord);
+
+	if(noTex!=1){
+		currentColor = texture(texture0,texCoord)*currentColor;
 	}
 
 	if(transparent != 1) currentColor.a = 1.0f;

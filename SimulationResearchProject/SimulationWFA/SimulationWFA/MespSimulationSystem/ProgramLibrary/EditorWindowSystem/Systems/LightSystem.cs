@@ -1,4 +1,5 @@
 ﻿using Dalak.Ecs;
+using RenderLibrary.Shaders;
 using SimulationSystem.Components;
 using SimulationSystem.SharedData;
 
@@ -12,17 +13,15 @@ namespace SimulationSystem.Systems
 
         private Filter<CameraComp,TransformComp> cameraFilter = null;
 
-        SceneShaderManager shaderDatas = null;
-
         public override void Render()
         {
             ref var cameraComp = ref cameraFilter.Get1(0);
             ref var camTransformComp = ref cameraFilter.Get2(0);
 
-            for(int i = 0; i< shaderDatas.litShaders.Count; i++)
+            for(int i = 0; i< ShaderPool.allLitShader.Length; i++)
             {
-                shaderDatas.litShaders[i].shader.Activate();
-                shaderDatas.litShaders[i].shader.Set3Float("viewPos", camTransformComp.transform.position);
+                ShaderPool.allLitShader[i].Activate();
+                ShaderPool.allLitShader[i].Set3Float("viewPos", camTransformComp.transform.position);
             }
 
             
@@ -34,33 +33,33 @@ namespace SimulationSystem.Systems
                 ref var transformComp = ref directionalFilter.Get2(d);
 
                 directioanLightComp.directionalLight.direction = transformComp.transform.forward;
-                for (int i = 0; i < shaderDatas.litShaders.Count; i++)
+                for (int i = 0; i < ShaderPool.allLitShader.Length; i++)
                 {
-                    directioanLightComp.directionalLight.Render(shaderDatas.litShaders[i].shader);
+                    directioanLightComp.directionalLight.Render(ShaderPool.allLitShader[i]);
                 }
             }
 
             //point light calculation
-            for (int i = 0; i < shaderDatas.litShaders.Count; i++)
+            for (int i = 0; i < ShaderPool.allLitShader.Length; i++)
             {
-                shaderDatas.litShaders[i].shader.Activate();
-                shaderDatas.litShaders[i].shader.SetInt("numbPointLights", pointLightFilter.NumberOfEntities);
+                ShaderPool.allLitShader[i].Activate();
+                ShaderPool.allLitShader[i].SetInt("numbPointLights", pointLightFilter.NumberOfEntities);
 
                 foreach (var p in pointLightFilter)
                 {
                     ref var pointLightComp = ref pointLightFilter.Get1(p);
                     ref var transformComp = ref pointLightFilter.Get2(p);
                     pointLightComp.pointLight.position = transformComp.transform.position;
-                    pointLightComp.pointLight.Render(shaderDatas.litShaders[i].shader, p);
+                    pointLightComp.pointLight.Render(ShaderPool.allLitShader[i], p);
                 }
             }
             
 
             //spot light calculation
-            for (int i = 0; i < shaderDatas.litShaders.Count; i++)
+            for (int i = 0; i < ShaderPool.allLitShader.Length; i++)
             {
-                shaderDatas.litShaders[i].shader.Activate();
-                shaderDatas.litShaders[i].shader.SetInt("numbSpotLights", spotLightFilter.NumberOfEntities);
+                ShaderPool.allLitShader[i].Activate();
+                ShaderPool.allLitShader[i].SetInt("numbSpotLights", spotLightFilter.NumberOfEntities);
 
                 foreach (var s in spotLightFilter)
                 {
@@ -68,7 +67,7 @@ namespace SimulationSystem.Systems
                     ref var transformComp = ref spotLightFilter.Get2(s);
                     spotLightComp.spotLight.position = transformComp.transform.position;
                     spotLightComp.spotLight.direction = transformComp.transform.forward;
-                    spotLightComp.spotLight.Render(shaderDatas.litShaders[i].shader, s);
+                    spotLightComp.spotLight.Render(ShaderPool.allLitShader[i], s);
                 }
             }
         }

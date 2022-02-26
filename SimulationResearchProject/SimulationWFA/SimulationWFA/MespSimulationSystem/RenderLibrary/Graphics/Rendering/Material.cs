@@ -1,15 +1,25 @@
 ﻿using System;
 using RenderLibrary.DLL;
+using static RenderLibrary.Shaders.ShaderPool;
 
 namespace RenderLibrary.Graphics.Rendering
 {
+    public enum MaterialType
+    {
+        LitMaterial,UnlitMaterial
+    }
+
+
     public class Material
     {
         protected IntPtr materialAdress;
+        public ShaderType shaderType;
+        public MaterialType materialType;
         public bool transparent = false;
 
         public void SetShader(Shader shader)
         {
+            shaderType = shader.shaderType;
             RenderProgramDLL.SetShaderToMaterial(materialAdress,shader.GetShaderAdress());
         }
 
