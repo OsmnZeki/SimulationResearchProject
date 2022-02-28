@@ -85,7 +85,7 @@ namespace RenderLibrary.Graphics.Rendering
 
         public void AddTexture(Texture texture)
         {
-            RenderProgramDLL.AddTextureToMaterial(materialAdress,texture.textureAdress);
+            RenderProgramDLL.AddTextureToMaterial(materialAdress,texture.GetTextureAdress());
         }
         
         //TODO: material get fonksiyonlarını ekle

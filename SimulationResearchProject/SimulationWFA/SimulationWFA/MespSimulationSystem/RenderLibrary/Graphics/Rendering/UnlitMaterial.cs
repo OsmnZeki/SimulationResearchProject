@@ -1,9 +1,10 @@
 ﻿using System.Numerics;
 using RenderLibrary.DLL;
+using SimulationWFA.MespUtils;
 
 namespace RenderLibrary.Graphics.Rendering
 {
-    public class UnlitMaterial : Material
+    public class UnlitMaterial : Material, IAssetSerialization<UnlitMaterialSerializationData>
     {
         public UnlitMaterial()
         {
@@ -20,15 +21,33 @@ namespace RenderLibrary.Graphics.Rendering
 
         public void AddTexture(Texture texture)
         {
-            RenderProgramDLL.AddTextureToUnlitMaterial(materialAdress, texture.textureAdress);
+            RenderProgramDLL.AddTextureToUnlitMaterial(materialAdress, texture.GetTextureAdress());
         }
 
-        //TODO: get fonksiyonunu yaz
-        /*public Vector4 GetColor()
+        public Texture GetTexture()
         {
-            //TODO: RenderDLL.GetColor
-            //TODO: return color
-        }*/
+            return new Texture(RenderProgramDLL.GetTextureFromUnlitMaterial(materialAdress));
+        }
+
+        public UnlitMaterialSerializationData Serialization()
+        {
+            UnlitMaterialSerializationData serializationData = new UnlitMaterialSerializationData();
+            serializationData.materialType = materialType;
+            serializationData.shaderType = shaderType;
+            serializationData.color = GetColor();
+            serializationData.transparent = transparent;
+            serializationData.texture = GetTexture();
+
+            return serializationData;
+        }
+
+
+        public Vector4 GetColor()
+        {
+            float[] colorF = new float[4];
+            RenderProgramDLL.GetColorFromMaterial(materialAdress, colorF);
+            return new Vector4(colorF[0], colorF[1], colorF[2], colorF[3]);
+        }
 
     }
 }

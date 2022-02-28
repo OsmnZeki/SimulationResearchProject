@@ -209,8 +209,14 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetColorToMaterial")]
         public static extern void SetColorToMaterial(IntPtr matAdress, float[] color);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetColorFromMaterial")]
+        public static extern void GetColorFromMaterial(IntPtr matAdress, float[] color);
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "AddTextureToUnlitMaterial")]
         public static extern void AddTextureToUnlitMaterial(IntPtr matAdress, IntPtr textureAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetTextureFromUnlitMaterial")]
+        public static extern IntPtr GetTextureFromUnlitMaterial(IntPtr matAdress);
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetTransparent")]
         public static extern void SetTransparent(IntPtr matAdress, bool isTransparent);

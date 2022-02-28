@@ -12,11 +12,9 @@ namespace SimulationSystem.SharedData
         public TextureReferences()
         {
             grassTexture = new Texture(SimPath.GetAssetPath + "/Images", "grass.png", Texture.TextureMapType.Diffuse);
-            grassTexture.Load(true);
             grassTexture.SetWrapParameters(TextureWrapType.GL_CLAMP_TO_EDGE, TextureWrapType.GL_CLAMP_TO_EDGE);
 
             windowTexture = new Texture(SimPath.GetAssetPath + "/Images", "blending_transparent_window.png", Texture.TextureMapType.Diffuse);
-            windowTexture.Load(true);
         }
 
     }

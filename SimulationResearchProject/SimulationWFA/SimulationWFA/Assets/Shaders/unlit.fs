@@ -7,11 +7,11 @@ in vec2 texCoord;
 uniform sampler2D texture0;
 uniform int noTex;
 uniform int transparent;
-uniform vec3 color;
+uniform vec4 color;
 
 void main(){
 
-	vec4 currentColor =vec4(color,1.0f);
+	vec4 currentColor =color;
 
 
 	if(noTex!=1){

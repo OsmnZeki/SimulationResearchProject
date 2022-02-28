@@ -49,6 +49,7 @@ Material
 --------
 c++ materialleri neden texture vektörü tutuyor ? bir texturede birden fazla texture olabilir mi ? diffuse ve specular neden aynı listede ve onlar da 1 den fazla olabilir mi ?
 materiallere texture eklenebilir fakat çıkartılamaz ?
+flip özelliği neden load içerisinde ? 
 
 texture
 -------

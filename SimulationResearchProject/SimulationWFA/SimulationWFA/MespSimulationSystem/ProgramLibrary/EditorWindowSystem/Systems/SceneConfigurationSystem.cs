@@ -9,6 +9,7 @@ using RenderLibrary.Transform;
 using SimulationSystem.Components;
 using SimulationSystem.ECSComponents;
 using SimulationSystem.SharedData;
+using SimulationWFA.MespUtils;
 using TheSimulation.SerializedComponent;
 
 namespace SimulationSystem.Systems
@@ -20,7 +21,6 @@ namespace SimulationSystem.Systems
 
         public override void Awake()
         {
-
             CreateEditorCamera();
 
             CreateDirectionalLight();
@@ -33,7 +33,7 @@ namespace SimulationSystem.Systems
 
             CreatePlane();
 
-           // CreateGrass();
+            CreateGrass();
 
         }
 
@@ -81,6 +81,7 @@ namespace SimulationSystem.Systems
             unlitMaterial.SetColor(Vector4.One);
             unlitMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.UnlitShader));
 
+            AssetUtils.CreateAsset(unlitMaterial.Serialization(), "testMat.mat");
 
             Transform[] lambTransforms = new[]
             {
@@ -188,6 +189,8 @@ namespace SimulationSystem.Systems
             windowMaterial.SetTransparent(true);
             windowMaterial.AddTexture(textureRef.windowTexture);
             windowMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.UnlitShader));
+
+            AssetUtils.CreateAsset(windowMaterial.Serialization(), "WindowMaterial.mat");
 
             ref var transform = ref windowObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 8);
