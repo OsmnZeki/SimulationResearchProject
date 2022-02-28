@@ -1,0 +1,25 @@
+{
+  "shaderType": 0,
+  "materialType": 0,
+  "transparent": false,
+  "ambient": {
+    "X": 0.24725,
+    "Y": 0.1995,
+    "Z": 0.0745,
+    "W": 1.0
+  },
+  "dffuse": {
+    "X": 0.75164,
+    "Y": 0.60648,
+    "Z": 0.22648,
+    "W": 1.0
+  },
+  "specular": {
+    "X": 0.628281,
+    "Y": 0.555802,
+    "Z": 0.366065,
+    "W": 1.0
+  },
+  "shininess": 0.4,
+  "textureData": null
+}

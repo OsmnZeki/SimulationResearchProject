@@ -15,6 +15,7 @@ namespace RenderLibrary.Graphics.Rendering
         protected IntPtr materialAdress;
         public ShaderType shaderType;
         public MaterialType materialType;
+        public Texture texture;
         public bool transparent = false;
 
         public void SetShader(Shader shader)

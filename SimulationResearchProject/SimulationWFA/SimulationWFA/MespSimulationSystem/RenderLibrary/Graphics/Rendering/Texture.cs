@@ -1,12 +1,14 @@
 ﻿using System;
+using System.IO;
 using RenderLibrary.DLL;
 using SimulationWFA.MespUtils;
 
 namespace RenderLibrary.Graphics.Rendering
 {
-    public class Texture : IAssetSerialization<TextureSerializationData>
+    public class Texture : IAssetSerialization
     {
         protected IntPtr textureAdress;
+        public string path;
         public TextureWrapType wrapSParameter;
         public TextureWrapType wrapTParameter;
         public TextureMapType textureMappingType;
@@ -18,6 +20,7 @@ namespace RenderLibrary.Graphics.Rendering
 
         public Texture(string directory, string name, TextureMapType textureType)
         {
+            path = Path.Combine("Images", name);
             textureMappingType = textureType;
             textureAdress = RenderProgramDLL.NewTexture(directory, name, (int) textureType);
             Load(true);
@@ -53,15 +56,33 @@ namespace RenderLibrary.Graphics.Rendering
             return textureAdress;
         }
 
-        public TextureSerializationData Serialization()
+        public string GetPath()
+        {
+            return path;
+        }
+
+        public object Serialization()
         {
             TextureSerializationData textureSerializedData = new TextureSerializationData();
 
             textureSerializedData.textureMappingType = textureMappingType;
             textureSerializedData.wrapSParameter = wrapSParameter;
             textureSerializedData.wrapTParameter = wrapTParameter;
+            textureSerializedData.path = path;
+
+
 
             return textureSerializedData;
+        }
+
+        public T Deserialization<T>(object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Deserialization(object data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

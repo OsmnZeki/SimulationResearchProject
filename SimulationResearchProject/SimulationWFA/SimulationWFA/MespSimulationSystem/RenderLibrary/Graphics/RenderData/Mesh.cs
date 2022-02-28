@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Numerics;
 using RenderLibrary.DLL;
+using SimulationWFA.MespUtils;
 
 namespace RenderLibrary.Graphics.RenderData
 {
-    public class Mesh
+    public class Mesh : IAssetSerialization
     {
         private IntPtr meshAdress;
         private int sizeOfVertices;
@@ -87,5 +88,66 @@ namespace RenderLibrary.Graphics.RenderData
         }
         
         //TODO:mesh get fonksiyonlarını ekle
+
+        public Vector3[] GetVerticesPos()
+        {
+            float[] posF = new float[sizeOfVertices * 3];
+            RenderProgramDLL.MeshGetVerticesPos(meshAdress, posF);
+            Vector3[] pos = new Vector3[sizeOfVertices];
+            for (int i = 0; i < sizeOfVertices; i++)
+            {
+                pos[i].X = posF[i * 3 + 0];
+                pos[i].Y = posF[i * 3 + 1];
+                pos[i].Z = posF[i * 3 + 2];
+            }
+            return pos;
+        }
+
+        public Vector3[] GetVerticesNormal()
+        {
+            float[] posF = new float[sizeOfVertices * 3];
+            RenderProgramDLL.MeshGetVerticesNormal(meshAdress, posF);
+            Vector3[] pos = new Vector3[sizeOfVertices];
+            for (int i = 0; i < sizeOfVertices; i++)
+            {
+                pos[i].X = posF[i * 3 + 0];
+                pos[i].Y = posF[i * 3 + 1];
+                pos[i].Z = posF[i * 3 + 2];
+            }
+            return pos;
+        }
+
+        public Vector2[] GetVerticesTexCoord()
+        {
+            float[] posF = new float[sizeOfVertices * 2];
+            RenderProgramDLL.MeshGetVerticesTexCoord(meshAdress, posF);
+            Vector2[] pos = new Vector2[sizeOfVertices];
+            for (int i = 0; i < sizeOfVertices; i++)
+            {
+                pos[i].X = posF[i * 2 + 0];
+                pos[i].Y = posF[i * 2 + 1];
+            }
+            return pos;
+        }
+
+        public object Serialization()
+        {
+            MeshSerializationData meshData = new MeshSerializationData();
+            meshData.verticesPos = GetVerticesPos();
+            meshData.normalPos = GetVerticesNormal();
+            meshData.texCoord = GetVerticesTexCoord();
+
+            return meshData;
+        }
+
+        public T Deserialization<T>(object data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Deserialization(object data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

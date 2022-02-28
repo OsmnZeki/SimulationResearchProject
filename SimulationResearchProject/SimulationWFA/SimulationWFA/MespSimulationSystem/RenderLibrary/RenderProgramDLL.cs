@@ -76,6 +76,7 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "TextureSetWrapParameters")]
         public static extern IntPtr TextureSetWrapParameters(IntPtr texture, int wrapSParameter, int wrapTParameter);
 
+
         #endregion
 
         #region MeshFunctions
@@ -94,6 +95,18 @@ namespace RenderLibrary.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetVerticesTexCoord")]
         public static extern void MeshSetVerticesTexCoord(IntPtr mesh, float[] texCoord);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshGetVerticesPos")]
+        public static extern void MeshGetVerticesPos(IntPtr mesh, float[] pos);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshGetIndices")]
+        public static extern void MeshGetIndices(IntPtr mesh, int[] indices);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshGetVerticesNormal")]
+        public static extern void MeshGetVerticesNormal(IntPtr mesh, float[] normal);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "MeshGetVerticesTexCoord")]
+        public static extern void MeshGetVerticesTexCoord(IntPtr mesh, float[] texCoord);
 
         #endregion
 
@@ -199,7 +212,19 @@ namespace RenderLibrary.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetShininessToMaterial")]
         public static extern void SetShininessToMaterial(IntPtr matAdress, float shininess);
-        
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetAmbientFromMaterial")]
+        public static extern void GetAmbientFromMaterial(IntPtr matAdress, float[] ambient);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetDiffuseFromMaterial")]
+        public static extern void GetDiffuseFromMaterial(IntPtr matAdress, float[] diffuse);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetSpecularFromMaterial")]
+        public static extern void GetSpecularFromMaterial(IntPtr matAdress, float[] specular);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetShininessFromMaterial")]
+        public static extern float GetShininessFromMaterial(IntPtr matAdress);
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "AddTextureToMaterial")]
         public static extern void AddTextureToMaterial(IntPtr matAdress, IntPtr textureAdress);
         

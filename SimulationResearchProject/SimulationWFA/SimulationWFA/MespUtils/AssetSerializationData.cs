@@ -1,30 +1,53 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using RenderLibrary.Graphics.Rendering;
 using static RenderLibrary.Graphics.Rendering.Texture;
 using static RenderLibrary.Shaders.ShaderPool;
 
 namespace SimulationWFA.MespUtils
 {
-    public interface IAssetSerialization<T>
+    public interface IAssetSerialization
     {
-        T Serialization();
+        object Serialization();
+        object Deserialization(object data);
     }
 
-    public struct TextureSerializationData
+    public class TextureSerializationData
     {
+        public string path;
         public TextureWrapType wrapSParameter;
         public TextureWrapType wrapTParameter;
         public TextureMapType textureMappingType;
     }
 
-    public struct UnlitMaterialSerializationData
+
+    public class UnlitMaterialSerializationData
     {
         public ShaderType shaderType;
         public MaterialType materialType;
         public bool transparent;
         public Vector4 color;
-        public Texture texture;
+        public object textureData;
+    }
 
+    public class LitMaterialSerializationData
+    {
+        public ShaderType shaderType;
+        public MaterialType materialType;
+        public bool transparent;
+        public Vector4 ambient;
+        public Vector4 dffuse;
+        public Vector4 specular;
+        public float shininess;
+        public object textureData;
+
+    }
+
+    public class MeshSerializationData
+    {
+        public Vector3[] verticesPos;
+        public Vector3[] normalPos;
+        public Vector2[] texCoord;
     }
 
 

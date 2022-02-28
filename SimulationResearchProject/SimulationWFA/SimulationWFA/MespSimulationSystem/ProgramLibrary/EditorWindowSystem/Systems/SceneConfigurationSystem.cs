@@ -77,11 +77,7 @@ namespace SimulationSystem.Systems
         //Lamba entitileri
         public void CreateLambs()
         {
-            UnlitMaterial unlitMaterial = new UnlitMaterial();
-            unlitMaterial.SetColor(Vector4.One);
-            unlitMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.UnlitShader));
-
-            AssetUtils.CreateAsset(unlitMaterial.Serialization(), "testMat.mat");
+            var material = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
 
             Transform[] lambTransforms = new[]
             {
@@ -92,6 +88,7 @@ namespace SimulationSystem.Systems
             };
 
             CubeMesh cubeModel = new CubeMesh();
+            AssetUtils.CreateAsset(cubeModel, "cubeModel.mesh");
             SimObject[] lambSimObj = new SimObject[4];
             for (int i = 0; i < 4; i++)
             {
@@ -107,7 +104,7 @@ namespace SimulationSystem.Systems
                     }
                 };
                 lambSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                    material = unlitMaterial,
+                    material = material,
                     mesh = cubeModel,
                 };
             }
@@ -144,6 +141,8 @@ namespace SimulationSystem.Systems
             LitMaterial groundMaterial = LitMaterial.gold;
             groundMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
 
+            AssetUtils.CreateAsset(groundMaterial, "groundMaterial.mat");
+
             ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, 0f, 10);
             transform.scale = new Vector3(10, .1f, 10); ;
@@ -163,9 +162,12 @@ namespace SimulationSystem.Systems
             grassObj.AddAllComponents(world);
 
             QuadPlane quaModel = new QuadPlane();
+            AssetUtils.CreateAsset(quaModel, "quad.mesh");
             UnlitMaterial grassMaterial = new UnlitMaterial();
             grassMaterial.AddTexture(textureRef.grassTexture);
             grassMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.TransTestShader));
+
+            AssetUtils.CreateAsset(grassMaterial, "grassMaterial.mat");
 
             ref var transform = ref grassObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 10);
@@ -190,7 +192,7 @@ namespace SimulationSystem.Systems
             windowMaterial.AddTexture(textureRef.windowTexture);
             windowMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.UnlitShader));
 
-            AssetUtils.CreateAsset(windowMaterial.Serialization(), "WindowMaterial.mat");
+            AssetUtils.CreateAsset(windowMaterial, "WindowMaterial.mat");
 
             ref var transform = ref windowObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 8);
