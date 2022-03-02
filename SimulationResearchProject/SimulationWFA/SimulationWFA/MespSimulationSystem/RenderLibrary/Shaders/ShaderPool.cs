@@ -16,10 +16,10 @@ namespace RenderLibrary.Shaders
             LitShader, UnlitShader, TransTestShader, OutlineBorderShader
         }
 
-        public static Shader litShader = new Shader(SimPath.GetAssetPath + "/Shaders/object.vs", SimPath.GetAssetPath + "/Shaders/lit.fs", ShaderType.LitShader);
-        public static Shader unlitShader = new Shader(SimPath.GetAssetPath + "/Shaders/object.vs", SimPath.GetAssetPath + "/Shaders/unlit.fs", ShaderType.UnlitShader);
-        public static Shader transTestShader = new Shader(SimPath.GetAssetPath + "/Shaders/object.vs", SimPath.GetAssetPath + "/Shaders/TransTestShader/transparent.fs", ShaderType.TransTestShader);
-        public static Shader outlineBorderShader = new Shader(SimPath.GetAssetPath + "/Shaders/object.vs", SimPath.GetAssetPath + "/Shaders/OutlineShader/Outline.fs", ShaderType.OutlineBorderShader);
+        public static Shader litShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/lit.fs", ShaderType.LitShader);
+        public static Shader unlitShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/unlit.fs", ShaderType.UnlitShader);
+        public static Shader transTestShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/TransTestShader/transparent.fs", ShaderType.TransTestShader);
+        public static Shader outlineBorderShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/OutlineShader/Outline.fs", ShaderType.OutlineBorderShader);
 
         public static Shader[] allShaders = { litShader, unlitShader, transTestShader, outlineBorderShader };
         public static Shader[] allLitShader = { litShader };

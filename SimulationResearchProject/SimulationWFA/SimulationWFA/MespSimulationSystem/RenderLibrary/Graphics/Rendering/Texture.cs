@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using ProgramLibrary;
 using RenderLibrary.DLL;
 using SimulationWFA.MespUtils;
 
@@ -8,7 +9,7 @@ namespace RenderLibrary.Graphics.Rendering
     public class Texture : IAssetSerialization
     {
         protected IntPtr textureAdress;
-        public string path;
+        public string name;
         public TextureWrapType wrapSParameter;
         public TextureWrapType wrapTParameter;
         public TextureMapType textureMappingType;
@@ -20,7 +21,7 @@ namespace RenderLibrary.Graphics.Rendering
 
         public Texture(string directory, string name, TextureMapType textureType)
         {
-            path = Path.Combine("Images", name);
+            this.name = name;
             textureMappingType = textureType;
             textureAdress = RenderProgramDLL.NewTexture(directory, name, (int) textureType);
             Load(true);
@@ -58,7 +59,7 @@ namespace RenderLibrary.Graphics.Rendering
 
         public string GetPath()
         {
-            return path;
+            return name;
         }
 
         public object Serialization()
@@ -68,21 +69,19 @@ namespace RenderLibrary.Graphics.Rendering
             textureSerializedData.textureMappingType = textureMappingType;
             textureSerializedData.wrapSParameter = wrapSParameter;
             textureSerializedData.wrapTParameter = wrapTParameter;
-            textureSerializedData.path = path;
-
-
+            textureSerializedData.name = name;
 
             return textureSerializedData;
         }
 
-        public T Deserialization<T>(object data)
-        {
-            throw new NotImplementedException();
-        }
-
         public object Deserialization(object data)
         {
-            throw new NotImplementedException();
+            TextureSerializationData textureData = new TextureSerializationData();
+            textureData = (TextureSerializationData)data;
+
+            Texture texture = new Texture(SimPath.TexturesPath, textureData.name,textureData.textureMappingType);
+            texture.SetWrapParameters(textureData.wrapSParameter, textureData.wrapTParameter);
+            return texture;
         }
     }
 }

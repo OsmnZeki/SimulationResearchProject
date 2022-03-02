@@ -14,7 +14,7 @@ namespace SimulationWFA.MespUtils
 
     public class TextureSerializationData
     {
-        public string path;
+        public string name;
         public TextureWrapType wrapSParameter;
         public TextureWrapType wrapTParameter;
         public TextureMapType textureMappingType;

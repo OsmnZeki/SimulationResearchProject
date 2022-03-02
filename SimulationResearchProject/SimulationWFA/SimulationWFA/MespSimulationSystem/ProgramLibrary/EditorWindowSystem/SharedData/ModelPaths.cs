@@ -4,6 +4,6 @@ namespace SimulationSystem.SharedData
 {
     class ModelPaths
     {
-        public string TrolModelPath = SimPath.GetAssetPath + "/Models/Trol/scene.gltf";
+        public string TrolModelPath = SimPath.ModelsPath + "/Trol/scene.gltf";
     }
 }

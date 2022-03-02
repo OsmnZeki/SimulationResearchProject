@@ -26,8 +26,8 @@ namespace SimulationWFA.MespUtils
                 return;
             }
 
-            Directory.CreateDirectory(SimPath.GetAssetPath + "/" + assetFileName);
-            string directoryPath = Path.Combine(SimPath.GetAssetPath +"/"+assetFileName, fileName);
+            Directory.CreateDirectory(assetFileName);
+            string directoryPath = Path.Combine(assetFileName, fileName);
             File.WriteAllText(directoryPath, JsonConvert.SerializeObject(myTest.Serialization(), Formatting.Indented));
         }
 
@@ -43,7 +43,7 @@ namespace SimulationWFA.MespUtils
               //  return null;
             }
 
-            string directoryPath = Path.Combine(SimPath.GetAssetPath + "/" + assetFileName, fileName);
+            string directoryPath = Path.Combine(assetFileName, fileName);
             if (!File.Exists(directoryPath)) Console.WriteLine("There is no that named file!");
             var dataString = File.ReadAllText(directoryPath);
 
@@ -66,9 +66,9 @@ namespace SimulationWFA.MespUtils
 
             switch (assetTypeName)
             {
-                case ".mat": return "Materials";
-                case ".texture": return "Textures";
-                case ".mesh": return "Meshes";
+                case ".mat": return SimPath.MaterialsPath;
+                case ".texture": return SimPath.TexturesPath;
+                case ".mesh": return SimPath.MeshesPath;
             }
 
             return null;

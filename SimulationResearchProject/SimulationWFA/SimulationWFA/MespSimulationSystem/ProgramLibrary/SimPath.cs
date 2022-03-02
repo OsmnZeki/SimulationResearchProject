@@ -11,6 +11,12 @@ namespace ProgramLibrary
     {
         public static string currentDirectory = Directory.GetCurrentDirectory();
         private static string AssetPath = null;
+        public static string ImagesPath = Path.Combine(GetAssetPath,"Images");
+        public static string MaterialsPath = Path.Combine(GetAssetPath, "Materials");
+        public static string MeshesPath = Path.Combine(GetAssetPath, "Meshes");
+        public static string ModelsPath = Path.Combine(GetAssetPath, "Models");
+        public static string ShadersPath = Path.Combine(GetAssetPath, "Shaders");
+        public static string TexturesPath = Path.Combine(GetAssetPath, "Textures");
 
         public static string GetAssetPath { 
             get {
