@@ -1,10 +1,11 @@
 ﻿using System.Numerics;
 using RenderLibrary.DLL;
 using SimulationWFA.MespUtils;
+using static RenderLibrary.Shaders.ShaderPool;
 
 namespace RenderLibrary.Graphics.Rendering
 {
-    public class LitMaterial : Material, IAssetSerialization
+    public class LitMaterial : Material, IAssetSerializator
     {
 
         public LitMaterial()
@@ -122,31 +123,70 @@ namespace RenderLibrary.Graphics.Rendering
             return texture;
         }
 
-        public object Serialization()
+        public object Serializate()
         {
-            LitMaterialSerializationData serializationData = new LitMaterialSerializationData();
-            serializationData.materialType = materialType;
-            serializationData.shaderType = shaderType;
-            serializationData.ambient = GetAmbient();
-            serializationData.dffuse = GetDiffuse();
-            serializationData.specular = GetSpecular();
-            serializationData.shininess = GetShininess();
-            serializationData.transparent = transparent;
-            if (texture == null) { serializationData.textureData = null; }
-            else { serializationData.textureData = texture.Serialization(); }
+            AssetSerializationData data = new AssetSerializationData();
 
+            data.SetInt("MaterialType", (int)materialType);
+            data.SetInt("ShaderType", (int)shaderType);
+            data.SetBool("Transparent", transparent);
+            data.SetString("TextureFileID", "Empty");
 
-            return serializationData;
+            var ambinet = GetAmbient();
+            var ambientList = data.GetFloatList("Ambient");
+            ambientList.Add(ambinet.X);
+            ambientList.Add(ambinet.Y);
+            ambientList.Add(ambinet.Z);
+            ambientList.Add(ambinet.W);
+
+            var diffuse = GetDiffuse();
+            var diffuseList = data.GetFloatList("Diffuse");
+            diffuseList.Add(diffuse.X);
+            diffuseList.Add(diffuse.Y);
+            diffuseList.Add(diffuse.Z);
+            diffuseList.Add(diffuse.W);
+
+            var specular = GetSpecular();
+            var specularList = data.GetFloatList("Specular");
+            specularList.Add(specular.X);
+            specularList.Add(specular.Y);
+            specularList.Add(specular.Z);
+            specularList.Add(specular.W);
+
+            data.SetFloat("Shininess", GetShininess());
+
+            return data;
         }
 
-        public T Deserialization<T>(object data)
+        public object Deserializate(AssetSerializationData data)
         {
-            throw new System.NotImplementedException();
-        }
+            SetShader(GetShaderByType((ShaderType)data.GetInt("ShaderType", -1)));
 
-        public object Deserialization(object data)
-        {
-            throw new System.NotImplementedException();
+            var ambientList = data.GetFloatList("Ambient");
+            Vector4 ambient = new Vector4(ambientList[0], ambientList[1], ambientList[2], ambientList[3]);
+            SetAmbient(ambient);
+
+            var diffuseList = data.GetFloatList("Diffuse");
+            Vector4 diffuse = new Vector4(diffuseList[0], diffuseList[1], diffuseList[2], diffuseList[3]);
+            SetDiffuse(diffuse);
+
+            var specularList = data.GetFloatList("Specular");
+            Vector4 specular = new Vector4(specularList[0], specularList[1], specularList[2], specularList[3]);
+            SetSpecular(specular);
+
+            SetShininess(data.GetFloat("Shininess",0));
+
+            SetTransparent(data.GetBool("Transparent", false));
+
+            var textureID = data.GetString("TextureFileID", "Empty");
+            if (textureID != "Empty")
+            {
+                var texName = AssetOrganizer.GetTexturePathByFileID(textureID);
+                if (texName == null) return null;
+                AddTexture(AssetUtils.LoadFromAsset<Texture>(texName));
+            }
+
+            return this;
         }
     }
 

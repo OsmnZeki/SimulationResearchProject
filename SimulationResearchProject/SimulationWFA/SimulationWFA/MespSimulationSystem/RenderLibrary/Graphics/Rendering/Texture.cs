@@ -6,13 +6,15 @@ using SimulationWFA.MespUtils;
 
 namespace RenderLibrary.Graphics.Rendering
 {
-    public class Texture : IAssetSerialization
+    public class Texture : IAssetSerializator
     {
         protected IntPtr textureAdress;
         public string name;
         public TextureWrapType wrapSParameter;
         public TextureWrapType wrapTParameter;
         public TextureMapType textureMappingType;
+
+        public Texture() { }
 
         public Texture(IntPtr textureAdress)
         {
@@ -62,25 +64,20 @@ namespace RenderLibrary.Graphics.Rendering
             return name;
         }
 
-        public object Serialization()
+        public object Serializate()
         {
-            TextureSerializationData textureSerializedData = new TextureSerializationData();
-
-            textureSerializedData.textureMappingType = textureMappingType;
-            textureSerializedData.wrapSParameter = wrapSParameter;
-            textureSerializedData.wrapTParameter = wrapTParameter;
-            textureSerializedData.name = name;
-
-            return textureSerializedData;
+            AssetSerializationData data = new AssetSerializationData();
+            data.SetInt("TextureMappingType",(int)textureMappingType);
+            data.SetInt("WrapSParameter",(int)wrapSParameter);
+            data.SetInt("WrapTParameter", (int)wrapTParameter);
+            data.SetString("ImageName", name);
+            return data;
         }
 
-        public object Deserialization(object data)
+        public object Deserializate(AssetSerializationData data)
         {
-            TextureSerializationData textureData = new TextureSerializationData();
-            textureData = (TextureSerializationData)data;
-
-            Texture texture = new Texture(SimPath.TexturesPath, textureData.name,textureData.textureMappingType);
-            texture.SetWrapParameters(textureData.wrapSParameter, textureData.wrapTParameter);
+            Texture texture = new Texture(SimPath.ImagesPath, data.GetString("ImageName",""), (TextureMapType)data.GetInt("TextureMappingType",0));
+            texture.SetWrapParameters((TextureWrapType)data.GetInt("WrapSParameter",-1), (TextureWrapType)data.GetInt("WrapTParameter", -1));
             return texture;
         }
     }

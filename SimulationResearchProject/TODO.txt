@@ -78,3 +78,8 @@ transparency
 çok sayıda nesne ile test edilmesi gerekiyor
 
 editor refres metodu optimize değil
+
+assetCreator
+------------
+var olan asset varsa üzerine yazması engellendi
+(!) ileride guid eğer ki aynı idyi verirse patlama olabilir

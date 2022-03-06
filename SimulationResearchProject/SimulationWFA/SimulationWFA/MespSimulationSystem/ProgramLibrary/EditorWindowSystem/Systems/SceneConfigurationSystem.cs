@@ -3,6 +3,7 @@ using System.Numerics;
 using ProgramLibrary;
 using RenderLibrary.Graphics;
 using RenderLibrary.Graphics.PreparedModels;
+using RenderLibrary.Graphics.RenderData;
 using RenderLibrary.Graphics.Rendering;
 using RenderLibrary.Shaders;
 using RenderLibrary.Transform;
@@ -77,8 +78,6 @@ namespace SimulationSystem.Systems
         //Lamba entitileri
         public void CreateLambs()
         {
-            var material = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
-
             Transform[] lambTransforms = new[]
             {
                 new Transform(new Vector3(0.7f, 5.0f, 10.0f),new Vector3(.25f), Vector3.Zero),
@@ -87,8 +86,6 @@ namespace SimulationSystem.Systems
                 new Transform(new Vector3(0.0f, 0.0f, -3.0f),new Vector3(.25f), Vector3.Zero),
             };
 
-            CubeMesh cubeModel = new CubeMesh();
-            AssetUtils.CreateAsset(cubeModel, "cubeModel.mesh");
             SimObject[] lambSimObj = new SimObject[4];
             for (int i = 0; i < 4; i++)
             {
@@ -104,8 +101,8 @@ namespace SimulationSystem.Systems
                     }
                 };
                 lambSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                    material = material,
-                    mesh = cubeModel,
+                    material = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat"),
+                    mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
                 };
             }
         }
@@ -135,21 +132,15 @@ namespace SimulationSystem.Systems
         {
             var planeSimObj = SimObject.NewSimObject();
             planeSimObj.CreateEntity(world);
-            planeSimObj.AddAllComponents(world);
-
-            CubeMesh cubeModel = new CubeMesh();
-            LitMaterial groundMaterial = LitMaterial.gold;
-            groundMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
-
-            AssetUtils.CreateAsset(groundMaterial, "groundMaterial.mat");
+            planeSimObj.AddAllComponents(world);;
 
             ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, 0f, 10);
             transform.scale = new Vector3(10, .1f, 10); ;
 
             planeSimObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                material = groundMaterial,
-                mesh = cubeModel,
+                material = AssetUtils.LoadFromAsset<LitMaterial>("groundMaterial.mat"),
+                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
             };
 
             //planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
@@ -161,21 +152,13 @@ namespace SimulationSystem.Systems
             grassObj.CreateEntity(world);
             grassObj.AddAllComponents(world);
 
-            QuadPlane quaModel = new QuadPlane();
-            AssetUtils.CreateAsset(quaModel, "quad.mesh");
-            UnlitMaterial grassMaterial = new UnlitMaterial();
-            grassMaterial.AddTexture(textureRef.grassTexture);
-            grassMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.TransTestShader));
-
-            AssetUtils.CreateAsset(grassMaterial, "grassMaterial.mat");
-
             ref var transform = ref grassObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 10);
             transform.scale = new Vector3(1, 1f, 1); ;
 
             grassObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                material = grassMaterial,
-                mesh = quaModel,
+                material = AssetUtils.LoadFromAsset<UnlitMaterial>("grassMaterial.mat"),
+                mesh = AssetUtils.LoadFromAsset<Mesh>("quad.mesh"),
             };
 
         }
@@ -186,21 +169,13 @@ namespace SimulationSystem.Systems
             windowObj.CreateEntity(world);
             windowObj.AddAllComponents(world);
 
-            QuadPlane quaModel = new QuadPlane();
-            UnlitMaterial windowMaterial = new UnlitMaterial();
-            windowMaterial.SetTransparent(true);
-            windowMaterial.AddTexture(textureRef.windowTexture);
-            windowMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.UnlitShader));
-
-            AssetUtils.CreateAsset(windowMaterial, "WindowMaterial.mat");
-
             ref var transform = ref windowObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 8);
             transform.scale = new Vector3(1, 1f, 1); ;
 
             windowObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                material = windowMaterial,
-                mesh = quaModel,
+                material = AssetUtils.LoadFromAsset<UnlitMaterial>("WindowMaterial.mat"),
+                mesh = AssetUtils.LoadFromAsset<Mesh>("quad.mesh"),
             };
         }
     }

@@ -1,6 +1,23 @@
 {
-  "name": "blending_transparent_window.png",
-  "wrapSParameter": 0,
-  "wrapTParameter": 0,
-  "textureMappingType": 1
+  "uniqueFileID": "47e6289a-ff9b-4a2a-9570-c82e7975d976",
+  "stringStringSerializedDic": {
+    "ImageName": "blending_transparent_window.png"
+  },
+  "stringIntSerializedDic": {
+    "TextureMappingType": 1,
+    "WrapSParameter": 0,
+    "WrapTParameter": 0
+  },
+  "stringFloatSerializedDic": {},
+  "stringBoolSerializedDic": {},
+  "stringLongSerializedDic": {},
+  "stringStringListSerializedDic": {},
+  "stringIntListSerializedDic": {},
+  "stringFloatListSerializedDic": {},
+  "stringLongListSerializedDic": {},
+  "stringBoolListSerializedDic": {},
+  "stringToStringStringSerializedDic": {},
+  "stringToStringIntSerializedDic": {},
+  "stringToStringFloatSerializedDic": {},
+  "stringToStringBoolSerializedDic": {}
 }

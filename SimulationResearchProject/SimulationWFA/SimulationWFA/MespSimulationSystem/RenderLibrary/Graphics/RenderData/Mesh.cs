@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Numerics;
 using RenderLibrary.DLL;
 using SimulationWFA.MespUtils;
 
 namespace RenderLibrary.Graphics.RenderData
 {
-    public class Mesh : IAssetSerialization
+    public class Mesh :IAssetSerializator
     {
         private IntPtr meshAdress;
         private int sizeOfVertices;
@@ -30,7 +31,13 @@ namespace RenderLibrary.Graphics.RenderData
             }
             RenderProgramDLL.MeshSetVerticesPos(meshAdress,posF,sizeOfVertices);
         }
-        
+
+        public void SetVerticesPos(float[] pos)
+        {
+            sizeOfVertices = pos.Length/3;
+            RenderProgramDLL.MeshSetVerticesPos(meshAdress, pos, sizeOfVertices);
+        }
+
         public void SetVerticesNormal( Vector3[] normal)
         {
             if (sizeOfVertices != normal.Length)
@@ -52,7 +59,18 @@ namespace RenderLibrary.Graphics.RenderData
             }
             RenderProgramDLL.MeshSetVerticesNormal(meshAdress,posF);
         }
-        
+
+        public void SetVerticesNormal(float[] normal)
+        {
+            if (sizeOfVertices != normal.Length/3)
+            {
+                Console.WriteLine("The vertices and normals sizes of mesh must be equal!");
+                Console.WriteLine("Vertices lenght: " + sizeOfVertices + "\nNormal Lenght: " + normal.Length);
+                return;
+            }
+            RenderProgramDLL.MeshSetVerticesNormal(meshAdress, normal);
+        }
+
         public void SetVerticesTexCoord(Vector2[] texCoord)
         {
             float[] posF = new float[sizeOfVertices* 2];
@@ -66,6 +84,11 @@ namespace RenderLibrary.Graphics.RenderData
             RenderProgramDLL.MeshSetVerticesTexCoord(meshAdress,posF);
         }
 
+        public void SetVerticesTexCoord(float[] texCoord)
+        {
+            RenderProgramDLL.MeshSetVerticesTexCoord(meshAdress, texCoord);
+        }
+
         public void SetIndices(int[] indices)
         {
             if (sizeOfVertices != indices.Length)
@@ -77,6 +100,7 @@ namespace RenderLibrary.Graphics.RenderData
             RenderProgramDLL.MeshSetIndices(meshAdress,indices);
         }
 
+
         public void SetMeshAdress(IntPtr adress)
         {
             meshAdress = adress;
@@ -87,7 +111,6 @@ namespace RenderLibrary.Graphics.RenderData
             return meshAdress;
         }
         
-        //TODO:mesh get fonksiyonlarını ekle
 
         public Vector3[] GetVerticesPos()
         {
@@ -101,6 +124,13 @@ namespace RenderLibrary.Graphics.RenderData
                 pos[i].Z = posF[i * 3 + 2];
             }
             return pos;
+        }
+
+        public float[] GetFloatArrayVerticesPos()
+        {
+            float[] posF = new float[sizeOfVertices * 3];
+            RenderProgramDLL.MeshGetVerticesPos(meshAdress, posF);
+            return posF;
         }
 
         public Vector3[] GetVerticesNormal()
@@ -117,6 +147,14 @@ namespace RenderLibrary.Graphics.RenderData
             return pos;
         }
 
+        public float[] GetFloatArrayVerticesNormal()
+        {
+            float[] posF = new float[sizeOfVertices * 3];
+            RenderProgramDLL.MeshGetVerticesNormal(meshAdress, posF);
+            return posF;
+        }
+
+
         public Vector2[] GetVerticesTexCoord()
         {
             float[] posF = new float[sizeOfVertices * 2];
@@ -130,24 +168,47 @@ namespace RenderLibrary.Graphics.RenderData
             return pos;
         }
 
-        public object Serialization()
+        public float[] GetFloatArrayTexCoord()
         {
-            MeshSerializationData meshData = new MeshSerializationData();
-            meshData.verticesPos = GetVerticesPos();
-            meshData.normalPos = GetVerticesNormal();
-            meshData.texCoord = GetVerticesTexCoord();
-
-            return meshData;
+            float[] posF = new float[sizeOfVertices * 2];
+            RenderProgramDLL.MeshGetVerticesTexCoord(meshAdress, posF);
+            return posF;
         }
 
-        public T Deserialization<T>(object data)
+        public int[] GetIndices()
         {
-            throw new NotImplementedException();
+            int[] posF = new int[sizeOfVertices];
+            RenderProgramDLL.MeshGetIndices(meshAdress, posF);
+            return posF;
         }
 
-        public object Deserialization(object data)
+        public object Serializate()
         {
-            throw new NotImplementedException();
+            AssetSerializationData data = new AssetSerializationData();
+
+            var posList = data.GetFloatList("VerticesPos");
+            posList.AddRange(GetFloatArrayVerticesPos().ToList());
+
+            var normalList = data.GetFloatList("VerticesNormal");
+            normalList.AddRange(GetFloatArrayVerticesNormal().ToList());
+
+            var texCoord = data.GetFloatList("VerticesTexCoord");
+            texCoord.AddRange(GetFloatArrayTexCoord().ToList());
+
+            var indices = data.GetIntList("Indices");
+            indices.AddRange(GetIndices().ToList());
+
+            return data;
+        }
+
+        public object Deserializate(AssetSerializationData data)
+        {
+            SetVerticesPos(data.GetFloatList("VerticesPos").ToArray());
+            SetVerticesNormal(data.GetFloatList("VerticesNormal").ToArray());
+            SetVerticesTexCoord(data.GetFloatList("VerticesTexCoord").ToArray());
+            SetIndices(data.GetIntList("Indices").ToArray());
+
+            return this;
         }
     }
 }

@@ -1,17 +1,31 @@
 {
-  "shaderType": 2,
-  "materialType": 1,
-  "transparent": false,
-  "color": {
-    "X": 1.0,
-    "Y": 1.0,
-    "Z": 1.0,
-    "W": 1.0
+  "uniqueFileID": "f49fb04f-8265-4da4-8ad5-9a6eb383dde4",
+  "stringStringSerializedDic": {
+    "TextureFileID": "ac77d14d-00dc-4189-b2c2-bedb64edadcf"
   },
-  "textureData": {
-    "name": "grass.png",
-    "wrapSParameter": 33071,
-    "wrapTParameter": 33071,
-    "textureMappingType": 1
-  }
+  "stringIntSerializedDic": {
+    "MaterialType": 1,
+    "ShaderType": 2
+  },
+  "stringFloatSerializedDic": {},
+  "stringBoolSerializedDic": {
+    "Transparent": false
+  },
+  "stringLongSerializedDic": {},
+  "stringStringListSerializedDic": {},
+  "stringIntListSerializedDic": {},
+  "stringFloatListSerializedDic": {
+    "Color": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "stringLongListSerializedDic": {},
+  "stringBoolListSerializedDic": {},
+  "stringToStringStringSerializedDic": {},
+  "stringToStringIntSerializedDic": {},
+  "stringToStringFloatSerializedDic": {},
+  "stringToStringBoolSerializedDic": {}
 }

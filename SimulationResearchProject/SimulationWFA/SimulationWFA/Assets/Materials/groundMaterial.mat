@@ -1,25 +1,45 @@
 {
-  "shaderType": 0,
-  "materialType": 0,
-  "transparent": false,
-  "ambient": {
-    "X": 0.24725,
-    "Y": 0.1995,
-    "Z": 0.0745,
-    "W": 1.0
+  "uniqueFileID": "3fff66bd-fc45-4dbc-a1e9-c6f1f0150493",
+  "stringStringSerializedDic": {
+    "TextureFileID": "Empty"
   },
-  "dffuse": {
-    "X": 0.75164,
-    "Y": 0.60648,
-    "Z": 0.22648,
-    "W": 1.0
+  "stringIntSerializedDic": {
+    "MaterialType": 0,
+    "ShaderType": 0
   },
-  "specular": {
-    "X": 0.628281,
-    "Y": 0.555802,
-    "Z": 0.366065,
-    "W": 1.0
+  "stringFloatSerializedDic": {
+    "Shininess": 0.4
   },
-  "shininess": 0.4,
-  "textureData": null
+  "stringBoolSerializedDic": {
+    "Transparent": false
+  },
+  "stringLongSerializedDic": {},
+  "stringStringListSerializedDic": {},
+  "stringIntListSerializedDic": {},
+  "stringFloatListSerializedDic": {
+    "Ambient": [
+      0.24725,
+      0.1995,
+      0.0745,
+      1.0
+    ],
+    "Diffuse": [
+      0.75164,
+      0.60648,
+      0.22648,
+      1.0
+    ],
+    "Specular": [
+      0.628281,
+      0.555802,
+      0.366065,
+      1.0
+    ]
+  },
+  "stringLongListSerializedDic": {},
+  "stringBoolListSerializedDic": {},
+  "stringToStringStringSerializedDic": {},
+  "stringToStringIntSerializedDic": {},
+  "stringToStringFloatSerializedDic": {},
+  "stringToStringBoolSerializedDic": {}
 }

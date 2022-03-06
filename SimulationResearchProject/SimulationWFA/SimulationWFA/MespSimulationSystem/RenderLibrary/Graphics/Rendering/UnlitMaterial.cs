@@ -1,11 +1,14 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using RenderLibrary.DLL;
 using RenderLibrary.Shaders;
+using SimulationWFA.DataManagement;
 using SimulationWFA.MespUtils;
+using static RenderLibrary.Shaders.ShaderPool;
 
 namespace RenderLibrary.Graphics.Rendering
 {
-    public class UnlitMaterial : Material, IAssetSerialization
+    public class UnlitMaterial : Material , IAssetSerializator
     {
         public UnlitMaterial()
         {
@@ -31,20 +34,6 @@ namespace RenderLibrary.Graphics.Rendering
             return texture;
         }
 
-        public object Serialization()
-        {
-            UnlitMaterialSerializationData serializationData = new UnlitMaterialSerializationData();
-            serializationData.materialType = materialType;
-            serializationData.shaderType = shaderType;
-            serializationData.color = GetColor();
-            serializationData.transparent = transparent;
-            if (texture == null) { serializationData.textureData = null; }
-            else { serializationData.textureData = texture.Serialization(); }
-           
-
-            return serializationData;
-        }
-
 
         public Vector4 GetColor()
         {
@@ -53,23 +42,46 @@ namespace RenderLibrary.Graphics.Rendering
             return new Vector4(colorF[0], colorF[1], colorF[2], colorF[3]);
         }
 
-        public object Deserialization(object serializationObj)
+        public object Serializate()
         {
-            UnlitMaterialSerializationData serializationData = new UnlitMaterialSerializationData();
-            serializationData = (UnlitMaterialSerializationData)serializationObj;
+            AssetSerializationData data = new AssetSerializationData();
 
-            UnlitMaterial unlitMaterial = new UnlitMaterial();
-            unlitMaterial.SetColor(serializationData.color);
-            unlitMaterial.SetShader(ShaderPool.GetShaderByType(serializationData.shaderType));
-            unlitMaterial.SetTransparent(serializationData.transparent);
-            if(serializationData.textureData != null)
-            {
+            data.SetInt("MaterialType", (int)materialType);
+            data.SetInt("ShaderType",(int)shaderType);
 
-            }
+            var color = GetColor();
+            var colorList = data.GetFloatList("Color");
+            colorList.Add(color.X);
+            colorList.Add(color.Y);
+            colorList.Add(color.Z);
+            colorList.Add(color.W);
 
-            return unlitMaterial;
+            data.SetString("TextureFileID", "Empty");
 
+            data.SetBool("Transparent", transparent);
+            return data;
         }
 
+        public object Deserializate(AssetSerializationData data)
+        {
+            SetShader(GetShaderByType((ShaderType)data.GetInt("ShaderType",-1)));
+
+            var colorList = data.GetFloatList("Color");
+            Vector4 color = new Vector4(colorList[0], colorList[1], colorList[2], colorList[3]);
+            SetColor(color);
+            SetTransparent(data.GetBool("Transparent",false));
+
+            var textureID = data.GetString("TextureFileID", "Empty");
+            if (textureID != "Empty")
+            {
+                var texName = AssetOrganizer.GetTexturePathByFileID(textureID);
+                if (texName == null) return null;
+                AddTexture(AssetUtils.LoadFromAsset<Texture>(texName));
+            }
+            
+
+
+            return this;
+        }
     }
 }
