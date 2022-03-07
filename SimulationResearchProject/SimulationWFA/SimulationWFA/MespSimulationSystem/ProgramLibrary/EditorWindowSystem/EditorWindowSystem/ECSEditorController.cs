@@ -36,11 +36,12 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
             systemManager.AddSystem(new InputSystem(), GenericSystemGroup);
 
-            //RenderSystems
+            //RenderSystems   first opeque draw then transparent materials renders
             systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
-            //systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
+            
 
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
