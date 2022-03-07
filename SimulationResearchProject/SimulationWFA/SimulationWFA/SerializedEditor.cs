@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RenderLibrary.Graphics.PreparedModels;
 using RenderLibrary.Graphics.Rendering;
+using RenderLibrary.Shaders;
 using SimulationSystem.ECS.Entegration;
 using SimulationSystem.EditorEvents;
 using SimulationSystem.SharedData;
 using SimulationSystem.Systems;
+using TheSimulation.SerializedComponent;
 
 namespace SimulationWFA
 {
@@ -135,6 +137,12 @@ namespace SimulationWFA
                     }
                 case "MeshRendererSerialized":
                     {
+                        CubeMesh cubeMesh = new CubeMesh();
+                        LitMaterial litMaterial = LitMaterial.gold;
+                        litMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
+                        MeshRendererSerialized meshRendererSerialized =  serializedCompItem as MeshRendererSerialized;
+                        meshRendererSerialized.mesh = cubeMesh;
+                        meshRendererSerialized.material = litMaterial;
                         SimTextBox serializedText = new SimTextBox();
                         serializedText.Location = new Point(0, 100);
                         serializedText.Text = serializedCompItem.GetName();
@@ -176,6 +184,10 @@ namespace SimulationWFA
                             componentPanel.Controls.Add(meshButtons[i]);
                         }
                         MeshSerializedCompTexts.Add(meshTextBoxs);
+                        EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
+
+
+                        });
                         break;
                     }
 
@@ -196,7 +208,8 @@ namespace SimulationWFA
 
         private void addMeshButton_Click(object sender, EventArgs e)
         {
-            //Mesh Ekle
+           
+            
         }
 
         private static Vector3 InitializeItemVector(int idx, string text, dynamic obj)
