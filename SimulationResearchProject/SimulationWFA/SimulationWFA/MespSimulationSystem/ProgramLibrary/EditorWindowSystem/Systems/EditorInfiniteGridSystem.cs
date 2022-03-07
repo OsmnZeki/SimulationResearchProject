@@ -38,6 +38,10 @@ namespace SimulationSystem.Systems
             ref var camTransformComp = ref cameraFilter.Get2(0);
 
             ShaderPool.SetupShaderToRender(ShaderPool.GetShaderByType(ShaderPool.ShaderType.InfiniteGridShader), cameraComp.view, cameraComp.projection);
+
+            ShaderPool.infiniteGridShader.SetFloat("near", cameraComp.near);
+            ShaderPool.infiniteGridShader.SetFloat("far", cameraComp.far/2);
+
             meshRenderer.Render(transform,infiniteMaterial);
         }
 

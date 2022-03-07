@@ -34,8 +34,7 @@ namespace SimulationSystem.Systems
 
             CreatePlane();
 
-          //  CreateGrass();
-
+            CreateGrass();
         }
 
         //Camera entity
