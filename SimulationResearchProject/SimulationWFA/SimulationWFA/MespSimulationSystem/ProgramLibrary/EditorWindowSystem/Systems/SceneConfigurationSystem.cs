@@ -34,7 +34,7 @@ namespace SimulationSystem.Systems
 
             CreatePlane();
 
-            CreateGrass();
+          //  CreateGrass();
 
         }
 

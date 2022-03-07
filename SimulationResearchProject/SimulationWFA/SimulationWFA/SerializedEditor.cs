@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProgramLibrary;
 using RenderLibrary.Graphics.PreparedModels;
+using RenderLibrary.Graphics.RenderData;
 using RenderLibrary.Graphics.Rendering;
 using RenderLibrary.Shaders;
 using SimulationSystem.ECS.Entegration;
 using SimulationSystem.EditorEvents;
 using SimulationSystem.SharedData;
 using SimulationSystem.Systems;
+using SimulationWFA.MespUtils;
 using TheSimulation.SerializedComponent;
 
 namespace SimulationWFA
@@ -29,7 +33,7 @@ namespace SimulationWFA
         public List<SimTextBox> SerializedTexts = new List<SimTextBox>();
 
         public List<SimTextBox[]> TransformSerializedCompTexts = new List<SimTextBox[]>();
-        public List<TextBox[]> MeshSerializedCompTexts = new List<TextBox[]>();
+        public List<Label[]> MeshSerializedCompLabels = new List<Label[]>();
 
 
         public void GetType(SerializedComponent serializedComponent)
@@ -137,57 +141,73 @@ namespace SimulationWFA
                     }
                 case "MeshRendererSerialized":
                     {
-                        CubeMesh cubeMesh = new CubeMesh();
-                        LitMaterial litMaterial = LitMaterial.gold;
-                        litMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
-                        MeshRendererSerialized meshRendererSerialized =  serializedCompItem as MeshRendererSerialized;
-                        meshRendererSerialized.mesh = cubeMesh;
-                        meshRendererSerialized.material = litMaterial;
+                        //CubeMesh cubeMesh = new CubeMesh();
+                        //LitMaterial litMaterial = LitMaterial.gold;
+                        //litMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
+                        //MeshRendererSerialized meshRendererSerialized =  serializedCompItem as MeshRendererSerialized;
+                        //meshRendererSerialized.mesh = cubeMesh;
+                        //meshRendererSerialized.material = litMaterial;
                         SimTextBox serializedText = new SimTextBox();
                         serializedText.Location = new Point(0, 100);
                         serializedText.Text = serializedCompItem.GetName();
                         serializedText.BackColor = Color.Red;
                         serializedText.Size = new Size(150, 60);
-                        serializedText.BringToFront();
                         SerializedTexts.Add(serializedText);
                         componentPanel.Controls.Add(SerializedTexts[SerializedTexts.Count - 1]);
 
                         var fields = type.GetFields();
-                        //string[] meshValues = new string[2];
-                        TextBox[] meshTextBoxs = new TextBox[2];
-                        Button[] meshButtons = new Button[2];
+                        string[] meshValues = new string[2];
+                        meshValues[0] = "Mesh";
+                        meshValues[1] = "Material";
+                        Label[] meshRendLabels = new Label[2];
+                        ComboBox[] meshComboBoxes = new ComboBox[2];
                         string[] meshButtonValues = new string[2];
                         meshButtonValues[0] = "Add Mesh";
                         meshButtonValues[1] = "Add Material";
+
+                        string[] matFiles = Directory.GetFiles(SimPath.MaterialsPath, "*.mat", SearchOption.AllDirectories);
+                        string[] meshFiles = Directory.GetFiles(SimPath.MeshesPath, "*.mesh", SearchOption.AllDirectories);
+                        //FileInfo fileInfo = new FileInfo(files[0]);
+
                         for (int i = 0; i < 2; i++)
                         {
-                            meshTextBoxs[i] = new TextBox();
-                            meshTextBoxs[i].Location = new Point(0, 120 + (i * 20));
-                            meshTextBoxs[i].Text = "None";
-                            meshTextBoxs[i].BackColor = Color.Yellow;
-                            meshTextBoxs[i].Size = new Size(50, 60);
-                            componentPanel.Controls.Add(meshTextBoxs[i]);
+                            meshRendLabels[i] = new Label();
+                            meshRendLabels[i].Location = new Point(0, 120 + (i * 20));
+                            meshRendLabels[i].Text = meshValues[i];
+                            meshRendLabels[i].BackColor = Color.Yellow;
+                            meshRendLabels[i].Size = new Size(60, 20);
+                            componentPanel.Controls.Add(meshRendLabels[i]);
 
-                            meshButtons[i] = new Button();
-                            meshButtons[i].Location = new Point(60, 120 + (i * 20));
-                            meshButtons[i].Text = meshButtonValues[i];
-                            meshButtons[i].BackColor = Color.White;
-                            //meshButtons[i].
-                            if (i == 0)
+                            meshComboBoxes[i] = new ComboBox();
+                            meshComboBoxes[i].Location = new Point(60, 120 + (i * 20));
+                            meshComboBoxes[i].Text = meshButtonValues[i];
+ //new EventHandler(meshComboBoxes_Changed);
+                            meshComboBoxes[i].BackColor = Color.White;
+
+                            if (i == 1)
                             {
-                                meshButtons[i].Click += new EventHandler(addMeshButton_Click);
+                                meshComboBoxes[i].TextChanged += (sender, e) => matComboBoxes_Changed(sender, e, serializedCompItem);
+
+                                for (int j = 0; j < matFiles.Length; j++)
+                                {
+                                    FileInfo fileInfo = new FileInfo(matFiles[j]);
+                                    meshComboBoxes[i].Items.Add(fileInfo.Name.ToString());
+
+                                }
                             }
                             else
                             {
-                                meshButtons[i].Click += new EventHandler(addMatButton_Click);
+                                meshComboBoxes[i].TextChanged += (sender, e) => meshComboBoxes_Changed(sender, e, serializedCompItem);
+                                for (int j = 0; j < meshFiles.Length; j++)
+                                {
+                                    FileInfo fileInfo = new FileInfo(meshFiles[j]);
+                                    meshComboBoxes[i].Items.Add(fileInfo.Name.ToString());
+                                }
                             }
-                            componentPanel.Controls.Add(meshButtons[i]);
+                            componentPanel.Controls.Add(meshComboBoxes[i]);
                         }
-                        MeshSerializedCompTexts.Add(meshTextBoxs);
-                        EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
+                        MeshSerializedCompLabels.Add(meshRendLabels);
 
-
-                        });
                         break;
                     }
 
@@ -201,16 +221,33 @@ namespace SimulationWFA
 
         }
 
-        private void addMatButton_Click(object sender, EventArgs e)
+        private void matComboBoxes_Changed(object sender, EventArgs e, SerializedComponent serializedCompItem)
         {
-            //Mat ekle
+            MeshRendererSerialized meshRendererSerialized = serializedCompItem as MeshRendererSerialized;
+            dynamic obj = sender;
+            string filename = obj.Text;
+            UnlitMaterial unlitMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>(filename);
+            meshRendererSerialized.material = unlitMaterial;
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
+
+
+            });
         }
 
-        private void addMeshButton_Click(object sender, EventArgs e)
+        private void meshComboBoxes_Changed(object sender, EventArgs e, SerializedComponent serializedComponent)
         {
-           
-            
+
+            MeshRendererSerialized meshRendererSerialized = serializedComponent as MeshRendererSerialized;
+            dynamic obj = sender;
+            string filename = obj.Text;
+            Mesh mesh = AssetUtils.LoadFromAsset<Mesh>(filename);
+            meshRendererSerialized.mesh = mesh;
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
+
+
+            });
         }
+
 
         private static Vector3 InitializeItemVector(int idx, string text, dynamic obj)
         {

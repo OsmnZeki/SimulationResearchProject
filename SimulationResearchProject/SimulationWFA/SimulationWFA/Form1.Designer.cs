@@ -58,8 +58,6 @@ namespace SimulationWFA
             this.projectsPanel = new System.Windows.Forms.Panel();
             this.projectsTreeView = new System.Windows.Forms.TreeView();
             this.projectsLabel = new System.Windows.Forms.Label();
-            this.inspectorPanel = new System.Windows.Forms.Panel();
-            this.inspectorLabel = new System.Windows.Forms.Label();
             this.hieararchyPanel = new System.Windows.Forms.Panel();
             this.Hierarchy = new System.Windows.Forms.Button();
             this.addObjectButton = new System.Windows.Forms.Button();
@@ -67,11 +65,13 @@ namespace SimulationWFA
             this.simulationWindowPanel = new System.Windows.Forms.Panel();
             this.simulationWindowLabel = new System.Windows.Forms.Label();
             this.simulateButton = new System.Windows.Forms.Button();
+            this.inspectorLabel = new System.Windows.Forms.Label();
+            this.inspectorPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.projectsPanel.SuspendLayout();
-            this.inspectorPanel.SuspendLayout();
             this.hieararchyPanel.SuspendLayout();
             this.simulationWindowPanel.SuspendLayout();
+            this.inspectorPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -230,20 +230,6 @@ namespace SimulationWFA
             this.projectsLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.projectsLabel.Name = "projectsLabel";
             // 
-            // inspectorPanel
-            // 
-            resources.ApplyResources(this.inspectorPanel, "inspectorPanel");
-            this.inspectorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
-            this.inspectorPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.inspectorPanel.Controls.Add(this.inspectorLabel);
-            this.inspectorPanel.Name = "inspectorPanel";
-            // 
-            // inspectorLabel
-            // 
-            resources.ApplyResources(this.inspectorLabel, "inspectorLabel");
-            this.inspectorLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.inspectorLabel.Name = "inspectorLabel";
-            // 
             // hieararchyPanel
             // 
             resources.ApplyResources(this.hieararchyPanel, "hieararchyPanel");
@@ -297,6 +283,20 @@ namespace SimulationWFA
             this.simulateButton.UseVisualStyleBackColor = false;
             this.simulateButton.Click += new System.EventHandler(this.simulateButton_Click);
             // 
+            // inspectorLabel
+            // 
+            resources.ApplyResources(this.inspectorLabel, "inspectorLabel");
+            this.inspectorLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.inspectorLabel.Name = "inspectorLabel";
+            // 
+            // inspectorPanel
+            // 
+            resources.ApplyResources(this.inspectorPanel, "inspectorPanel");
+            this.inspectorPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
+            this.inspectorPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.inspectorPanel.Controls.Add(this.inspectorLabel);
+            this.inspectorPanel.Name = "inspectorPanel";
+            // 
             // SimulationProject
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -313,12 +313,12 @@ namespace SimulationWFA
             this.menuStrip1.PerformLayout();
             this.projectsPanel.ResumeLayout(false);
             this.projectsPanel.PerformLayout();
-            this.inspectorPanel.ResumeLayout(false);
-            this.inspectorPanel.PerformLayout();
             this.hieararchyPanel.ResumeLayout(false);
             this.hieararchyPanel.PerformLayout();
             this.simulationWindowPanel.ResumeLayout(false);
             this.simulationWindowPanel.PerformLayout();
+            this.inspectorPanel.ResumeLayout(false);
+            this.inspectorPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,8 +351,6 @@ namespace SimulationWFA
         private System.Windows.Forms.Panel projectsPanel;
         private System.Windows.Forms.TreeView projectsTreeView;
         private System.Windows.Forms.Label projectsLabel;
-        private System.Windows.Forms.Panel inspectorPanel;
-        private System.Windows.Forms.Label inspectorLabel;
         private System.Windows.Forms.Panel hieararchyPanel;
         private System.Windows.Forms.Label hierarchyLabel;
         private System.Windows.Forms.Panel simulationWindowPanel;
@@ -360,6 +358,8 @@ namespace SimulationWFA
         private System.Windows.Forms.Button simulateButton;
         private System.Windows.Forms.Button addObjectButton;
         private System.Windows.Forms.Button Hierarchy;
+        private System.Windows.Forms.Label inspectorLabel;
+        private System.Windows.Forms.Panel inspectorPanel;
     }
 }
 
