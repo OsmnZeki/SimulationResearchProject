@@ -1,10 +1,11 @@
-﻿/*using System.Numerics;
+﻿using System.Numerics;
 using Dalak.Ecs;
 using MESPSimulationSystem.Math;
 using RenderLibrary.Graphics;
 using RenderLibrary.Graphics.PreparedModels;
 using RenderLibrary.Graphics.RenderData;
 using RenderLibrary.Graphics.Rendering;
+using RenderLibrary.Shaders;
 using RenderLibrary.Transform;
 using SimulationSystem.Components;
 using SimulationSystem.SharedData;
@@ -15,7 +16,6 @@ namespace SimulationSystem.Systems
     { 
         private Filter<CameraComp, TransformComp> cameraFilter = null;
 
-        ShaderDatas shaderReferences;
         UnlitMaterial infiniteMaterial;
         MeshRenderer meshRenderer;
         Transform transform;
@@ -24,11 +24,11 @@ namespace SimulationSystem.Systems
         {
             transform = new Transform() { position = Vector3.Zero, scale = Vector3.One, rotation = Vector3.Zero};
             infiniteMaterial = new UnlitMaterial();
-            infiniteMaterial.SetShader(shaderReferences.infiniteGridShader);
+            infiniteMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.InfiniteGridShader));
+            infiniteMaterial.SetTransparent(true);
 
             meshRenderer = new MeshRenderer();
             meshRenderer.SetMesh(PlaneMesh());
-            meshRenderer.SetMaterial(infiniteMaterial);
             meshRenderer.Setup();
         }
 
@@ -37,13 +37,8 @@ namespace SimulationSystem.Systems
             ref var cameraComp = ref cameraFilter.Get1(0);
             ref var camTransformComp = ref cameraFilter.Get2(0);
 
-            Mat4 view = cameraComp.GetViewMatrix(camTransformComp.transform);
-            Mat4 projection = cameraComp.Perspective(800f / 600f);
-
-            shaderReferences.infiniteGridShader.Activate();
-            shaderReferences.infiniteGridShader.SetMat4("view", view);
-            shaderReferences.infiniteGridShader.SetMat4("projection", projection);
-            meshRenderer.Render(transform);
+            ShaderPool.SetupShaderToRender(ShaderPool.GetShaderByType(ShaderPool.ShaderType.InfiniteGridShader), cameraComp.view, cameraComp.projection);
+            meshRenderer.Render(transform,infiniteMaterial);
         }
 
         public Mesh PlaneMesh()
@@ -70,4 +65,4 @@ namespace SimulationSystem.Systems
             return infiniteGridMesh;
         }
     }
-}*/
+}

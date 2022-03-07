@@ -19,18 +19,6 @@ namespace RenderLibrary.Graphics
             RenderProgramDLL.SetMeshToMeshRenderer(meshRendererAdress, mesh.GetMeshAdress());
         }
 
-        
-        //TODO: get fonksiyonlarını ayarla
-     /*   public void GetMesh()
-        {
-            //TODO: RenderDLL.GetMeshFromRenderer();
-        }
-
-        public void GetMaterial()
-        {
-            //TODO: RenderDLL.GetMaterialFromRenderer();
-        }*/
-
         public void Setup()
         {
             RenderProgramDLL.SetupMeshRenderer(meshRendererAdress);
