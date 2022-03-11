@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using ProgramLibrary;
+using RenderLibrary.Animations;
 using RenderLibrary.Graphics;
 using RenderLibrary.Graphics.PreparedModels;
 using RenderLibrary.Graphics.RenderData;
@@ -26,15 +27,22 @@ namespace SimulationSystem.Systems
 
             CreateDirectionalLight();
 
-            CreateLambs();
+           // CreateLambs();
 
-            CreateTrol();
+            CreateBristleback1();
+            CreateBristleback2();
 
-            CreateWindow();
+          //  CreateJunkrat();
 
-            CreatePlane();
+           // CreateDragon();
 
-            CreateGrass();
+            //CreateTrol();
+
+           // CreateWindow();
+
+          //  CreatePlane();
+
+          //  CreateGrass();
         }
 
         //Camera entity
@@ -49,7 +57,7 @@ namespace SimulationSystem.Systems
                 far = 100f,
             };
             camSimObj.AddNewSerializedComponent(world, camSerialized);
-            camSimObj.AddAllComponents(world);
+            camSimObj.InjectAllSerializedComponents(world);
             camSimObj.entity.AddComponent<SpotLightComp>() = new SpotLightComp() {
                 spotLight = new Lights.SpotLight() {
                     cutOff = 5f,
@@ -71,7 +79,7 @@ namespace SimulationSystem.Systems
             dirLightSerialized.diffuse = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
             dirLightSerialized.specular = new Vector4(0.75f, 0.75f, 0.75f, 1.0f);
             dirLightSimObj.AddNewSerializedComponent(world, dirLightSerialized);
-            dirLightSimObj.AddAllComponents(world);
+            dirLightSimObj.InjectAllSerializedComponents(world);
         }
 
         //Lamba entitileri
@@ -90,7 +98,7 @@ namespace SimulationSystem.Systems
             {
                 lambSimObj[i] = SimObject.NewSimObject();
                 lambSimObj[i].CreateEntity(world);
-                lambSimObj[i].AddAllComponents(world);
+                lambSimObj[i].InjectAllSerializedComponents(world);
                 lambSimObj[i].entity.GetComponent<TransformComp>().transform = lambTransforms[i];
                 lambSimObj[i].entity.AddComponent<PointLightComp>() = new PointLightComp {
                     pointLight = new Lights.PointLight {
@@ -106,32 +114,161 @@ namespace SimulationSystem.Systems
             }
         }
 
+        //Human entity
+        public void CreateJunkrat()
+        {
+            var humanModel = ModelLoader.LoadModel(modelReferences.JunkratPath);
+
+            var rootSimObj = SimObject.NewSimObject();
+            rootSimObj.CreateEntity(world);
+            rootSimObj.InjectAllSerializedComponents(world);
+
+            Animation animation = new Animation(modelReferences.JunkratPath, humanModel);
+            rootSimObj.entity.AddComponent<AnimatorComp>() = new AnimatorComp() {
+                animator = new Animator(animation),
+        };
+
+            SetupModel(humanModel,ref rootSimObj);
+        }
+
+        public void CreateDragon()
+        {
+            var humanModel = ModelLoader.LoadModel(modelReferences.DragonPath);
+
+            var rootSimObj = SimObject.NewSimObject();
+            rootSimObj.CreateEntity(world);
+            rootSimObj.InjectAllSerializedComponents(world);
+
+            Animation animation = new Animation(modelReferences.DragonPath, humanModel);
+            rootSimObj.entity.AddComponent<AnimatorComp>() = new AnimatorComp() {
+                animator = new Animator(animation),
+            };
+
+            SetupModel(humanModel, ref rootSimObj);
+
+
+        }
+
+
+        public void CreateBristleback1()
+        {
+            var humanModel = ModelLoader.LoadModel(modelReferences.BristlebackPath);
+
+            var rootSimObj = SimObject.NewSimObject();
+            rootSimObj.CreateEntity(world);
+            rootSimObj.InjectAllSerializedComponents(world);
+
+            Animation animation = new Animation(modelReferences.BristlebackPath, humanModel);
+            rootSimObj.entity.AddComponent<AnimatorComp>() = new AnimatorComp() {
+                animator = new Animator(animation),
+            };
+
+            rootSimObj.entity.AddComponent<SkinnedMeshRendererComp>() = new SkinnedMeshRendererComp {
+                rootModel = humanModel,
+            };
+
+            ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
+            skinnedMeshComp.SetMeshRenderers(world,ref rootSimObj);
+
+            rootSimObj.GetTransform().scale = new Vector3(0.05f);
+        }
+
+        public void CreateBristleback2()
+        {
+            var humanModel = ModelLoader.LoadModel(modelReferences.BristlebackPath);
+
+            var rootSimObj = SimObject.NewSimObject();
+            rootSimObj.CreateEntity(world);
+            rootSimObj.InjectAllSerializedComponents(world);
+
+            Animation animation = new Animation(modelReferences.BristlebackPath, humanModel);
+            rootSimObj.entity.AddComponent<AnimatorComp>() = new AnimatorComp() {
+                animator = new Animator(animation),
+            };
+
+            rootSimObj.entity.AddComponent<SkinnedMeshRendererComp>() = new SkinnedMeshRendererComp {
+                rootModel = humanModel,
+            };
+
+            ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
+            skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
+
+            rootSimObj.GetTransform().scale = new Vector3(0.05f);
+            rootSimObj.GetTransform().position = new Vector3(0,0,-10f);
+        }
+
         //Trol entity
         public void CreateTrol()
         {
-            var simObj = SimObject.NewSimObject();
+
+            var trolModel = ModelLoader.LoadModel(modelReferences.TrolModelPath);
+
+            var rootSimObj = SimObject.NewSimObject();
+            rootSimObj.CreateEntity(world);
+            rootSimObj.InjectAllSerializedComponents(world);
+
+            SetupModel(trolModel, ref rootSimObj);
+
+            
+
+            /*var simObj = SimObject.NewSimObject();
             simObj.CreateEntity(world);
             simObj.AddAllComponents(world);
             simObj.entity.GetComponent<TransformComp>().transform.scale = new System.Numerics.Vector3(.05f);
             simObj.entity.GetComponent<TransformComp>().transform.position = new System.Numerics.Vector3(0, 0, -10);
             simObj.entity.GetComponent<TransformComp>().transform.rotation = new System.Numerics.Vector3(0, 0, 0);
 
-            var trolModel = new ModelLoading();
-            trolModel.LoadModel(modelReferences.TrolModelPath);
+            
+
             var trolMat = trolModel.GetMaterial(0);
             trolMat.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
 
             simObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
                 material = trolMat,
                 mesh = trolModel.GetMesh(0),
-            };
+            };*/
+        }
+
+        public void SetupModel(Model rootModel, ref SimObject rootSimObj)
+        {
+            int meshCount = rootModel.ModelMeshCount();
+
+            SimObject[] meshSimObj = new SimObject[meshCount];
+
+            for(int i = 0; i < meshCount; i++)
+            {
+                meshSimObj[i] = SimObject.NewSimObject();
+                meshSimObj[i].CreateEntity(world);
+                meshSimObj[i].InjectAllSerializedComponents(world);
+                meshSimObj[i].SetParent(rootSimObj);
+
+                meshSimObj[i].GetTransform().scale = new Vector3(0.05f);
+
+                var mesh = rootModel.GetMesh(i);
+                var material = rootModel.GetMaterial(i);
+                material.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
+
+                meshSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                    material = material,
+                    mesh = mesh,
+                };
+
+            }
+
+            int childCount = rootModel.ModelChildCount();
+            for (int i = 0; i < childCount; i++)
+            {
+                if(meshCount > 0) SetupModel(rootModel.GetChildModel(i), ref meshSimObj[0]);
+                else SetupModel(rootModel.GetChildModel(i), ref rootSimObj);
+
+            }
         }
 
         public void CreatePlane()
         {
             var planeSimObj = SimObject.NewSimObject();
             planeSimObj.CreateEntity(world);
-            planeSimObj.AddAllComponents(world);;
+            planeSimObj.InjectAllSerializedComponents(world);;
 
             ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, 0f, 10);
@@ -149,7 +286,7 @@ namespace SimulationSystem.Systems
         {
             var grassObj = SimObject.NewSimObject();
             grassObj.CreateEntity(world);
-            grassObj.AddAllComponents(world);
+            grassObj.InjectAllSerializedComponents(world);
 
             ref var transform = ref grassObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 10);
@@ -166,7 +303,7 @@ namespace SimulationSystem.Systems
         {
             var windowObj = SimObject.NewSimObject();
             windowObj.CreateEntity(world);
-            windowObj.AddAllComponents(world);
+            windowObj.InjectAllSerializedComponents(world);
 
             ref var transform = ref windowObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, .55f, 8);
