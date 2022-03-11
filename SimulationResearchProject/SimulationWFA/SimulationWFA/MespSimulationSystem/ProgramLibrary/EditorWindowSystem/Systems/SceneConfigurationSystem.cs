@@ -28,22 +28,22 @@ namespace SimulationSystem.Systems
             CreateDirectionalLight();
 
             CreateFPSDisplayer();
-           // CreateLambs();
+            CreateLambs();
 
-          //  CreateBristleback1();
-          //  CreateBristleback2();
+            CreateBristleback1();
+            CreateBristleback2();
 
             CreateJunkrat();
 
-           // CreateDragon();
+            //sCreateDragon();
 
-            //CreateTrol();
+            CreateTrol();
 
-           // CreateWindow();
+            CreateWindow();
 
-          //  CreatePlane();
+            CreatePlane();
 
-          //  CreateGrass();
+            CreateGrass();
         }
 
         //Camera entity
@@ -127,9 +127,9 @@ namespace SimulationSystem.Systems
             Animation animation = new Animation(modelReferences.JunkratPath, humanModel);
             rootSimObj.entity.AddComponent<AnimatorComp>() = new AnimatorComp() {
                 animator = new Animator(animation),
-        };
+            };
 
-            SetupModel(humanModel,ref rootSimObj);
+            SetupModel(humanModel, ref rootSimObj);
         }
 
         public void CreateDragon()
@@ -169,7 +169,7 @@ namespace SimulationSystem.Systems
             };
 
             ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
-            skinnedMeshComp.SetMeshRenderers(world,ref rootSimObj);
+            skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
 
             rootSimObj.GetTransform().scale = new Vector3(0.05f);
         }
@@ -195,7 +195,7 @@ namespace SimulationSystem.Systems
             skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
 
             rootSimObj.GetTransform().scale = new Vector3(0.05f);
-            rootSimObj.GetTransform().position = new Vector3(0,0,-10f);
+            rootSimObj.GetTransform().position = new Vector3(0, 0, -10f);
         }
 
         //Trol entity
@@ -218,7 +218,7 @@ namespace SimulationSystem.Systems
 
             SimObject[] meshSimObj = new SimObject[meshCount];
 
-            for(int i = 0; i < meshCount; i++)
+            for (int i = 0; i < meshCount; i++)
             {
                 meshSimObj[i] = SimObject.NewSimObject();
                 meshSimObj[i].CreateEntity(world);
@@ -241,7 +241,7 @@ namespace SimulationSystem.Systems
             int childCount = rootModel.ModelChildCount();
             for (int i = 0; i < childCount; i++)
             {
-                if(meshCount > 0) SetupModel(rootModel.GetChildModel(i), ref meshSimObj[0]);
+                if (meshCount > 0) SetupModel(rootModel.GetChildModel(i), ref meshSimObj[0]);
                 else SetupModel(rootModel.GetChildModel(i), ref rootSimObj);
 
             }
@@ -251,7 +251,7 @@ namespace SimulationSystem.Systems
         {
             var planeSimObj = SimObject.NewSimObject();
             planeSimObj.CreateEntity(world);
-            planeSimObj.InjectAllSerializedComponents(world);;
+            planeSimObj.InjectAllSerializedComponents(world); ;
 
             ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(0, 0f, 10);
@@ -304,7 +304,7 @@ namespace SimulationSystem.Systems
             simObj.CreateEntity(world);
             simObj.InjectAllSerializedComponents(world);
 
-            simObj.entity.AddComponent<TextRendererComp>() = new TextRendererComp { 
+            simObj.entity.AddComponent<TextRendererComp>() = new TextRendererComp {
                 color = new Vector3(1, 1, 1),
                 UIPosition = new Vector2(0, 500),
                 scale = 30,

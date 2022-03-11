@@ -50,7 +50,7 @@ namespace SimulationSystem.Systems
                     transparentObjectDist.Add(m, sqrDist);
                     continue;
                 }
-
+                meshRendererComp.material.GetShader().SetInt("animate", 0);
                 meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
             }
 
