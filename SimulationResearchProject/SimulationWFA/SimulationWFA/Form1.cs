@@ -14,6 +14,7 @@ using SimulationSystem.EditorEvents;
 using System.Numerics;
 using System.Collections.Generic;
 using SimulationSystem.ECS.Entegration;
+using ProgramLibrary;
 
 namespace SimulationWFA
 {
@@ -35,34 +36,11 @@ namespace SimulationWFA
 
         private void ShowProjectFiles() //program açıldığı anda projectste istenilen path içindeki dosyaları gosterir.
         {
-            //Cursor.Current = Cursors.WaitCursor;
-            //projectsTreeView.Nodes.Clear();
-            //if (folderBrowserDialog1.SelectedPath == "")
-            //{
-            //    //Directory.GetParent(Directory.GetCurrentDirectory());
-            //    foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory()))
-            //    {
-            //        DirectoryInfo directoryInfo = new DirectoryInfo(item);
-            //        var node = projectsTreeView.Nodes.Add(directoryInfo.Name, directoryInfo.Name, 0, 0);
-            //        node.Tag = directoryInfo;
-            //        node.ForeColor = Color.FromArgb(255, 255, 255);
-            //    }
-
-            //    foreach (var item in Directory.GetFiles(Directory.GetCurrentDirectory()))
-            //    {
-            //        FileInfo fileInfo = new FileInfo(item);
-            //        var node = projectsTreeView.Nodes.Add(fileInfo.Name, fileInfo.Name, 1, 1);
-            //        node.Tag = fileInfo;
-            //        node.ForeColor = Color.FromArgb(255, 255, 255);
-            //    }
-
-            //    Cursor.Current = Cursors.Default;
-            //}
             Cursor.Current = Cursors.WaitCursor;
             projectsTreeView.Nodes.Clear();
             if (folderBrowserDialog1.SelectedPath == "")
             {
-                foreach (var item in Directory.GetDirectories("D://SimulationResearchProject"/*folderBrowserDialog1.SelectedPath*/))
+                foreach (var item in Directory.GetDirectories(SimPath.FindDirectoryPath("SimulationResearchProject")))
                 {
                     DirectoryInfo directoryInfo = new DirectoryInfo(item);
                     var node = projectsTreeView.Nodes.Add(directoryInfo.Name, directoryInfo.Name, 0, 0);
@@ -70,7 +48,7 @@ namespace SimulationWFA
                     node.ForeColor = Color.FromArgb(255, 255, 255);
                 }
 
-                foreach (var item in Directory.GetFiles("D://SimulationResearchProject"))
+                foreach (var item in Directory.GetFiles(SimPath.FindDirectoryPath("SimulationResearchProject")))
                 {
                     FileInfo fileInfo = new FileInfo(item);
                     var node = projectsTreeView.Nodes.Add(fileInfo.Name, fileInfo.Name, 1, 1);
@@ -108,6 +86,16 @@ namespace SimulationWFA
 
         }
 
+        private void OpenProjectFolder(TreeNodeMouseClickEventArgs e)
+        {
+            //e.Node.BackColor = Color.FromArgb(255, 255, 255);
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = ((FileInfo)e.Node.Tag).FullName;
+            info.UseShellExecute = true;
+            Process process = Process.Start(info);
+            Thread.Sleep(2000);
+            //SetParent(process.MainWindowHandle, this.Handle);
+        }
         private void projectsTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Node.Tag == null)
@@ -137,83 +125,8 @@ namespace SimulationWFA
             }
             else
             {
-                string nodePath = null;
-                //Process proc = Process.Start(((FileInfo)e.Node.Tag).FullName);
-                //proc.WaitForInputIdle();
-
-                //while (proc.MainWindowHandle == IntPtr.Zero)
-                //{
-                //    Thread.Sleep(1000);
-                //    proc.Refresh();
-                //}
-
-                //SetParent(proc.MainWindowHandle, this.Handle);
-                //nodePath = ((FileInfo)e.Node.Tag).FullName;
-                //MessageBox.Show(nodePath);
-                e.Node.BackColor = Color.FromArgb(255, 255, 255);
-                ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = ((FileInfo)e.Node.Tag).FullName;
-                info.UseShellExecute = true;
-                Process process = Process.Start(info);
-
-                Thread.Sleep(2000);
-
-                //SetParent(process.MainWindowHandle, this.Handle);
-
-                //open file
+                Task.Run(() => OpenProjectFolder(e));
             }
-            //if (e.Node.Tag == null)
-            //{
-            //    //return
-            //}
-
-            //else if (e.Node.Tag.GetType() == typeof(DirectoryInfo))
-            //{
-            //    e.Node.Nodes.Clear();
-            //    foreach (var item in Directory.GetDirectories(((DirectoryInfo)e.Node.Tag).FullName))
-            //    {
-            //        DirectoryInfo directoryInfo = new DirectoryInfo(item);
-            //        var node = e.Node.Nodes.Add(directoryInfo.Name, directoryInfo.Name, 0, 0);
-            //        node.Tag = directoryInfo;
-            //        node.ForeColor = Color.FromArgb(255, 255, 255);
-            //    }
-
-            //    foreach (var item in Directory.GetFiles(((DirectoryInfo)e.Node.Tag).FullName))
-            //    {
-            //        FileInfo fileInfo = new FileInfo(item);
-            //        var node = e.Node.Nodes.Add(fileInfo.Name, fileInfo.Name, 1, 1);
-            //        node.Tag = fileInfo;
-            //        node.ForeColor = Color.FromArgb(255, 255, 255);
-            //    }
-            //    e.Node.Expand();
-            //}
-            //else
-            //{
-            //    string nodePath = null;
-            //    //Process proc = Process.Start(((FileInfo)e.Node.Tag).FullName);
-            //    //proc.WaitForInputIdle();
-
-            //    //while (proc.MainWindowHandle == IntPtr.Zero)
-            //    //{
-            //    //    Thread.Sleep(1000);
-            //    //    proc.Refresh();
-            //    //}
-
-            //    //SetParent(proc.MainWindowHandle, this.Handle);
-            //    nodePath = ((FileInfo)e.Node.Tag).FullName;
-            //    MessageBox.Show(nodePath);
-            //    e.Node.BackColor = Color.FromArgb(255, 255, 255);
-            //    ProcessStartInfo info = new ProcessStartInfo();
-            //    info.FileName = ((FileInfo)e.Node.Tag).FullName;
-            //    info.UseShellExecute = true;
-            //    Process process = Process.Start(info);
-
-            //    Thread.Sleep(2000);
-
-            //    //SetParent(process.MainWindowHandle, this.Handle);
-
-            //    //open file
-            //}
         }
 
         private void addObjectButton_Click(object sender, EventArgs e)

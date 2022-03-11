@@ -101,7 +101,7 @@ animasyon süresi bazen aşıyor assert hatası geliyor ?
 en fazla 100 kemik eklenebiliyor 
 37k triangleda animasyon test edildi kasma yaşanmaya başladı
 transparent nesneler şu an animasyon yapamaz
-
+2 trolun saçları ekranın ortasında birleşiyor.
 
 animator
 -------
@@ -113,4 +113,4 @@ CalculateBoneTransform fonksiyonu içerisinde mapi cachlemiyor ?
 OĞULCAN
 *******
 Serialized Comp buttonları(mesh, transform) visible false olup tekrar ürüyor. Aynı butondan devam etsin tekrar üremesin.
-Serialized Comp buttonları(mesh, transform) visible false olup tekrar ürüyor. Aynı butondan devam etsin tekrar üremesin.
+
