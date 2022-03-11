@@ -48,6 +48,7 @@ namespace RenderLibrary.OpenGLCustomFunctions
         GL_DEPTH_TEST = 2929,
         GL_STENCIL_TEST = 2960,
         GL_BLEND = 0x0BE2,
+        GL_CULL_FACE =  0x0B44,
         GL_NEVER = 0x0200,
         GL_LESS = 0x0201,
         GL_EQUAL = 0x0202,

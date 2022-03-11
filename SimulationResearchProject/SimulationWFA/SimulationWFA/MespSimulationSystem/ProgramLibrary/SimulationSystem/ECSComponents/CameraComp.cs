@@ -55,5 +55,12 @@ namespace SimulationSystem.Components
             mat4.matrixAdress = RenderProgramDLL.Perspective(zoom, aspect, near, far);
             return mat4;
         }
+
+        public static Mat4 GetOrthographic()
+        {
+            Mat4 mat4 = new Mat4();
+            mat4.matrixAdress = RenderProgramDLL.Orthographic();
+            return mat4;
+        }
     }
 }

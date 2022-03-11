@@ -15,9 +15,11 @@ Camera
 Camera renderlama layerları
 Camera hesaplamaları update içerisinde geçiyor titreme yaratır mı ?
 
+
 screen
 ------
 800/600 ratiosu c# perspective fonksiyonunda manuel olarak veriliyor c++'tan verilmeli
+c++ dll kısmında Orthographic fonksiyonu içerisinde 800/600 ratiosu manuel verilmiş
 
 
 render
@@ -108,3 +110,9 @@ animator
 tek animasyon alabiliyor state machine değil ? (önemli)
 animator oluştururken neden hemen animasyon yüklemem gerekiyor ? 
 CalculateBoneTransform fonksiyonu içerisinde mapi cachlemiyor ?
+
+
+text render
+-----------
+renderlanan farklı bir objeyle aynı z düzlemine gelirse içinden geçme oluyor
+text renderer awake içerisinde setuplanıyor, runtime'da textrenderercomp eklenir ne olacak 

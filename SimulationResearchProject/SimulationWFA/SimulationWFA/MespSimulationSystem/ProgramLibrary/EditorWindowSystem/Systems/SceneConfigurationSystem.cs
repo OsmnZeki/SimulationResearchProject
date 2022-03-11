@@ -27,12 +27,13 @@ namespace SimulationSystem.Systems
 
             CreateDirectionalLight();
 
+            CreateFPSDisplayer();
            // CreateLambs();
 
-            CreateBristleback1();
-            CreateBristleback2();
+          //  CreateBristleback1();
+          //  CreateBristleback2();
 
-          //  CreateJunkrat();
+            CreateJunkrat();
 
            // CreateDragon();
 
@@ -209,24 +210,6 @@ namespace SimulationSystem.Systems
 
             SetupModel(trolModel, ref rootSimObj);
 
-            
-
-            /*var simObj = SimObject.NewSimObject();
-            simObj.CreateEntity(world);
-            simObj.AddAllComponents(world);
-            simObj.entity.GetComponent<TransformComp>().transform.scale = new System.Numerics.Vector3(.05f);
-            simObj.entity.GetComponent<TransformComp>().transform.position = new System.Numerics.Vector3(0, 0, -10);
-            simObj.entity.GetComponent<TransformComp>().transform.rotation = new System.Numerics.Vector3(0, 0, 0);
-
-            
-
-            var trolMat = trolModel.GetMaterial(0);
-            trolMat.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
-
-            simObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                material = trolMat,
-                mesh = trolModel.GetMesh(0),
-            };*/
         }
 
         public void SetupModel(Model rootModel, ref SimObject rootSimObj)
@@ -313,6 +296,22 @@ namespace SimulationSystem.Systems
                 material = AssetUtils.LoadFromAsset<UnlitMaterial>("WindowMaterial.mat"),
                 mesh = AssetUtils.LoadFromAsset<Mesh>("quad.mesh"),
             };
+        }
+
+        public void CreateFPSDisplayer()
+        {
+            var simObj = SimObject.NewSimObject();
+            simObj.CreateEntity(world);
+            simObj.InjectAllSerializedComponents(world);
+
+            simObj.entity.AddComponent<TextRendererComp>() = new TextRendererComp { 
+                color = new Vector3(1, 1, 1),
+                UIPosition = new Vector2(0, 500),
+                scale = 30,
+                text = "FPS: ",
+            };
+
+            simObj.entity.AddComponent<FPSDisplayerComp>();
         }
     }
 }

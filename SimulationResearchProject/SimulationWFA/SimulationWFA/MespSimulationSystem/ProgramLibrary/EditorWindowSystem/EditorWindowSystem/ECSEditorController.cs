@@ -23,6 +23,7 @@ namespace SimulationSystem.Systems
 
         public override void AddSystems() // Ecs Sistemleri
         {
+            systemManager.AddSystem(new FPSCalculatorSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
 
             //Custom Systems
@@ -36,13 +37,14 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
             systemManager.AddSystem(new InputSystem(), GenericSystemGroup);
 
+
             //RenderSystems   first opeque draw then transparent materials renders
             systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
             systemManager.AddSystem(new AnimationSystem(), GenericSystemGroup);
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
             systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
-            
+            systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
 
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);

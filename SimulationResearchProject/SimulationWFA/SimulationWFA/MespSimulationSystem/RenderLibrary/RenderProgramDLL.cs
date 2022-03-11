@@ -119,8 +119,6 @@ namespace RenderLibrary.DLL
 
         #region ModelFunctions
 
-
-
         [DllImport(RenderProgramDLLPath, EntryPoint = "GetModelChilCount")]
         public static extern int GetModelChildCount(IntPtr modelAdress);
         
@@ -218,7 +216,10 @@ namespace RenderLibrary.DLL
         
         [DllImport(RenderProgramDLLPath, EntryPoint = "Perspective")]
         public static extern IntPtr Perspective(float fovy, float aspect, float near, float far);
-        
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "Orthographic")]
+        public static extern IntPtr Orthographic();
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "Rotate")]
         public static extern void Rotate(IntPtr modelMatrix, float degree, float[] axisOfRot, float[] newDirection);
 
@@ -342,6 +343,22 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLBlendFunc")]
         public static extern void OpenGLBlendFunc(int sfactor, int dfactor);
+
+        #endregion
+
+        #region TextRendererFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewTextRenderer")]
+        public static extern IntPtr NewTextRenderer();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LoadFontToTextRenderer")]
+        public static extern void LoadFontToTextRenderer(IntPtr textRendererAdress, IntPtr textureAdress, int widthRes, int heightRes, int cellHeight, int cellWidth, int initialASCII);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetupTextQuad")]
+        public static extern void SetupTextQuad(IntPtr textRendererAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "RenderText")]
+        public static extern void RenderText(IntPtr textRendererAdress, IntPtr shader, string text, float x, float y, float scale, float[] color);
 
         #endregion
 

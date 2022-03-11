@@ -13,7 +13,7 @@ namespace RenderLibrary.Shaders
     {
         public enum ShaderType
         {
-            LitShader, UnlitShader, TransTestShader, OutlineBorderShader, InfiniteGridShader
+            LitShader, UnlitShader, TransTestShader, OutlineBorderShader, InfiniteGridShader, TextRenderShader
         }
 
         public static Shader litShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/lit.fs", ShaderType.LitShader);
@@ -21,6 +21,7 @@ namespace RenderLibrary.Shaders
         public static Shader transTestShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/TransTestShader/transparent.fs", ShaderType.TransTestShader);
         public static Shader outlineBorderShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/OutlineShader/Outline.fs", ShaderType.OutlineBorderShader);
         public static Shader infiniteGridShader = new Shader(SimPath.ShadersPath + "/InfiniteGridShader/infiniteGrid.vs", SimPath.ShadersPath + "/InfiniteGridShader/infiniteGrid.fs", ShaderType.InfiniteGridShader);
+        public static Shader textRenderShader = new Shader(SimPath.ShadersPath + "/TextRenderShader/textRender.vs", SimPath.ShadersPath + "/TextRenderShader/textRender.fs", ShaderType.TextRenderShader);
 
         public static Shader[] allShaders = { litShader, unlitShader, transTestShader, outlineBorderShader, infiniteGridShader };
         public static Shader[] allLitShader = { litShader };
