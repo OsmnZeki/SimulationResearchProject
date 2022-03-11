@@ -4,10 +4,6 @@ renderProgramdan çıkartılan dll içerisinde assimpin dll'ini göremiyor --> (
 
 renderprogramDLL manuel olarak atılmamalı ?
 
-Osman
-------
-Grid sistemi
-
 
 *ECS
 	*entegresyon için kapatılan debug.assertleri daha sonrasında aç
@@ -22,11 +18,6 @@ Camera hesaplamaları update içerisinde geçiyor titreme yaratır mı ?
 screen
 ------
 800/600 ratiosu c# perspective fonksiyonunda manuel olarak veriliyor c++'tan verilmeli
-
-
-infiniteGrid
-------------
-opengl daha tam bitmedi (opacity ve depth). bitirdikten sonra devam et
 
 
 render
@@ -45,10 +36,12 @@ simobj
 simobj ve entity ayrı mı olmalı ? yoksa aynı anda createlenebilir mi ?
 addcomponent, simobj için serailizedcomp list entegre çalışmıyor
 
+
 Material
 --------
 c++ materialleri neden texture vektörü tutuyor ? bir texturede birden fazla texture olabilir mi ? diffuse ve specular neden aynı listede ve onlar da 1 den fazla olabilir mi ?
 materiallere texture eklenebilir fakat çıkartılamaz ?
+modelload yaparken neden sadece lit material ekliyor ?
 
 
 texture
@@ -56,17 +49,22 @@ texture
 textureler loadlanırken neden type alıyor ? -> lit materiale eklenirken type eklenmesi daha doğru çünkü texturenin typeı olmaz
 flip özelliği neden load içerisinde ? 
 
+
 camera
 ------
 editor camerası için editorcameratag
+
 
 model loading
 ------------
 trol modeli yüklenirken Microsoft C++ exception: DeadlyImportError at hatası veriyor
 
+
+
 unlit shader
 ------------
 tek texture support ediyor
+
 
 lit shader
 ----------
@@ -77,14 +75,42 @@ transparency
 ------------
 çok sayıda nesne ile test edilmesi gerekiyor
 
-editor refres metodu optimize değil
+
+General
+-------
+editor refres metodu optimize değil tek bir entity için ayarla
+localpos sistemi
+
 
 assetCreator
 ------------
 var olan asset varsa üzerine yazması engellendi
 (!) ileride guid eğer ki aynı idyi verirse patlama olabilir
+model için assetCreator
+modelden gelen material asset folderına dönüştürülmüyor bir yol bul ? (unity bunu nasıl çözmüş?)
+unlit ve lit material -> material olmalı
+
+
+animations
+----------
+şu an sadece assimp ile çekilebiliyor genelleştir ?
+animasyon yüklenirken neden spesifik bir modele hemen yüklemem gerekiyor ? 
+animasyonlar otomatik loopta 
+animasyon süresi bazen aşıyor assert hatası geliyor ?
+	* bazı keylerin maksimum süresi currenttimedan düşük kaldığı için oluyor. eğer yüksek gelirse key 0'ı geri döndürecek şekilde ayarlandı
+en fazla 100 kemik eklenebiliyor 
+37k triangleda animasyon test edildi kasma yaşanmaya başladı
+transparent nesneler şu an animasyon yapamaz
+
+
+animator
+-------
+tek animasyon alabiliyor state machine değil ? (önemli)
+animator oluştururken neden hemen animasyon yüklemem gerekiyor ? 
+CalculateBoneTransform fonksiyonu içerisinde mapi cachlemiyor ?
 
 
 OĞULCAN
 *******
+Serialized Comp buttonları(mesh, transform) visible false olup tekrar ürüyor. Aynı butondan devam etsin tekrar üremesin.
 Serialized Comp buttonları(mesh, transform) visible false olup tekrar ürüyor. Aynı butondan devam etsin tekrar üremesin.

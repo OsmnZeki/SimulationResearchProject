@@ -100,6 +100,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ModelPaths.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\TextureReferences.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\AnimationSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ClearColorTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\OutlineBorderRenderSystem.cs" />
@@ -114,14 +115,19 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TransformSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimPath.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\AnimatorComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\CameraComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\DirectionalLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\OutlineBorderRenderComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\PointLightComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SkinnedMeshRendererComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SpotLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TestSystemComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animation.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animator.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\QuadPlane.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\RenderData\Model.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\OpenGLFunctions\OpenGLFunctions.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\ShaderPool.cs" />
     <Compile Include="MespUtils\AssetOrganizer.cs" />
@@ -157,7 +163,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\SimulationWindowSystem\SimulationSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\MeshRenderer.cs" />
-    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\ModelLoading.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\ModelLoader.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\CubeMesh.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\Lamp.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\RenderData\GeneralVertexData.cs" />

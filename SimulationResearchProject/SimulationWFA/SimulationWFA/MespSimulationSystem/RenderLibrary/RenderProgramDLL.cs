@@ -110,23 +110,57 @@ namespace RenderLibrary.DLL
 
         #endregion
 
-        #region ModelFunctions
+        #region ModelLoader
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "LoadModel")]
         public static extern IntPtr LoadModel(string path);
+
+        #endregion
+
+        #region ModelFunctions
+
+
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetModelChilCount")]
+        public static extern int GetModelChildCount(IntPtr modelAdress);
         
-        [DllImport(RenderProgramDLLPath, EntryPoint = "GetTotalMeshCount")]
-        public static extern int GetTotalMeshCount(IntPtr modelLoadingAdress);
-        
-        [DllImport(RenderProgramDLLPath, EntryPoint = "GetTotalMaterialCount")]
-        public static extern int GetTotalMaterialCount(IntPtr modelLoadingAdress);
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetMeshCount")]
+        public static extern int GetMeshCount(IntPtr modelAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetMaterialCount")]
+        public static extern int GetMaterialCount(IntPtr modelAdress);
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "GetIdxMeshesFromModel")]
-        public static extern IntPtr GetIdxMeshesFromModel(IntPtr modelLoadingAdress, int idx);
+        public static extern IntPtr GetIdxMeshesFromModel(IntPtr modelAdress, int idx);
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "GetIdxMaterialFromModel")]
-        public static extern IntPtr GetIdxMaterialFromModel(IntPtr modelLoadingAdress, int idx);
+        public static extern IntPtr GetIdxMaterialFromModel(IntPtr modelAdress, int idx);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetChildModel")]
+        public static extern IntPtr GetChildModel(IntPtr modelAdress, int idx);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetTotalMeshCount")]
+        public static extern int GetTotalMeshCount(IntPtr modelAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetTotalMaterialCount")]
+        public static extern int GetTotalMaterialCount(IntPtr modelAdress);
+
+
+        #endregion
+
+        #region AnimationFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetAnimationFromPath")]
+        public static extern IntPtr GetAnimationFromPath(string animationPath, IntPtr modelAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewAnimator")]
+        public static extern IntPtr NewAnimator(IntPtr animationAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "UpdateAnimation")]
+        public static extern void UpdateAnimation(IntPtr animationAdress, float deltaTime);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "SetBoneMatrixToShader")]
+        public static extern void SetBoneMatrixToShader(IntPtr animationAdress, IntPtr shaderAdress);
 
         #endregion
 

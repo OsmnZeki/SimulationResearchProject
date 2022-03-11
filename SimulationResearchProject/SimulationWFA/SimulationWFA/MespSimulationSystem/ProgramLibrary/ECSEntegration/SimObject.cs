@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Security.Policy;
 using Dalak.Ecs;
+using RenderLibrary.Transform;
+using SimulationSystem.Components;
 using SimulationSystem.ECS.Entegration;
 using TheSimulation.SerializedComponent;
 
@@ -53,6 +55,10 @@ namespace SimulationSystem
             objectData = new SimObjectData();
         }
         
+        public Transform GetTransform()
+        {
+            return entity.GetComponent<TransformComp>().transform;
+        }
         
         public void SetParent(SimObject newParent)
         {
@@ -67,7 +73,7 @@ namespace SimulationSystem
             objectData.AddSerializedComponent(serializedComponent);
         }
 
-        public void AddAllComponents(World world)
+        public void InjectAllSerializedComponents(World world)
         {
             foreach (var serializedComponent in objectData.GetSerializedComponents())
             {

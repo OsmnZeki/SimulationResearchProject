@@ -20,7 +20,7 @@ namespace SimulationSystem.Systems
             if (eventManager.ListenEvent<OnEditorCreateSimObjEvent>(out var createData))
             {
                 createData.simObject.CreateEntity(world);
-                createData.simObject.AddAllComponents(world);
+                createData.simObject.InjectAllSerializedComponents(world);
                 return;
             }
 
@@ -37,7 +37,7 @@ namespace SimulationSystem.Systems
                 foreach(var simObj in allSimObj)
                 {
                     simObj.RemoveAllComponents();
-                    simObj.AddAllComponents(world);
+                    simObj.InjectAllSerializedComponents(world);
                 }
                 return;
             }

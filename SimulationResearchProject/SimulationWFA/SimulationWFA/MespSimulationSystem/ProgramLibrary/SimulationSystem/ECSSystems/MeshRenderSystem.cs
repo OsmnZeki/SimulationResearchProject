@@ -14,6 +14,7 @@ namespace SimulationSystem.Systems
     public class MeshRenderSystem : Dalak.Ecs.System
     {
         private Filter<MeshRendererComp, TransformComp>.Exclude<OutlineBorderRenderComp> meshRendererFilter = null;
+        private Filter<SkinnedMeshRendererComp, TransformComp> skinnedMeshRendererFilter = null;
 
         private Filter<CameraComp, TransformComp> cameraFilter = null;
 
@@ -53,6 +54,31 @@ namespace SimulationSystem.Systems
                 meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
             }
 
+            //skinned mesh render
+            foreach(var s in skinnedMeshRendererFilter)
+            {
+                ref var transformComp = ref skinnedMeshRendererFilter.Get2(s);
+                ref var skinnedMeshRenderComp = ref skinnedMeshRendererFilter.Get1(s);
+                Entity entity = skinnedMeshRendererFilter.GetEntity(s);
+
+                for(int i = 0;i< skinnedMeshRenderComp.meshRenderer.Length; i++)
+                {
+                    var materialShader = skinnedMeshRenderComp.material[i].GetShader();
+                    if (entity.HasComponent<AnimatorComp>())
+                    {
+                        entity.GetComponent<AnimatorComp>().animator.SetBoneMatrixToShader(materialShader);
+                        materialShader.SetInt("animate", 1);
+                    }
+                    else
+                    {
+                        materialShader.SetInt("animate", 0);
+                    }
+
+                    skinnedMeshRenderComp.meshRenderer[i].Render(transformComp.transform, skinnedMeshRenderComp.material[i]);
+                }
+
+            }
+
             //transparent render
             foreach (var m in transparentObjectDist.OrderByDescending(pair => pair.Value))
             {
@@ -66,8 +92,14 @@ namespace SimulationSystem.Systems
         {
             foreach (var m in meshRendererFilter)
             {
-                var meshRendererComp = meshRendererFilter.Get1(m);
+                ref var meshRendererComp = ref meshRendererFilter.Get1(m);
                 meshRendererComp.meshRenderer.CleanUp();
+            }
+
+            foreach(var s in skinnedMeshRendererFilter)
+            {
+                ref var skinnedMeshRenderComp = ref skinnedMeshRendererFilter.Get1(s);
+                for (int i = 0; i < skinnedMeshRenderComp.meshRenderer.Length; i++) skinnedMeshRenderComp.meshRenderer[i].CleanUp();
             }
         }
 
