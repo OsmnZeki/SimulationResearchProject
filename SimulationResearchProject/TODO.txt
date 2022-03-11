@@ -83,3 +83,8 @@ assetCreator
 ------------
 var olan asset varsa üzerine yazması engellendi
 (!) ileride guid eğer ki aynı idyi verirse patlama olabilir
+
+
+OĞULCAN
+*******
+Serialized Comp buttonları(mesh, transform) visible false olup tekrar ürüyor. Aynı butondan devam etsin tekrar üremesin.

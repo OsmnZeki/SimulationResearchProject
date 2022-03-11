@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,6 +36,11 @@ namespace SimulationWFA
         public List<SimTextBox[]> TransformSerializedCompTexts = new List<SimTextBox[]>();
         public List<Label[]> MeshSerializedCompLabels = new List<Label[]>();
 
+        private Vector2 SerializedComponentName = new Vector2(150, 60);
+        private Vector2 VectorLocation = new Vector2(30, 20);
+        private Vector2 VectorSize = new Vector2(30, 20);
+        private Vector2 ResetButtonLocation = new Vector2(100, 20);
+        private Vector2 ResetButtonSize = new Vector2(50, 20);
 
         public void GetType(SerializedComponent serializedComponent)
         {
@@ -77,148 +83,159 @@ namespace SimulationWFA
             SerializedEditor.ResetItem(resetButton.item, resetButton.fieldId);
         }
 
-        public void SetSerializedItemOnEditor(SerializedComponent serializedCompItem, Panel componentPanel, Panel inspectorPanel, int totalCompLenght)
+        public void SetSerializedItemOnEditor(SerializedComponent serializedCompItem, ComponentPanel componentPanel, Panel inspectorPanel, int totalCompLenght)
         {
+            int idx = 0;
             var type = serializedCompItem.GetType();
-            switch (type.Name)
+            FieldInfo[] fields = type.GetFields();
+
+            PrepareSerializedCompName(componentPanel,serializedCompItem);
+
+            foreach (var field in fields)
             {
-                case "TransformSerialized":
-                    {
-                        SimTextBox serializedText = new SimTextBox();
-                        serializedText.Location = new Point(0, 0);
-                        serializedText.Text = serializedCompItem.GetName();
-                        serializedText.BackColor = Color.Red;
-                        serializedText.Size = new Size(150, 60);
-                        serializedText.BringToFront();
-                        SerializedTexts.Add(serializedText);
-                        componentPanel.Controls.Add(SerializedTexts[SerializedTexts.Count - 1]);
-
-
-                        var fields = type.GetFields();
-                        string[] vecValues = new string[3];
-
-                        ResetButton[] resButton = new ResetButton[3];
-
-                        for (int i = 0; i < 3; i++)
+                switch (field.FieldType.Name)
+                {
+                    case "Vector3":
                         {
-                            Vector3 fieldVal = (Vector3)fields[i].GetValue(serializedCompItem);
-                            vecValues[0] = fieldVal.X.ToString();
-                            vecValues[1] = fieldVal.Y.ToString();
-                            vecValues[2] = fieldVal.Z.ToString();
-
-                            SimTextBox[] serializedFieldTexs = new SimTextBox[3];
-                            for (int j = 0; j < 3; j++)
-                            {
-                                serializedFieldTexs[j] = new SimTextBox();
-                                serializedFieldTexs[j].Location = new Point((j * 30), i * 20 + 20);
-                                serializedFieldTexs[j].Text = vecValues[j];
-                                serializedFieldTexs[j].BackColor = Color.Yellow;
-                                serializedFieldTexs[j].Size = new Size(30, 60);
-                                serializedFieldTexs[j].textId = j;
-                                serializedFieldTexs[j].fieldId = i;
-                                serializedFieldTexs[j].serializedItem = serializedCompItem;
-                                serializedFieldTexs[j].TextChanged += simulationProject_TextChanged;
-                                serializedFieldTexs[j].BringToFront();
-                                componentPanel.Controls.Add(serializedFieldTexs[j]);
-                            }
-                            TransformSerializedCompTexts.Add(serializedFieldTexs);
-
-                            resButton[i] = new ResetButton();
-                            resButton[i].Location = new Point(100, i * 20 + 20);
-                            resButton[i].Size = new Size(50, 20);
-                            resButton[i].Text = "Reset";
-                            resButton[i].BackColor = Color.White;
-                            resButton[i].fieldId = i;
-                            resButton[i].item = serializedCompItem;
-                            resButton[i].simPosText = serializedFieldTexs;
-                            resButton[i].Click += new System.EventHandler(resetButton_Click);
-                            resButton[i].BringToFront();
-                            componentPanel.Controls.Add(resButton[i]);
-
+                            PrepareVector3Case(field, idx, serializedCompItem, componentPanel);
+                            break;
+                        }
+                    case "Mesh":
+                        {
+                            PrepareMeshCase(componentPanel, serializedCompItem);
+                            break;
+                        }
+                    case "Material":
+                        {
+                            PrepareMaterialCase(componentPanel, serializedCompItem);
+                            break;
                         }
 
+                    default:
                         break;
-                    }
-                case "MeshRendererSerialized":
-                    {
-                        //CubeMesh cubeMesh = new CubeMesh();
-                        //LitMaterial litMaterial = LitMaterial.gold;
-                        //litMaterial.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
-                        //MeshRendererSerialized meshRendererSerialized =  serializedCompItem as MeshRendererSerialized;
-                        //meshRendererSerialized.mesh = cubeMesh;
-                        //meshRendererSerialized.material = litMaterial;
-                        SimTextBox serializedText = new SimTextBox();
-                        serializedText.Location = new Point(0, 100);
-                        serializedText.Text = serializedCompItem.GetName();
-                        serializedText.BackColor = Color.Red;
-                        serializedText.Size = new Size(150, 60);
-                        SerializedTexts.Add(serializedText);
-                        componentPanel.Controls.Add(SerializedTexts[SerializedTexts.Count - 1]);
-
-                        var fields = type.GetFields();
-                        string[] meshValues = new string[2];
-                        meshValues[0] = "Mesh";
-                        meshValues[1] = "Material";
-                        Label[] meshRendLabels = new Label[2];
-                        ComboBox[] meshComboBoxes = new ComboBox[2];
-                        string[] meshButtonValues = new string[2];
-                        meshButtonValues[0] = "Add Mesh";
-                        meshButtonValues[1] = "Add Material";
-
-                        string[] matFiles = Directory.GetFiles(SimPath.MaterialsPath, "*.mat", SearchOption.AllDirectories);
-                        string[] meshFiles = Directory.GetFiles(SimPath.MeshesPath, "*.mesh", SearchOption.AllDirectories);
-                        //FileInfo fileInfo = new FileInfo(files[0]);
-
-                        for (int i = 0; i < 2; i++)
-                        {
-                            meshRendLabels[i] = new Label();
-                            meshRendLabels[i].Location = new Point(0, 120 + (i * 20));
-                            meshRendLabels[i].Text = meshValues[i];
-                            meshRendLabels[i].BackColor = Color.Yellow;
-                            meshRendLabels[i].Size = new Size(60, 20);
-                            componentPanel.Controls.Add(meshRendLabels[i]);
-
-                            meshComboBoxes[i] = new ComboBox();
-                            meshComboBoxes[i].Location = new Point(60, 120 + (i * 20));
-                            meshComboBoxes[i].Text = meshButtonValues[i];
- //new EventHandler(meshComboBoxes_Changed);
-                            meshComboBoxes[i].BackColor = Color.White;
-
-                            if (i == 1)
-                            {
-                                meshComboBoxes[i].TextChanged += (sender, e) => matComboBoxes_Changed(sender, e, serializedCompItem);
-
-                                for (int j = 0; j < matFiles.Length; j++)
-                                {
-                                    FileInfo fileInfo = new FileInfo(matFiles[j]);
-                                    meshComboBoxes[i].Items.Add(fileInfo.Name.ToString());
-
-                                }
-                            }
-                            else
-                            {
-                                meshComboBoxes[i].TextChanged += (sender, e) => meshComboBoxes_Changed(sender, e, serializedCompItem);
-                                for (int j = 0; j < meshFiles.Length; j++)
-                                {
-                                    FileInfo fileInfo = new FileInfo(meshFiles[j]);
-                                    meshComboBoxes[i].Items.Add(fileInfo.Name.ToString());
-                                }
-                            }
-                            componentPanel.Controls.Add(meshComboBoxes[i]);
-                        }
-                        MeshSerializedCompLabels.Add(meshRendLabels);
-
-                        break;
-                    }
-
-
-
-                default:
-                    break;
+                }
+                idx++;
             }
 
+            componentPanel.TotalInspectorPanelHeight += 20;
             inspectorPanel.Controls.Add(componentPanel);
 
+        }
+
+        private void PrepareSerializedCompName(ComponentPanel componentPanel, SerializedComponent serializedCompItem)
+        {
+            SimTextBox serializedText = new SimTextBox();
+            serializedText.Location = new Point(0, componentPanel.TotalInspectorPanelHeight);
+            serializedText.Text = serializedCompItem.GetName();
+            serializedText.BackColor = Color.Red;
+            serializedText.Size = new Size((int)SerializedComponentName.X, (int)SerializedComponentName.Y + componentPanel.TotalInspectorPanelHeight);
+            serializedText.BringToFront();
+            SerializedTexts.Add(serializedText);
+            componentPanel.Controls.Add(SerializedTexts[SerializedTexts.Count - 1]);
+            componentPanel.TotalInspectorPanelHeight += serializedText.Size.Height;
+        }
+
+        private void PrepareMaterialCase(ComponentPanel componentPanel, SerializedComponent serializedCompItem)
+        {
+            Label matRendLabels = new Label();
+            string[] matFiles = Directory.GetFiles(SimPath.MaterialsPath, "*.mat", SearchOption.AllDirectories);
+            matRendLabels.Location = new Point(0, componentPanel.TotalInspectorPanelHeight);
+            matRendLabels.Text = "Material";
+            matRendLabels.BackColor = Color.Yellow;
+            matRendLabels.Size = new Size(60, 20);
+            componentPanel.Controls.Add(matRendLabels);
+
+            ComboBox matComboBoxes = new ComboBox();
+            matComboBoxes = new ComboBox();
+            matComboBoxes.Location = new Point(60, componentPanel.TotalInspectorPanelHeight);
+            matComboBoxes.Text = "Add Material";
+            matComboBoxes.TextChanged += (sender, e) => matComboBoxes_Changed(sender, e, serializedCompItem);
+            matComboBoxes.BackColor = Color.White;
+
+            for (int j = 0; j < matFiles.Length; j++)
+            {
+                FileInfo fileInfo = new FileInfo(matFiles[j]);
+                matComboBoxes.Items.Add(fileInfo.Name.ToString());
+            }
+            componentPanel.Controls.Add(matComboBoxes);
+            componentPanel.TotalInspectorPanelHeight += matRendLabels.Height;
+
+        }
+
+        private void PrepareMeshCase(ComponentPanel componentPanel, SerializedComponent serializedCompItem)
+        {
+            Label meshRendLabels = new Label();
+            string[] meshFiles = Directory.GetFiles(SimPath.MeshesPath, "*.mesh", SearchOption.AllDirectories);
+            meshRendLabels.Location = new Point(0, componentPanel.TotalInspectorPanelHeight);
+            meshRendLabels.Text = "Mesh";
+            meshRendLabels.BackColor = Color.Yellow;
+            meshRendLabels.Size = new Size(60, 20);
+            componentPanel.Controls.Add(meshRendLabels);
+
+            ComboBox meshComboBoxes = new ComboBox();
+            meshComboBoxes = new ComboBox();
+            meshComboBoxes.Location = new Point(60, componentPanel.TotalInspectorPanelHeight);
+            meshComboBoxes.Text = "Add Mesh";
+            meshComboBoxes.TextChanged += (sender, e) => meshComboBoxes_Changed(sender, e, serializedCompItem);
+            meshComboBoxes.BackColor = Color.White;
+
+            for (int j = 0; j < meshFiles.Length; j++)
+            {
+                FileInfo fileInfo = new FileInfo(meshFiles[j]);
+                meshComboBoxes.Items.Add(fileInfo.Name.ToString());
+            }
+            componentPanel.Controls.Add(meshComboBoxes);
+            componentPanel.TotalInspectorPanelHeight += meshRendLabels.Height;
+        }
+
+        private void PrepareVector3Case(FieldInfo field, int idx, SerializedComponent serializedCompItem, ComponentPanel componentPanel)
+        {
+            ResetButton[] resButton = new ResetButton[3];
+            Label[] fieldName = new Label[3];
+            string[] vecValues = new string[3];
+
+            Vector3 fieldValue = (Vector3)field.GetValue(serializedCompItem);
+            vecValues[0] = fieldValue.X.ToString();
+            vecValues[1] = fieldValue.Y.ToString();
+            vecValues[2] = fieldValue.Z.ToString();
+
+            SimTextBox[] serializedFieldTexs = new SimTextBox[3];
+
+            fieldName[idx] = new Label();
+            fieldName[idx].Location = new Point(0, componentPanel.TotalInspectorPanelHeight);
+            fieldName[idx].Size = new Size(30, 20);
+            fieldName[idx].Text = field.Name;
+            fieldName[idx].BackColor = Color.AliceBlue;
+            fieldName[idx].BringToFront();
+            componentPanel.Controls.Add(fieldName[idx]);
+
+            resButton[idx] = new ResetButton();
+            resButton[idx].Location = new Point((int)ResetButtonLocation.X + fieldName[idx].Size.Width, componentPanel.TotalInspectorPanelHeight);
+            resButton[idx].Size = new Size((int)ResetButtonSize.X, (int)ResetButtonSize.Y);
+            resButton[idx].Text = "Reset";
+            resButton[idx].BackColor = Color.White;
+            resButton[idx].fieldId = idx;
+            resButton[idx].item = serializedCompItem;
+            resButton[idx].simPosText = serializedFieldTexs;
+            resButton[idx].Click += new System.EventHandler(resetButton_Click);
+            resButton[idx].BringToFront();
+            componentPanel.Controls.Add(resButton[idx]);
+
+            for (int i = 0; i < 3; i++)
+            {
+                serializedFieldTexs[i] = new SimTextBox();
+                serializedFieldTexs[i].Location = new Point((i * (int)VectorLocation.X + fieldName[idx].Size.Width), componentPanel.TotalInspectorPanelHeight);
+                serializedFieldTexs[i].Text = vecValues[i];
+                serializedFieldTexs[i].BackColor = Color.Yellow;
+                serializedFieldTexs[i].Size = new Size((int)VectorSize.X, (int)VectorSize.Y);
+                serializedFieldTexs[i].textId = i;
+                serializedFieldTexs[i].fieldId = idx;
+                serializedFieldTexs[i].serializedItem = serializedCompItem;
+                serializedFieldTexs[i].TextChanged += simulationProject_TextChanged;
+                serializedFieldTexs[i].BringToFront();
+                componentPanel.Controls.Add(serializedFieldTexs[i]);
+            }
+            componentPanel.TotalInspectorPanelHeight += (int)VectorSize.Y;
         }
 
         private void matComboBoxes_Changed(object sender, EventArgs e, SerializedComponent serializedCompItem)
