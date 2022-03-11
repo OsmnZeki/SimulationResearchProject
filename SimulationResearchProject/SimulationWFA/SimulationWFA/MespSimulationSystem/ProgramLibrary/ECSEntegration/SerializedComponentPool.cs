@@ -11,8 +11,8 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
         public static Dictionary<int, SerializedComponent> SerializedCompTypes = new Dictionary<int, SerializedComponent>() {
 
             {0, new TransformSerialized()},
-            {1, new MeshRendererSerialized()},
-            {2, new TestSystemSerialized()}
+            {1, new MeshRendererSerialized()}
+           // {2, new TestSystemSerialized()}
 
         };
 
