@@ -243,12 +243,16 @@ namespace SimulationWFA
             MeshRendererSerialized meshRendererSerialized = serializedCompItem as MeshRendererSerialized;
             dynamic obj = sender;
             string filename = obj.Text;
-            UnlitMaterial unlitMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>(filename);
-            meshRendererSerialized.material = unlitMaterial;
-            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
 
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
+                editorFunction = () => {
+                    UnlitMaterial unlitMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>(filename);
+                    meshRendererSerialized.material = unlitMaterial;
+                }
+                 //   EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh { }
 
             });
+
         }
 
         private void meshComboBoxes_Changed(object sender, EventArgs e, SerializedComponent serializedComponent)
