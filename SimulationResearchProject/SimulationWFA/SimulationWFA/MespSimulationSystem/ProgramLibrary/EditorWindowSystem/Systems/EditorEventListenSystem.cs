@@ -45,6 +45,16 @@ namespace SimulationSystem.Systems
             if(eventManager.ListenEvent<OnEditorFunction>(out var functionData))
             {
                 functionData.editorFunction();
+
+                //TODO: düzelt
+                var allSimObj = SimObject.FindObjectsOfType<TransformSerialized>();
+
+                foreach (var simObj in allSimObj)
+                {
+                    simObj.RemoveAllComponents();
+                    simObj.InjectAllSerializedComponents(world);
+                }
+                return;
             }
         }
     }
