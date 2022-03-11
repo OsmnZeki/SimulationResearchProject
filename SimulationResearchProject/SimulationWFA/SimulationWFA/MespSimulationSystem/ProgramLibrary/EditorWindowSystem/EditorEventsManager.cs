@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using SimulationSystem;
 using SimulationSystem.ECS.Entegration;
+using static SimulationSystem.EditorEvents.EditorEventsManager;
 
 namespace SimulationSystem.EditorEvents
 {
@@ -22,10 +23,17 @@ namespace SimulationSystem.EditorEvents
     {
 
     }
+
+    public struct OnEditorFunction : IEditorEvent
+    {
+        public EditorFunction editorFunction;
+    }
     
     public class EditorEventsManager
     {
         public List<IEditorEvent> events;
+
+        public delegate void EditorFunction();
 
         public EditorEventsManager()
         {

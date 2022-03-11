@@ -41,6 +41,11 @@ namespace SimulationSystem.Systems
                 }
                 return;
             }
+
+            if(eventManager.ListenEvent<OnEditorFunction>(out var functionData))
+            {
+                functionData.editorFunction();
+            }
         }
     }
 }
