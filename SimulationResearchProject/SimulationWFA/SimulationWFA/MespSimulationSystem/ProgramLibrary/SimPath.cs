@@ -22,12 +22,12 @@ namespace ProgramLibrary
             get {
                 if(AssetPath == null)
                 {
-                    AssetPath = FindAssetPath();
+                    AssetPath = FindDirectoryPath("Assets");
                 }
                 return AssetPath;
             } }
 
-        public static string FindAssetPath()
+        public static string FindDirectoryPath(string directoryName)
         {
             DirectoryInfo d = new DirectoryInfo(currentDirectory);
             int controlCounter = 0;
@@ -36,7 +36,7 @@ namespace ProgramLibrary
             {
                 foreach (var directory in d.Parent.GetDirectories())
                 {
-                    if (directory.Name == "Assets")
+                    if (directory.Name == directoryName)
                     {
                         return directory.FullName;
                     }
