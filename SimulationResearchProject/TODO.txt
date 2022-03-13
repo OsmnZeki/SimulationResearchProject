@@ -115,9 +115,7 @@ CalculateBoneTransform fonksiyonu içerisinde mapi cachlemiyor ?
 text render
 -----------
 renderlanan farklı bir objeyle aynı z düzlemine gelirse içinden geçme oluyor
-text renderer awake içerisinde setuplanıyor, runtime'da textrenderercomp eklenir ne olacak 
-text renderer awake içerisinde setuplanıyor, runtime'da textrenderercomp eklenir ne olacak 
-
+kelime aralıkları çok geniş uv'den alındığı için
 
 OĞULCAN
 *******
