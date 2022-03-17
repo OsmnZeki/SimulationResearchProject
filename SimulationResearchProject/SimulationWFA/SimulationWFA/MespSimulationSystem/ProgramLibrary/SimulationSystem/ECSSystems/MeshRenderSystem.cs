@@ -84,6 +84,7 @@ namespace SimulationSystem.Systems
             {
                 ref var transformComp = ref meshRendererFilter.Get2(m.Key);
                 ref var meshRendererComp = ref meshRendererFilter.Get1(m.Key);
+                meshRendererComp.material.GetShader().SetInt("animate", 0);
                 meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
             }
         }

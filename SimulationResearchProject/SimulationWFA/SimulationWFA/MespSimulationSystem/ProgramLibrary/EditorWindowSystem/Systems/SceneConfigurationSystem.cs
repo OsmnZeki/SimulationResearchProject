@@ -28,22 +28,22 @@ namespace SimulationSystem.Systems
             CreateDirectionalLight();
 
             CreateFPSDisplayer();
-            CreateLambs();
+            //CreateLambs();
 
-            CreateBristleback1();
-            CreateBristleback2();
+            //CreateBristleback1();
+            //CreateBristleback2();
 
             CreateJunkrat();
 
             //sCreateDragon();
 
-            CreateTrol();
+           // CreateTrol();
 
-            CreateWindow();
+            //CreateWindow();
 
-            CreatePlane();
+          //  CreatePlane();
 
-            CreateGrass();
+           // CreateGrass();
         }
 
         //Camera entity
@@ -129,7 +129,14 @@ namespace SimulationSystem.Systems
                 animator = new Animator(animation),
             };
 
-            SetupModel(humanModel, ref rootSimObj);
+            rootSimObj.entity.AddComponent<SkinnedMeshRendererComp>() = new SkinnedMeshRendererComp {
+                rootModel = humanModel,
+            };
+
+            ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
+            skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
+
+            rootSimObj.GetTransform().scale = new Vector3(0.05f);
         }
 
         public void CreateDragon()
