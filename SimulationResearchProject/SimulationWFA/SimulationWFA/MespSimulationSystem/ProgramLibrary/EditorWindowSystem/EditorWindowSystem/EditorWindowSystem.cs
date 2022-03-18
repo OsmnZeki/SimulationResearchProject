@@ -34,7 +34,7 @@ namespace SimulationSystem
             {
                 Time.UpdateTimer();
                 screen.ProcessWindowInput();
-
+                
                 windowEcsManager.Update();
                 windowEcsManager.LateUpdate();
 

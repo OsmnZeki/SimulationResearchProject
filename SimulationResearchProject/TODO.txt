@@ -109,6 +109,7 @@ en fazla 100 kemik eklenebiliyor
 37k triangleda animasyon test edildi kasma yaşanmaya başladı
 transparent nesneler şu an animasyon yapamaz
 2 trolun saçları ekranın ortasında birleşiyor.
+	* bone influence sayısı küçük olduğu zaman bazı ağır olan weight değerleri kayboluyor onun için düşük olan weight değerleri göz ardı edildi
 
 animator
 -------

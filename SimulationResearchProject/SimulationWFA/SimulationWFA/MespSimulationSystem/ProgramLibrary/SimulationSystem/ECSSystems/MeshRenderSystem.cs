@@ -50,7 +50,8 @@ namespace SimulationSystem.Systems
                     transparentObjectDist.Add(m, sqrDist);
                     continue;
                 }
-                meshRendererComp.material.GetShader().SetInt("animate", 0);
+                meshRendererComp.material.GetShader().Activate();
+                meshRendererComp.material.GetShader().SetInt("animate", 0); // TODO: bunun yeri bura değil
                 meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
             }
 
@@ -67,10 +68,12 @@ namespace SimulationSystem.Systems
                     if (entity.HasComponent<AnimatorComp>())
                     {
                         entity.GetComponent<AnimatorComp>().animator.SetBoneMatrixToShader(materialShader);
+                        materialShader.Activate();
                         materialShader.SetInt("animate", 1);
                     }
                     else
                     {
+                        materialShader.Activate();
                         materialShader.SetInt("animate", 0);
                     }
 
@@ -84,7 +87,8 @@ namespace SimulationSystem.Systems
             {
                 ref var transformComp = ref meshRendererFilter.Get2(m.Key);
                 ref var meshRendererComp = ref meshRendererFilter.Get1(m.Key);
-                meshRendererComp.material.GetShader().SetInt("animate", 0);
+                meshRendererComp.material.GetShader().Activate();
+                meshRendererComp.material.GetShader().SetInt("animate", 0); // TODO: bunun yeri bura değil
                 meshRendererComp.meshRenderer.Render(transformComp.transform, meshRendererComp.material);
             }
         }

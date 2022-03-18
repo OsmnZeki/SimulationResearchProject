@@ -35,6 +35,7 @@ namespace SimulationSystem.Systems
                 directioanLightComp.directionalLight.direction = transformComp.transform.forward;
                 for (int i = 0; i < ShaderPool.allLitShader.Length; i++)
                 {
+                    ShaderPool.allLitShader[i].Activate();
                     directioanLightComp.directionalLight.Render(ShaderPool.allLitShader[i]);
                 }
             }

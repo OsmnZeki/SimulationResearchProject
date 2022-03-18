@@ -30,10 +30,13 @@ namespace SimulationSystem.Systems
             CreateFPSDisplayer();
             //CreateLambs();
 
-            //CreateBristleback1();
+            CreateBristleback1();
+
+            //CreateGruGru();
+
             //CreateBristleback2();
 
-            CreateJunkrat();
+           // CreateJunkrat();
 
             //sCreateDragon();
 
@@ -156,6 +159,30 @@ namespace SimulationSystem.Systems
 
 
         }
+
+        public void CreateGruGru()
+        {
+            var humanModel = ModelLoader.LoadModel(modelReferences.GruGruPath);
+
+            var rootSimObj = SimObject.NewSimObject();
+            rootSimObj.CreateEntity(world);
+            rootSimObj.InjectAllSerializedComponents(world);
+
+            Animation animation = new Animation(modelReferences.GruGruPath, humanModel);
+            rootSimObj.entity.AddComponent<AnimatorComp>() = new AnimatorComp() {
+                animator = new Animator(animation),
+            };
+
+            rootSimObj.entity.AddComponent<SkinnedMeshRendererComp>() = new SkinnedMeshRendererComp {
+                rootModel = humanModel,
+            };
+
+            ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
+            skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
+
+            rootSimObj.GetTransform().scale = new Vector3(0.05f);
+        }
+
 
 
         public void CreateBristleback1()
