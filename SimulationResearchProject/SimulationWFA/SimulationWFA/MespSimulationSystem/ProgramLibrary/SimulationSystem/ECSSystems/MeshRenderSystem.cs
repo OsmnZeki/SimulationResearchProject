@@ -14,7 +14,9 @@ namespace SimulationSystem.Systems
     public class MeshRenderSystem : Dalak.Ecs.System
     {
         private Filter<MeshRendererComp, TransformComp>.Exclude<OutlineBorderRenderComp> meshRendererFilter = null;
-        private Filter<SkinnedMeshRendererComp, TransformComp> skinnedMeshRendererFilter = null;
+
+        private Filter<SkinnedMeshRendererComp, TransformComp>.Exclude<AnimatorComp> noAnimatorSkinnedMeshFilter = null;
+        private Filter<SkinnedMeshRendererComp, TransformComp, AnimatorComp> animatorSkinnedMeshFilter = null;
 
         private Filter<CameraComp, TransformComp> cameraFilter = null;
 
@@ -56,30 +58,35 @@ namespace SimulationSystem.Systems
             }
 
             //skinned mesh render
-            foreach(var s in skinnedMeshRendererFilter)
+            foreach (var s in noAnimatorSkinnedMeshFilter)
             {
-                ref var transformComp = ref skinnedMeshRendererFilter.Get2(s);
-                ref var skinnedMeshRenderComp = ref skinnedMeshRendererFilter.Get1(s);
-                Entity entity = skinnedMeshRendererFilter.GetEntity(s);
+                ref var transformComp = ref noAnimatorSkinnedMeshFilter.Get2(s);
+                ref var skinnedMeshRenderComp = ref noAnimatorSkinnedMeshFilter.Get1(s);
 
-                for(int i = 0;i< skinnedMeshRenderComp.meshRenderer.Length; i++)
+                for (int i = 0; i < skinnedMeshRenderComp.meshRenderer.Length; i++)
                 {
                     var materialShader = skinnedMeshRenderComp.material[i].GetShader();
-                    if (entity.HasComponent<AnimatorComp>())
-                    {
-                        entity.GetComponent<AnimatorComp>().animator.SetBoneMatrixToShader(materialShader);
-                        materialShader.Activate();
-                        materialShader.SetInt("animate", 1);
-                    }
-                    else
-                    {
-                        materialShader.Activate();
-                        materialShader.SetInt("animate", 0);
-                    }
+                    materialShader.Activate();
+                    materialShader.SetInt("animate", 0);
 
                     skinnedMeshRenderComp.meshRenderer[i].Render(transformComp.transform, skinnedMeshRenderComp.material[i]);
                 }
+            }
 
+            foreach (var s in animatorSkinnedMeshFilter)
+            {
+                ref var animatorComp = ref animatorSkinnedMeshFilter.Get3(s);
+                ref var transformComp = ref animatorSkinnedMeshFilter.Get2(s);
+                ref var skinnedMeshRenderComp = ref animatorSkinnedMeshFilter.Get1(s);
+
+                for (int i = 0; i < skinnedMeshRenderComp.meshRenderer.Length; i++)
+                {
+                    var materialShader = skinnedMeshRenderComp.material[i].GetShader();
+                    animatorComp.animator.SetBoneMatrixToShader(materialShader);
+                    materialShader.SetInt("animate", 1);
+
+                    skinnedMeshRenderComp.meshRenderer[i].Render(transformComp.transform, skinnedMeshRenderComp.material[i]);
+                }
             }
 
             //transparent render
@@ -101,9 +108,9 @@ namespace SimulationSystem.Systems
                 meshRendererComp.meshRenderer.CleanUp();
             }
 
-            foreach(var s in skinnedMeshRendererFilter)
+            foreach (var s in noAnimatorSkinnedMeshFilter)
             {
-                ref var skinnedMeshRenderComp = ref skinnedMeshRendererFilter.Get1(s);
+                ref var skinnedMeshRenderComp = ref noAnimatorSkinnedMeshFilter.Get1(s);
                 for (int i = 0; i < skinnedMeshRenderComp.meshRenderer.Length; i++) skinnedMeshRenderComp.meshRenderer[i].CleanUp();
             }
         }

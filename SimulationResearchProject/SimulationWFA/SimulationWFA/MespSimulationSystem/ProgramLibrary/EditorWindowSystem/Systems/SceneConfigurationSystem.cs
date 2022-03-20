@@ -30,9 +30,9 @@ namespace SimulationSystem.Systems
             CreateFPSDisplayer();
             //CreateLambs();
 
-            CreateBristleback1();
+            //CreateBristleback1();
 
-            //CreateGruGru();
+            CreateGruGru();
 
             //CreateBristleback2();
 

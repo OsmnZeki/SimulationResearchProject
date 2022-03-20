@@ -100,22 +100,19 @@ unlit ve lit material -> material olmalı
 
 animations
 ----------
-şu an sadece assimp ile çekilebiliyor genelleştir ?
-animasyon yüklenirken neden spesifik bir modele hemen yüklemem gerekiyor ? 
 animasyonlar otomatik loopta 
 animasyon süresi bazen aşıyor assert hatası geliyor ?
 	* bazı keylerin maksimum süresi currenttimedan düşük kaldığı için oluyor. eğer yüksek gelirse key 0'ı geri döndürecek şekilde ayarlandı
 en fazla 100 kemik eklenebiliyor 
-37k triangleda animasyon test edildi kasma yaşanmaya başladı
 transparent nesneler şu an animasyon yapamaz
 2 trolun saçları ekranın ortasında birleşiyor.
 	* bone influence sayısı küçük olduğu zaman bazı ağır olan weight değerleri kayboluyor onun için düşük olan weight değerleri göz ardı edildi
+
 
 animator
 -------
 tek animasyon alabiliyor state machine değil ? (önemli)
 animator oluştururken neden hemen animasyon yüklemem gerekiyor ? 
-CalculateBoneTransform fonksiyonu içerisinde mapi cachlemiyor ?
 
 
 text render
