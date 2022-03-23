@@ -5,7 +5,7 @@ using static RenderLibrary.Shaders.ShaderPool;
 
 namespace RenderLibrary.Graphics.Rendering
 {
-    public class LitMaterial : Material, IAssetSerializator
+    public class LitMaterial : Material
     {
 
         public LitMaterial()
@@ -123,7 +123,7 @@ namespace RenderLibrary.Graphics.Rendering
             return texture;
         }
 
-        public object Serializate()
+        public override object MaterialSerializate()
         {
             AssetSerializationData data = new AssetSerializationData();
 
@@ -158,7 +158,7 @@ namespace RenderLibrary.Graphics.Rendering
             return data;
         }
 
-        public object Deserializate(AssetSerializationData data)
+        public override object MaterialDeSerializate(AssetSerializationData data)
         {
             SetShader(GetShaderByType((ShaderType)data.GetInt("ShaderType", -1)));
 

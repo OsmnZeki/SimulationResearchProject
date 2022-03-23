@@ -95,7 +95,6 @@ var olan asset varsa üzerine yazması engellendi
 (!) ileride guid eğer ki aynı idyi verirse patlama olabilir
 model için assetCreator
 modelden gelen material asset folderına dönüştürülmüyor bir yol bul ? (unity bunu nasıl çözmüş?)
-unlit ve lit material -> material olmalı
 
 
 animations

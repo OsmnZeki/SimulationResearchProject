@@ -28,11 +28,12 @@ namespace SimulationSystem.Systems
             CreateDirectionalLight();
 
             CreateFPSDisplayer();
-            //CreateLambs();
+
+            CreateLambs();
 
             //CreateBristleback1();
 
-            CreateGruGru();
+           // CreateGruGru();
 
             //CreateBristleback2();
 
@@ -112,7 +113,7 @@ namespace SimulationSystem.Systems
                     }
                 };
                 lambSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                    material = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat"),
+                    material = AssetUtils.LoadFromAsset<Material>("lambMaterial.mat"),
                     mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
                 };
             }

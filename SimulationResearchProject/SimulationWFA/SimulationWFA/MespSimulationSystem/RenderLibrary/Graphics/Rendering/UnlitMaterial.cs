@@ -8,7 +8,7 @@ using static RenderLibrary.Shaders.ShaderPool;
 
 namespace RenderLibrary.Graphics.Rendering
 {
-    public class UnlitMaterial : Material , IAssetSerializator
+    public class UnlitMaterial : Material
     {
         public UnlitMaterial()
         {
@@ -42,7 +42,7 @@ namespace RenderLibrary.Graphics.Rendering
             return new Vector4(colorF[0], colorF[1], colorF[2], colorF[3]);
         }
 
-        public object Serializate()
+        public override object MaterialSerializate()
         {
             AssetSerializationData data = new AssetSerializationData();
 
@@ -62,7 +62,7 @@ namespace RenderLibrary.Graphics.Rendering
             return data;
         }
 
-        public object Deserializate(AssetSerializationData data)
+        public override object MaterialDeSerializate(AssetSerializationData data)
         {
             SetShader(GetShaderByType((ShaderType)data.GetInt("ShaderType",-1)));
 
