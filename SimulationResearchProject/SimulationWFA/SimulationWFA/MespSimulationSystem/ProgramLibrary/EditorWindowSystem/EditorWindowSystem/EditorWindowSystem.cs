@@ -4,12 +4,15 @@ using SimulationSystem.Systems;
 using SimulationSystem.Timer;
 using RenderLibrary.OpenGLCustomFunctions;
 using RenderLibrary.DLL;
+using PhysicLibrary;
 
 namespace SimulationSystem
 {
     public class EditorWindowSystem
     {
         WindowEcsManager windowEcsManager;
+        Physics physics = new Physics();
+
         public void CreateEditorWindow()
         {
             Screen screen = new Screen();
@@ -34,7 +37,12 @@ namespace SimulationSystem
             {
                 Time.UpdateTimer();
                 screen.ProcessWindowInput();
-                
+
+                //physic
+                int physicLoopCount = physics.CalculatePhyicsLoopCount(Time.deltaTime, Time.fixedDeltaTime);
+                for(int i = 0;i<physicLoopCount;i++) windowEcsManager.FixedUpdate();
+
+                //
                 windowEcsManager.Update();
                 windowEcsManager.LateUpdate();
 
