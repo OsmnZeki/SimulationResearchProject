@@ -120,6 +120,8 @@ text render
 -----------
 renderlanan farklı bir objeyle aynı z düzlemine gelirse içinden geçme oluyor
 kelime aralıkları çok geniş uv'den alındığı için
+textrenderer clean up olmuyor
+
 
 physic syste
 -----------
@@ -128,5 +130,4 @@ transform ve fizik entegrasyonu easyphysicsystem içerisinde gerçekleşiyor
 OĞULCAN
 *******
 Serialized Comp buttonları(mesh, transform) visible false olup tekrar ürüyor. Aynı butondan devam etsin tekrar üremesin.
-Sahnedeki objeler eklenen son material'e göre kendini otomatik setliyor. Sahnede her zaman bir material tipinde bulunuyo tüm objeler.
 

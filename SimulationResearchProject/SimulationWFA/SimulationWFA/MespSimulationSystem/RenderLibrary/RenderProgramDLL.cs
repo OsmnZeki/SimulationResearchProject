@@ -362,5 +362,28 @@ namespace RenderLibrary.DLL
 
         #endregion
 
+        #region LineRendererFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewLineRenderer")]
+        public static extern IntPtr NewLineRenderer();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LineRendererSetup")]
+        public static extern void LineRendererSetup(IntPtr lineRendererAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LineRendererSetNewPosition")]
+        public static extern void LineRendererSetNewPosition(IntPtr lineRendererAdress, float[] from, float[] to);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LineRendererSetNewColor")]
+        public static extern void LineRendererSetNewColor(IntPtr lineRendererAdress, float[] color);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LineRender")]
+        public static extern void LineRender(IntPtr lineRendererAdress, IntPtr shaderAdress);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LineRendererCleanUp")]
+        public static extern void LineRendererCleanUp(IntPtr textRendererAdress);
+
+
+        #endregion
+
     }
 }

@@ -89,9 +89,12 @@
     </Compile>
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
+    <Compile Include="MespSimulationSystem\PhysicLibrary\BoxCollider.cs" />
+    <Compile Include="MespSimulationSystem\PhysicLibrary\Collider.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Physics.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Rigidbody.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponentPool.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\BoxColliderSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\CameraSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\DirectionalLightSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\PointLightSerialized.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\TextureReferences.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\AnimationSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ClearColorTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ColliderBoundVisualizeSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\FPSCalculatorSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\OutlineBorderRenderSystem.cs" />
@@ -122,6 +126,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TransformSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimPath.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\AnimatorComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\BoxColliderComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\CameraComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\DirectionalLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\FPSDisplayerComp.cs" />
@@ -136,6 +141,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animation.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animator.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\LineRenderer.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\QuadPlane.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\RenderData\Model.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\TextRenderer.cs" />

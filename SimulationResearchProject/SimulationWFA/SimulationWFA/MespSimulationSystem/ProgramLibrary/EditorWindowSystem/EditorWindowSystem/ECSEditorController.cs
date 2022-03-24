@@ -50,6 +50,8 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
 
+            systemManager.AddSystem(new ColliderBoundVisualizeSystem(), GenericSystemGroup);
+
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
         }
