@@ -13,6 +13,7 @@ using RenderLibrary.Graphics.PreparedModels;
 using RenderLibrary.Graphics.RenderData;
 using RenderLibrary.Graphics.Rendering;
 using RenderLibrary.Shaders;
+using SimulationSystem.Components;
 using SimulationSystem.ECS.Entegration;
 using SimulationSystem.EditorEvents;
 using SimulationSystem.SharedData;
@@ -83,13 +84,13 @@ namespace SimulationWFA
             SerializedEditor.ResetItem(resetButton.item, resetButton.fieldId);
         }
 
-        public void SetSerializedItemOnEditor(SerializedComponent serializedCompItem, ComponentPanel componentPanel, Panel inspectorPanel, int totalCompLenght)
+        public void SetSerializedItemOnEditor(SerializedComponent serializedCompItem, HierarchySimButton simButton, Panel inspectorPanel, int totalCompLenght)
         {
             int idx = 0;
             var type = serializedCompItem.GetType();
             FieldInfo[] fields = type.GetFields();
 
-            PrepareSerializedCompName(componentPanel, serializedCompItem);
+            PrepareSerializedCompName(simButton.componentPanel, serializedCompItem);
 
             foreach (var field in fields)
             {
@@ -97,17 +98,18 @@ namespace SimulationWFA
                 {
                     case "Vector3":
                         {
-                            PrepareVector3Case(field, idx, serializedCompItem, componentPanel);
+                            List<Control> vec3Controls = new List<Control>();
+                            PrepareVector3Case(field, idx, serializedCompItem, simButton, vec3Controls);
                             break;
                         }
                     case "Mesh":
                         {
-                            PrepareMeshCase(componentPanel, serializedCompItem);
+                            PrepareMeshCase(simButton.componentPanel, serializedCompItem);
                             break;
                         }
                     case "Material":
                         {
-                            PrepareMaterialCase(componentPanel, serializedCompItem);
+                            PrepareMaterialCase(simButton.componentPanel, serializedCompItem);
                             break;
                         }
 
@@ -117,8 +119,8 @@ namespace SimulationWFA
                 idx++;
             }
 
-            componentPanel.TotalInspectorPanelHeight += 20;
-            inspectorPanel.Controls.Add(componentPanel);
+            simButton.componentPanel.TotalInspectorPanelHeight += 20;
+            inspectorPanel.Controls.Add(simButton.componentPanel);
 
         }
 
@@ -188,7 +190,7 @@ namespace SimulationWFA
             componentPanel.TotalInspectorPanelHeight += meshRendLabels.Height;
         }
 
-        private void PrepareVector3Case(FieldInfo field, int idx, SerializedComponent serializedCompItem, ComponentPanel componentPanel)
+        private void PrepareVector3Case(FieldInfo field, int idx, SerializedComponent serializedCompItem, HierarchySimButton simButton, List<Control> vec3Controls)
         {
             ResetButton[] resButton = new ResetButton[3];
             Label[] fieldName = new Label[3];
@@ -202,15 +204,16 @@ namespace SimulationWFA
             SimTextBox[] serializedFieldTexs = new SimTextBox[3];
 
             fieldName[idx] = new Label();
-            fieldName[idx].Location = new Point(0, componentPanel.TotalInspectorPanelHeight);
+            fieldName[idx].Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
             fieldName[idx].Size = new Size(30, 20);
             fieldName[idx].Text = field.Name;
             fieldName[idx].BackColor = Color.AliceBlue;
             fieldName[idx].BringToFront();
-            componentPanel.Controls.Add(fieldName[idx]);
+            vec3Controls.Add(fieldName[idx]);
+            simButton.componentPanel.Controls.Add(fieldName[idx]);
 
             resButton[idx] = new ResetButton();
-            resButton[idx].Location = new Point((int)resetButtonLocation.X + fieldName[idx].Size.Width, componentPanel.TotalInspectorPanelHeight);
+            resButton[idx].Location = new Point((int)resetButtonLocation.X + fieldName[idx].Size.Width, simButton.componentPanel.TotalInspectorPanelHeight);
             resButton[idx].Size = new Size((int)resetButtonSize.X, (int)resetButtonSize.Y);
             resButton[idx].Text = "Reset";
             resButton[idx].BackColor = Color.White;
@@ -219,12 +222,13 @@ namespace SimulationWFA
             resButton[idx].simPosText = serializedFieldTexs;
             resButton[idx].Click += new System.EventHandler(resetButton_Click);
             resButton[idx].BringToFront();
-            componentPanel.Controls.Add(resButton[idx]);
+            vec3Controls.Add(resButton[idx]);
+            simButton.componentPanel.Controls.Add(resButton[idx]);
 
             for (int i = 0; i < 3; i++)
             {
                 serializedFieldTexs[i] = new SimTextBox();
-                serializedFieldTexs[i].Location = new Point((i * (int)vectorLocation.X + fieldName[idx].Size.Width), componentPanel.TotalInspectorPanelHeight);
+                serializedFieldTexs[i].Location = new Point((i * (int)vectorLocation.X + fieldName[idx].Size.Width), simButton.componentPanel.TotalInspectorPanelHeight);
                 serializedFieldTexs[i].Text = vecValues[i];
                 serializedFieldTexs[i].BackColor = Color.Yellow;
                 serializedFieldTexs[i].Size = new Size((int)vectorSize.X, (int)vectorSize.Y);
@@ -233,9 +237,41 @@ namespace SimulationWFA
                 serializedFieldTexs[i].serializedItem = serializedCompItem;
                 serializedFieldTexs[i].TextChanged += simulationProject_TextChanged;
                 serializedFieldTexs[i].BringToFront();
-                componentPanel.Controls.Add(serializedFieldTexs[i]);
+                vec3Controls.Add(serializedFieldTexs[idx]);
+                simButton.componentPanel.Controls.Add(serializedFieldTexs[i]);
             }
-            componentPanel.TotalInspectorPanelHeight += (int)vectorSize.Y;
+            simButton.componentPanel.TotalInspectorPanelHeight += (int)vectorSize.Y;
+
+            if (idx == 2)
+            {
+                RemoveComponentButton removeComponentButton = new RemoveComponentButton();
+                removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight);
+                removeComponentButton.Size = new Size(110, 20);
+                removeComponentButton.Text = "RemoveComponent";
+                removeComponentButton.BackColor = Color.White;
+                removeComponentButton.Click += (sender, e) => removeComponentButton_Click(sender, e, simButton, serializedCompItem, vec3Controls);  //new System.EventHandler(removeComponentButton_Click);
+                removeComponentButton.BringToFront();
+                simButton.componentPanel.Controls.Add(removeComponentButton);
+                simButton.componentPanel.TotalInspectorPanelHeight += 20;
+            }
+        }
+
+        private void removeComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton, SerializedComponent serializedCompItem, List<Control> vec3Controls)
+        {
+            RemoveComponentButton removeComponentButton = sender as RemoveComponentButton;
+            simButton.simObject.objectData.name = "yarak";
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
+                editorFunction = () => {
+                    simButton.simObject.entity.RemoveComponent<TransformComp>();
+                    simButton.simObject.objectData.RemoveSerializedComp<TransformSerialized>();
+                }
+
+            });
+            foreach (var control in vec3Controls)
+            {
+                simButton.componentPanel.Controls.Remove(control);
+            }
+
         }
 
         private void matComboBoxes_Changed(object sender, EventArgs e, SerializedComponent serializedCompItem)

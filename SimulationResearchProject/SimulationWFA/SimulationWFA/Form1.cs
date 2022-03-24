@@ -173,7 +173,7 @@ namespace SimulationWFA
                 simButton.componentPanel.VerticalScroll.Enabled = true;
 
                 Button addComponentButton = new Button();
-                addComponentButton.Location = new Point(100, 550);
+                addComponentButton.Location = new Point(100, 450);
                 addComponentButton.Size = new Size(100, 20);
                 addComponentButton.BackColor = Color.White;
                 addComponentButton.Text = "Add Component";
@@ -187,7 +187,7 @@ namespace SimulationWFA
                 foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
                 {
                     simButton.serializedComponentList.Add(item.GetName());
-                    serializedEditor.SetSerializedItemOnEditor(item, simButton.componentPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
+                    serializedEditor.SetSerializedItemOnEditor(item, simButton, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
                 }
 
                 hierarchySimButList.Add(simButton);
@@ -238,15 +238,15 @@ namespace SimulationWFA
 
 
 
-            if (simButton.serializedComponentList.Contains(serializedComponent.GetName()) == false)
-            {
-                serializedEditor.SetSerializedItemOnEditor(serializedComponent, simButton.componentPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
+            //if (simButton.serializedComponentList.Contains(serializedComponent.GetName()) == false)
+            //{
+                serializedEditor.SetSerializedItemOnEditor(serializedComponent, simButton, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
                 simButton.serializedComponentList.Add(serializedComponent.GetName());
-            }
-            else
-            {
-                MessageBox.Show("You cannot add one more " + serializedComponent.GetName() + " Component");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("You cannot add one more " + serializedComponent.GetName() + " Component");
+            //}
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
                 simObject = simButton.simObject,

@@ -128,5 +128,6 @@ transform ve fizik entegrasyonu easyphysicsystem içerisinde gerçekleşiyor
 OĞULCAN
 *******
 Serialized Comp buttonları(mesh, transform) visible false olup tekrar ürüyor. Aynı butondan devam etsin tekrar üremesin.
-Sahnedeki objeler eklenen son material'e göre kendini otomatik setliyor. Sahnede her zaman bir material tipinde bulunuyo tüm objeler.
+Editör addcomponent button component panel e bağlı olmazsa iyi olur.
+Component panel kaydırılıp eklenirse total height değişmiş gibi ekliyor veya panel in starting point i.
 

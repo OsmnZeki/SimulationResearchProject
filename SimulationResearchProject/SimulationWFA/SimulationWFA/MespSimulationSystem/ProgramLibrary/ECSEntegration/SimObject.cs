@@ -105,10 +105,9 @@ namespace SimulationSystem
         {
             SimObject newSimObject = new SimObject();
             newSimObject.parent = Hiearchy;
-            newSimObject.objectData.name = name;
             Hiearchy.child.Add(newSimObject);
 
-            newSimObject.objectData = new SimObjectData();
+            newSimObject.objectData.name = name;
 
             newSimObject.objectData.AddSerializedComponent(new TransformSerialized() {
                 pos = Vector3.Zero,
