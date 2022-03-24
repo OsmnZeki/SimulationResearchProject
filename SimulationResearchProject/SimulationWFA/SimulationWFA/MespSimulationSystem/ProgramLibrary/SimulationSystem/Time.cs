@@ -8,6 +8,8 @@ namespace SimulationSystem.Timer
         public static float lastFrame;
         public static float currentFrame;
 
+        public static float fixedDeltaTime = .02f;
+
         static Stopwatch sw;
 
         public static void StartTimer()

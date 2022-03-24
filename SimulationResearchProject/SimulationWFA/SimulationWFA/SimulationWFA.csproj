@@ -89,10 +89,13 @@
     </Compile>
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
+    <Compile Include="MespSimulationSystem\PhysicLibrary\Physics.cs" />
+    <Compile Include="MespSimulationSystem\PhysicLibrary\Rigidbody.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponentPool.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\CameraSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\DirectionalLightSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\PointLightSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\RigidbodySerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\SpotLightSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TestSystemSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorEventsManager.cs" />
@@ -123,10 +126,12 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\FPSDisplayerComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\OutlineBorderRenderComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\PointLightComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\RigidbodyComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SkinnedMeshRendererComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SpotLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TestSystemComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TextRendererComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\EasyPhysicSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animation.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animator.cs" />

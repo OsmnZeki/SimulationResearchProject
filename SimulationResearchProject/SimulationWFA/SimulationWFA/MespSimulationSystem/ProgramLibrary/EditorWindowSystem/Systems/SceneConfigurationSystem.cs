@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using PhysicLibrary;
 using ProgramLibrary;
 using RenderLibrary.Animations;
 using RenderLibrary.Graphics;
@@ -28,22 +29,26 @@ namespace SimulationSystem.Systems
             CreateDirectionalLight();
 
             CreateFPSDisplayer();
+
             CreateLambs();
 
-            CreateBristleback1();
-            CreateBristleback2();
+            CreateBasicCube();
 
-            CreateJunkrat();
+            //CreateBristleback1();
 
-            //sCreateDragon();
+           // CreateGruGru();
 
-            CreateTrol();
+            //CreateBristleback2();
 
-            CreateWindow();
+           // CreateJunkrat();
 
-            CreatePlane();
+          //  CreateTrol();
 
-            CreateGrass();
+            //CreateWindow();
+
+          //  CreatePlane();
+
+           // CreateGrass();
         }
 
         //Camera entity
@@ -109,7 +114,7 @@ namespace SimulationSystem.Systems
                     }
                 };
                 lambSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                    material = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat"),
+                    material = AssetUtils.LoadFromAsset<Material>("lambMaterial.mat"),
                     mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
                 };
             }
@@ -129,26 +134,69 @@ namespace SimulationSystem.Systems
                 animator = new Animator(animation),
             };
 
-            SetupModel(humanModel, ref rootSimObj);
+            rootSimObj.entity.AddComponent<SkinnedMeshRendererComp>() = new SkinnedMeshRendererComp {
+                rootModel = humanModel,
+            };
+
+            ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
+            skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
+
+            rootSimObj.GetTransform().scale = new Vector3(0.05f);
         }
 
-        public void CreateDragon()
+
+        public void CreateBasicCube()
         {
-            var humanModel = ModelLoader.LoadModel(modelReferences.DragonPath);
+            var basicCubeObj = SimObject.NewSimObject();
+            basicCubeObj.CreateEntity(world);
+            basicCubeObj.InjectAllSerializedComponents(world);
+
+            ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
+            transformComp.transform.scale = Vector3.One * .5f;
+            transformComp.transform.position = new Vector3(0, 10, 0);
+
+            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
+            cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
+
+            basicCubeObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
+                material = cubeMaterial,
+            };
+
+            Rigidbody rg = new Rigidbody();
+            rg.position = new Vector3(0, 100, 0);
+            rg.mass = 1f;
+            rg.velocity = Vector3.Zero;
+
+            basicCubeObj.entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
+                rigidbody = rg,
+            };
+        }
+
+
+        public void CreateGruGru()
+        {
+            var humanModel = ModelLoader.LoadModel(modelReferences.GruGruPath);
 
             var rootSimObj = SimObject.NewSimObject();
             rootSimObj.CreateEntity(world);
             rootSimObj.InjectAllSerializedComponents(world);
 
-            Animation animation = new Animation(modelReferences.DragonPath, humanModel);
+            Animation animation = new Animation(modelReferences.GruGruPath, humanModel);
             rootSimObj.entity.AddComponent<AnimatorComp>() = new AnimatorComp() {
                 animator = new Animator(animation),
             };
 
-            SetupModel(humanModel, ref rootSimObj);
+            rootSimObj.entity.AddComponent<SkinnedMeshRendererComp>() = new SkinnedMeshRendererComp {
+                rootModel = humanModel,
+            };
 
+            ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
+            skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
 
+            rootSimObj.GetTransform().scale = new Vector3(0.05f);
         }
+
 
 
         public void CreateBristleback1()
@@ -208,44 +256,15 @@ namespace SimulationSystem.Systems
             rootSimObj.CreateEntity(world);
             rootSimObj.InjectAllSerializedComponents(world);
 
-            SetupModel(trolModel, ref rootSimObj);
+            rootSimObj.entity.AddComponent<SkinnedMeshRendererComp>() = new SkinnedMeshRendererComp {
+                rootModel = trolModel,
+            };
+
+            ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
+            skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
 
         }
 
-        public void SetupModel(Model rootModel, ref SimObject rootSimObj)
-        {
-            int meshCount = rootModel.ModelMeshCount();
-
-            SimObject[] meshSimObj = new SimObject[meshCount];
-
-            for (int i = 0; i < meshCount; i++)
-            {
-                meshSimObj[i] = SimObject.NewSimObject();
-                meshSimObj[i].CreateEntity(world);
-                meshSimObj[i].InjectAllSerializedComponents(world);
-                meshSimObj[i].SetParent(rootSimObj);
-
-                meshSimObj[i].GetTransform().scale = new Vector3(0.05f);
-
-                var mesh = rootModel.GetMesh(i);
-                var material = rootModel.GetMaterial(i);
-                material.SetShader(ShaderPool.GetShaderByType(ShaderPool.ShaderType.LitShader));
-
-                meshSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                    material = material,
-                    mesh = mesh,
-                };
-
-            }
-
-            int childCount = rootModel.ModelChildCount();
-            for (int i = 0; i < childCount; i++)
-            {
-                if (meshCount > 0) SetupModel(rootModel.GetChildModel(i), ref meshSimObj[0]);
-                else SetupModel(rootModel.GetChildModel(i), ref rootSimObj);
-
-            }
-        }
 
         public void CreatePlane()
         {

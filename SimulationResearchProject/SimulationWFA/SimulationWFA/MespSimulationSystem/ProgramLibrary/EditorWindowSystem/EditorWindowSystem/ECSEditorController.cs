@@ -1,4 +1,5 @@
 ﻿using RenderLibrary.IO;
+using SimulationSystem.ECSSystems;
 using SimulationSystem.SharedData;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.Systems;
 
@@ -25,6 +26,7 @@ namespace SimulationSystem.Systems
         {
             systemManager.AddSystem(new FPSCalculatorSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new EasyPhysicSystem(), GenericSystemGroup);
 
             //Custom Systems
             systemManager.AddSystem(new SceneConfigurationSystem(), GenericSystemGroup);
@@ -39,8 +41,9 @@ namespace SimulationSystem.Systems
 
 
             //RenderSystems   first opeque draw then transparent materials renders
-            systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
             systemManager.AddSystem(new AnimationSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
+            
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
             systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);

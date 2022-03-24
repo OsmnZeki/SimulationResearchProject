@@ -1,5 +1,6 @@
 ﻿using System;
 using RenderLibrary.DLL;
+using SimulationWFA.MespUtils;
 using static RenderLibrary.Shaders.ShaderPool;
 
 namespace RenderLibrary.Graphics.Rendering
@@ -10,7 +11,7 @@ namespace RenderLibrary.Graphics.Rendering
     }
 
 
-    public class Material
+    public class Material : IAssetSerializator
     {
         protected IntPtr materialAdress;
         public ShaderType shaderType;
@@ -43,6 +44,35 @@ namespace RenderLibrary.Graphics.Rendering
         {
             transparent = isTransparent;
             RenderProgramDLL.SetTransparent(materialAdress, isTransparent);
+        }
+
+        public object Serializate()
+        {
+            return MaterialSerializate();
+        }
+
+        public object Deserializate(AssetSerializationData data)
+        {
+            materialType = (MaterialType)data.GetInt("MaterialType", -1);
+
+            if(materialType == MaterialType.LitMaterial)
+            {
+                return new LitMaterial().MaterialDeSerializate(data);
+            }
+            else
+            {
+                return new UnlitMaterial().MaterialDeSerializate(data);
+            }
+        }
+
+        public virtual object MaterialSerializate()
+        {
+            return null;
+        }
+
+        public virtual object MaterialDeSerializate(AssetSerializationData data)
+        {
+            return null;
         }
     }
 }

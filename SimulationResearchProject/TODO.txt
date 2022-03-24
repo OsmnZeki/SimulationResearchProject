@@ -26,6 +26,7 @@ render
 ------
 sadece triangle çizdirtiyor ve mesh gerekiyor. meshsiz çizgi çizdirebilmek için güzel bir sistem bul
 mesh zaten c++'ta tutuluyor. C++ meshRenderer diye bir classa gerek var mı ? onun yerine c++ render(mesh,transform,material) alan bir class olsa nasıl olur ?
+meshrenderer system içerisinde if(setmeshRenderer == false) -> bundan kurtul
 
 
 screen
@@ -78,6 +79,11 @@ transparency
 çok sayıda nesne ile test edilmesi gerekiyor
 
 
+infiniteGrid
+-------------
+modelin üzerine renderlanıyor yükseliyormuş gibi gösteriyor
+
+
 General
 -------
 editor refres metodu optimize değil tek bir entity için ayarla
@@ -90,34 +96,34 @@ var olan asset varsa üzerine yazması engellendi
 (!) ileride guid eğer ki aynı idyi verirse patlama olabilir
 model için assetCreator
 modelden gelen material asset folderına dönüştürülmüyor bir yol bul ? (unity bunu nasıl çözmüş?)
-unlit ve lit material -> material olmalı
 
 
 animations
 ----------
-şu an sadece assimp ile çekilebiliyor genelleştir ?
-animasyon yüklenirken neden spesifik bir modele hemen yüklemem gerekiyor ? 
 animasyonlar otomatik loopta 
 animasyon süresi bazen aşıyor assert hatası geliyor ?
 	* bazı keylerin maksimum süresi currenttimedan düşük kaldığı için oluyor. eğer yüksek gelirse key 0'ı geri döndürecek şekilde ayarlandı
 en fazla 100 kemik eklenebiliyor 
-37k triangleda animasyon test edildi kasma yaşanmaya başladı
 transparent nesneler şu an animasyon yapamaz
 2 trolun saçları ekranın ortasında birleşiyor.
+	* bone influence sayısı küçük olduğu zaman bazı ağır olan weight değerleri kayboluyor onun için düşük olan weight değerleri göz ardı edildi
+animasyon sistemi optimize değil ! (önemli)
+
 
 animator
 -------
 tek animasyon alabiliyor state machine değil ? (önemli)
 animator oluştururken neden hemen animasyon yüklemem gerekiyor ? 
-CalculateBoneTransform fonksiyonu içerisinde mapi cachlemiyor ?
 
 
 text render
 -----------
 renderlanan farklı bir objeyle aynı z düzlemine gelirse içinden geçme oluyor
-text renderer awake içerisinde setuplanıyor, runtime'da textrenderercomp eklenir ne olacak 
-text renderer awake içerisinde setuplanıyor, runtime'da textrenderercomp eklenir ne olacak 
+kelime aralıkları çok geniş uv'den alındığı için
 
+physic syste
+-----------
+transform ve fizik entegrasyonu easyphysicsystem içerisinde gerçekleşiyor
 
 OĞULCAN
 *******

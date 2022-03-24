@@ -26,7 +26,10 @@ namespace SimulationSystem
             ecsController.Update();
         }
 
-        //TODO: fixedupdate()
+        public void FixedUpdate()
+        {
+            ecsController.FixedUpdate();
+        }
         
         public void LateUpdate()
         {
