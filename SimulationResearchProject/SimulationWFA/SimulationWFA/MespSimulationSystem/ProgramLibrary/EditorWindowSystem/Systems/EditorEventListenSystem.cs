@@ -21,13 +21,11 @@ namespace SimulationSystem.Systems
             {
                 createData.simObject.CreateEntity(world);
                 createData.simObject.InjectAllSerializedComponents(world);
-                return;
             }
 
            if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))
             {
                 addCompData.simObject.AddNewSerializedComponent(world, addCompData.serializedComponent);
-                return;
             }
 
             if (eventManager.ListenEvent<OnEditorFunction>(out var functionData))
