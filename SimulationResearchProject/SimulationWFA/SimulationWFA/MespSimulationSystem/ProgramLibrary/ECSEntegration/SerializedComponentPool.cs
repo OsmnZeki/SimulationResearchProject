@@ -8,18 +8,24 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
 {
     public static class SerializedComponentPool
     {
-        public static Dictionary<int, SerializedComponent> SerializedCompTypes = new Dictionary<int, SerializedComponent>() {
+        public static Dictionary<int, Type> SerializedCompTypes = new Dictionary<int, Type>() {
 
-            {0, new TransformSerialized()},
-            {1, new MeshRendererSerialized()}
+            {0,  typeof(TransformSerialized)},
+            {1, typeof(MeshRendererSerialized)}
            // {2, new TestSystemSerialized()}
+        };
+
+        public static string[] SerializedCompNames = {
+
+            "TransformSerialized",
+            "MeshRendererSerialized"
 
         };
 
 
         public static SerializedComponent ReturnNewComponentFromList(int idx)
         {
-            return  SerializedCompTypes[idx];
+            return Activator.CreateInstance(SerializedCompTypes[idx]) as SerializedComponent;
         }
     }
 }
