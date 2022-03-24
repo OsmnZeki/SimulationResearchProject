@@ -18,17 +18,33 @@ vec4 grid(vec3 fragPos3D, float scale) {
     float minimumx = min(derivative.x, 1);
     vec4 color = vec4(0.2, 0.2, 0.2, 1.0 - min(line, 1.0));
     // z axis
-    if(fragPos3D.x > -0.5 * minimumx && fragPos3D.x < 0.5 * minimumx)
+    if(fragPos3D.x > -0.1 * minimumx && fragPos3D.x < 0.1 * minimumx)
         color.z = 1.0;
     // x axis
-    if(fragPos3D.z > -0.5 * minimumz && fragPos3D.z < 0.5 * minimumz)
+    if(fragPos3D.z > -0.1 * minimumz && fragPos3D.z < 0.1 * minimumz)
         color.x = 1.0;
     return color;
 }
 
 float computeDepth(vec3 pos) {
+    /*vec4 clip_space_pos = outProjection * outView * vec4(pos.xyz, 1.0);
+    return (clip_space_pos.z / clip_space_pos.w);*/
+
+    
+    // get the clip-space coordinates
     vec4 clip_space_pos = outProjection * outView * vec4(pos.xyz, 1.0);
-    return (clip_space_pos.z / clip_space_pos.w);
+
+    // get the depth value in normalized device coordinates
+    float clip_space_depth = clip_space_pos.z / clip_space_pos.w;
+
+    // and compute the range based on gl_DepthRange settings (not necessary with default settings, but left for completeness)
+    float far = gl_DepthRange.far;
+    float near = gl_DepthRange.near;
+
+    float depth = (((far-near) * clip_space_depth) + near + far) / 2.0;
+
+    // and return the result
+    return depth;
 }
 
 float computeLinearDepth(vec3 pos) {

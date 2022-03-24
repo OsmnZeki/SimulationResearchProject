@@ -40,7 +40,7 @@ namespace SimulationSystem.Systems
             ShaderPool.SetupShaderToRender(ShaderPool.GetShaderByType(ShaderPool.ShaderType.InfiniteGridShader), cameraComp.view, cameraComp.projection);
 
             ShaderPool.infiniteGridShader.SetFloat("near", cameraComp.near);
-            ShaderPool.infiniteGridShader.SetFloat("far", cameraComp.far/2);
+            ShaderPool.infiniteGridShader.SetFloat("far", cameraComp.far);
 
             meshRenderer.Render(transform,infiniteMaterial);
         }

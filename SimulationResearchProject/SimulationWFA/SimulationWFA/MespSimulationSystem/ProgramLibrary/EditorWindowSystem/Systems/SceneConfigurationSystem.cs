@@ -28,11 +28,11 @@ namespace SimulationSystem.Systems
 
             CreateDirectionalLight();
 
-            //CreateFPSDisplayer();
+            CreateFPSDisplayer();
 
             //CreateLambs();
 
-            //CreateBasicCube();
+            CreateBasicCube();
 
             //CreateBristleback1();
 
@@ -153,7 +153,7 @@ namespace SimulationSystem.Systems
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One * .5f;
-            transformComp.transform.position = new Vector3(0, 5, 0);
+            transformComp.transform.position = new Vector3(0, 0, 0);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
             cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));

@@ -83,10 +83,6 @@ transparency
 çok sayıda nesne ile test edilmesi gerekiyor
 
 
-infiniteGrid
--------------
-modelin üzerine renderlanıyor yükseliyormuş gibi gösteriyor
-
 
 General
 -------
