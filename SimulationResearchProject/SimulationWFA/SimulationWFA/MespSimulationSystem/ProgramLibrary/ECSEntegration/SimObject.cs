@@ -93,10 +93,11 @@ namespace SimulationSystem
         }
 
 
-        public static SimObject NewSimObject()
+        public static SimObject NewSimObject(string name = "Empty")
         {
             SimObject newSimObject = new SimObject();
             newSimObject.parent = Hiearchy;
+            newSimObject.objectData.name = name;
             Hiearchy.child.Add(newSimObject);
 
             newSimObject.objectData = new SimObjectData();

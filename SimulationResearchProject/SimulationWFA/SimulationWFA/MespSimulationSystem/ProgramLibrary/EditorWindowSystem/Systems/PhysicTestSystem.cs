@@ -4,7 +4,7 @@ using RenderLibrary.IO;
 using SimulationSystem.Components;
 using SimulationSystem.ECSComponents;
 
-namespace EditorWindowSystem.Systems
+namespace SimulationSystem.ECSSystems
 {
     public class PhysicTestSystem : Dalak.Ecs.System
     {
@@ -16,8 +16,9 @@ namespace EditorWindowSystem.Systems
             {
                 ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
                 ref TransformComp transformComp = ref rigidFilter.Get2(r);
-                //  Physics.Simulate(rigidComp.rigidbody, Time.fixedDeltaTime);
+
                 if (Input.GetKeyDown(KeyCode.M)) rigidComp.rigidbody.AddTorque(Vector3.UnitY * 100);
+                if (Input.GetKeyDown(KeyCode.N)) rigidComp.rigidbody.AddForce(Vector3.UnitX * 5);
             }
 
         }

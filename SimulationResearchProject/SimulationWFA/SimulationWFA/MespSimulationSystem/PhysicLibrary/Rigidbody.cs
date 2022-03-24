@@ -26,8 +26,12 @@ namespace PhysicLibrary
         public void AddTorque(Vector3 torque)
         {
             torque *= Physics.NewtonFactor;
-            angularAcceleration = torque / inertiaTensor;
+            angularAcceleration += torque / inertiaTensor;
         }
-
+        public void AddForce(Vector3 force)
+        {
+            force *= Physics.NewtonFactor;
+            linearAcceleration += force / mass;
+        }
     }
 }

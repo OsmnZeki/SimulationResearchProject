@@ -32,13 +32,13 @@ namespace PhysicLibrary
 
         public static void Simulate(Rigidbody rigidbody, float time)
         {
-            Vector3 gravityForce = Vector3.Zero;
             if (rigidbody.useGravity)
             {
-                gravityForce = ComputeGravityForce(rigidbody);
+                Vector3 gravityForce = ComputeGravityForce(rigidbody);
+                rigidbody.linearAcceleration += gravityForce / rigidbody.mass;
             }
 
-            rigidbody.linearAcceleration = gravityForce / rigidbody.mass;
+            
             rigidbody.velocity += rigidbody.linearAcceleration * time;
             rigidbody.position += rigidbody.velocity*time;
             rigidbody.linearAcceleration = Vector3.Zero;
