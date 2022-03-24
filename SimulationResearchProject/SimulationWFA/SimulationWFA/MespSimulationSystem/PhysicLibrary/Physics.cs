@@ -15,6 +15,7 @@ namespace PhysicLibrary
         private float increasedTime = 0;
 
         public static float Gravity = -9.81f;
+        public static float NewtonFactor = 100f;
 
         public int CalculatePhyicsLoopCount(float deltaTime,float fixedTime)
         {
@@ -24,17 +25,27 @@ namespace PhysicLibrary
             return countOfPhysicActivity;
         }
 
-        private static Vector3 ComputeGravityForce(ref Rigidbody rigidbody)
+        private static Vector3 ComputeGravityForce(Rigidbody rigidbody)
         {
             return new Vector3(0, rigidbody.mass * Gravity, 0);
         }
 
-        public static void Simulate(ref Rigidbody rigidbody, float time)
+        public static void Simulate(Rigidbody rigidbody, float time)
         {
-            Vector3 gravityForce = ComputeGravityForce(ref rigidbody);
-            Vector3 acceleration = gravityForce / rigidbody.mass;
-            rigidbody.velocity += acceleration * time;
+            Vector3 gravityForce = Vector3.Zero;
+            if (rigidbody.useGravity)
+            {
+                gravityForce = ComputeGravityForce(rigidbody);
+            }
+
+            rigidbody.linearAcceleration = gravityForce / rigidbody.mass;
+            rigidbody.velocity += rigidbody.linearAcceleration * time;
             rigidbody.position += rigidbody.velocity*time;
+            rigidbody.linearAcceleration = Vector3.Zero;
+
+            rigidbody.angularVelocity += rigidbody.angularAcceleration * time;
+            rigidbody.rotation += rigidbody.angularVelocity * time;
+            rigidbody.angularAcceleration = Vector3.Zero;
         }
 
     }

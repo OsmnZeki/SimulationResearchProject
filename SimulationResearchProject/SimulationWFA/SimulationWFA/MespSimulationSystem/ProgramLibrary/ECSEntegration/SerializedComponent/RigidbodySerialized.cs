@@ -12,16 +12,17 @@ namespace ECSEntegration.SerializedComponent
 {
     public class RigidbodySerialized : SimulationSystem.ECS.Entegration.SerializedComponent
     {
-        public Vector3 position;
         public Vector3 velocity;
         public float mass;
+
+        public bool useGravity;
 
         public override void AddComponent(Entity entity, World world)
         {
             Rigidbody rb = new Rigidbody();
-            rb.position = position;
             rb.velocity = velocity;
             rb.mass = mass;
+            rb.useGravity = useGravity;
 
             entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
                 rigidbody = rb,
