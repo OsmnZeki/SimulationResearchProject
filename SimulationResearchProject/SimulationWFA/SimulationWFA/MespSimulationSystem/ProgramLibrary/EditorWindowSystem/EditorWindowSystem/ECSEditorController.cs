@@ -1,4 +1,5 @@
-﻿using RenderLibrary.IO;
+﻿using EditorWindowSystem.Systems;
+using RenderLibrary.IO;
 using SimulationSystem.ECSSystems;
 using SimulationSystem.SharedData;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.Systems;
@@ -33,6 +34,7 @@ namespace SimulationSystem.Systems
             //systemManager.AddSystem(new RotationTestSystem(), GenericSystemGroup);
             //systemManager.AddSystem(new ClearColorTestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
 
             //
             systemManager.AddSystem(new EasyPhysicSystem(), GenericSystemGroup);

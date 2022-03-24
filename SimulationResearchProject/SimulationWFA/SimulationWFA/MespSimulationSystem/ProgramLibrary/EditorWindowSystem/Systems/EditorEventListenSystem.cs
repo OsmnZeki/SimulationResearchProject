@@ -46,8 +46,6 @@ namespace SimulationSystem.Systems
                 }
                 return;
             }
-
-            
         }
     }
 }

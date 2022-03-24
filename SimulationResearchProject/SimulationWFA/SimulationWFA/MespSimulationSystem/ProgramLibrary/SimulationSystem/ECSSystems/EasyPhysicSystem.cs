@@ -23,24 +23,12 @@ namespace SimulationSystem.ECSSystems
             {
                 ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
                 ref TransformComp transformComp = ref rigidFilter.Get2(r);
-                //  Physics.Simulate(rigidComp.rigidbody, Time.fixedDeltaTime);
 
                 rigidComp.rigidbody.position = transformComp.transform.position;
                 rigidComp.rigidbody.rotation =transformComp.transform.rotation;
             }
         }
 
-        public override void Update()
-        {
-            foreach (var r in rigidFilter)
-            {
-                ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
-                ref TransformComp transformComp = ref rigidFilter.Get2(r);
-                //  Physics.Simulate(rigidComp.rigidbody, Time.fixedDeltaTime);
-                if(Input.GetKeyDown(KeyCode.M)) rigidComp.rigidbody.AddTorque(Vector3.UnitY * 100);
-            }
-
-        }
 
         public override void FixedUpdate()
         {
