@@ -181,7 +181,7 @@ namespace SimulationWFA
                 addComponentButton.Name = "AddComponentButton";
                 addComponentButton.Click += (sender2, e2) => addComponentButton_Click(sender2, e2, simButton); // new System.EventHandler(addComponentButton_Click);
                 addComponentButton.BringToFront();
-                inspectorPanel.Controls.Add(addComponentButton);
+                simButton.componentPanel.Controls.Add(addComponentButton);
 
 
 
