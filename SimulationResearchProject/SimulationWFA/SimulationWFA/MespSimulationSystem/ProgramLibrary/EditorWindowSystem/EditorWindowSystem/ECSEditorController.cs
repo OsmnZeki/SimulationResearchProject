@@ -26,7 +26,7 @@ namespace SimulationSystem.Systems
         {
             systemManager.AddSystem(new FPSCalculatorSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new EasyPhysicSystem(), GenericSystemGroup);
+            
 
             //Custom Systems
             systemManager.AddSystem(new SceneConfigurationSystem(), GenericSystemGroup);
@@ -35,7 +35,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
 
             //
-
+            systemManager.AddSystem(new EasyPhysicSystem(), GenericSystemGroup);
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
             systemManager.AddSystem(new InputSystem(), GenericSystemGroup);
 

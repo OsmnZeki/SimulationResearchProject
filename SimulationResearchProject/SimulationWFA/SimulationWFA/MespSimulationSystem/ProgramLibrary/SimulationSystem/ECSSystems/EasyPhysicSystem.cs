@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Dalak.Ecs;
 using PhysicLibrary;
+using RenderLibrary.IO;
 using SimulationSystem.Components;
 using SimulationSystem.ECSComponents;
 using SimulationSystem.Timer;
@@ -17,7 +19,27 @@ namespace SimulationSystem.ECSSystems
 
         public override void Awake()
         {
-            
+            foreach (var r in rigidFilter)
+            {
+                ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
+                ref TransformComp transformComp = ref rigidFilter.Get2(r);
+                //  Physics.Simulate(rigidComp.rigidbody, Time.fixedDeltaTime);
+
+                rigidComp.rigidbody.position = transformComp.transform.position;
+                rigidComp.rigidbody.rotation =transformComp.transform.rotation;
+            }
+        }
+
+        public override void Update()
+        {
+            foreach (var r in rigidFilter)
+            {
+                ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
+                ref TransformComp transformComp = ref rigidFilter.Get2(r);
+                //  Physics.Simulate(rigidComp.rigidbody, Time.fixedDeltaTime);
+                if(Input.GetKeyDown(KeyCode.M)) rigidComp.rigidbody.AddTorque(Vector3.UnitY * 100);
+            }
+
         }
 
         public override void FixedUpdate()
@@ -26,9 +48,10 @@ namespace SimulationSystem.ECSSystems
             {
                 ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
                 ref TransformComp transformComp = ref rigidFilter.Get2(r);
-                Physics.Simulate(ref rigidComp.rigidbody, Time.fixedDeltaTime);
+                Physics.Simulate(rigidComp.rigidbody, Time.fixedDeltaTime);
 
                 transformComp.transform.position = rigidComp.rigidbody.position;
+                transformComp.transform.rotation = rigidComp.rigidbody.rotation;
             }
         }
 
