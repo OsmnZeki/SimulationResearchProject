@@ -13,7 +13,7 @@ namespace RenderLibrary.Shaders
     {
         public enum ShaderType
         {
-            LitShader, UnlitShader, TransTestShader, OutlineBorderShader, InfiniteGridShader, TextRenderShader
+            LitShader, UnlitShader, TransTestShader, OutlineBorderShader, InfiniteGridShader, TextRenderShader, LineRenderShader
         }
 
         public static Shader litShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/lit.fs", ShaderType.LitShader);
@@ -22,8 +22,9 @@ namespace RenderLibrary.Shaders
         public static Shader outlineBorderShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/OutlineShader/Outline.fs", ShaderType.OutlineBorderShader);
         public static Shader infiniteGridShader = new Shader(SimPath.ShadersPath + "/InfiniteGridShader/infiniteGrid.vs", SimPath.ShadersPath + "/InfiniteGridShader/infiniteGrid.fs", ShaderType.InfiniteGridShader);
         public static Shader textRenderShader = new Shader(SimPath.ShadersPath + "/TextRenderShader/textRender.vs", SimPath.ShadersPath + "/TextRenderShader/textRender.fs", ShaderType.TextRenderShader);
+        public static Shader lineRenderShader = new Shader(SimPath.ShadersPath + "/LineRendererShader/lineShader.vs", SimPath.ShadersPath + "/LineRendererShader/lineShader.fs", ShaderType.LineRenderShader);
 
-        public static Shader[] allShaders = { litShader, unlitShader, transTestShader, outlineBorderShader, infiniteGridShader };
+        public static Shader[] allShaders = { litShader, unlitShader, transTestShader, outlineBorderShader, infiniteGridShader, lineRenderShader };
         public static Shader[] allLitShader = { litShader };
 
         public static Shader GetShaderByType(ShaderType shaderType)
@@ -35,6 +36,7 @@ namespace RenderLibrary.Shaders
                 case ShaderType.TransTestShader: return transTestShader;
                 case ShaderType.OutlineBorderShader: return outlineBorderShader;
                 case ShaderType.InfiniteGridShader: return infiniteGridShader;
+                case ShaderType.LineRenderShader: return lineRenderShader;
             }
 
             return null;
