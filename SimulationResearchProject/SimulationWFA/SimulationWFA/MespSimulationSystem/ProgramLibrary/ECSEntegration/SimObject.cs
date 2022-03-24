@@ -37,6 +37,14 @@ namespace SimulationSystem
         {
             return serializedComponentList.ToArray();
         }
+
+        public void RemoveSerializedComp<T>()
+        {
+            foreach (var comp in serializedComponentList)
+            {
+                if (comp.GetType() == typeof(T)) serializedComponentList.Remove(comp);
+            }
+        }
     }
     
     
