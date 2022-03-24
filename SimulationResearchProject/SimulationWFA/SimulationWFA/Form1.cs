@@ -199,9 +199,11 @@ namespace SimulationWFA
                 {
                     HierarchySimButton simButtonOld = (HierarchySimButton)control[lastHierarchyButtonIdx];
                     simButtonOld.componentPanel.Visible = false;
+                    simButtonOld.componentPanel.Enabled = false;
                 }
 
                 simButton.componentPanel.Visible = true;
+                simButton.componentPanel.Enabled = true;
             }
             lastHierarchyButtonIdx = idx;
         }
@@ -215,7 +217,7 @@ namespace SimulationWFA
                 buttons[idx] = new Button();
                 buttons[idx].Location = new Point(100, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight);
                 buttons[idx].Size = new Size(100, 20);
-                buttons[idx].Text = item.Value.GetName();
+                buttons[idx].Text = SerializedComponentPool.SerializedCompNames[item.Key];
                 buttons[idx].BackColor = Color.White;
                 buttons[idx].BringToFront();
                 simButton.componentPanel.Controls.Add(buttons[idx]);
@@ -232,13 +234,10 @@ namespace SimulationWFA
             {
                 button.Visible = false;
             }
-
-            EditorEventListenSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
-                simObject = simButton.simObject,
-                serializedComponent = SerializedComponentPool.ReturnNewComponentFromList(idx),
-            });
-
             SerializedComponent serializedComponent = SerializedComponentPool.ReturnNewComponentFromList(idx);
+
+
+
             if (simButton.serializedComponentList.Contains(serializedComponent.GetName()) == false)
             {
                 serializedEditor.SetSerializedItemOnEditor(serializedComponent, simButton.componentPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
@@ -248,6 +247,13 @@ namespace SimulationWFA
             {
                 MessageBox.Show("You cannot add one more " + serializedComponent.GetName() + " Component");
             }
+
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
+                simObject = simButton.simObject,
+                serializedComponent = serializedComponent,
+            });
+
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh { });
         }
 
         #endregion

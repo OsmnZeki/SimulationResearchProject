@@ -28,11 +28,11 @@ namespace SimulationSystem.Systems
 
             CreateDirectionalLight();
 
-            CreateFPSDisplayer();
+            //CreateFPSDisplayer();
 
-            CreateLambs();
+            //CreateLambs();
 
-            CreateBasicCube();
+            //CreateBasicCube();
 
             //CreateBristleback1();
 
