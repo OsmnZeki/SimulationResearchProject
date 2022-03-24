@@ -195,9 +195,6 @@
     <Compile Include="SimTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TransformCompTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <EmbeddedResource Include="Form1.aa-ER.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>

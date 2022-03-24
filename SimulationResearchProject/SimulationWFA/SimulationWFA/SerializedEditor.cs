@@ -42,23 +42,23 @@ namespace SimulationWFA
         private Vector2 resetButtonLocation = new Vector2(100, 20);
         private Vector2 resetButtonSize = new Vector2(50, 20);
 
-        public void GetType(SerializedComponent serializedComponent)
-        {
-            var type = serializedComponent.GetType();
-            switch (type.Name)
-            {
-                case "TransformSerialized":
-                    var fields = type.GetFields();
-                    dynamic obj = fields[0].GetValue(serializedComponent);
-                    float a = obj.X;
-                    break;
+        //public void GetType(SerializedComponent serializedComponent)
+        //{
+        //    var type = serializedComponent.GetType();
+        //    switch (type.Name)
+        //    {
+        //        case "TransformSerialized":
+        //            var fields = type.GetFields();
+        //            dynamic obj = fields[0].GetValue(serializedComponent);
+        //            float a = obj.X;
+        //            break;
 
 
-                default:
-                    break;
-            }
+        //        default:
+        //            break;
+        //    }
 
-        }
+        //}
 
         private void simulationProject_TextChanged(object sender, EventArgs e)
         {
@@ -89,7 +89,7 @@ namespace SimulationWFA
             var type = serializedCompItem.GetType();
             FieldInfo[] fields = type.GetFields();
 
-            PrepareSerializedCompName(componentPanel,serializedCompItem);
+            PrepareSerializedCompName(componentPanel, serializedCompItem);
 
             foreach (var field in fields)
             {
@@ -246,12 +246,12 @@ namespace SimulationWFA
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {
-                    Material unlitMaterial = AssetUtils.LoadFromAsset<Material>(filename);
-                    meshRendererSerialized.material = unlitMaterial;
+                    Material material = AssetUtils.LoadFromAsset<Material>(filename);
+                    meshRendererSerialized.material = material;
                 }
-                 //   EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh { }
 
             });
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh { });
 
         }
 
@@ -261,12 +261,16 @@ namespace SimulationWFA
             MeshRendererSerialized meshRendererSerialized = serializedComponent as MeshRendererSerialized;
             dynamic obj = sender;
             string filename = obj.Text;
-            Mesh mesh = AssetUtils.LoadFromAsset<Mesh>(filename);
-            meshRendererSerialized.mesh = mesh;
-            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
 
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
+                editorFunction = () => {
+                    Mesh mesh = AssetUtils.LoadFromAsset<Mesh>(filename);
+                    meshRendererSerialized.mesh = mesh;
+                }
 
             });
+
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh { });
         }
 
 
