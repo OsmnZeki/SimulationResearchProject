@@ -14,10 +14,5 @@ namespace SimulationWFA
         public SerializedComponent serializedItem = null;
         public int textId = 0;
         public int fieldId = 0;
-
-       // public int[] pos = new int[3];
-        //public Vector3 pos = new Vector3();
-        //public int[] scale = new int[3];
-        //public int[] rot = new int[3];
     }
 }

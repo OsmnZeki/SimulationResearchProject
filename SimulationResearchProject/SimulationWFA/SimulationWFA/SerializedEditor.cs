@@ -31,16 +31,16 @@ namespace SimulationWFA
 
         }
 
-        public List<SimTextBox> SerializedTexts = new List<SimTextBox>();
+        public List<SimTextBox> serializedTexts = new List<SimTextBox>();
 
-        public List<SimTextBox[]> TransformSerializedCompTexts = new List<SimTextBox[]>();
-        public List<Label[]> MeshSerializedCompLabels = new List<Label[]>();
+        public List<SimTextBox[]> transformSerializedCompTexts = new List<SimTextBox[]>();
+        public List<Label[]> meshSerializedCompLabels = new List<Label[]>();
 
-        private Vector2 SerializedComponentName = new Vector2(150, 60);
-        private Vector2 VectorLocation = new Vector2(30, 20);
-        private Vector2 VectorSize = new Vector2(30, 20);
-        private Vector2 ResetButtonLocation = new Vector2(100, 20);
-        private Vector2 ResetButtonSize = new Vector2(50, 20);
+        private Vector2 serializedComponentName = new Vector2(150, 60);
+        private Vector2 vectorLocation = new Vector2(30, 20);
+        private Vector2 vectorSize = new Vector2(30, 20);
+        private Vector2 resetButtonLocation = new Vector2(100, 20);
+        private Vector2 resetButtonSize = new Vector2(50, 20);
 
         public void GetType(SerializedComponent serializedComponent)
         {
@@ -128,10 +128,10 @@ namespace SimulationWFA
             serializedText.Location = new Point(0, componentPanel.TotalInspectorPanelHeight);
             serializedText.Text = serializedCompItem.GetName();
             serializedText.BackColor = Color.Red;
-            serializedText.Size = new Size((int)SerializedComponentName.X, (int)SerializedComponentName.Y + componentPanel.TotalInspectorPanelHeight);
+            serializedText.Size = new Size((int)serializedComponentName.X, (int)serializedComponentName.Y + componentPanel.TotalInspectorPanelHeight);
             serializedText.BringToFront();
-            SerializedTexts.Add(serializedText);
-            componentPanel.Controls.Add(SerializedTexts[SerializedTexts.Count - 1]);
+            serializedTexts.Add(serializedText);
+            componentPanel.Controls.Add(serializedTexts[serializedTexts.Count - 1]);
             componentPanel.TotalInspectorPanelHeight += serializedText.Size.Height;
         }
 
@@ -210,8 +210,8 @@ namespace SimulationWFA
             componentPanel.Controls.Add(fieldName[idx]);
 
             resButton[idx] = new ResetButton();
-            resButton[idx].Location = new Point((int)ResetButtonLocation.X + fieldName[idx].Size.Width, componentPanel.TotalInspectorPanelHeight);
-            resButton[idx].Size = new Size((int)ResetButtonSize.X, (int)ResetButtonSize.Y);
+            resButton[idx].Location = new Point((int)resetButtonLocation.X + fieldName[idx].Size.Width, componentPanel.TotalInspectorPanelHeight);
+            resButton[idx].Size = new Size((int)resetButtonSize.X, (int)resetButtonSize.Y);
             resButton[idx].Text = "Reset";
             resButton[idx].BackColor = Color.White;
             resButton[idx].fieldId = idx;
@@ -224,10 +224,10 @@ namespace SimulationWFA
             for (int i = 0; i < 3; i++)
             {
                 serializedFieldTexs[i] = new SimTextBox();
-                serializedFieldTexs[i].Location = new Point((i * (int)VectorLocation.X + fieldName[idx].Size.Width), componentPanel.TotalInspectorPanelHeight);
+                serializedFieldTexs[i].Location = new Point((i * (int)vectorLocation.X + fieldName[idx].Size.Width), componentPanel.TotalInspectorPanelHeight);
                 serializedFieldTexs[i].Text = vecValues[i];
                 serializedFieldTexs[i].BackColor = Color.Yellow;
-                serializedFieldTexs[i].Size = new Size((int)VectorSize.X, (int)VectorSize.Y);
+                serializedFieldTexs[i].Size = new Size((int)vectorSize.X, (int)vectorSize.Y);
                 serializedFieldTexs[i].textId = i;
                 serializedFieldTexs[i].fieldId = idx;
                 serializedFieldTexs[i].serializedItem = serializedCompItem;
@@ -235,7 +235,7 @@ namespace SimulationWFA
                 serializedFieldTexs[i].BringToFront();
                 componentPanel.Controls.Add(serializedFieldTexs[i]);
             }
-            componentPanel.TotalInspectorPanelHeight += (int)VectorSize.Y;
+            componentPanel.TotalInspectorPanelHeight += (int)vectorSize.Y;
         }
 
         private void matComboBoxes_Changed(object sender, EventArgs e, SerializedComponent serializedCompItem)
@@ -246,7 +246,7 @@ namespace SimulationWFA
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {
-                    UnlitMaterial unlitMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>(filename);
+                    Material unlitMaterial = AssetUtils.LoadFromAsset<Material>(filename);
                     meshRendererSerialized.material = unlitMaterial;
                 }
                  //   EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh { }

@@ -10,9 +10,9 @@ namespace SimulationWFA
 {
     public class HierarchySimButton : Button
     {
-        public SimObject SimObject;
-        public int Id;
+        public SimObject simObject;
+        public int id;
         public ComponentPanel componentPanel = new ComponentPanel();
-        public List<string> SerializedComponentList = new List<string>();
+        public List<string> serializedComponentList = new List<string>();
     }
 }

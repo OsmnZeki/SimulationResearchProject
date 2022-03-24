@@ -20,15 +20,14 @@ namespace SimulationWFA
 {
     public partial class SimulationProject : Form
     {
-        SerializedEditor SerializedEditor = new SerializedEditor();
-        int HierarchyHeight = 0;
-        public List<HierarchySimButton> HierarchySimButList = new List<HierarchySimButton>();
-
+        SerializedEditor serializedEditor = new SerializedEditor();
+        public List<HierarchySimButton> hierarchySimButList = new List<HierarchySimButton>();
+        int hierarchyHeight = 0;
         int lastHierarchyButtonIdx = -1;
         public SimulationProject()
         {
             lastHierarchyButtonIdx = -1;
-            HierarchyHeight = 0;
+            hierarchyHeight = 0;
             InitializeComponent();
             ShowProjectFiles();
             Task.Run(() => RunEditorWindow());
@@ -68,7 +67,7 @@ namespace SimulationWFA
 
         #region ClickEvents
 
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e) //Penceredeki open tool'u
         {
             if (sender.ToString() == "New")
             {
@@ -76,17 +75,17 @@ namespace SimulationWFA
             }
         }
 
-        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)//Penceredeki exit tool'u
         {
             Close();
-        }
+        } 
 
-        private void simulateButton_Click(object sender, EventArgs e)
+        private void simulateButton_Click(object sender, EventArgs e) //Editor windowda suan kapalı olan simulate butonu için
         {
 
-        }
+        } 
 
-        private void OpenProjectFolder(TreeNodeMouseClickEventArgs e)
+        private void OpenProjectFolder(TreeNodeMouseClickEventArgs e) //Seçilen folder'ın açılması için
         {
             //e.Node.BackColor = Color.FromArgb(255, 255, 255);
             ProcessStartInfo info = new ProcessStartInfo();
@@ -95,8 +94,8 @@ namespace SimulationWFA
             Process process = Process.Start(info);
             Thread.Sleep(2000);
             //SetParent(process.MainWindowHandle, this.Handle);
-        }
-        private void projectsTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        }  
+        private void projectsTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) //Project files kısmında iç içe dosyalarda gezmek için
         {
             if (e.Node.Tag == null)
             {
@@ -127,38 +126,38 @@ namespace SimulationWFA
             {
                 Task.Run(() => OpenProjectFolder(e));
             }
-        }
+        } 
 
-        private void addObjectButton_Click(object sender, EventArgs e)
+        private void addObjectButton_Click(object sender, EventArgs e) //Hierarchy'e obje ekler.
         {
             var simObject = SimObject.NewSimObject();
             HierarchySimButton hierarchyButton = new HierarchySimButton();
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
-            hierarchyButton.Location = new Point(10, 30 + HierarchyHeight); //new System.Drawing.Point(hieararchyPanel.Location.X + 5, hieararchyPanel.Location.Y + 40);
+            hierarchyButton.Location = new Point(10, 30 + hierarchyHeight);
             hierarchyButton.Name = "hierarchyButton";
             hierarchyButton.Size = new System.Drawing.Size(75, 23);
             hierarchyButton.Text = simObject.objectData.name;
             hierarchyButton.BackColor = Color.White;
-            hierarchyButton.SimObject = simObject;
-            hierarchyButton.Id = HierarchyHeight / 30;
+            hierarchyButton.simObject = simObject;
+            hierarchyButton.id = hierarchyHeight / 30;
             hierarchyButton.componentPanel.Location = new Point(5, 30);
             hierarchyButton.componentPanel.Name = "ComponentPanel";
             hierarchyButton.componentPanel.Size = new System.Drawing.Size(180, 400);
             hierarchyButton.componentPanel.BackColor = Color.AliceBlue;
             hierarchyButton.componentPanel.AutoScroll = true;
             hierarchyButton.BringToFront();
-            hierarchyButton.Click += (sender2, e2) => hierarchyButton_Click(sender2, e2, hierarchyButton.Id);//new System.EventHandler(hierarchyButton_Click);
+            hierarchyButton.Click += (sender2, e2) => hierarchyButton_Click(sender2, e2, hierarchyButton.id); //new System.EventHandler(hierarchyButton_Click);
             hieararchyPanel.Controls.Add(hierarchyButton);
-            HierarchyHeight += 30;
-        }
+            hierarchyHeight += 30;
+        } 
 
-        private void hierarchyButton_Click(object sender, EventArgs e, int idx)
+        private void hierarchyButton_Click(object sender, EventArgs e, int idx) //Hierarchy' deki objeye tıklandığında girer
         {
 
             Control[] control = Controls.Find("hierarchyButton", true);
             HierarchySimButton simButton = (HierarchySimButton)control[idx];
 
-            if (HierarchySimButList.Contains(simButton) == false)
+            if (hierarchySimButList.Contains(simButton) == false)
             {
 
                 if (lastHierarchyButtonIdx != -1)
@@ -185,13 +184,13 @@ namespace SimulationWFA
 
 
 
-                foreach (var item in simButton.SimObject.objectData.GetSerializedComponents())
+                foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
                 {
-                    simButton.SerializedComponentList.Add(item.GetName());
-                    SerializedEditor.SetSerializedItemOnEditor(item, simButton.componentPanel, inspectorPanel, simButton.SimObject.objectData.GetSerializedComponents().Length);
+                    simButton.serializedComponentList.Add(item.GetName());
+                    serializedEditor.SetSerializedItemOnEditor(item, simButton.componentPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
                 }
 
-                HierarchySimButList.Add(simButton);
+                hierarchySimButList.Add(simButton);
 
             }
             else
@@ -207,7 +206,7 @@ namespace SimulationWFA
             lastHierarchyButtonIdx = idx;
         }
 
-        private void addComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton)
+        private void addComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton) //Inspectorde component eklemeyen button
         {
             Button[] buttons = new Button[SerializedComponentPool.SerializedCompTypes.Count];
             int idx = 0;
@@ -227,7 +226,7 @@ namespace SimulationWFA
 
         }
 
-        private void componentsButton_Click(object sender, EventArgs e, HierarchySimButton simButton, int idx, Button[] buttons)
+        private void componentsButton_Click(object sender, EventArgs e, HierarchySimButton simButton, int idx, Button[] buttons) //Inspectorde componentleri göstermeye yarayan button
         {
             foreach (var button in buttons)
             {
@@ -235,20 +234,20 @@ namespace SimulationWFA
             }
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
-                simObject = simButton.SimObject,
+                simObject = simButton.simObject,
                 serializedComponent = SerializedComponentPool.ReturnNewComponentFromList(idx),
             });
 
             SerializedComponent serializedComponent = SerializedComponentPool.ReturnNewComponentFromList(idx);
-            //if (simButton.SerializedComponentList.Contains(serializedComponent.GetName()) == false)
-            //{
-                SerializedEditor.SetSerializedItemOnEditor(serializedComponent, simButton.componentPanel, inspectorPanel, simButton.SimObject.objectData.GetSerializedComponents().Length);
-                simButton.SerializedComponentList.Add(serializedComponent.GetName());
-           // }
-            //else
-            //{
-            //    MessageBox.Show("You cannot add one more " + serializedComponent.GetName() + " Component");
-            //}
+            if (simButton.serializedComponentList.Contains(serializedComponent.GetName()) == false)
+            {
+                serializedEditor.SetSerializedItemOnEditor(serializedComponent, simButton.componentPanel, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
+                simButton.serializedComponentList.Add(serializedComponent.GetName());
+            }
+            else
+            {
+                MessageBox.Show("You cannot add one more " + serializedComponent.GetName() + " Component");
+            }
         }
 
         #endregion
