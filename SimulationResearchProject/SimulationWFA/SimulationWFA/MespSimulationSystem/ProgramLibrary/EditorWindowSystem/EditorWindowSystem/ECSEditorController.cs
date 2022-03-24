@@ -48,6 +48,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
             systemManager.AddSystem(new ColliderBoundVisualizeSystem(), GenericSystemGroup);
+
             systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
 

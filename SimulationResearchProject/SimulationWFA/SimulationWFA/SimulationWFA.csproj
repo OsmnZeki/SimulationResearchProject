@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
+    <Compile Include="MespSimulationSystem\PhysicLibrary\Bounds.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\BoxCollider.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Collider.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Physics.cs" />
