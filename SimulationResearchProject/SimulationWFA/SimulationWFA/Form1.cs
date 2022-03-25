@@ -215,7 +215,7 @@ namespace SimulationWFA
             foreach (var item in SerializedComponentPool.SerializedCompTypes)
             {
                 buttons[idx] = new Button();
-                buttons[idx].Location = new Point(100, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight);
+                buttons[idx].Location = new Point(100, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight +20);
                 buttons[idx].Size = new Size(100, 20);
                 buttons[idx].Text = SerializedComponentPool.SerializedCompNames[item.Key];
                 buttons[idx].BackColor = Color.White;
