@@ -114,6 +114,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ColliderBoundVisualizeSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\FPSCalculatorSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\MespEditorDebugSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\OutlineBorderRenderSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\PhysicTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\RotationTestSystem.cs" />
