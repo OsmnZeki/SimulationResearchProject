@@ -20,13 +20,13 @@ namespace SimulationSystem
         {
             lineRenderer.from = new System.Numerics.Vector3(0, 0, 0);
             lineRenderer.to = new System.Numerics.Vector3(0, 10, 0);
-            lineRenderer.color = new System.Numerics.Vector3(0, 0, 0);
+            lineRenderer.color = new System.Numerics.Vector3(0, 1, 0);
             lineRenderer.Setup();
         }
 
         public override void Render()
         {
-            lineRenderer.LineRender(ShaderPool.lineRenderShader);
+            lineRenderer.LineRender(ShaderPool.lineRenderShader,3);
         }
 
     }

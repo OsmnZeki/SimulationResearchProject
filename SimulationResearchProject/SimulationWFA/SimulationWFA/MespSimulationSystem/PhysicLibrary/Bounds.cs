@@ -1,13 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PhysicLibrary
 {
-    public enum BoundType { }
-    public class Bounds
+    public enum BoundType { Box, Sphere }
+    public abstract class Bounds
     {
+        private Vector3 center;
+        public Vector3 Center {
+            get {
+                return center;
+            }
+            set {
+                UpdateCenter(value);
+            }
+        }
+        public BoundType boundType;
+
+        public void UpdateCenter(Vector3 newCenter)
+        {
+            center = newCenter;
+        }
+
+        public abstract void UpdateBounds();
+
+        public abstract bool IsIntersectWith(Vector3 point);
+        public abstract bool IsIntersectWith(Bounds bound);
+
     }
 }

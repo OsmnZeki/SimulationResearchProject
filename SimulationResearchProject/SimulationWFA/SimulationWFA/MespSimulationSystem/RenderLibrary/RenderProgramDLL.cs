@@ -377,7 +377,7 @@ namespace RenderLibrary.DLL
         public static extern void LineRendererSetNewColor(IntPtr lineRendererAdress, float[] color);
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "LineRender")]
-        public static extern void LineRender(IntPtr lineRendererAdress, IntPtr shaderAdress);
+        public static extern void LineRender(IntPtr lineRendererAdress, IntPtr shaderAdress,float lineWidth);
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "LineRendererCleanUp")]
         public static extern void LineRendererCleanUp(IntPtr textRendererAdress);

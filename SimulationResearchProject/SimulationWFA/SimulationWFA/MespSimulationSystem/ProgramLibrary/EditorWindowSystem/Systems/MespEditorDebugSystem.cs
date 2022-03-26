@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhysicLibrary
+namespace SimulationSystem
 {
-    public abstract class Collider
+    public class MespEditorDebugSystem : Dalak.Ecs.System
     {
-       
+
+
     }
 }

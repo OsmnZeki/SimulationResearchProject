@@ -90,6 +90,7 @@
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Bounds.cs" />
+    <Compile Include="MespSimulationSystem\PhysicLibrary\BoxBounds.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\BoxCollider.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Collider.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Physics.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\TextureReferences.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\AnimationSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ClearColorTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ColliderBoundsUpdateSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ColliderBoundVisualizeSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\FPSCalculatorSystem.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TextRendererSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TransformSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\MespDebug.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimPath.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\AnimatorComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\BoxColliderComp.cs" />

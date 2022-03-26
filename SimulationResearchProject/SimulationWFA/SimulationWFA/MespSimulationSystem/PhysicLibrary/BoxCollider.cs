@@ -9,7 +9,11 @@ namespace PhysicLibrary
 {
     public class BoxCollider : Collider
     {
-        public Vector3 center;
-        public Vector3 size = Vector3.One;
+        public BoxBounds bounds;
+        public BoxCollider()
+        {
+            bounds = new BoxBounds();
+        }
+
     }
 }

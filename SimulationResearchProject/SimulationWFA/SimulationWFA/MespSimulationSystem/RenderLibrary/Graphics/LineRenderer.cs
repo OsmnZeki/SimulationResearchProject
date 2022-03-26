@@ -70,9 +70,9 @@ namespace RenderLibrary.Graphics
             RenderProgramDLL.LineRendererSetNewColor(lineRendererAdress, colorArr);
         }
             
-        public void LineRender(Shader shader)
+        public void LineRender(Shader shader, float lineWidth)
         {
-            RenderProgramDLL.LineRender(lineRendererAdress, shader.GetShaderAdress());
+            RenderProgramDLL.LineRender(lineRendererAdress, shader.GetShaderAdress(), lineWidth);
         }
 
         public void CleanUp()

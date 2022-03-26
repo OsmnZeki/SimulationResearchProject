@@ -37,6 +37,8 @@ namespace SimulationSystem.Systems
 
             //
             systemManager.AddSystem(new EasyPhysicSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new ColliderBoundsUpdateSystem(), GenericSystemGroup);
+
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
             systemManager.AddSystem(new InputSystem(), GenericSystemGroup);
 
