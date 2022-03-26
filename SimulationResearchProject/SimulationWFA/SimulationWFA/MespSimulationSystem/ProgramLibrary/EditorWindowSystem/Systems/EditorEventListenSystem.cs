@@ -1,13 +1,38 @@
 ﻿using System;
 using Dalak.Ecs;
-using SimulationSystem.EditorEvents;
+using MespEvents;
+using SimulationSystem.ECS.Entegration;
 using TheSimulation.SerializedComponent;
 
 namespace SimulationSystem.Systems
 {
+
+    public delegate void EditorFunction();
+
+    public struct OnEditorCreateSimObjEvent : IEvent
+    {
+        public SimObject simObject;
+    }
+
+    public struct OnEditorAddCompSimObjEvent : IEvent
+    {
+        public SimObject simObject;
+        public SerializedComponent serializedComponent;
+    }
+
+    public struct OnEditorRefresh : IEvent
+    {
+
+    }
+
+    public struct OnEditorFunction : IEvent
+    {
+        public EditorFunction editorFunction;
+    }
+
     class EditorEventListenSystem : Dalak.Ecs.System
     {
-        public static EditorEventsManager eventManager = new EditorEventsManager();
+        public static MespEventManager eventManager = new MespEventManager();
 
         public override void Update()
         {

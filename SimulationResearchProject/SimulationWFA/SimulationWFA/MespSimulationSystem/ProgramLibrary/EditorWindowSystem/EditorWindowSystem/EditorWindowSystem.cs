@@ -49,6 +49,7 @@ namespace SimulationSystem
                 //Render
                 screen.Update();
                 windowEcsManager.Render();
+                windowEcsManager.PostRender();
                 screen.NewFrame();
             }
 

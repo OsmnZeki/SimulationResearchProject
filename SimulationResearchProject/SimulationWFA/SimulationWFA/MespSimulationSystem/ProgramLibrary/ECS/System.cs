@@ -22,16 +22,13 @@ namespace Dalak.Ecs
         public virtual void FixedUpdate(){}
         public virtual  void LateUpdate(){}
         public virtual void Render(){}
+        public virtual void PostRender(){}
         public virtual void OnDestroy(){}
         
         public virtual void OnApplicationQuit(){}
 
         public SystemManager manager = null;
 
-        public void SendEvent<T>(T t = default) where T:struct
-        {
-            manager.SendEvent<T>(t);
-        }
 
         public void CallLater(float duration, Action action)
         {

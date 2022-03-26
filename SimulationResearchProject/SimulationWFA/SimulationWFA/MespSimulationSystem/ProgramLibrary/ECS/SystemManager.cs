@@ -105,15 +105,6 @@ namespace Dalak.Ecs
             injections.Add(typeof(T),o);
         }
         
-        public void SendEvent<T>(T t = default) where T: struct
-        {
-            createEvents.Add((w) =>
-            {
-                var e = w.NewEntity();
-                e.AddComponent<T>() = t;
-                return e;
-            });
-        }
        
         // UNITY EVENTS
         public void Awake()
@@ -201,7 +192,18 @@ namespace Dalak.Ecs
                 }
             }
         }
-       
+
+        public void PostRender()
+        {
+            foreach(var system in systems)
+            {
+                if (system.active && !system.disabled)
+                {
+                    system.PostRender();
+                }
+            }
+        }
+
         public void OnDestroy()
         {
             foreach (var system in systems)

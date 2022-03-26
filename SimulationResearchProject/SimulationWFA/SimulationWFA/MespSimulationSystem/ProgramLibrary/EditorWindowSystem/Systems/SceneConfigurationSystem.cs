@@ -33,6 +33,7 @@ namespace SimulationSystem.Systems
             //CreateLambs();
 
             CreateBasicCube();
+            CreateBasicCube2();
 
             //CreateBristleback1();
 
@@ -152,7 +153,7 @@ namespace SimulationSystem.Systems
             basicCubeObj.InjectAllSerializedComponents(world);
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
-            transformComp.transform.scale = Vector3.One * .5f;
+            transformComp.transform.scale = Vector3.One * 2f;
             transformComp.transform.position = new Vector3(0, 0, 0);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
@@ -170,7 +171,45 @@ namespace SimulationSystem.Systems
             basicCubeObj.entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
                 rigidbody = rg,
             };
+
+            basicCubeObj.entity.AddComponent<BoxColliderComp>() = new BoxColliderComp {
+                boxCollider = new BoxCollider(),
+            };
         }
+
+        public void CreateBasicCube2()
+        {
+            var basicCubeObj = SimObject.NewSimObject();
+            basicCubeObj.CreateEntity(world);
+            basicCubeObj.InjectAllSerializedComponents(world);
+
+            ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
+            transformComp.transform.scale = Vector3.One * .5f;
+            transformComp.transform.position = new Vector3(5, 0, 0);
+
+            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
+            cubeMaterial.SetColor(new Vector4(0, 0, 1, 1));
+
+            basicCubeObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
+                material = cubeMaterial,
+            };
+
+            Rigidbody rg = new Rigidbody();
+            rg.mass = 1f;
+            rg.velocity = Vector3.Zero;
+
+            basicCubeObj.entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
+                rigidbody = rg,
+            };
+
+            basicCubeObj.entity.AddComponent<BoxColliderComp>() = new BoxColliderComp {
+                boxCollider = new BoxCollider(),
+            };
+
+            basicCubeObj.entity.AddComponent<CanMoveTestTag>();
+        }
+
 
 
         public void CreateGruGru()

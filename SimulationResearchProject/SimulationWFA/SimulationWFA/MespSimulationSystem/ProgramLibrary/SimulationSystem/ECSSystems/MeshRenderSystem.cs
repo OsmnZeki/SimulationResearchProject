@@ -11,6 +11,7 @@ using SimulationSystem.SharedData;
 
 namespace SimulationSystem.Systems
 {
+    //  first opeque draw then transparent materials renders
     public class MeshRenderSystem : Dalak.Ecs.System
     {
         private Filter<MeshRendererComp, TransformComp>.Exclude<OutlineBorderRenderComp> meshRendererFilter = null;

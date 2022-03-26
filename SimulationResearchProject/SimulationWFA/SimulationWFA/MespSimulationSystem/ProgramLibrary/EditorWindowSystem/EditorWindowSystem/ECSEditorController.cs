@@ -30,31 +30,28 @@ namespace SimulationSystem.Systems
 
             //Custom Systems
             systemManager.AddSystem(new SceneConfigurationSystem(), GenericSystemGroup);
-            //systemManager.AddSystem(new RotationTestSystem(), GenericSystemGroup);
-            //systemManager.AddSystem(new ClearColorTestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
 
             //
             systemManager.AddSystem(new EasyPhysicSystem(), GenericSystemGroup);
             systemManager.AddSystem(new ColliderBoundsUpdateSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new CollisionDetectionSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
             systemManager.AddSystem(new InputSystem(), GenericSystemGroup);
 
 
-            //RenderSystems   first opeque draw then transparent materials renders
+            //RenderSystems 
             systemManager.AddSystem(new AnimationSystem(), GenericSystemGroup);
             systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
             
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new ColliderBoundVisualizeSystem(), GenericSystemGroup);
 
+            systemManager.AddSystem(new MespEditorDebugSystem(), GenericSystemGroup);
             systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
-
-            
 
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);

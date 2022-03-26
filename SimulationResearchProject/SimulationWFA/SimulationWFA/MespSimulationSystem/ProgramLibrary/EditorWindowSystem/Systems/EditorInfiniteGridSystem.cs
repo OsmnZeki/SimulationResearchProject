@@ -32,7 +32,7 @@ namespace SimulationSystem.Systems
             meshRenderer.Setup();
         }
 
-        public override void Render()
+        public override void PostRender()
         {
             ref var cameraComp = ref cameraFilter.Get1(0);
             ref var camTransformComp = ref cameraFilter.Get2(0);

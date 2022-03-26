@@ -41,8 +41,14 @@ namespace SimulationSystem
             ecsController.Render();
         }
 
+        public void PostRender()
+        {
+            ecsController.PostRender();
+        }
+
+
         //TODO: on destroy
-        
+
         public void OnSimulationQuit()
         {
             ecsController.OnApplicationQuit();

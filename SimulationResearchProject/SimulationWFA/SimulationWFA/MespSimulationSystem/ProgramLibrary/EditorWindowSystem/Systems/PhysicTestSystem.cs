@@ -10,6 +10,8 @@ namespace SimulationSystem.ECSSystems
     {
         readonly Filter<RigidbodyComp, TransformComp> rigidFilter = null;
 
+        readonly Filter<CanMoveTestTag,RigidbodyComp> canMoveableFilter = null;
+
         public override void Update()
         {
             foreach (var r in rigidFilter)
@@ -19,6 +21,20 @@ namespace SimulationSystem.ECSSystems
 
                 if (Input.GetKeyDown(KeyCode.M)) rigidComp.rigidbody.AddTorque(Vector3.UnitY * 100);
                 if (Input.GetKeyDown(KeyCode.N)) rigidComp.rigidbody.AddForce(Vector3.UnitX * 5);
+            }
+
+            foreach(var c in canMoveableFilter)
+            {
+                ref var rigidComp = ref canMoveableFilter.Get2(c);
+
+                if (Input.GetKeyDown(KeyCode.K))
+                {
+                    rigidComp.rigidbody.velocity = new Vector3(1, 0, 0);
+                }
+                else if (Input.GetKeyDown(KeyCode.L))
+                {
+                    rigidComp.rigidbody.velocity = new Vector3(-1, 0, 0);
+                }
             }
 
         }

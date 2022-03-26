@@ -15,7 +15,6 @@ using RenderLibrary.Graphics.Rendering;
 using RenderLibrary.Shaders;
 using SimulationSystem.Components;
 using SimulationSystem.ECS.Entegration;
-using SimulationSystem.EditorEvents;
 using SimulationSystem.SharedData;
 using SimulationSystem.Systems;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary;

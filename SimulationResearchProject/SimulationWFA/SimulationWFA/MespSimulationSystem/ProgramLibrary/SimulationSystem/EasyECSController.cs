@@ -45,7 +45,12 @@ namespace SimulationSystem
         {
             systemManager.Render();
         }
-        
+
+        public void PostRender()
+        {
+            systemManager.PostRender();
+        }
+
         public void OnDestroy()
         {
             systemManager.OnDestroy();

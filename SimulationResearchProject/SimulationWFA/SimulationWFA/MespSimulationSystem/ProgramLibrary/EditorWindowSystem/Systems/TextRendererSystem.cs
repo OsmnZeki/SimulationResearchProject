@@ -36,7 +36,7 @@ namespace SimulationSystem
             ortographicProjection = CameraComp.GetOrthographic();
         }
 
-        public override void Render()
+        public override void PostRender()
         {
             ShaderPool.textRenderShader.Activate();
             ShaderPool.textRenderShader.SetMat4("projection", ortographicProjection);
