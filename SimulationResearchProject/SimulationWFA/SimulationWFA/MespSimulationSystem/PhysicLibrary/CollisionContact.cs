@@ -10,6 +10,8 @@ namespace PhysicLibrary
 {
     public class CollisionContact
     {
+        public Rigidbody rigidBody;
+        public Rigidbody otherRigidbody;
         private Vector3 normalRef;
 
         public Vector3 normal {

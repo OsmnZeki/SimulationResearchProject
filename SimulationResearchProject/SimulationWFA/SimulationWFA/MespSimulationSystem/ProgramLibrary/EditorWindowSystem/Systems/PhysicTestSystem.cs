@@ -19,7 +19,7 @@ namespace SimulationSystem.ECSSystems
                 ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
                 ref TransformComp transformComp = ref rigidFilter.Get2(r);
 
-                if (Input.GetKeyDown(KeyCode.M)) rigidComp.rigidbody.AddTorque(Vector3.UnitY * 100);
+                if (Input.GetKeyDown(KeyCode.M)) rigidComp.rigidbody.velocity = -(Vector3.UnitY * 10);
                 if (Input.GetKeyDown(KeyCode.N)) rigidComp.rigidbody.AddForce(Vector3.UnitX * 5);
             }
 

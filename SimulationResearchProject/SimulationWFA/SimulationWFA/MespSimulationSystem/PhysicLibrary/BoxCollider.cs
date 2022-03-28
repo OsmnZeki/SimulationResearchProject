@@ -21,6 +21,7 @@ namespace PhysicLibrary
     public class BoxCollider : Collider
     {
         public BoxBounds bounds;
+        
 
         public static Vector3[] potentialNormals = new Vector3[] {
 
@@ -36,6 +37,7 @@ namespace PhysicLibrary
         public BoxCollider()
         {
             bounds = new BoxBounds();
+            collisionContact = null;
         }
 
         public override bool IsIntersectWith(Bounds bounds, out CollisionContact contact)

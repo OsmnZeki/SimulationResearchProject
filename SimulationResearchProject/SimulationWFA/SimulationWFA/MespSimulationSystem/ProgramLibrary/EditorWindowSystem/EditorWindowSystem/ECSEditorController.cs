@@ -34,9 +34,13 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
 
             //
+
+            systemManager.AddSystem(new PhysicExternalForceSystem(), GenericSystemGroup);
             systemManager.AddSystem(new EasyPhysicSystem(), GenericSystemGroup);
             systemManager.AddSystem(new ColliderBoundsUpdateSystem(), GenericSystemGroup);
             systemManager.AddSystem(new CollisionDetectionSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new ResolveCollisionSystem(), GenericSystemGroup);
+            
 
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
             systemManager.AddSystem(new InputSystem(), GenericSystemGroup);

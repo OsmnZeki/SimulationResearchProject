@@ -33,7 +33,7 @@ namespace SimulationSystem.Systems
             //CreateLambs();
 
             CreateBasicCube();
-            CreateBasicCube2();
+            //CreateBasicCube2();
 
             //CreateBristleback1();
 
@@ -47,7 +47,7 @@ namespace SimulationSystem.Systems
 
             //CreateWindow();
 
-          //  CreatePlane();
+            CreatePlane();
 
            // CreateGrass();
         }
@@ -154,7 +154,7 @@ namespace SimulationSystem.Systems
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One * 2f;
-            transformComp.transform.position = new Vector3(0, 0, 0);
+            transformComp.transform.position = new Vector3(10, 20, 0);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
             cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
@@ -167,6 +167,7 @@ namespace SimulationSystem.Systems
             Rigidbody rg = new Rigidbody();
             rg.mass = 1f;
             rg.velocity = Vector3.Zero;
+            rg.useGravity = true;
 
             basicCubeObj.entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
                 rigidbody = rg,
@@ -198,6 +199,7 @@ namespace SimulationSystem.Systems
             Rigidbody rg = new Rigidbody();
             rg.mass = 1f;
             rg.velocity = Vector3.Zero;
+            rg.useGravity = false;
 
             basicCubeObj.entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
                 rigidbody = rg,
@@ -311,7 +313,7 @@ namespace SimulationSystem.Systems
             planeSimObj.InjectAllSerializedComponents(world); ;
 
             ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
-            transform.position = new Vector3(0, 0f, 10);
+            transform.position = new Vector3(10, 0f, 0);
             transform.scale = new Vector3(10, .1f, 10); ;
 
             planeSimObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
@@ -320,6 +322,10 @@ namespace SimulationSystem.Systems
             };
 
             //planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
+
+            planeSimObj.entity.AddComponent<BoxColliderComp>() = new BoxColliderComp {
+                boxCollider = new BoxCollider(),
+            };
         }
 
         public void CreateGrass()
