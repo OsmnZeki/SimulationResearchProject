@@ -7,8 +7,8 @@ using PhysicLibrary;
 
 namespace SimulationSystem.ECSComponents
 {
-    public struct RigidbodyComp
+    public struct ContactHolderComp
     {
-        public Rigidbody rigidbody;
+        public List<Contact> contactList;
     }
 }

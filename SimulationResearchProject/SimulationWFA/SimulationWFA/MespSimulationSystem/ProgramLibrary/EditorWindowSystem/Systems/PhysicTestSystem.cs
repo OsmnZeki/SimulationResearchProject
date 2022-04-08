@@ -8,19 +8,19 @@ namespace SimulationSystem.ECSSystems
 {
     public class PhysicTestSystem : Dalak.Ecs.System
     {
-        readonly Filter<RigidbodyComp, TransformComp> rigidFilter = null;
+        readonly Filter<ParticleComp, TransformComp> rigidFilter = null;
 
-        readonly Filter<CanMoveTestTag,RigidbodyComp> canMoveableFilter = null;
+        readonly Filter<CanMoveTestTag,ParticleComp> canMoveableFilter = null;
 
         public override void Update()
         {
             foreach (var r in rigidFilter)
             {
-                ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
+                ref ParticleComp rigidComp = ref rigidFilter.Get1(r);
                 ref TransformComp transformComp = ref rigidFilter.Get2(r);
 
-                if (Input.GetKeyDown(KeyCode.M)) rigidComp.rigidbody.velocity = -(Vector3.UnitY * 10);
-                if (Input.GetKeyDown(KeyCode.N)) rigidComp.rigidbody.AddForce(Vector3.UnitX * 5);
+                if (Input.GetKeyDown(KeyCode.M)) rigidComp.particle.velocity = -(Vector3.UnitY * 10);
+                if (Input.GetKeyDown(KeyCode.N)) rigidComp.particle.AddForce(Vector3.UnitX * 5);
             }
 
             foreach(var c in canMoveableFilter)
@@ -29,11 +29,11 @@ namespace SimulationSystem.ECSSystems
 
                 if (Input.GetKeyDown(KeyCode.K))
                 {
-                    rigidComp.rigidbody.velocity = new Vector3(1, 0, 0);
+                    rigidComp.particle.velocity = new Vector3(1, 0, 0);
                 }
                 else if (Input.GetKeyDown(KeyCode.L))
                 {
-                    rigidComp.rigidbody.velocity = new Vector3(-1, 0, 0);
+                    rigidComp.particle.velocity = new Vector3(-1, 0, 0);
                 }
             }
 

@@ -10,7 +10,7 @@ using SimulationSystem.ECSComponents;
 
 namespace ECSEntegration.SerializedComponent
 {
-    public class RigidbodySerialized : SimulationSystem.ECS.Entegration.SerializedComponent
+    public class ParticleSerialized : SimulationSystem.ECS.Entegration.SerializedComponent
     {
         public Vector3 velocity;
         public float mass;
@@ -19,19 +19,19 @@ namespace ECSEntegration.SerializedComponent
 
         public override void AddComponent(Entity entity, World world)
         {
-            Rigidbody rb = new Rigidbody();
+            Particle rb = new Particle();
             rb.velocity = velocity;
-            rb.mass = mass;
+            rb.SetMass(mass);
             rb.useGravity = useGravity;
 
-            entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
-                rigidbody = rb,
+            entity.AddComponent<ParticleComp>() = new ParticleComp {
+                particle = rb,
             };
         }
 
         public override string GetName()
         {
-            return "Rigidbody Serialized";
+            return "Particle Serialized";
         }
     }
 }

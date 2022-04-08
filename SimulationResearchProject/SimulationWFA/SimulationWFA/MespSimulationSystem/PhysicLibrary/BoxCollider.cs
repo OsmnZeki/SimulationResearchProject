@@ -37,19 +37,17 @@ namespace PhysicLibrary
         public BoxCollider()
         {
             bounds = new BoxBounds();
-            collisionContact = null;
         }
 
-        public override bool IsIntersectWith(Bounds bounds, out CollisionContact contact)
+        public override bool IsIntersectWith(Bounds bounds, out Contact contact)
         {
-            contact = new CollisionContact();
-            var result = this.bounds.IsIntersectWith(bounds);
+            contact = new Contact();
+            var result =  this.bounds.IsIntersectWith(bounds);
+
             if (!result) return result;
 
-            var differenceVector = bounds.Center - this.bounds.Center;
-            var normalName = GetNormal(differenceVector);
 
-            contact.normal = potentialNormals[(int)normalName];
+            //TODO:: contact
             return result;
         }
 

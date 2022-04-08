@@ -14,6 +14,7 @@ namespace SimulationSystem
     public class ColliderBoundsUpdateSystem : Dalak.Ecs.System
     {
         Filter<BoxColliderComp,TransformComp> boxColliderFilter = null;
+        Filter<SphereColliderComp,TransformComp> sphereColliderFilter = null;
 
         public override void Awake()
         {
@@ -25,11 +26,24 @@ namespace SimulationSystem
                 var entity = boxColliderFilter.GetEntity(b);
 
                 var center = transformComp.transform.position;
-                if (entity.HasComponent<RigidbodyComp>()) center = entity.GetComponent<RigidbodyComp>().rigidbody.position;
+                if (entity.HasComponent<ParticleComp>()) center = entity.GetComponent<ParticleComp>().particle.position;
 
                 boxColliderComp.boxCollider.bounds.Size = transformComp.transform.scale;
                 boxColliderComp.boxCollider.bounds.UpdateCenter(center);
                 boxColliderComp.boxCollider.bounds.UpdateBounds();
+            }
+
+            foreach(var s in sphereColliderFilter)
+            {
+                ref var sphereCollider = ref sphereColliderFilter.Get1(s);
+                ref var transformComp = ref sphereColliderFilter.Get2(s);
+
+                var entity = sphereColliderFilter.GetEntity(s);
+
+                var center = transformComp.transform.position;
+                if (entity.HasComponent<ParticleComp>()) center = entity.GetComponent<ParticleComp>().particle.position;
+
+                sphereCollider.sphereCollider.sphereBound.UpdateCenter(center);
             }
         }
 
@@ -41,8 +55,15 @@ namespace SimulationSystem
                 ref var transformComp = ref boxColliderFilter.Get2(b);
 
                 var color = new Vector3(0, 1, 0);
-                MespDebug.DrawBox(boxColliderComp.boxCollider.bounds, color);
-                
+                MespDebug.DrawWireBox(boxColliderComp.boxCollider.bounds, color);
+            }
+
+            foreach (var s in sphereColliderFilter)
+            {
+                ref var sphereCollider = ref sphereColliderFilter.Get1(s);
+                ref var transformComp = ref sphereColliderFilter.Get2(s);
+
+                MespDebug.DrawWireSphere(sphereCollider.sphereCollider.sphereBound.Center, sphereCollider.sphereCollider.sphereBound.radius, 32);
             }
         }
 
@@ -56,13 +77,26 @@ namespace SimulationSystem
                 var entity = boxColliderFilter.GetEntity(b);
 
                 var center = transformComp.transform.position;
-                if (entity.HasComponent<RigidbodyComp>()) center = entity.GetComponent<RigidbodyComp>().rigidbody.position;
+                if (entity.HasComponent<ParticleComp>()) center = entity.GetComponent<ParticleComp>().particle.position;
 
                 boxColliderComp.boxCollider.bounds.UpdateCenter(center);
                 boxColliderComp.boxCollider.bounds.UpdateBounds();
             }
+
+            foreach (var s in sphereColliderFilter)
+            {
+                ref var sphereCollider = ref sphereColliderFilter.Get1(s);
+                ref var transformComp = ref sphereColliderFilter.Get2(s);
+
+                var entity = sphereColliderFilter.GetEntity(s);
+
+                var center = transformComp.transform.position;
+                if (entity.HasComponent<ParticleComp>()) center = entity.GetComponent<ParticleComp>().particle.position;
+
+                sphereCollider.sphereCollider.sphereBound.UpdateCenter(center);
+            }
         }
-
-
     }
+
+
 }

@@ -33,7 +33,7 @@ namespace SimulationSystem.Systems
             //CreateLambs();
 
             CreateBasicCube();
-            //CreateBasicCube2();
+            CreateBasicCube2();
 
             //CreateBristleback1();
 
@@ -47,7 +47,7 @@ namespace SimulationSystem.Systems
 
             //CreateWindow();
 
-            CreatePlane();
+           // CreatePlane();
 
            // CreateGrass();
         }
@@ -153,7 +153,7 @@ namespace SimulationSystem.Systems
             basicCubeObj.InjectAllSerializedComponents(world);
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
-            transformComp.transform.scale = Vector3.One * 2f;
+            transformComp.transform.scale = Vector3.One;
             transformComp.transform.position = new Vector3(10, 20, 0);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
@@ -164,17 +164,19 @@ namespace SimulationSystem.Systems
                 material = cubeMaterial,
             };
 
-            Rigidbody rg = new Rigidbody();
-            rg.mass = 1f;
-            rg.velocity = Vector3.Zero;
+            Particle rg = new Particle();
+            rg.SetMass(1f);
+            rg.velocity = new Vector3(0,-5f,0);
             rg.useGravity = true;
 
-            basicCubeObj.entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
-                rigidbody = rg,
+            basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
+                particle = rg,
             };
 
-            basicCubeObj.entity.AddComponent<BoxColliderComp>() = new BoxColliderComp {
-                boxCollider = new BoxCollider(),
+            SphereCollider sphereCollider = new SphereCollider();
+            sphereCollider.sphereBound.radius = .5f;
+            basicCubeObj.entity.AddComponent<SphereColliderComp>() = new SphereColliderComp {
+                sphereCollider = sphereCollider,
             };
         }
 
@@ -185,8 +187,8 @@ namespace SimulationSystem.Systems
             basicCubeObj.InjectAllSerializedComponents(world);
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
-            transformComp.transform.scale = Vector3.One * .5f;
-            transformComp.transform.position = new Vector3(5, 0, 0);
+            transformComp.transform.scale = Vector3.One;
+            transformComp.transform.position = new Vector3(10, 0, 0);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
             cubeMaterial.SetColor(new Vector4(0, 0, 1, 1));
@@ -196,17 +198,19 @@ namespace SimulationSystem.Systems
                 material = cubeMaterial,
             };
 
-            Rigidbody rg = new Rigidbody();
-            rg.mass = 1f;
+            Particle rg = new Particle();
+            rg.SetMass(1f);
             rg.velocity = Vector3.Zero;
-            rg.useGravity = false;
+            rg.useGravity = true;
 
-            basicCubeObj.entity.AddComponent<RigidbodyComp>() = new RigidbodyComp {
-                rigidbody = rg,
+            basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
+                particle = rg,
             };
 
-            basicCubeObj.entity.AddComponent<BoxColliderComp>() = new BoxColliderComp {
-                boxCollider = new BoxCollider(),
+            SphereCollider sphereCollider = new SphereCollider();
+            sphereCollider.sphereBound.radius = .5f;
+            basicCubeObj.entity.AddComponent<SphereColliderComp>() = new SphereColliderComp {
+                sphereCollider = sphereCollider,
             };
 
             basicCubeObj.entity.AddComponent<CanMoveTestTag>();

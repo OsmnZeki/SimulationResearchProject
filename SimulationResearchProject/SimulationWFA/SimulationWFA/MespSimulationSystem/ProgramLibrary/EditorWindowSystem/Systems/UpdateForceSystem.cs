@@ -11,20 +11,20 @@ using SimulationSystem.ECSComponents;
 
 namespace SimulationSystem.ECSSystems
 {
-    public class PhysicExternalForceSystem : Dalak.Ecs.System
+    public class UpdateForceSystem : Dalak.Ecs.System
     {
-        readonly Filter<RigidbodyComp> rigidFilter = null;
+        readonly Filter<ParticleComp> rigidFilter = null;
 
         public override void FixedUpdate()
         {
             foreach (var r in rigidFilter)
             {
-                ref RigidbodyComp rigidComp = ref rigidFilter.Get1(r);
+                ref ParticleComp rigidComp = ref rigidFilter.Get1(r);
 
-                if (rigidComp.rigidbody.useGravity)
+                if (rigidComp.particle.useGravity)
                 {
-                    Vector3 gravityForce = Physics.ComputeGravityForce(rigidComp.rigidbody);
-                    rigidComp.rigidbody.totalForce += gravityForce;
+                    /*Vector3 gravityForce = Physics.ComputeGravityForce(rigidComp.particle);
+                    rigidComp.particle.totalForce += gravityForce;*/
                 }
             }
         }

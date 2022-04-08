@@ -25,14 +25,10 @@ namespace PhysicLibrary
             return countOfPhysicActivity;
         }
 
-        public static Vector3 ComputeGravityForce(Rigidbody rigidbody)
-        {
-            return new Vector3(0, rigidbody.mass * Gravity, 0);
-        }
 
-        public static void Simulate(Rigidbody rigidbody, float time)
+        public static void Simulate(Particle rigidbody, float time)
         {
-            var linearAcceleration = rigidbody.totalForce / rigidbody.mass;
+          /*  var linearAcceleration = rigidbody.totalForce / rigidbody.mass;
             rigidbody.velocity += linearAcceleration * time;
             rigidbody.position += rigidbody.velocity*time;
             rigidbody.totalForce = Vector3.Zero;
@@ -41,7 +37,7 @@ namespace PhysicLibrary
             var anqularAcceleration = rigidbody.totalTorque / rigidbody.inertiaTensor;
             rigidbody.angularVelocity += anqularAcceleration * time;
             rigidbody.rotation += rigidbody.angularVelocity * time;
-            rigidbody.totalTorque = Vector3.Zero;
+            rigidbody.totalTorque = Vector3.Zero;*/
         }
 
     }
