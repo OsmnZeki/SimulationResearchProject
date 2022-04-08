@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Dalak.Ecs;
+using MESPSimulationSystem.Math;
 using PhysicLibrary;
 using RenderLibrary.Graphics;
 using SimulationSystem;
@@ -24,7 +25,7 @@ namespace ProgramLibrary
             });
         }
 
-        public static void DrawBox(BoxBounds bound, Vector3 color)
+        public static void DrawWireBox(BoxBounds bound, Vector3 color)
         {
             Vector3[] points = new Vector3[] {
 
@@ -52,9 +53,50 @@ namespace ProgramLibrary
                     color = color,
                 });
             }
-
-            
         }
+
+        public static void DrawCircle(Vector3 center, float radius,Vector3 normal,Vector3 direction, int nStep,Vector3 color)
+        {
+            float perRotation = (float)360 / nStep;
+            Vector3[] positions = new Vector3[nStep];
+
+            for (int i = 0; i < nStep; i++)
+            {
+
+                var pos = MathFunctions.Rotate(new Mat4(1), i * perRotation, normal, radius * direction);
+                pos += center;
+                positions[i] = (pos);
+            }
+
+            for (int i = 0; i < positions.Length - 1; i++)
+            {
+                MespEditorDebugSystem.eventManager.SendEvent(new DrawLineEvent() {
+
+                    from = positions[i],
+                    to = positions[i + 1],
+                    color = color
+                });
+            }
+
+            MespEditorDebugSystem.eventManager.SendEvent(new DrawLineEvent() {
+
+                from = positions[positions.Length - 1],
+                to = positions[0],
+                color = color
+            });
+        }
+
+        public static void DrawWireSphere(Vector3 center, float radius, int nStep)
+        {
+
+            DrawCircle(center, radius, new Vector3(1, 0, 0), new Vector3(0, 0, 1), nStep, new Vector3(0, 0, 1));
+            DrawCircle(center, radius, new Vector3(0, 1, 0), new Vector3(1, 0, 0), nStep, new Vector3(1, 0, 0));
+            DrawCircle(center, radius, new Vector3(0, 0, 1), new Vector3(0, 1, 0), nStep, new Vector3(0, 1, 0));
+
+        }
+
+
+
 
     }
 }

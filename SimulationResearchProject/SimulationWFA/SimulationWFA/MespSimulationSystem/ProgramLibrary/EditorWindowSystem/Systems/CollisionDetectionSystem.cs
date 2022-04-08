@@ -14,80 +14,66 @@ namespace SimulationSystem
 {
     public class CollisionDetectionSystem : Dalak.Ecs.System
     {
-        readonly Filter<RigidbodyComp, BoxColliderComp> rigidBodyFilter = null;
-        readonly Filter<BoxColliderComp>.Exclude<RigidbodyComp> onlyBoxColliderFilter = null;
+        readonly Filter<ParticleComp, BoxColliderComp> boxRigidFilter = null;
+        readonly Filter<BoxColliderComp>.Exclude<ParticleComp> onlyBoxColliderFilter = null;
+
+        readonly Filter<ParticleComp, SphereColliderComp> sphereRigidFilter = null;
+        readonly Filter<SphereColliderComp>.Exclude<ParticleComp> onlySphereColliderFilter = null;
 
 
-        public override void Update()
+        List<Contact> contactList = new List<Contact>();
+        public override void Awake()
         {
-           
+            var contactHolderEntity = world.NewEntity();
+            contactHolderEntity.AddComponent<ContactHolderComp>() = new ContactHolderComp() {
+
+                contactList = contactList,
+            };
         }
 
         public override void FixedUpdate()
         {
-            foreach(var c in rigidBodyFilter)
+            contactList.Clear();
+
+            foreach(var s in sphereRigidFilter)
             {
-                ref var rigidbodyComp = ref rigidBodyFilter.Get1(c);
-                ref var checkingBoxColliderComp = ref rigidBodyFilter.Get2(c);
+                ref var particleComp = ref sphereRigidFilter.Get1(s);
+                ref var sphereColliderComp = ref sphereRigidFilter.Get2(s);                
 
-                var checkingEntity = rigidBodyFilter.GetEntity(c);
-                
-
-                foreach (var b in onlyBoxColliderFilter)
+                foreach (var o in onlySphereColliderFilter)
                 {
-                    var otherEntity = onlyBoxColliderFilter.GetEntity(b);
-                    if (checkingEntity == otherEntity) continue;
+                    ref var otherSphereColliderComp = ref onlySphereColliderFilter.Get1(o);
 
-                    ref var otherBoxColliderComp = ref onlyBoxColliderFilter.Get1(b);
-
-                    if (checkingBoxColliderComp.boxCollider.IsIntersectWith(otherBoxColliderComp.boxCollider.bounds,out var contactData))
+                    if (sphereColliderComp.sphereCollider.IsIntersectWith(otherSphereColliderComp.sphereCollider.sphereBound,out var contact))
                     {
-                        Console.WriteLine("Carpisti");
-                        contactData.rigidBody = rigidbodyComp.rigidbody;
-                        contactData.otherRigidbody = null;
+                        contact.particles[0] = particleComp.particle;
+                        contact.particles[1] = null;
 
-                        checkingBoxColliderComp.boxCollider.collisionContact = contactData;
-                        otherBoxColliderComp.boxCollider.collisionContact = contactData;
-
-                        MespDebug.DrawLine(otherBoxColliderComp.boxCollider.bounds.Center, otherBoxColliderComp.boxCollider.bounds.Center + contactData.normal, new Vector3(0, 0, 0));
-                    }
-                    else
-                    {
-                        Console.WriteLine("Carpisma Olmadi");
+                        contact.penetration = Math.Min(sphereColliderComp.sphereCollider.restitution, otherSphereColliderComp.sphereCollider.restitution);
+                        contactList.Add(contact);
                     }
                 }
             }
 
-            for(int i = 0; i < rigidBodyFilter.NumberOfEntities; i++)
+            for(int i = 0; i < sphereRigidFilter.NumberOfEntities-1; i++)
             {
-                ref var rigidbodyComp = ref rigidBodyFilter.Get1(i);
-                ref var checkingBoxColliderComp = ref rigidBodyFilter.Get2(i);
+                ref var particleComp = ref sphereRigidFilter.Get1(i);
+                ref var sphereColliderComp = ref sphereRigidFilter.Get2(i);
 
-                var checkingEntity = rigidBodyFilter.GetEntity(i);
-
-                for(int j=i+1; j < rigidBodyFilter.NumberOfEntities; j++)
+                for(int j=i+1; j < sphereRigidFilter.NumberOfEntities; j++)
                 {
-                    ref var otherRigidbodyComp = ref rigidBodyFilter.Get1(i);
-                    ref var otherBoxColliderComp = ref rigidBodyFilter.Get2(i);
+                    ref var otherParticleComp = ref sphereRigidFilter.Get1(j);
+                    ref var otherSphereColliderComp = ref sphereRigidFilter.Get2(j);
 
-                    var otherEntity = rigidBodyFilter.GetEntity(i);
 
-                    if (checkingBoxColliderComp.boxCollider.IsIntersectWith(otherBoxColliderComp.boxCollider.bounds, out var contactData))
+                    if (sphereColliderComp.sphereCollider.IsIntersectWith(otherSphereColliderComp.sphereCollider.sphereBound, out var contact))
                     {
-                        Console.WriteLine("Carpisti");
-                        contactData.rigidBody = rigidbodyComp.rigidbody;
-                        contactData.otherRigidbody = otherRigidbodyComp.rigidbody;
+                        contact.particles[0] = particleComp.particle;
+                        contact.particles[1] = otherParticleComp.particle;
 
-                        checkingBoxColliderComp.boxCollider.collisionContact = contactData;
-                        otherBoxColliderComp.boxCollider.collisionContact = contactData;
-
-                        MespDebug.DrawLine(otherBoxColliderComp.boxCollider.bounds.Center, otherBoxColliderComp.boxCollider.bounds.Center + contactData.normal, new Vector3(0, 0, 0));
+                        contact.penetration = Math.Min(sphereColliderComp.sphereCollider.restitution, otherSphereColliderComp.sphereCollider.restitution);
+                        contactList.Add(contact);
                     }
-                    else
-                    {
-                        Console.WriteLine("Carpisma Olmadi");
-                    }
-
                 }
             }
         }

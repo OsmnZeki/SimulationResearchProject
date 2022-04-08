@@ -9,8 +9,8 @@ namespace PhysicLibrary
 {
     public abstract class Collider
     {
-        public CollisionContact collisionContact;
+        public float restitution = 1f;
 
-        public abstract bool IsIntersectWith(Bounds bound, out CollisionContact contact);
+        public abstract bool IsIntersectWith(Bounds bound, out Contact contact);
     }
 }

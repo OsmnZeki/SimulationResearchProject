@@ -59,6 +59,5 @@ namespace SimulationSystem
             screen.Terminate();
         }
 
-
     }
 }

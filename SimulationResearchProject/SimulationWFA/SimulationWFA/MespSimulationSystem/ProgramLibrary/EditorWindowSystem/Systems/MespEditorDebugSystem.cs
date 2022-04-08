@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dalak.Ecs;
 using MespEvents;
 using RenderLibrary.Graphics;
+using RenderLibrary.OpenGLCustomFunctions;
 using RenderLibrary.Shaders;
 
 namespace SimulationSystem
@@ -42,7 +43,8 @@ namespace SimulationSystem
         }
 
         private void ListenEditorDebugEvents(World world)
-        { 
+        {
+            OpenGLFunctions.GLDisable(OpenGLEnum.GL_DEPTH_TEST);
             var drawLineData = eventManager.ListenEvents<DrawLineEvent>();
             int lineRendererCounter = 0;
             foreach(var d in drawLineData)
@@ -52,6 +54,7 @@ namespace SimulationSystem
                 lineRendererArray[lineRendererCounter].LineRender(ShaderPool.lineRenderShader, 3);
                 lineRendererCounter++;
             }
+            OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
 
         }
 
