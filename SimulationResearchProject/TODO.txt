@@ -123,9 +123,12 @@ kelime aralıkları çok geniş uv'den alındığı için
 textrenderer clean up olmuyor
 
 
-physic syste
+physic system
 -----------
 transform ve fizik entegrasyonu easyphysicsystem içerisinde gerçekleşiyor
+anchored bungee force generator yapılabilir
+RESTING CONTACTS konusu anlayamadım ama velocity hesaplanırken eklenen acc kodunu ekledim
+contact resolve yaparken neden en düşük seperate velocityi seçiyoruz ?
 
 OĞULCAN
 *******
