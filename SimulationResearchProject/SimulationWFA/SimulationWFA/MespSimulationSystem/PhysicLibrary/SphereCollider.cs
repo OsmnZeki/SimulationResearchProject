@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MespSimulationSystem.Math;
 
 namespace PhysicLibrary
 {
@@ -22,10 +23,10 @@ namespace PhysicLibrary
 
             if (!result) return result;
 
-
-            contact.contactNormal = this.sphereBound.Center - bound.Center;
+            var distanceVec = this.sphereBound.Center - bound.Center;
+            contact.contactNormal = distanceVec.normalized();
             SphereBounds otherBound = bound as SphereBounds;
-            contact.penetration = sphereBound.radius + otherBound.radius - contact.contactNormal.Length();
+            contact.penetration = sphereBound.radius + otherBound.radius - distanceVec.Length();
 
             return result;
         }

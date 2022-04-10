@@ -34,6 +34,8 @@ namespace SimulationSystem.Systems
 
             CreateBasicCube();
             CreateBasicCube2();
+            CreateBasicCube3();
+            CreateBasicCube4();
 
             //CreateBristleback1();
 
@@ -154,7 +156,7 @@ namespace SimulationSystem.Systems
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
-            transformComp.transform.position = new Vector3(10, 20, 0);
+            transformComp.transform.position = new Vector3(10, 10, 0);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
             cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
@@ -166,8 +168,8 @@ namespace SimulationSystem.Systems
 
             Particle rg = new Particle();
             rg.SetMass(1f);
-            rg.velocity = new Vector3(0,-5f,0);
-            rg.useGravity = true;
+            rg.velocity = new Vector3(0, -10, 0);
+            rg.useGravity = false;
 
             basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
                 particle = rg,
@@ -199,9 +201,9 @@ namespace SimulationSystem.Systems
             };
 
             Particle rg = new Particle();
-            rg.SetMass(1f);
+            rg.SetMass(1f,true);
             rg.velocity = Vector3.Zero;
-            rg.useGravity = true;
+            rg.useGravity = false;
 
             basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
                 particle = rg,
@@ -216,6 +218,77 @@ namespace SimulationSystem.Systems
             basicCubeObj.entity.AddComponent<CanMoveTestTag>();
         }
 
+        public void CreateBasicCube3()
+        {
+            var basicCubeObj = SimObject.NewSimObject();
+            basicCubeObj.CreateEntity(world);
+            basicCubeObj.InjectAllSerializedComponents(world);
+
+            ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
+            transformComp.transform.scale = Vector3.One;
+            transformComp.transform.position = new Vector3(10,20, 0);
+
+            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
+            cubeMaterial.SetColor(new Vector4(0, 0, 1, 1));
+
+            basicCubeObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
+                material = cubeMaterial,
+            };
+
+            Particle rg = new Particle();
+            rg.SetMass(1f, true);
+            rg.velocity = Vector3.Zero;
+            rg.useGravity = false;
+
+            basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
+                particle = rg,
+            };
+
+            SphereCollider sphereCollider = new SphereCollider();
+            sphereCollider.sphereBound.radius = .5f;
+            basicCubeObj.entity.AddComponent<SphereColliderComp>() = new SphereColliderComp {
+                sphereCollider = sphereCollider,
+            };
+
+            basicCubeObj.entity.AddComponent<CanMoveTestTag>();
+        }
+
+        public void CreateBasicCube4()
+        {
+            var basicCubeObj = SimObject.NewSimObject();
+            basicCubeObj.CreateEntity(world);
+            basicCubeObj.InjectAllSerializedComponents(world);
+
+            ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
+            transformComp.transform.scale = Vector3.One;
+            transformComp.transform.position = new Vector3(10, 5, 0);
+
+            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
+            cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
+
+            basicCubeObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
+                material = cubeMaterial,
+            };
+
+            Particle rg = new Particle();
+            rg.SetMass(1f);
+            rg.velocity = new Vector3(0,15,0);
+            rg.useGravity = false;
+
+            basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
+                particle = rg,
+            };
+
+            SphereCollider sphereCollider = new SphereCollider();
+            sphereCollider.sphereBound.radius = .5f;
+            basicCubeObj.entity.AddComponent<SphereColliderComp>() = new SphereColliderComp {
+                sphereCollider = sphereCollider,
+            };
+
+            basicCubeObj.entity.AddComponent<CanMoveTestTag>();
+        }
 
 
         public void CreateGruGru()

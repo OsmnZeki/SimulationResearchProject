@@ -96,6 +96,8 @@
     <Compile Include="MespSimulationSystem\PhysicLibrary\Collider.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Contact.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\ContactResolver.cs" />
+    <Compile Include="MespSimulationSystem\PhysicLibrary\DragForceGenerator.cs" />
+    <Compile Include="MespSimulationSystem\PhysicLibrary\GravityForceGenerator.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Physics.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Particle.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\SphereBounds.cs" />

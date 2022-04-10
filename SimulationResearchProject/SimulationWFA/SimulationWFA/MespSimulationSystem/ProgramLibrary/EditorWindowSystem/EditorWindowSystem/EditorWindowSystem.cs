@@ -12,6 +12,7 @@ namespace SimulationSystem
     {
         WindowEcsManager windowEcsManager;
         Physics physics = new Physics();
+        bool paused;
 
         public void CreateEditorWindow()
         {
@@ -28,6 +29,8 @@ namespace SimulationSystem
 
 
             windowEcsManager = new WindowEcsManager(new ECSEditorController(screen));
+            InputSystem.Initialize();
+
             Time.StartTimer();
 
             windowEcsManager.Awake();
@@ -38,14 +41,25 @@ namespace SimulationSystem
                 Time.UpdateTimer();
                 screen.ProcessWindowInput();
 
-                //physic
-                int physicLoopCount = physics.CalculatePhyicsLoopCount(Time.deltaTime, Time.fixedDeltaTime);
-                for(int i = 0;i<physicLoopCount;i++) windowEcsManager.FixedUpdate();
+                if (!paused || Input.GetKeyDown(KeyCode.O))
+                {
+                    if (paused) Time.deltaTime = Time.fixedDeltaTime;
 
-                //
-                windowEcsManager.Update();
-                windowEcsManager.LateUpdate();
+                    //physic
+                    int physicLoopCount = physics.CalculatePhyicsLoopCount(Time.deltaTime, Time.fixedDeltaTime);
+                    for (int i = 0; i < physicLoopCount; i++) windowEcsManager.FixedUpdate();
 
+                    //
+                    windowEcsManager.Update();
+                    windowEcsManager.LateUpdate();
+                }
+
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    paused = !paused;
+                }
+
+                InputSystem.ClearAll();
                 //Render
                 screen.Update();
                 windowEcsManager.Render();

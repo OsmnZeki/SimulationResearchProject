@@ -35,7 +35,7 @@ namespace SimulationSystem
         {
             contactList.Clear();
 
-            foreach(var s in sphereRigidFilter)
+           /* foreach(var s in sphereRigidFilter)
             {
                 ref var particleComp = ref sphereRigidFilter.Get1(s);
                 ref var sphereColliderComp = ref sphereRigidFilter.Get2(s);                
@@ -49,11 +49,11 @@ namespace SimulationSystem
                         contact.particles[0] = particleComp.particle;
                         contact.particles[1] = null;
 
-                        contact.penetration = Math.Min(sphereColliderComp.sphereCollider.restitution, otherSphereColliderComp.sphereCollider.restitution);
+                        contact.restitution = Math.Min(sphereColliderComp.sphereCollider.restitution, otherSphereColliderComp.sphereCollider.restitution);
                         contactList.Add(contact);
                     }
                 }
-            }
+            }*/
 
             for(int i = 0; i < sphereRigidFilter.NumberOfEntities-1; i++)
             {
@@ -71,7 +71,7 @@ namespace SimulationSystem
                         contact.particles[0] = particleComp.particle;
                         contact.particles[1] = otherParticleComp.particle;
 
-                        contact.penetration = Math.Min(sphereColliderComp.sphereCollider.restitution, otherSphereColliderComp.sphereCollider.restitution);
+                        contact.restitution = Math.Min(sphereColliderComp.sphereCollider.restitution, otherSphereColliderComp.sphereCollider.restitution);
                         contactList.Add(contact);
                     }
                 }

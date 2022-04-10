@@ -14,9 +14,8 @@ namespace PhysicLibrary
         private int countOfPhysicActivity=0;
         private float increasedTime = 0;
 
-        public static float Gravity = -9.81f;
-        public static float NewtonFactor = 100f;
-
+        public static Vector3 Gravity =  new Vector3(0,-10f,0);
+        public static int DecimalPrecision = 2;
         public int CalculatePhyicsLoopCount(float deltaTime,float fixedTime)
         {
             increasedTime += deltaTime;

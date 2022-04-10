@@ -44,6 +44,7 @@ namespace PhysicLibrary
 
         void ResolveVelocity(float time)
         {
+            
             float separatingVelocity = CalculateSeperateVelocity();
 
             // Check whether it needs to be resolved.
@@ -61,13 +62,13 @@ namespace PhysicLibrary
             // Check the velocity build-up due to acceleration only.
             Vector3 accCausedVelocity = particles[0].oldAcc;
             if (particles[1] != null) accCausedVelocity -= particles[1].oldAcc;
-            float accCausedSepVelocity = Vector3.Dot(accCausedVelocity, contactNormal) * time * 10;
+            float accCausedSepVelocity = Vector3.Dot(accCausedVelocity, contactNormal) * time *10f;
 
             // If we’ve got a closing velocity due to acceleration build-up,
             // remove it from the new separating velocity.
             if (accCausedSepVelocity < 0)
             {
-                newSepVelocity += (1 - restitution) * accCausedSepVelocity;
+                newSepVelocity += restitution * accCausedSepVelocity;
                 // Make sure we haven’t removed more than was
                 // there to remove.
                 if (newSepVelocity < 0) newSepVelocity = 0;
@@ -82,6 +83,8 @@ namespace PhysicLibrary
 
             float impulse = deltaVelocity / totalInverseMass;
             Vector3 impulsePerIMass = contactNormal * impulse;
+
+            impulsePerIMass = impulsePerIMass.Round(Physics.DecimalPrecision);
 
             particles[0].velocity += impulsePerIMass * particles[0].GetInverseMass();
 

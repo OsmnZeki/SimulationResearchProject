@@ -57,7 +57,7 @@ namespace PhysicLibrary
             int best_match = -1;
             for (int i = 0; i <6; i++)
             {
-                float dot_product = Vector3.Dot(target.Normalized(), potentialNormals[i]);
+                float dot_product = Vector3.Dot(target.normalized(), potentialNormals[i]);
                 if (dot_product > max)
                 {
                     max = dot_product;

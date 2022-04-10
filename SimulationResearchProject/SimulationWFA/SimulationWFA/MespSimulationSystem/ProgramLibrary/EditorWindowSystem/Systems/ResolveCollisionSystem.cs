@@ -28,11 +28,11 @@ namespace SimulationSystem
         {
             foreach(var h in contactHolderFilter)
             {
+                var contactlist = contactHolderFilter.Get1(h).contactList;
                 foreach (var r in contactResolverFilter)
                 {
                     ContactResolver contactResolver = contactResolverFilter.Get1(r).contactResolver;
-                    var contactlist = contactHolderFilter.Get1(h).contactList;
-
+                    
                     int usedContacts = contactlist.Count;
                     contactResolver.iteration = usedContacts * 2;
                     contactResolver.ResolveContact(contactlist.ToArray(), usedContacts, Timer.Time.fixedDeltaTime);

@@ -24,26 +24,26 @@ namespace SimulationSystem.Systems
 
         public override void AddSystems() // Ecs Sistemleri
         {
+            systemManager.AddSystem(new SceneConfigurationSystem(), GenericSystemGroup);
+
+            systemManager.AddSystem(new UpdateForceSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new ParticleMovementSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new ColliderBoundsUpdateSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new CollisionDetectionSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new ResolveCollisionSystem(), GenericSystemGroup);
+
             systemManager.AddSystem(new FPSCalculatorSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
             
 
             //Custom Systems
-            systemManager.AddSystem(new SceneConfigurationSystem(), GenericSystemGroup);
+            
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
 
             //
 
-            //systemManager.AddSystem(new UpdateForceSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new ParticleMovementSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new ColliderBoundsUpdateSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new CollisionDetectionSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new ResolveCollisionSystem(), GenericSystemGroup);
-            
-
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new InputSystem(), GenericSystemGroup);
 
 
             //RenderSystems 
@@ -53,9 +53,10 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
 
-            systemManager.AddSystem(new MespEditorDebugSystem(), GenericSystemGroup);
             systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
+
+            systemManager.AddSystem(new MespEditorDebugSystem(), GenericSystemGroup);
 
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);

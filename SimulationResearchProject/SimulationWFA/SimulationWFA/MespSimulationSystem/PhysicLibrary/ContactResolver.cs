@@ -29,7 +29,6 @@ namespace PhysicLibrary
                 }
 
                 if (maxIdx == numContacts) break;
-
                 contactArr[maxIdx].Resolve(time);
                 iterationUsed++;
             }

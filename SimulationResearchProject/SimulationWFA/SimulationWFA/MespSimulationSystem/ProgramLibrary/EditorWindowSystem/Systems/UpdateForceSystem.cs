@@ -13,19 +13,16 @@ namespace SimulationSystem.ECSSystems
 {
     public class UpdateForceSystem : Dalak.Ecs.System
     {
-        readonly Filter<ParticleComp> rigidFilter = null;
+        readonly Filter<ParticleComp> particleFilter = null;
 
         public override void FixedUpdate()
         {
-            foreach (var r in rigidFilter)
+            foreach (var r in particleFilter)
             {
-                ref ParticleComp rigidComp = ref rigidFilter.Get1(r);
+                ref ParticleComp particleComp = ref particleFilter.Get1(r);
 
-                if (rigidComp.particle.useGravity)
-                {
-                    /*Vector3 gravityForce = Physics.ComputeGravityForce(rigidComp.particle);
-                    rigidComp.particle.totalForce += gravityForce;*/
-                }
+                GravityForceGenerator.ApplyGravity(particleComp.particle);
+                DragForceGenerator.UpdateDragForce(particleComp.particle);
             }
         }
     }

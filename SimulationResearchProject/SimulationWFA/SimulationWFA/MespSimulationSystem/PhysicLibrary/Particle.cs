@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using MespSimulationSystem.Math;
 using SimulationSystem.Timer;
 
 namespace PhysicLibrary
@@ -18,6 +19,8 @@ namespace PhysicLibrary
 
         protected float mass;
         protected float inverseMass;
+
+        public float drag = 0f;
 
         
         public bool useGravity = true;
@@ -69,6 +72,7 @@ namespace PhysicLibrary
             oldAcc = resultingAcc;
 
             velocity += resultingAcc * time;
+            velocity = velocity.Round(Physics.DecimalPrecision);
             //velocity *= Mathf.Pow(damping,time);
 
             ClearForceAccum();
@@ -86,12 +90,10 @@ namespace PhysicLibrary
 
         public void AddTorque(Vector3 torque)
         {
-            torque *= Physics.NewtonFactor;
             totalTorque += torque;
         }
         public void AddForce(Vector3 force)
         {
-            force *= Physics.NewtonFactor;
             totalForce += force;
         }
     }

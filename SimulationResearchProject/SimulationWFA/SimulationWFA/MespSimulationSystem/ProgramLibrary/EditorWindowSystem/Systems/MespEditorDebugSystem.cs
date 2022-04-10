@@ -23,7 +23,7 @@ namespace SimulationSystem
     {
         public static MespEventManager eventManager = new MespEventManager();
 
-        public const int LineRendererCount = 255;
+        public const int LineRendererCount = 10000;
         public LineRenderer[] lineRendererArray = new LineRenderer[LineRendererCount];
 
 
@@ -53,6 +53,7 @@ namespace SimulationSystem
                 lineRendererArray[lineRendererCounter].SetNewPositions(d.from,d.to);
                 lineRendererArray[lineRendererCounter].LineRender(ShaderPool.lineRenderShader, 3);
                 lineRendererCounter++;
+                if (lineRendererCounter >= LineRendererCount) break;
             }
             OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
 

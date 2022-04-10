@@ -47,26 +47,6 @@ namespace SimulationSystem
             }
         }
 
-        public override void Update()
-        {
-            foreach (var b in boxColliderFilter)
-            {
-                ref var boxColliderComp = ref boxColliderFilter.Get1(b);
-                ref var transformComp = ref boxColliderFilter.Get2(b);
-
-                var color = new Vector3(0, 1, 0);
-                MespDebug.DrawWireBox(boxColliderComp.boxCollider.bounds, color);
-            }
-
-            foreach (var s in sphereColliderFilter)
-            {
-                ref var sphereCollider = ref sphereColliderFilter.Get1(s);
-                ref var transformComp = ref sphereColliderFilter.Get2(s);
-
-                MespDebug.DrawWireSphere(sphereCollider.sphereCollider.sphereBound.Center, sphereCollider.sphereCollider.sphereBound.radius, 32);
-            }
-        }
-
         public override void FixedUpdate()
         {
             foreach(var b in boxColliderFilter)
@@ -94,6 +74,26 @@ namespace SimulationSystem
                 if (entity.HasComponent<ParticleComp>()) center = entity.GetComponent<ParticleComp>().particle.position;
 
                 sphereCollider.sphereCollider.sphereBound.UpdateCenter(center);
+            }
+        }
+
+        public override void PostRender()
+        {
+            foreach (var b in boxColliderFilter)
+            {
+                ref var boxColliderComp = ref boxColliderFilter.Get1(b);
+                ref var transformComp = ref boxColliderFilter.Get2(b);
+
+                var color = new Vector3(0, 1, 0);
+                MespDebug.DrawWireBox(boxColliderComp.boxCollider.bounds, color);
+            }
+
+            foreach (var s in sphereColliderFilter)
+            {
+                ref var sphereCollider = ref sphereColliderFilter.Get1(s);
+                ref var transformComp = ref sphereColliderFilter.Get2(s);
+
+                MespDebug.DrawWireSphere(sphereCollider.sphereCollider.sphereBound.Center, sphereCollider.sphereCollider.sphereBound.radius, 32);
             }
         }
     }

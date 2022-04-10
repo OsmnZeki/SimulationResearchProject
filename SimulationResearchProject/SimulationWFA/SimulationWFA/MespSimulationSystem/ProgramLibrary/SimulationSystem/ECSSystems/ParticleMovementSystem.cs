@@ -37,6 +37,15 @@ namespace SimulationSystem.ECSSystems
                 ref ParticleComp particleComp = ref particleFilter.Get1(r);
                 ref TransformComp transformComp = ref particleFilter.Get2(r);
                 particleComp.particle.Integrate(Time.fixedDeltaTime);
+            }
+        }
+
+        public override void Update()
+        {
+            foreach (var r in particleFilter)
+            {
+                ref ParticleComp particleComp = ref particleFilter.Get1(r);
+                ref TransformComp transformComp = ref particleFilter.Get2(r);
 
                 transformComp.transform.position = particleComp.particle.position;
                 transformComp.transform.rotation = particleComp.particle.rotation;
