@@ -20,7 +20,7 @@ namespace PhysicLibrary
         protected float mass;
         protected float inverseMass;
 
-        public float drag = 0f;
+        public float drag = 0.05f;
 
         
         public bool useGravity = true;

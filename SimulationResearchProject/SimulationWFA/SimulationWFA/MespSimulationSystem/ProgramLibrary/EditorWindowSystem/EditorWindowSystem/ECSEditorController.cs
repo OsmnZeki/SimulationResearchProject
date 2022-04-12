@@ -39,7 +39,7 @@ namespace SimulationSystem.Systems
             //Custom Systems
             
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
-            //systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
 
             //
 

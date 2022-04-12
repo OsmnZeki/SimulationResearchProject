@@ -56,10 +56,10 @@ namespace PhysicLibrary
         {
             if(bound.boundType == BoundType.Box)
             {
-                BoxBounds boxBound = bound as BoxBounds;
-                return (boxBound.xPoints.X <= xPoints.Y && boxBound.xPoints.Y >= xPoints.X) &&
-                        (boxBound.yPoints.X <= yPoints.Y && boxBound.yPoints.Y >= yPoints.X) &&
-                        (boxBound.zPoints.X <= zPoints.Y && boxBound.zPoints.Y >= zPoints.X);
+                BoxBounds otherBoxBound = bound as BoxBounds;
+                return (otherBoxBound.xPoints.X <= xPoints.Y && otherBoxBound.xPoints.Y >= xPoints.X) &&
+                        (otherBoxBound.yPoints.X <= yPoints.Y && otherBoxBound.yPoints.Y >= yPoints.X) &&
+                        (otherBoxBound.zPoints.X <= zPoints.Y && otherBoxBound.zPoints.Y >= zPoints.X);
             }
 
             return false;

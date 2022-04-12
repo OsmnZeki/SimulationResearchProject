@@ -20,7 +20,7 @@ namespace PhysicLibrary
     };
 
     public class BoxCollider : Collider
-    { 
+    {
 
         public static Vector3[] potentialNormals = new Vector3[] {
 
@@ -33,28 +33,63 @@ namespace PhysicLibrary
 
         };
 
+        static Vector3[] faces = {
+            new Vector3 ( -1 , 0 , 0),
+            new Vector3 ( 1 , 0 , 0),
+            new Vector3 ( 0 , -1 , 0),
+            new Vector3 ( 0 , 1 , 0) ,
+            new Vector3 ( 0 , 0 , -1),
+            new Vector3 ( 0 , 0 , 1)
+        };
+
         public BoxCollider()
         {
             bound = new BoxBounds();
         }
 
-        public override bool IsIntersectWith(Bounds bounds, out Contact contact)
+        public override bool IsIntersectWith(Bounds otherBound, out Contact contact)
         {
             contact = new Contact();
-            var result = this.bound.IsIntersectWith(bound);
+            var result = this.bound.IsIntersectWith(otherBound);
 
             if (!result) return result;
 
             if (bound.boundType == BoundType.Box)
             {
-                BoxBounds otherBound = bound as BoxBounds;
+                BoxBounds otherboxBound = otherBound as BoxBounds;
+                BoxBounds thisBound = bound as BoxBounds;
 
-                //var distanceVec = this.bound.Center - bound.Center;
-                var differenceVector = otherBound.Center - bound.Center;
-                var normalName = GetNormal(differenceVector);
-                contact.contactNormal = potentialNormals[(int)normalName];
+                Vector3 maxA = otherboxBound.Center + otherboxBound.Size/2;
+                Vector3 minA = otherboxBound.Center - otherboxBound.Size/2;
 
-                //contact.penetration = (bound as SphereBounds).radius + otherBound.radius - distanceVec.Length();
+                Vector3 maxB = thisBound.Center + thisBound.Size/2;
+                Vector3 minB = thisBound.Center - thisBound.Size/2;
+
+                float[] distances =
+                {
+                    (maxB.X - minA.X) ,
+                    (maxA.X - minB.X) ,
+                    (maxB.Y - minA.Y) ,
+                    (maxA.Y - minB.Y) ,
+                    (maxB.Z - minA.Z) ,
+                    (maxA.Z - minB.Z)
+                };
+
+                float penetration = float.MaxValue;
+                Vector3 bestAxis = new Vector3();
+
+                for (int i = 0; i < 6; i++)
+                {
+                    if (distances[i] < penetration)
+                    {
+                        penetration = distances[i];
+                        bestAxis = faces[i];
+                    }
+                }
+
+                contact.contactNormal = bestAxis;
+                contact.penetration = penetration;
+
                 return true;
             }
 
@@ -67,7 +102,7 @@ namespace PhysicLibrary
         {
             float max = 0.0f;
             int best_match = -1;
-            for (int i = 0; i <6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 float dot_product = Vector3.Dot(target.normalized(), potentialNormals[i]);
                 if (dot_product > max)

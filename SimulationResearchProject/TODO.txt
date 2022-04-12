@@ -135,6 +135,7 @@ physic engine yaylarda problemler var git gide aralık artıyor sert yaylar konu
 sphere collision check için distance hesaplanırken karesi tutulabilir (optimizasyon)
 anchored bungee force generator yapılabilir
 TODO: trigger sistemi, aabb penetration, eklenmemiş constrainleri ekle
+aabb - sphere collision
 
 
 OĞULCAN

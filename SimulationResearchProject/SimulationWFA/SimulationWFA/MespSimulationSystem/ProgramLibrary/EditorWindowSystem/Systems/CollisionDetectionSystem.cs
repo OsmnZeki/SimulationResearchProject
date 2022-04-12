@@ -45,7 +45,6 @@ namespace SimulationSystem
                     {
                         contact.particles[0] = particleComp.particle;
                         contact.particles[1] = null;
-
                         contact.restitution = Math.Min(colliderComp.collider.restitution, otherColliderComp.collider.restitution);
                         contactList.Add(contact);
                     }
@@ -60,15 +59,15 @@ namespace SimulationSystem
                 for(int j=i+1; j < bothRigidFilter.NumberOfEntities; j++)
                 {
                     ref var otherParticleComp = ref bothRigidFilter.Get1(j);
-                    ref var otherSphereColliderComp = ref bothRigidFilter.Get2(j);
+                    ref var otherColliderComp = ref bothRigidFilter.Get2(j);
 
 
-                    if (colliderComp.collider.IsIntersectWith(otherSphereColliderComp.collider.bound, out var contact))
+                    if (colliderComp.collider.IsIntersectWith(otherColliderComp.collider.bound, out var contact))
                     {
                         contact.particles[0] = particleComp.particle;
                         contact.particles[1] = otherParticleComp.particle;
 
-                        contact.restitution = Math.Min(colliderComp.collider.restitution, otherSphereColliderComp.collider.restitution);
+                        contact.restitution = Math.Min(colliderComp.collider.restitution, otherColliderComp.collider.restitution);
                         contactList.Add(contact);
                     }
                 }

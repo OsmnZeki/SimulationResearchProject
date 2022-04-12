@@ -30,10 +30,10 @@ namespace SimulationSystem.Systems
 
             CreateFPSDisplayer();
 
-            //CreateLambs();
+            CreateLambs();
 
             CreateBasicCube();
-            CreateBasicCube2();
+            //CreateBasicCube2();
            // CreateBasicCube3();
            // CreateBasicCube4();
 
@@ -49,7 +49,7 @@ namespace SimulationSystem.Systems
 
             //CreateWindow();
 
-           // CreatePlane();
+            CreatePlane();
 
            // CreateGrass();
         }
@@ -174,16 +174,23 @@ namespace SimulationSystem.Systems
             Particle rg = new Particle();
             rg.SetMass(1f);
             rg.useGravity = true;
+            rg.drag = 0.05f;
 
             basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
                 particle = rg,
             };
 
-            SphereCollider sphereCollider = new SphereCollider();
-            (sphereCollider.bound as SphereBounds).radius = .5f;
+            /*SphereCollider sphereCollider = new SphereCollider();
+            (sphereCollider.bound as SphereBounds).radius = .5f;*/
+
+            BoxCollider boxCollider = new BoxCollider();
+            (boxCollider.bound as BoxBounds).Size = transformComp.transform.scale;
+
             basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
-                collider = sphereCollider,
+                collider = boxCollider,
             };
+
+            basicCubeObj.entity.AddComponent<CanMoveTestTag>();
         }
 
         public void CreateBasicCube2()
@@ -213,13 +220,15 @@ namespace SimulationSystem.Systems
                 particle = rg,
             };
 
-            SphereCollider sphereCollider = new SphereCollider();
-            (sphereCollider.bound as SphereBounds).radius = .5f;
-            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
-                collider = sphereCollider,
-            };
+            /*SphereCollider sphereCollider = new SphereCollider();
+            (sphereCollider.bound as SphereBounds).radius = .5f;*/
 
-            basicCubeObj.entity.AddComponent<CanMoveTestTag>();
+            BoxCollider boxCollider = new BoxCollider();
+            (boxCollider.bound as BoxBounds).Size = transformComp.transform.scale;
+
+            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = boxCollider,
+            };
         }
 
         public void CreateBasicCube3()
@@ -404,8 +413,11 @@ namespace SimulationSystem.Systems
 
             //planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
 
+            BoxCollider boxCollider = new BoxCollider();
+            (boxCollider.bound as BoxBounds).Size = transform.scale;
+
             planeSimObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
-                collider = new BoxCollider(),
+                collider = boxCollider,
             };
         }
 
