@@ -34,8 +34,8 @@ namespace SimulationSystem.Systems
 
             CreateBasicCube();
             CreateBasicCube2();
-            CreateBasicCube3();
-            CreateBasicCube4();
+           // CreateBasicCube3();
+           // CreateBasicCube4();
 
             //CreateBristleback1();
 
@@ -76,6 +76,11 @@ namespace SimulationSystem.Systems
                     specular = Vector4.One,
                 },
             };
+
+            ref var transformComp = ref camSimObj.entity.GetComponent<TransformComp>();
+            transformComp.transform.scale = Vector3.One;
+            transformComp.transform.position = new Vector3(10, 0, -5);
+            transformComp.transform.rotation = new Vector3(0, 90, 0);
         }
 
         //Directional light entity
@@ -156,7 +161,7 @@ namespace SimulationSystem.Systems
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
-            transformComp.transform.position = new Vector3(10, 10, 0);
+            transformComp.transform.position = new Vector3(9.5f, 10, 0);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
             cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
@@ -168,17 +173,16 @@ namespace SimulationSystem.Systems
 
             Particle rg = new Particle();
             rg.SetMass(1f);
-            rg.velocity = new Vector3(0, -10, 0);
-            rg.useGravity = false;
+            rg.useGravity = true;
 
             basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
                 particle = rg,
             };
 
             SphereCollider sphereCollider = new SphereCollider();
-            sphereCollider.sphereBound.radius = .5f;
-            basicCubeObj.entity.AddComponent<SphereColliderComp>() = new SphereColliderComp {
-                sphereCollider = sphereCollider,
+            (sphereCollider.bound as SphereBounds).radius = .5f;
+            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = sphereCollider,
             };
         }
 
@@ -210,9 +214,9 @@ namespace SimulationSystem.Systems
             };
 
             SphereCollider sphereCollider = new SphereCollider();
-            sphereCollider.sphereBound.radius = .5f;
-            basicCubeObj.entity.AddComponent<SphereColliderComp>() = new SphereColliderComp {
-                sphereCollider = sphereCollider,
+            (sphereCollider.bound as SphereBounds).radius = .5f;
+            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = sphereCollider,
             };
 
             basicCubeObj.entity.AddComponent<CanMoveTestTag>();
@@ -246,9 +250,9 @@ namespace SimulationSystem.Systems
             };
 
             SphereCollider sphereCollider = new SphereCollider();
-            sphereCollider.sphereBound.radius = .5f;
-            basicCubeObj.entity.AddComponent<SphereColliderComp>() = new SphereColliderComp {
-                sphereCollider = sphereCollider,
+            (sphereCollider.bound as SphereBounds).radius = .5f;
+            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = sphereCollider,
             };
 
             basicCubeObj.entity.AddComponent<CanMoveTestTag>();
@@ -282,9 +286,9 @@ namespace SimulationSystem.Systems
             };
 
             SphereCollider sphereCollider = new SphereCollider();
-            sphereCollider.sphereBound.radius = .5f;
-            basicCubeObj.entity.AddComponent<SphereColliderComp>() = new SphereColliderComp {
-                sphereCollider = sphereCollider,
+            (sphereCollider.bound as SphereBounds).radius = .5f;
+            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = sphereCollider,
             };
 
             basicCubeObj.entity.AddComponent<CanMoveTestTag>();
@@ -400,8 +404,8 @@ namespace SimulationSystem.Systems
 
             //planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
 
-            planeSimObj.entity.AddComponent<BoxColliderComp>() = new BoxColliderComp {
-                boxCollider = new BoxCollider(),
+            planeSimObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = new BoxCollider(),
             };
         }
 

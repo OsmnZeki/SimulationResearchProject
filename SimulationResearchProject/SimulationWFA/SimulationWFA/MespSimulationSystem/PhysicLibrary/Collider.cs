@@ -10,7 +10,10 @@ namespace PhysicLibrary
     public abstract class Collider
     {
         public float restitution = 1f;
+        public Bounds bound;
 
         public abstract bool IsIntersectWith(Bounds bound, out Contact contact);
+        public abstract void Update(Vector3 centerPos);
+        public abstract void DrawGizmos();
     }
 }

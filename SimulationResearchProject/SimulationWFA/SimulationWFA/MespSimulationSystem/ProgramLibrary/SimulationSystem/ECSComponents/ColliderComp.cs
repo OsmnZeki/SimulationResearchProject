@@ -3,8 +3,8 @@
 
 namespace SimulationSystem.ECSComponents
 {
-    public struct BoxColliderComp
+    public struct ColliderComp
     {
-        public BoxCollider boxCollider;
+        public Collider collider;
     }
 }

@@ -14,11 +14,8 @@ namespace SimulationSystem
 {
     public class CollisionDetectionSystem : Dalak.Ecs.System
     {
-        readonly Filter<ParticleComp, BoxColliderComp> boxRigidFilter = null;
-        readonly Filter<BoxColliderComp>.Exclude<ParticleComp> onlyBoxColliderFilter = null;
-
-        readonly Filter<ParticleComp, SphereColliderComp> sphereRigidFilter = null;
-        readonly Filter<SphereColliderComp>.Exclude<ParticleComp> onlySphereColliderFilter = null;
+        readonly Filter<ParticleComp, ColliderComp> bothRigidFilter = null;
+        readonly Filter<ColliderComp>.Exclude<ParticleComp> onlyColliderFilter = null;
 
 
         List<Contact> contactList = new List<Contact>();
@@ -35,43 +32,43 @@ namespace SimulationSystem
         {
             contactList.Clear();
 
-           /* foreach(var s in sphereRigidFilter)
+            foreach(var s in bothRigidFilter)
             {
-                ref var particleComp = ref sphereRigidFilter.Get1(s);
-                ref var sphereColliderComp = ref sphereRigidFilter.Get2(s);                
+                ref var particleComp = ref bothRigidFilter.Get1(s);
+                ref var colliderComp = ref bothRigidFilter.Get2(s);                
 
-                foreach (var o in onlySphereColliderFilter)
+                foreach (var o in onlyColliderFilter)
                 {
-                    ref var otherSphereColliderComp = ref onlySphereColliderFilter.Get1(o);
+                    ref var otherColliderComp = ref onlyColliderFilter.Get1(o);
 
-                    if (sphereColliderComp.sphereCollider.IsIntersectWith(otherSphereColliderComp.sphereCollider.sphereBound,out var contact))
+                    if (colliderComp.collider.IsIntersectWith(otherColliderComp.collider.bound,out var contact))
                     {
                         contact.particles[0] = particleComp.particle;
                         contact.particles[1] = null;
 
-                        contact.restitution = Math.Min(sphereColliderComp.sphereCollider.restitution, otherSphereColliderComp.sphereCollider.restitution);
+                        contact.restitution = Math.Min(colliderComp.collider.restitution, otherColliderComp.collider.restitution);
                         contactList.Add(contact);
                     }
                 }
-            }*/
+            }
 
-            for(int i = 0; i < sphereRigidFilter.NumberOfEntities-1; i++)
+            for(int i = 0; i < bothRigidFilter.NumberOfEntities-1; i++)
             {
-                ref var particleComp = ref sphereRigidFilter.Get1(i);
-                ref var sphereColliderComp = ref sphereRigidFilter.Get2(i);
+                ref var particleComp = ref bothRigidFilter.Get1(i);
+                ref var colliderComp = ref bothRigidFilter.Get2(i);
 
-                for(int j=i+1; j < sphereRigidFilter.NumberOfEntities; j++)
+                for(int j=i+1; j < bothRigidFilter.NumberOfEntities; j++)
                 {
-                    ref var otherParticleComp = ref sphereRigidFilter.Get1(j);
-                    ref var otherSphereColliderComp = ref sphereRigidFilter.Get2(j);
+                    ref var otherParticleComp = ref bothRigidFilter.Get1(j);
+                    ref var otherSphereColliderComp = ref bothRigidFilter.Get2(j);
 
 
-                    if (sphereColliderComp.sphereCollider.IsIntersectWith(otherSphereColliderComp.sphereCollider.sphereBound, out var contact))
+                    if (colliderComp.collider.IsIntersectWith(otherSphereColliderComp.collider.bound, out var contact))
                     {
                         contact.particles[0] = particleComp.particle;
                         contact.particles[1] = otherParticleComp.particle;
 
-                        contact.restitution = Math.Min(sphereColliderComp.sphereCollider.restitution, otherSphereColliderComp.sphereCollider.restitution);
+                        contact.restitution = Math.Min(colliderComp.collider.restitution, otherSphereColliderComp.collider.restitution);
                         contactList.Add(contact);
                     }
                 }

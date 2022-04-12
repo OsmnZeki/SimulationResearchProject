@@ -125,6 +125,7 @@ textrenderer clean up olmuyor
 line renderer
 ------------
 gizmos için kullanılan line renderer optimizasyon açısından çok hatalı sürekli fpsyi düşürüyor
+gizmos collider görseli bir önceki framede kalıyor (duraklatıp frame boyunca bakıldığı zaman collision esnasında belli oluyor)
 
 
 physic system

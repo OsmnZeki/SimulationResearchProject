@@ -8,8 +8,8 @@ namespace TheSimulation.SerializedComponent
     {
         public override void AddComponent(Entity entity, World world)
         {
-            entity.AddComponent<BoxColliderComp>() = new BoxColliderComp {
-                boxCollider = new BoxCollider()
+            entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = new BoxCollider()
             };
         }
 

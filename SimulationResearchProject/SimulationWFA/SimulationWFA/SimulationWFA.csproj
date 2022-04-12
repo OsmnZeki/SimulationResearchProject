@@ -140,7 +140,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\MespDebug.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimPath.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\AnimatorComp.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\BoxColliderComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\ColliderComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\CameraComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\CanMoveTestTag.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\ContactHolderComp.cs" />
@@ -151,7 +151,6 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\PointLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\ParticleComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SkinnedMeshRendererComp.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SphereColliderComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\SpotLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TestSystemComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TextRendererComp.cs" />
