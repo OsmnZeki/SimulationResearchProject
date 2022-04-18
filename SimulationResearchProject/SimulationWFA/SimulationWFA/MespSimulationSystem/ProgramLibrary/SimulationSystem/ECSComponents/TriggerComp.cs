@@ -10,5 +10,6 @@ namespace SimulationSystem.ECSComponents
     public struct TriggerComp
     {
         public List<Entity> collidedEntityList;
+        public List<Entity> collidedThisFrame;
     }
 }

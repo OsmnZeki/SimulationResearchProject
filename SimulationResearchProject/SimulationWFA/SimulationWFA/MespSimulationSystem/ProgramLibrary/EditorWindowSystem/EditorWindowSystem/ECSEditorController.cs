@@ -30,6 +30,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new ParticleMovementSystem(), GenericSystemGroup);
             systemManager.AddSystem(new ColliderBoundsUpdateSystem(), GenericSystemGroup);
             systemManager.AddSystem(new CollisionDetectionSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new TriggerDetectionSystem(), GenericSystemGroup);
             systemManager.AddSystem(new ResolveCollisionSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new FPSCalculatorSystem(), GenericSystemGroup);
@@ -40,6 +41,7 @@ namespace SimulationSystem.Systems
             
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new TriggerTestSystem(), GenericSystemGroup);
 
             //
 

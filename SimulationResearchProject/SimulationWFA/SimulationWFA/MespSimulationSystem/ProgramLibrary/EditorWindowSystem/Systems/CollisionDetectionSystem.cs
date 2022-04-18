@@ -15,10 +15,10 @@ namespace SimulationSystem
     public class CollisionDetectionSystem : Dalak.Ecs.System
     {
         readonly Filter<ParticleComp, ColliderComp>.Exclude<TriggerComp> bothRigidFilter = null;
-        readonly Filter<ColliderComp>.Exclude<ParticleComp>.Exclude<TriggerComp> onlyColliderFilter = null;
-
+        readonly Filter<ColliderComp>.Exclude<ParticleComp, TriggerComp> onlyColliderFilter = null;
 
         List<Contact> contactList = new List<Contact>();
+
         public override void Awake()
         {
             var contactHolderEntity = world.NewEntity();

@@ -33,7 +33,7 @@ namespace SimulationSystem.Systems
             CreateLambs();
 
             CreateBasicCube();
-            //CreateBasicCube2();
+            CreateBasicCube2();
            // CreateBasicCube3();
            // CreateBasicCube4();
 
@@ -201,33 +201,29 @@ namespace SimulationSystem.Systems
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
-            transformComp.transform.position = new Vector3(10, 0, 0);
+            transformComp.transform.position = new Vector3(10, 0, 4);
 
-            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
-            cubeMaterial.SetColor(new Vector4(0, 0, 1, 1));
 
-            basicCubeObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
-                material = cubeMaterial,
-            };
-
-            Particle rg = new Particle();
+            /*Particle rg = new Particle();
             rg.SetMass(1f,true);
             rg.velocity = Vector3.Zero;
             rg.useGravity = false;
 
             basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
                 particle = rg,
-            };
-
-            /*SphereCollider sphereCollider = new SphereCollider();
-            (sphereCollider.bound as SphereBounds).radius = .5f;*/
+            };*/
 
             BoxCollider boxCollider = new BoxCollider();
             (boxCollider.bound as BoxBounds).Size = transformComp.transform.scale;
 
             basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
                 collider = boxCollider,
+            };
+
+            basicCubeObj.entity.AddComponent<TriggerComp>() = new TriggerComp() {
+
+                collidedEntityList = new System.Collections.Generic.List<Dalak.Ecs.Entity>(),
+                collidedThisFrame = new System.Collections.Generic.List<Dalak.Ecs.Entity>(),
             };
         }
 
