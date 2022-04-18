@@ -14,8 +14,8 @@ namespace SimulationSystem
 {
     public class CollisionDetectionSystem : Dalak.Ecs.System
     {
-        readonly Filter<ParticleComp, ColliderComp> bothRigidFilter = null;
-        readonly Filter<ColliderComp>.Exclude<ParticleComp> onlyColliderFilter = null;
+        readonly Filter<ParticleComp, ColliderComp>.Exclude<TriggerComp> bothRigidFilter = null;
+        readonly Filter<ColliderComp>.Exclude<ParticleComp>.Exclude<TriggerComp> onlyColliderFilter = null;
 
 
         List<Contact> contactList = new List<Contact>();
