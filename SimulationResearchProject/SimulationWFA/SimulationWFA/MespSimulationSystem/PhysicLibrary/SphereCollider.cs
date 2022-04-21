@@ -44,6 +44,12 @@ namespace PhysicLibrary
             return result;
         }
 
+        public override bool IsIntersectWith(Ray ray, float distance,out Vector3 hitPoint, bool isInfinite = false)
+        {
+            hitPoint = new Vector3();
+            return true;
+        }
+
         public override void Update(Vector3 centerPos)
         {
             bound.UpdateCenter(centerPos);

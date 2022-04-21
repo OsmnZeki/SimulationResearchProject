@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Dalak.Ecs;
+using MespSimulationSystem.Math;
 using MESPSimulationSystem.Math;
 using PhysicLibrary;
 using RenderLibrary.Graphics;
@@ -21,6 +22,18 @@ namespace ProgramLibrary
 
                 from = from,
                 to = to,
+                color = color,
+            });
+        }
+
+        public static void DrawRay(Ray ray, float magnitude, Vector3 color)
+        {
+            ray.direction.Normalize();
+
+            MespEditorDebugSystem.eventManager.SendEvent(new DrawLineEvent() {
+
+                from = ray.origin,
+                to = ray.origin+ ray.direction * magnitude,
                 color = color,
             });
         }

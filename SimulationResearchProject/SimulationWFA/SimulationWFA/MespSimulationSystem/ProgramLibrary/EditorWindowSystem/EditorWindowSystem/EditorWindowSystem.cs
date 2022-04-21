@@ -11,7 +11,6 @@ namespace SimulationSystem
     public class EditorWindowSystem
     {
         WindowEcsManager windowEcsManager;
-        Physics physics = new Physics();
         bool paused;
 
         public void CreateEditorWindow()
@@ -46,7 +45,7 @@ namespace SimulationSystem
                     if (paused) Time.deltaTime = Time.fixedDeltaTime;
 
                     //physic
-                    int physicLoopCount = physics.CalculatePhyicsLoopCount(Time.deltaTime, Time.fixedDeltaTime);
+                    int physicLoopCount = Physics.CalculatePhyicsLoopCount(Time.deltaTime, Time.fixedDeltaTime);
                     for (int i = 0; i < physicLoopCount; i++) windowEcsManager.FixedUpdate();
 
                     //

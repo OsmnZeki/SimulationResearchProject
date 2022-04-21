@@ -13,6 +13,7 @@ namespace PhysicLibrary
         public Bounds bound;
 
         public abstract bool IsIntersectWith(Bounds bound, out Contact contact);
+        public abstract bool IsIntersectWith(Ray ray, float distance, out Vector3 hitPoint, bool isInfinite = false);
         public abstract void Update(Vector3 centerPos);
         public abstract void DrawGizmos();
     }

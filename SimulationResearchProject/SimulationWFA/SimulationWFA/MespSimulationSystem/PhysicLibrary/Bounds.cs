@@ -30,6 +30,7 @@ namespace PhysicLibrary
 
         public abstract bool IsIntersectWith(Vector3 point);
         public abstract bool IsIntersectWith(Bounds bound);
+        public abstract bool IsIntersectWith(Ray ray,float distance, out Vector3 hitPoint, bool isInfinite = false);
 
     }
 }

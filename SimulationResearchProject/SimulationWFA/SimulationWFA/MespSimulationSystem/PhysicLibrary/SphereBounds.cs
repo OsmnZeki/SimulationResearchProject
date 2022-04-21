@@ -36,6 +36,11 @@ namespace PhysicLibrary
             return false;
         }
 
+        public override bool IsIntersectWith(Ray ray, float distance, out Vector3 hitPoint, bool isInfinite = false)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void UpdateBounds()
         {
             

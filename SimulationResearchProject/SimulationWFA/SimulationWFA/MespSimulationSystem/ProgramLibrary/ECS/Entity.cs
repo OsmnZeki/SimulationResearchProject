@@ -1,4 +1,6 @@
-﻿namespace Dalak.Ecs
+﻿using SimulationSystem.ECSComponents;
+
+namespace Dalak.Ecs
 {
     public readonly struct Entity
     {
@@ -99,7 +101,7 @@
 
         public void SetName(string name)
         {
-            //AddComponent<DebugNameComp>().name = name;
+            AddComponent<DebugNameComp>().name = name;
         }
     }
     

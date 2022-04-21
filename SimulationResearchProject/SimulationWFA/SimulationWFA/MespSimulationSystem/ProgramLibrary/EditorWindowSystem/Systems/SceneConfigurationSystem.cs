@@ -394,9 +394,9 @@ namespace SimulationSystem.Systems
 
         public void CreatePlane()
         {
-            var planeSimObj = SimObject.NewSimObject();
+            var planeSimObj = SimObject.NewSimObject("Plane");
             planeSimObj.CreateEntity(world);
-            planeSimObj.InjectAllSerializedComponents(world); ;
+            planeSimObj.InjectAllSerializedComponents(world);
 
             ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
             transform.position = new Vector3(10, 0f, 0);

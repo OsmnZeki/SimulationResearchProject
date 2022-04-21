@@ -32,9 +32,11 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new CollisionDetectionSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TriggerDetectionSystem(), GenericSystemGroup);
             systemManager.AddSystem(new ResolveCollisionSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new SimulationPhysicEntegrationSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new FPSCalculatorSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new RaycastTestSystem(), GenericSystemGroup);
             
 
             //Custom Systems
@@ -42,6 +44,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TriggerTestSystem(), GenericSystemGroup);
+            
 
             //
 

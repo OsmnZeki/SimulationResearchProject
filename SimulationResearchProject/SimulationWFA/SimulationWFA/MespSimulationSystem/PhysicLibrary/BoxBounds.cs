@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using MespSimulationSystem.Math;
 
 namespace PhysicLibrary
 {
@@ -65,6 +66,48 @@ namespace PhysicLibrary
             return false;
         }
 
-        
+        public override bool IsIntersectWith(Ray ray,float distance, out Vector3 hitPoint, bool isInfinite =false)
+        {
+            hitPoint = new Vector3(-9999, -9999, -9999);
+            ray.direction.Normalize();
+
+            float t1 = (xPoints.X - ray.origin.X) / ray.direction.X;
+            float t2 = (xPoints.Y - ray.origin.X) / ray.direction.X;
+            float t3 = (yPoints.X - ray.origin.Y) / ray.direction.Y;
+            float t4 = (yPoints.Y - ray.origin.Y) / ray.direction.Y;
+            float t5 = (zPoints.X - ray.origin.Z) / ray.direction.Z;
+            float t6 = (zPoints.Y - ray.origin.Z) / ray.direction.Z;
+
+            float tmin = Math.Max(Math.Max(Math.Min(t1, t2), Math.Min(t3, t4)), Math.Min(t5, t6));
+            float tmax = Math.Min(Math.Min(Math.Max(t1, t2), Math.Max(t3, t4)), Math.Max(t5, t6));
+
+            if (tmax < 0)
+            {
+                return false;
+            }
+
+            // if tmin > tmax, ray doesn't intersect AABB
+            if (tmin > tmax)
+            {
+                return false;
+            }
+
+            if (tmin < 0f)
+            {
+                Console.WriteLine("tmax : " + tmax);
+                hitPoint = ray.origin + ray.direction * tmax;
+                return true;
+            }
+
+            if(tmin<= distance)
+            {
+                Console.WriteLine("tmin : " + tmin);
+                hitPoint = ray.origin + ray.direction * tmin;
+                return true;
+            }
+
+            return false;
+
+        }
     }
 }

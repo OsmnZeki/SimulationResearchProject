@@ -97,6 +97,11 @@ namespace PhysicLibrary
 
             return result;
         }
+         
+        public override bool IsIntersectWith(Ray ray,float distance, out Vector3 hitPoint, bool isInfinite = false)
+        {
+            return bound.IsIntersectWith(ray,distance,out hitPoint, isInfinite);
+        }
 
         BoxColliderNormalDirection GetNormal(Vector3 target)
         {
@@ -125,5 +130,7 @@ namespace PhysicLibrary
             var color = new Vector3(0, 1, 0);
             MespDebug.DrawWireBox((bound as BoxBounds), color);
         }
+
+        
     }
 }

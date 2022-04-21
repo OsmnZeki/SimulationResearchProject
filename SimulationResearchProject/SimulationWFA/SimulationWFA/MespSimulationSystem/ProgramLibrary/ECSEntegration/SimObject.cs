@@ -102,6 +102,7 @@ namespace SimulationSystem
         public void CreateEntity(World world)
         {
             entity = world.NewEntity();
+            entity.SetName(objectData.name);
         }
 
 
