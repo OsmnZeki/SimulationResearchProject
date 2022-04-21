@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dalak.Ecs;
 using SimulationSystem.ECSComponents;
+using SimulationWFA.MespUtils;
 
 namespace SimulationSystem
 {
@@ -20,10 +21,12 @@ namespace SimulationSystem
 
 
         List<Entity> newAddedEntityList;
+        List<Entity> exitEntityList;
 
         public override void Awake()
         {
             newAddedEntityList = new List<Entity>();
+            exitEntityList = new List<Entity>();
         }
 
         public override void FixedUpdate()
@@ -85,6 +88,7 @@ namespace SimulationSystem
             foreach(var t in triggerFilter)
             {
                 newAddedEntityList.Clear();
+                exitEntityList.Clear();
 
                 ref var triggerComp = ref triggerFilter.Get1(t);
                 var triggerEntity = triggerFilter.GetEntity(t);
@@ -94,7 +98,12 @@ namespace SimulationSystem
                     triggerEntity.RemoveComponent<OnTriggerEnterComp>();
                 }
 
-                for(int i = 0; i < triggerComp.collidedThisFrame.Count; i++)
+                if (triggerEntity.HasComponent<OnExitTriggerComp>())
+                {
+                    triggerEntity.RemoveComponent<OnExitTriggerComp>();
+                }
+
+                for (int i = 0; i < triggerComp.collidedThisFrame.Count; i++)
                 {
                     if(!triggerComp.collidedEntityList.Contains(triggerComp.collidedThisFrame[i]))
                     {
@@ -102,18 +111,40 @@ namespace SimulationSystem
                     }
                 }
 
-                if(newAddedEntityList.Count != 0)
+                for (int i = 0; i < triggerComp.collidedEntityList.Count; i++)
+                {
+                    if (!triggerComp.collidedThisFrame.Contains(triggerComp.collidedEntityList[i]))
+                    {
+                        exitEntityList.Add(triggerComp.collidedEntityList[i]);
+                    }
+                }
+
+                if (newAddedEntityList.Count != 0)
                 {
                     triggerEntity.AddComponent<OnTriggerEnterComp>() = new OnTriggerEnterComp() {
                         collidedEntityList = newAddedEntityList,
                     };
 
-                    //newAddedEntityList.CopyTo(triggerComp.collidedEntityList);
+                    triggerComp.collidedEntityList.CopyFrom(newAddedEntityList);
 
                 }
+
+                if (exitEntityList.Count != 0)
+                {
+                    triggerEntity.AddComponent<OnExitTriggerComp>() = new OnExitTriggerComp() {
+                        collidedEntityList = exitEntityList,
+                    };
+
+                    for(int i = 0; i < exitEntityList.Count; i++)
+                    {
+                        triggerComp.collidedEntityList.Remove(exitEntityList[i]);
+                    }
+                }
+
+
                 triggerComp.collidedThisFrame.Clear();
 
             }
-        }
+        }  
     }
 }

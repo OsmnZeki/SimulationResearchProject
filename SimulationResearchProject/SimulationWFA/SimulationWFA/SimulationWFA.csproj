@@ -149,6 +149,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\ContactResolverComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\DirectionalLightComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\FPSDisplayerComp.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\OnExitTriggerComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\OnTriggerEnterComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\OutlineBorderRenderComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\PointLightComp.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="MespUtils\AssetOrganizer.cs" />
     <Compile Include="MespUtils\AssetUtils\AssetUtils.cs" />
     <Compile Include="MespUtils\AssetSerializationData.cs" />
+    <Compile Include="MespUtils\ListExtensions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\BitSet.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentIdx.cs" />

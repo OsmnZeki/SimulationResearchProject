@@ -11,6 +11,7 @@ namespace SimulationSystem
     public class TriggerTestSystem : Dalak.Ecs.System
     {
         readonly Filter<OnTriggerEnterComp> triggerEnterFilter = null;
+        readonly Filter<OnExitTriggerComp> triggerExit = null;
 
         public override void Update()
         {
@@ -19,7 +20,17 @@ namespace SimulationSystem
                 ref var onTriggerEnterComp = ref triggerEnterFilter.Get1(t);
                 foreach(var collider in onTriggerEnterComp.collidedEntityList)
                 {
-                    Console.WriteLine("Triggered");
+                    Console.WriteLine("Trigger Enter");
+                }
+
+            }
+
+            foreach (var t in triggerExit)
+            {
+                ref var onTriggerExtiComp = ref triggerExit.Get1(t);
+                foreach (var collider in onTriggerExtiComp.collidedEntityList)
+                {
+                    Console.WriteLine("Trigger exit");
                 }
 
             }
