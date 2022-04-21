@@ -96,12 +96,9 @@ namespace SimulationSystem
 
                 for(int i = 0; i < triggerComp.collidedThisFrame.Count; i++)
                 {
-                    for(int j = 0; j < triggerComp.collidedEntityList.Count; j++)
+                    if(!triggerComp.collidedEntityList.Contains(triggerComp.collidedThisFrame[i]))
                     {
-                        if (triggerComp.collidedEntityList[j] == triggerComp.collidedThisFrame[i]) break;
-
                         newAddedEntityList.Add(triggerComp.collidedThisFrame[i]);
-                        
                     }
                 }
 
@@ -111,9 +108,10 @@ namespace SimulationSystem
                         collidedEntityList = newAddedEntityList,
                     };
 
-                    triggerComp.collidedEntityList = newAddedEntityList;
-                }
+                    //newAddedEntityList.CopyTo(triggerComp.collidedEntityList);
 
+                }
+                triggerComp.collidedThisFrame.Clear();
 
             }
         }
