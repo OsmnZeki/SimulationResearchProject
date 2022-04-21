@@ -33,7 +33,7 @@ namespace RenderLibrary.DLL
         public static extern void ScreenProcessInput(IntPtr screen);
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetClearColor")]
-        public static extern void SetClearColor(IntPtr screen,float[] clearColor);
+        public static extern void SetClearColor(IntPtr screen, float[] clearColor);
 
         #endregion
 
@@ -41,35 +41,35 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "NewShader")]
         public static extern IntPtr NewShader(string vertexShaderPath, string fragmentShaderPath);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetInt")]
         public static extern void ShaderSetInt(IntPtr shaderAdress, string name, int value);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetFloat")]
         public static extern void ShaderSetFloat(IntPtr shaderAdress, string name, float value);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSet3Float")]
         public static extern void ShaderSet3Float(IntPtr shaderAdress, string name, float value, float value1, float value2);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSet4Float")]
         public static extern void ShaderSet4Float(IntPtr shaderAdress, string name, float value, float value1, float value2, float value3);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetBool")]
         public static extern void ShaderSetBool(IntPtr shaderAdress, string name, bool value);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderSetMat4")]
         public static extern void ShaderSetMat4(IntPtr shaderAdress, string name, IntPtr mat4Adress);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "ShaderActivate")]
         public static extern void ShaderActivate(IntPtr shaderAdress);
-        
+
         #endregion
 
         #region TextureFunctions
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "NewTexture")]
         public static extern IntPtr NewTexture(string directory, string path, int aiType);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "TextureLoad")]
         public static extern IntPtr TextureLoad(IntPtr texture, bool flip);
 
@@ -83,16 +83,16 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "CreateMesh")]
         public static extern IntPtr CreateMesh();
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetVerticesPos")]
         public static extern void MeshSetVerticesPos(IntPtr mesh, float[] pos, int sizeOfVertices);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetIndices")]
         public static extern void MeshSetIndices(IntPtr mesh, int[] indices);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetVerticesNormal")]
         public static extern void MeshSetVerticesNormal(IntPtr mesh, float[] normal);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "MeshSetVerticesTexCoord")]
         public static extern void MeshSetVerticesTexCoord(IntPtr mesh, float[] texCoord);
 
@@ -121,7 +121,7 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "GetModelChilCount")]
         public static extern int GetModelChildCount(IntPtr modelAdress);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "GetMeshCount")]
         public static extern int GetMeshCount(IntPtr modelAdress);
 
@@ -213,7 +213,7 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "LookAt")]
         public static extern IntPtr LookAt(float[] cameraPos, float[] cameraFront, float[] cameraUp);
-        
+
         [DllImport(RenderProgramDLLPath, EntryPoint = "Perspective")]
         public static extern IntPtr Perspective(float fovy, float aspect, float near, float far);
 
@@ -222,6 +222,9 @@ namespace RenderLibrary.DLL
 
         [DllImport(RenderProgramDLLPath, EntryPoint = "Rotate")]
         public static extern void Rotate(IntPtr modelMatrix, float degree, float[] axisOfRot, float[] newDirection);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "GetRayFromScreenSpace")]
+        public static extern void GetRayFromScreenSpace(float[] screenPos, IntPtr projectionMat, IntPtr viewMat, float width, float height, float[] result);
 
         #endregion
 

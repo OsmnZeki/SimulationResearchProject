@@ -36,15 +36,16 @@ namespace SimulationSystem.Systems
 
             systemManager.AddSystem(new FPSCalculatorSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new RaycastTestSystem(), GenericSystemGroup);
-            
+            systemManager.AddSystem(new SceneSelectObjectSystem(), GenericSystemGroup);
+
+
 
             //Custom Systems
-            
+
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TriggerTestSystem(), GenericSystemGroup);
-            
+            systemManager.AddSystem(new RaycastTestSystem(), GenericSystemGroup);
 
             //
 

@@ -407,7 +407,7 @@ namespace SimulationSystem.Systems
                 mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
             };
 
-            //planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
+            planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
 
             BoxCollider boxCollider = new BoxCollider();
             (boxCollider.bound as BoxBounds).Size = transform.scale;

@@ -98,7 +98,7 @@ namespace PhysicLibrary
                 return true;
             }
 
-            if(tmin<= distance)
+            if(tmin<= distance || isInfinite)
             {
                 hitPoint = ray.origin + ray.direction * tmin;
                 return true;

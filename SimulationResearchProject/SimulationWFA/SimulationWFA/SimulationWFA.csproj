@@ -125,6 +125,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\MespEditorDebugSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\OutlineBorderRenderSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\RaycastTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\SceneSelectObjectSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\SimulationPhysicEntegrationSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TriggerDetectionSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TriggerTestSystem.cs" />

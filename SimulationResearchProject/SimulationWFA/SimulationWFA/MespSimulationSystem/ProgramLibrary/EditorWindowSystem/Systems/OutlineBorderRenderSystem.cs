@@ -22,7 +22,7 @@ namespace SimulationSystem
         public override void Awake()
         {
             outlineMaterial = new UnlitMaterial();
-         //   outlineMaterial.SetShader(outLineShader.shader);
+            outlineMaterial.SetShader(ShaderPool.outlineBorderShader);
         }
 
         public override void Render()
