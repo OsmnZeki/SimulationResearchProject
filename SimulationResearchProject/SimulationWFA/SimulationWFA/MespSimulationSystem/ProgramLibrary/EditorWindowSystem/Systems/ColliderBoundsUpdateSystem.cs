@@ -49,6 +49,23 @@ namespace SimulationSystem
             }
         }
 
+
+        public override void Update()
+        {
+            foreach (var b in colliderFilter)
+            {
+                ref var colliderComp = ref colliderFilter.Get1(b);
+                ref var transformComp = ref colliderFilter.Get2(b);
+
+                var entity = colliderFilter.GetEntity(b);
+
+                var center = transformComp.transform.position;
+                if (entity.HasComponent<ParticleComp>()) center = entity.GetComponent<ParticleComp>().particle.position;
+
+                colliderComp.collider.Update(center);
+            }
+        }
+
         public override void PostRender()
         {
             foreach (var b in colliderFilter)

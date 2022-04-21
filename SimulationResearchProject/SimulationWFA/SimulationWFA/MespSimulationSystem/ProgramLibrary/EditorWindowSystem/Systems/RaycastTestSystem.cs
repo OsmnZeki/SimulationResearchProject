@@ -12,7 +12,7 @@ namespace SimulationSystem.Systems
     public class RaycastTestSystem : Dalak.Ecs.System
     {
 
-        Ray ray = new Ray(new Vector3(8, 1.5f, 0), new Vector3(0, -1f, 0));
+        Ray ray = new Ray(new Vector3(9.5f, 1.5f, 0), new Vector3(0, -1f, 0));
 
 
         public override void Update()

@@ -94,14 +94,12 @@ namespace PhysicLibrary
 
             if (tmin < 0f)
             {
-                Console.WriteLine("tmax : " + tmax);
                 hitPoint = ray.origin + ray.direction * tmax;
                 return true;
             }
 
             if(tmin<= distance)
             {
-                Console.WriteLine("tmin : " + tmin);
                 hitPoint = ray.origin + ray.direction * tmin;
                 return true;
             }
