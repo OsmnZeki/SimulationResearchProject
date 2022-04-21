@@ -28,7 +28,6 @@ c++ dll kısmında Orthographic fonksiyonu içerisinde 800/600 ratiosu manuel ve
 
 render
 ------
-sadece triangle çizdirtiyor ve mesh gerekiyor. meshsiz çizgi çizdirebilmek için güzel bir sistem bul
 mesh zaten c++'ta tutuluyor. C++ meshRenderer diye bir classa gerek var mı ? onun yerine c++ render(mesh,transform,material) alan bir class olsa nasıl olur ?
 meshrenderer system içerisinde if(setmeshRenderer == false) -> bundan kurtul
 
@@ -112,7 +111,7 @@ animasyon sistemi optimize değil ! (önemli)
 
 animator
 -------
-tek animasyon alabiliyor state machine değil ? (önemli)
+tek animasyon alabiliyor state machine değil ?
 animator oluştururken neden hemen animasyon yüklemem gerekiyor ? 
 
 
@@ -135,6 +134,11 @@ physic engine yaylarda problemler var git gide aralık artıyor sert yaylar konu
 sphere collision check için distance hesaplanırken karesi tutulabilir (optimizasyon)
 anchored bungee force generator yapılabilir
 aabb - sphere collision
+
+
+raycast
+--------
+nesne ekranın sol veya sağına çok yakınsa cameradan atılan raycast doğru çalışmıyor
 
 
 OĞULCAN
