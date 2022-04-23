@@ -1,34 +1,73 @@
 ﻿using System;
+using PhysicLibrary;
 using RenderLibrary.IO;
+using RenderLibrary.OpenGLCustomFunctions;
+using SimulationSystem.Systems;
+using SimulationSystem.Timer;
 
 namespace SimulationSystem
 {
     public class SimulationSystem
     {
+        WindowEcsManager windowEcsManager;
+        bool paused;
 
         public void CreateSimulationSystem()
         {
             Screen screen = new Screen();
             screen.Create(800, 600);
             if (screen.screenAdress == IntPtr.Zero) return;
+            screen.SetParameters();
+            screen.SetClearColor(screen.clearColor);
 
-            WindowEcsManager simulationEvents = new WindowEcsManager(new ECSSimulationController());
+            OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
+            OpenGLFunctions.GLEnable(OpenGLEnum.GL_STENCIL_TEST);
+            OpenGLFunctions.GLEnable(OpenGLEnum.GL_BLEND);
+            OpenGLFunctions.GLBlendFunc(OpenGLEnum.GL_SRC_ALPHA, OpenGLEnum.GL_ONE_MINUS_SRC_ALPHA);
 
-            simulationEvents.Awake();
-            simulationEvents.Start();
-            
+
+            windowEcsManager = new WindowEcsManager(new ECSSimulationController(screen));
+            InputSystem.Initialize();
+
+            Time.StartTimer();
+
+            windowEcsManager.Awake();
+            windowEcsManager.Start();
+
             while (!screen.ShouldClose())
             {
+                Time.UpdateTimer();
                 screen.ProcessWindowInput();
-                simulationEvents.Update();
-                simulationEvents.LateUpdate();
-                
+
+                if (!paused || Input.GetKeyDown(KeyCode.O))
+                {
+                    if (paused) Time.deltaTime = Time.fixedDeltaTime;
+
+                    //physic
+                    int physicLoopCount = Physics.CalculatePhyicsLoopCount(Time.deltaTime, Time.fixedDeltaTime);
+                    for (int i = 0; i < physicLoopCount; i++) windowEcsManager.FixedUpdate();
+
+                    //
+                    windowEcsManager.Update();
+                    windowEcsManager.LateUpdate();
+                }
+
+                if (Input.GetKeyDown(KeyCode.P))
+                {
+                    paused = !paused;
+                }
+
+                InputSystem.ClearAll();
+                //Render
                 screen.Update();
-                simulationEvents.Render();
+                windowEcsManager.Render();
+                windowEcsManager.PostRender();
                 screen.NewFrame();
             }
-            
-            simulationEvents.OnSimulationQuit();
+
+            windowEcsManager.OnSimulationQuit();
+
+            Time.StopTimer();
             screen.Terminate();
         }
         

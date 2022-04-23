@@ -24,8 +24,9 @@ namespace SimulationSystem.Systems
 
         public override void AddSystems() // Ecs Sistemleri
         {
-            systemManager.AddSystem(new SceneConfigurationSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new SceneConfigurationSystemTest(), GenericSystemGroup);
 
+            //physics
             systemManager.AddSystem(new UpdateForceSystem(), GenericSystemGroup);
             systemManager.AddSystem(new ParticleMovementSystem(), GenericSystemGroup);
             systemManager.AddSystem(new ColliderBoundsUpdateSystem(), GenericSystemGroup);
@@ -36,7 +37,7 @@ namespace SimulationSystem.Systems
 
             systemManager.AddSystem(new FPSCalculatorSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new SceneSelectObjectSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new SceneSelectObjectSystem(), GenericSystemGroup);
 
 
 
@@ -62,6 +63,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
 
+            
             systemManager.AddSystem(new MespEditorDebugSystem(), GenericSystemGroup);
 
             //EventSystems
