@@ -116,34 +116,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\ModelPaths.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\SharedData\TextureReferences.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\AnimationSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ClearColorTestSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ColliderBoundsUpdateSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\CollisionDetectionSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorInfiniteGridSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorObjectDesignerSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\FPSCalculatorSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\MespEditorDebugSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\OutlineBorderRenderSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\RaycastTestSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\SceneSelectObjectSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\SimulationPhysicEntegrationSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TriggerDetectionSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TriggerTestSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\UpdateForceSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\PhysicTestSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\ResolveCollisionSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\RotationTestSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorCameraSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\SceneLoadingSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorEventListenSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\EditorLoadingSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\MeshRendererSerialized.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\InputSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\LightSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TestSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TextRendererSystem.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\Systems\TransformSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\MespDebug.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimPath.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\AnimatorComp.cs" />
@@ -166,7 +139,35 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TextRendererComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TransformPositionArrowComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TriggerComp.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\ParticleMovementSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\AnimationSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\ClearColorTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\ColliderBoundsUpdateSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\CollisionDetectionSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorCameraSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorEventListenSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorInfiniteGridSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorLoadingSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorObjectDesignerSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\FPSCalculatorSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\InputSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\LightSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\MeshRenderSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\MespEditorDebugSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\OutlineBorderRenderSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\ParticleMovementSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\PhysicTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\RaycastTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\ResolveCollisionSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\RotationTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\SceneConfigurationSystemTest.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\SceneSelectObjectSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\SimulationPhysicEntegrationSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\TestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\TextRendererSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\TransformSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\TriggerDetectionSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\TriggerTestSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\UpdateForceSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animation.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animator.cs" />
@@ -202,7 +203,6 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\EasyECSController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\MeshRendererComp.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSComponents\TransformComp.cs" />
-    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystems\MeshRenderSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TransformSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SimObject.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\WindowEcsManager.cs" />
@@ -277,5 +277,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
