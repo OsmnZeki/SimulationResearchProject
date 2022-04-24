@@ -68,7 +68,7 @@ namespace SimulationSystem.Systems
         //Camera entity
         public void CreateEditorCamera()
         {
-            var camSimObj = SimObject.NewSimObject();
+            var camSimObj = SimObject.NewSimObject("Editor Camera");
             camSimObj.CreateEntity(world);
             CameraSerialized camSerialized = new CameraSerialized() {
                 speed = 2.5f,
@@ -97,7 +97,7 @@ namespace SimulationSystem.Systems
         //Directional light entity
         public void CreateDirectionalLight()
         {
-            var dirLightSimObj = SimObject.NewSimObject();
+            var dirLightSimObj = SimObject.NewSimObject("Directional Light");
             dirLightSimObj.CreateEntity(world);
             DirectionalLightSerialized dirLightSerialized = new DirectionalLightSerialized();
             dirLightSerialized.ambient = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
@@ -121,7 +121,7 @@ namespace SimulationSystem.Systems
             SimObject[] lambSimObj = new SimObject[4];
             for (int i = 0; i < 4; i++)
             {
-                lambSimObj[i] = SimObject.NewSimObject();
+                lambSimObj[i] = SimObject.NewSimObject("Lamb " + i.ToString());
                 lambSimObj[i].CreateEntity(world);
                 lambSimObj[i].InjectAllSerializedComponents(world);
                 lambSimObj[i].entity.GetComponent<TransformComp>().transform = lambTransforms[i];
@@ -166,7 +166,7 @@ namespace SimulationSystem.Systems
 
         public void CreateBasicCube()
         {
-            var basicCubeObj = SimObject.NewSimObject();
+            var basicCubeObj = SimObject.NewSimObject("Cube");
             basicCubeObj.CreateEntity(world);
             basicCubeObj.InjectAllSerializedComponents(world);
 
@@ -206,7 +206,7 @@ namespace SimulationSystem.Systems
 
         public void CreateBasicCube2()
         {
-            var basicCubeObj = SimObject.NewSimObject();
+            var basicCubeObj = SimObject.NewSimObject("Cube");
             basicCubeObj.CreateEntity(world);
             basicCubeObj.InjectAllSerializedComponents(world);
 
@@ -481,7 +481,7 @@ namespace SimulationSystem.Systems
 
         public void CreateFPSDisplayer()
         {
-            var simObj = SimObject.NewSimObject();
+            var simObj = SimObject.NewSimObject("FPS Displayer");
             simObj.CreateEntity(world);
             simObj.InjectAllSerializedComponents(world);
 
