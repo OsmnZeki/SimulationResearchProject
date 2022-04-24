@@ -22,7 +22,7 @@ namespace SimulationSystem.Systems
 
     public struct OnEditorRefresh : IEvent
     {
-
+        public SimObject refreshedSimObj;
     }
 
     public struct OnEditorFunction : IEvent
@@ -60,14 +60,8 @@ namespace SimulationSystem.Systems
 
             if (eventManager.ListenEvent<OnEditorRefresh>(out var changeData))
             {
-                var allSimObj = SimObject.FindObjectsOfType<TransformSerialized>();
-
-                foreach(var simObj in allSimObj)
-                {
-                    simObj.RemoveAllComponents();
-                    simObj.InjectAllSerializedComponents(world);
-                }
-                return;
+                changeData.refreshedSimObj.RemoveAllComponents();
+                changeData.refreshedSimObj.InjectAllSerializedComponents(world);
             }
         }
     }
