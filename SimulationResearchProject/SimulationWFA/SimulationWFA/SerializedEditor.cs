@@ -92,7 +92,8 @@ namespace SimulationWFA
 
             List<Control> vec3Controls = new List<Control>();
             List<Control> meshControls = new List<Control>();
-            PrepareSerializedCompName(simButton.componentPanel, serializedCompItem, vec3Controls, meshControls);
+            List<Control> singleControls = new List<Control>();
+            PrepareSerializedCompName(simButton.componentPanel, serializedCompItem, vec3Controls, meshControls, singleControls);
 
             foreach (var field in fields)
             {
@@ -100,7 +101,7 @@ namespace SimulationWFA
                 {
                     case "Vector3":
                         {
-                            PrepareVector3Case(field, idx, serializedCompItem, simButton, vec3Controls, meshControls);
+                            PrepareVector3Case(field, idx, serializedCompItem, simButton, vec3Controls);
                             break;
                         }
                     case "Mesh":
@@ -113,6 +114,9 @@ namespace SimulationWFA
                             PrepareMaterialCase(simButton, serializedCompItem, vec3Controls, meshControls);
                             break;
                         }
+                    case "Single":
+                        PrepareFloatCase(simButton.componentPanel, serializedCompItem, field, singleControls);
+                        break;
 
                     default:
                         break;
@@ -125,7 +129,35 @@ namespace SimulationWFA
 
         }
 
-        private void PrepareSerializedCompName(ComponentPanel componentPanel, SerializedComponent serializedCompItem, List<Control> vec3Controls, List<Control> meshControls)
+        private void PrepareFloatCase(ComponentPanel componentPanel, SerializedComponent serializedCompItem, FieldInfo field, List<Control> floatControls)
+        {
+            Label label = new Label();
+            label.Location = new Point(0, componentPanel.TotalInspectorPanelHeight);
+            label.Size = new Size(90, 20);
+            label.Text = field.Name;
+            label.BackColor = Color.AliceBlue;
+            label.BringToFront();
+            floatControls.Add(label);
+            componentPanel.Controls.Add(label);
+
+            object o = field.GetValue(serializedCompItem);
+
+            SimTextBox simTextBox = new SimTextBox();
+            simTextBox.Location = new Point(label.Size.Width , componentPanel.TotalInspectorPanelHeight);
+            simTextBox.Text = o.ToString();
+            simTextBox.BackColor = Color.Yellow;
+            simTextBox.Size = new Size(30,20);
+            simTextBox.textId = 0;
+            simTextBox.serializedItem = serializedCompItem;
+            simTextBox.TextChanged += simulationProject_TextChanged;
+            simTextBox.BringToFront();
+            floatControls.Add(simTextBox);
+            componentPanel.Controls.Add(simTextBox);
+
+            componentPanel.TotalInspectorPanelHeight += label.Size.Height;
+        }
+
+        private void PrepareSerializedCompName(ComponentPanel componentPanel, SerializedComponent serializedCompItem, List<Control> vec3Controls, List<Control> meshControls, List<Control> floatControls)
         {
             SimTextBox serializedText = new SimTextBox();
             serializedText.Location = new Point(0, componentPanel.TotalInspectorPanelHeight);
@@ -142,7 +174,9 @@ namespace SimulationWFA
                 case "Mesh Serialized":
                     meshControls.Add(serializedText);
                     break;
-
+                case "Camera Serialized":
+                    floatControls.Add(serializedText);
+                        break;
                 default:
                     break;
             }
@@ -182,7 +216,7 @@ namespace SimulationWFA
             removeComponentButton.Size = new Size(110, 20);
             removeComponentButton.Text = "RemoveComponent";
             removeComponentButton.BackColor = Color.White;
-            removeComponentButton.Click += (sender, e) => removeComponentButton_Click(sender, e, simButton, serializedCompItem, vec3Controls, meshControls);  //new System.EventHandler(removeComponentButton_Click);
+            removeComponentButton.Click += (sender, e) => removeComponentButton_Click(sender, e, simButton, serializedCompItem, meshControls);  //new System.EventHandler(removeComponentButton_Click);
             removeComponentButton.BringToFront();
             simButton.componentPanel.Controls.Add(removeComponentButton);
             simButton.componentPanel.TotalInspectorPanelHeight += 20;
@@ -218,7 +252,7 @@ namespace SimulationWFA
             componentPanel.TotalInspectorPanelHeight += meshRendLabels.Height;
         }
 
-        private void PrepareVector3Case(FieldInfo field, int idx, SerializedComponent serializedCompItem, HierarchySimButton simButton, List<Control> vec3Controls, List<Control> meshControls)
+        private void PrepareVector3Case(FieldInfo field, int idx, SerializedComponent serializedCompItem, HierarchySimButton simButton, List<Control> vec3Controls)
         {
             ResetButton[] resButton = new ResetButton[3];
             Label[] fieldName = new Label[3];
@@ -277,14 +311,14 @@ namespace SimulationWFA
                 removeComponentButton.Size = new Size(110, 20);
                 removeComponentButton.Text = "RemoveComponent";
                 removeComponentButton.BackColor = Color.White;
-                removeComponentButton.Click += (sender, e) => removeComponentButton_Click(sender, e, simButton, serializedCompItem, vec3Controls, meshControls);  //new System.EventHandler(removeComponentButton_Click);
+                removeComponentButton.Click += (sender, e) => removeComponentButton_Click(sender, e, simButton, serializedCompItem, vec3Controls);  //new System.EventHandler(removeComponentButton_Click);
                 removeComponentButton.BringToFront();
                 simButton.componentPanel.Controls.Add(removeComponentButton);
                 simButton.componentPanel.TotalInspectorPanelHeight += 20;
             }
         }
 
-        private void removeComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton, SerializedComponent serializedCompItem, List<Control> vec3Controls, List<Control> meshControl)
+        private void removeComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton, SerializedComponent serializedCompItem, List<Control> deletedControl)
         {
             /*
             Type serializedType = SerializedComponentPool.GetSerializedComponent(serializedCompItem.GetName());
@@ -328,13 +362,13 @@ namespace SimulationWFA
 
                     });
 
-                    foreach (var control in vec3Controls)
+                    foreach (var control in deletedControl)
                     {
                         simButton.componentPanel.Controls.Remove(control);
                     }
                     simButton.componentPanel.TotalInspectorPanelHeight -= 120;
                     simButton.componentPanel.Controls.Remove(removeComponentButton);
-                    vec3Controls.Clear();
+                    deletedControl.Clear();
                     break;
                 case "Mesh Serialized":
                     EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
@@ -345,13 +379,13 @@ namespace SimulationWFA
 
                     });
 
-                    foreach (var control in meshControl)
+                    foreach (var control in deletedControl)
                     {
                         simButton.componentPanel.Controls.Remove(control);
                     }
                     simButton.componentPanel.TotalInspectorPanelHeight -= 100;
                     simButton.componentPanel.Controls.Remove(removeComponentButton);
-                    meshControl.Clear();
+                    deletedControl.Clear();
 
                     break;
                 default:
