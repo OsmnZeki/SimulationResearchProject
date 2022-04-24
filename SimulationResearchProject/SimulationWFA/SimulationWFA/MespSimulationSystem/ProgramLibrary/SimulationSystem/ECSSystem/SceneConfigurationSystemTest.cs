@@ -22,6 +22,9 @@ namespace SimulationSystem.Systems
         ModelPaths modelReferences = null;
         TextureReferences textureRef = null;
 
+        public delegate void SceneIsReadyDelegate();
+        public static event SceneIsReadyDelegate SceneIsReadyEvent;
+
         public override void Awake()
         {
             CreateEditorCamera();
@@ -54,6 +57,12 @@ namespace SimulationSystem.Systems
 
 
            // CreateGrass();
+
+            if(SceneIsReadyEvent != null)
+            {
+                SceneIsReadyEvent();
+            }
+
         }
 
         //Camera entity

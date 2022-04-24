@@ -130,21 +130,21 @@ namespace SimulationSystem
             return parentObject.child.ToArray();
         }
 
-        private static void SearchDFS<T>(SimObject simObject,List<SimObject> simObjList)
+        private static void SearchDFS<T>(SimObject rootSimObj,List<SimObject> simObjList)
         {
-            if (simObject != SimObject.Hiearchy)
+            if (rootSimObj != SimObject.Hiearchy)
             {
-                foreach (var item in simObject.objectData.GetSerializedComponents())
+                foreach (var item in rootSimObj.objectData.GetSerializedComponents())
                 {
                     if (item.GetType() == typeof(T))
                     {
-                        simObjList.Add(simObject);
+                        simObjList.Add(rootSimObj);
                         break;
                     }
                 }
             }
 
-            foreach (var child in simObject.child)
+            foreach (var child in rootSimObj.child)
             {
                 SearchDFS<T>(child,simObjList);
             }

@@ -13,6 +13,7 @@ namespace SimulationSystem
         WindowEcsManager windowEcsManager;
         bool paused;
 
+
         public void CreateEditorWindow()
         {
             Screen screen = new Screen();
