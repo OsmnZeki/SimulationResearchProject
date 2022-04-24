@@ -50,7 +50,7 @@ namespace SimulationSystem.Systems
 
            if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))
             {
-                addCompData.simObject.AddNewSerializedComponent(world, addCompData.serializedComponent);
+                addCompData.simObject.AddNewSerializedComponent(addCompData.serializedComponent);
             }
 
             if (eventManager.ListenEvent<OnEditorFunction>(out var functionData))

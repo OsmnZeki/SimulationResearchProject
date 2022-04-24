@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using ECSEntegration.SerializedComponent;
 using PhysicLibrary;
 using ProgramLibrary;
 using RenderLibrary.Animations;
@@ -86,8 +87,8 @@ namespace SimulationSystem.Systems
 
             };
 
-            camSimObj.AddNewSerializedComponent(world, camSerialized);
-            camSimObj.AddNewSerializedComponent(world, spotLightSerialized);
+            camSimObj.AddNewSerializedComponent(camSerialized);
+            camSimObj.AddNewSerializedComponent(spotLightSerialized);
             camSimObj.InjectAllSerializedComponents(world);
         }
 
@@ -96,11 +97,13 @@ namespace SimulationSystem.Systems
         {
             var dirLightSimObj = SimObject.NewSimObject("Directional Light");
             dirLightSimObj.CreateEntity(world);
+
             DirectionalLightSerialized dirLightSerialized = new DirectionalLightSerialized();
             dirLightSerialized.ambient = new Vector4(0.1f, 0.1f, 0.1f, 1.0f);
             dirLightSerialized.diffuse = new Vector4(0.4f, 0.4f, 0.4f, 1.0f);
             dirLightSerialized.specular = new Vector4(0.75f, 0.75f, 0.75f, 1.0f);
-            dirLightSimObj.AddNewSerializedComponent(world, dirLightSerialized);
+
+            dirLightSimObj.AddNewSerializedComponent(dirLightSerialized);
             dirLightSimObj.InjectAllSerializedComponents(world);
         }
 
@@ -120,19 +123,23 @@ namespace SimulationSystem.Systems
             {
                 lambSimObj[i] = SimObject.NewSimObject("Lamb " + i.ToString());
                 lambSimObj[i].CreateEntity(world);
-                lambSimObj[i].InjectAllSerializedComponents(world);
-                lambSimObj[i].entity.GetComponent<TransformComp>().transform = lambTransforms[i];
-                lambSimObj[i].entity.AddComponent<PointLightComp>() = new PointLightComp {
-                    pointLight = new Lights.PointLight {
-                        ambient = new Vector4(0.05f, 0.05f, 0.05f, 1.0f),
-                        diffuse = new Vector4(0.8f, 0.8f, 0.8f, 1.0f),
-                        specular = new Vector4(1.0f),
-                    }
+
+                PointLightSerialized pointLightSerialized = new PointLightSerialized() {
+                    ambient = new Vector4(0.05f, 0.05f, 0.05f, 1.0f),
+                    diffuse = new Vector4(0.8f, 0.8f, 0.8f, 1.0f),
+                    specular = new Vector4(1.0f),
                 };
-                lambSimObj[i].entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+
+                MeshRendererSerialized meshRendererSerialized = new MeshRendererSerialized() {
                     material = AssetUtils.LoadFromAsset<Material>("lambMaterial.mat"),
                     mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
                 };
+
+                lambSimObj[i].AddNewSerializedComponent(pointLightSerialized);
+                lambSimObj[i].AddNewSerializedComponent(meshRendererSerialized);
+                lambSimObj[i].InjectAllSerializedComponents(world);
+
+                lambSimObj[i].entity.GetComponent<TransformComp>().transform = lambTransforms[i];
             }
         }
 
@@ -165,74 +172,59 @@ namespace SimulationSystem.Systems
         {
             var basicCubeObj = SimObject.NewSimObject("Cube");
             basicCubeObj.CreateEntity(world);
+            
+            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
+            cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
+
+            MeshRendererSerialized meshRendererSerialized = new MeshRendererSerialized() {
+                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
+                material = cubeMaterial,
+            };
+
+            ParticleSerialized particleSerialized = new ParticleSerialized() {
+                useGravity = true,
+                mass = 1f,
+                drag = 0.05f,
+            };
+
+            BoxColliderSerialized boxColliderSerialized = new BoxColliderSerialized() {
+                
+                size = basicCubeObj.GetSerializedComponent<TransformSerialized>().scale,
+            };
+
+            basicCubeObj.AddNewSerializedComponent(meshRendererSerialized);
+            basicCubeObj.AddNewSerializedComponent(particleSerialized);
+            basicCubeObj.AddNewSerializedComponent(boxColliderSerialized);
             basicCubeObj.InjectAllSerializedComponents(world);
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
             transformComp.transform.position = new Vector3(9.5f, 10, 0);
-
-            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
-            cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
-
-            basicCubeObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
-                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
-                material = cubeMaterial,
-            };
-
-            Particle rg = new Particle();
-            rg.SetMass(1f);
-            rg.useGravity = true;
-            rg.drag = 0.05f;
-
-            basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
-                particle = rg,
-            };
-
-            /*SphereCollider sphereCollider = new SphereCollider();
-            (sphereCollider.bound as SphereBounds).radius = .5f;*/
-
-            BoxCollider boxCollider = new BoxCollider();
-            (boxCollider.bound as BoxBounds).Size = transformComp.transform.scale;
-
-            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
-                collider = boxCollider,
-            };
-
-            basicCubeObj.entity.AddComponent<CanMoveTestTag>();
         }
 
         public void CreateBasicCube2()
         {
             var basicCubeObj = SimObject.NewSimObject("Cube");
             basicCubeObj.CreateEntity(world);
+
+            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
+            cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
+
+            BoxColliderSerialized boxColliderSerialized = new BoxColliderSerialized() {
+
+                size = basicCubeObj.GetSerializedComponent<TransformSerialized>().scale,
+            };
+
+            TriggerSerialized triggerSerialized = new TriggerSerialized();
+
+            basicCubeObj.AddNewSerializedComponent(boxColliderSerialized);
+            basicCubeObj.AddNewSerializedComponent(triggerSerialized);
             basicCubeObj.InjectAllSerializedComponents(world);
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
             transformComp.transform.position = new Vector3(10, 0, 4);
 
-
-            /*Particle rg = new Particle();
-            rg.SetMass(1f,true);
-            rg.velocity = Vector3.Zero;
-            rg.useGravity = false;
-
-            basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
-                particle = rg,
-            };*/
-
-            BoxCollider boxCollider = new BoxCollider();
-            (boxCollider.bound as BoxBounds).Size = transformComp.transform.scale;
-
-            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
-                collider = boxCollider,
-            };
-
-            basicCubeObj.entity.AddComponent<TriggerComp>() = new TriggerComp() {
-
-                collidedEntityList = new System.Collections.Generic.List<Dalak.Ecs.Entity>(),
-                collidedThisFrame = new System.Collections.Generic.List<Dalak.Ecs.Entity>(),
-            };
         }
 
         public void CreateBasicCube3()
@@ -422,25 +414,24 @@ namespace SimulationSystem.Systems
         {
             var planeSimObj = SimObject.NewSimObject("Plane");
             planeSimObj.CreateEntity(world);
-            planeSimObj.InjectAllSerializedComponents(world);
 
-            ref var transform = ref planeSimObj.entity.GetComponent<TransformComp>().transform;
-            transform.position = new Vector3(10, 0f, 0);
-            transform.scale = new Vector3(10, .1f, 10); ;
-
-            planeSimObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+            MeshRendererSerialized meshRendererSerialized = new MeshRendererSerialized() {
                 material = AssetUtils.LoadFromAsset<LitMaterial>("groundMaterial.mat"),
                 mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
             };
 
-           // planeSimObj.entity.AddComponent<OutlineBorderRenderComp>();
+            var transfromSerialized = planeSimObj.GetSerializedComponent<TransformSerialized>();
+            transfromSerialized.pos = new Vector3(10, 0f, 0);
+            transfromSerialized.scale = new Vector3(10, .1f, 10);
 
-            BoxCollider boxCollider = new BoxCollider();
-            (boxCollider.bound as BoxBounds).Size = transform.scale;
 
-            planeSimObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
-                collider = boxCollider,
+            BoxColliderSerialized boxColliderSerialized = new BoxColliderSerialized() {
+                size = planeSimObj.GetSerializedComponent<TransformSerialized>().scale,
             };
+
+            planeSimObj.AddNewSerializedComponent(meshRendererSerialized);
+            planeSimObj.AddNewSerializedComponent(boxColliderSerialized);
+            planeSimObj.InjectAllSerializedComponents(world);
         }
 
         public void CreateGrass()
@@ -480,16 +471,19 @@ namespace SimulationSystem.Systems
         {
             var simObj = SimObject.NewSimObject("FPS Displayer");
             simObj.CreateEntity(world);
-            simObj.InjectAllSerializedComponents(world);
 
-            simObj.entity.AddComponent<TextRendererComp>() = new TextRendererComp {
+            TextRendererSerialized textRendererSerialized = new TextRendererSerialized() {
                 color = new Vector3(1, 1, 1),
                 UIPosition = new Vector2(0, 500),
                 scale = 30,
                 text = "FPS: ",
             };
 
+            simObj.AddNewSerializedComponent(textRendererSerialized);
+
             simObj.entity.AddComponent<FPSDisplayerComp>();
+            simObj.InjectAllSerializedComponents(world);
+
         }
     }
 }

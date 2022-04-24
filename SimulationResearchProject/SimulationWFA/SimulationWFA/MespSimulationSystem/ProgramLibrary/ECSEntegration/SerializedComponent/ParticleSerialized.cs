@@ -15,6 +15,8 @@ namespace ECSEntegration.SerializedComponent
         public Vector3 velocity;
         public float mass;
 
+        public float drag;
+
         public bool useGravity;
 
         public override void AddComponent(Entity entity, World world)
@@ -23,6 +25,7 @@ namespace ECSEntegration.SerializedComponent
             rb.velocity = velocity;
             rb.SetMass(mass);
             rb.useGravity = useGravity;
+            rb.drag = drag;
 
             entity.AddComponent<ParticleComp>() = new ParticleComp {
                 particle = rb,

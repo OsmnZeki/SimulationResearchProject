@@ -111,6 +111,8 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\ParticleSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\SpotLightSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TestSystemSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TextRendererSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TriggerSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\MespEventManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />

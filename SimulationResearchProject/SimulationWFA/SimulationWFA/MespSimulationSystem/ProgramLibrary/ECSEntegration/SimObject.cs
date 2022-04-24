@@ -80,9 +80,19 @@ namespace SimulationSystem
             newParent.child.Add(this);
         }
 
-        public void AddNewSerializedComponent(World world, SerializedComponent serializedComponent)
+        public void AddNewSerializedComponent(SerializedComponent serializedComponent)
         {
             objectData.AddSerializedComponent(serializedComponent);
+        }
+
+        public T GetSerializedComponent<T>() where T : SerializedComponent
+        {
+            foreach (var comp in objectData.GetSerializedComponents())
+            {
+                if (comp.GetType() == typeof(T)) return comp as T;
+            }
+
+            return null;
         }
 
         public void InjectAllSerializedComponents(World world)
