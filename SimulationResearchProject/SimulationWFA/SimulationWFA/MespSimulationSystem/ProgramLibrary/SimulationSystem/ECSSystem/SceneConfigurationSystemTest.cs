@@ -76,22 +76,19 @@ namespace SimulationSystem.Systems
                 near = 0.1f,
                 far = 100f,
             };
-            camSimObj.AddNewSerializedComponent(world, camSerialized);
-            camSimObj.InjectAllSerializedComponents(world);
-            camSimObj.entity.AddComponent<SpotLightComp>() = new SpotLightComp() {
-                spotLight = new Lights.SpotLight() {
-                    cutOff = 5f,
-                    outerCutOff = 10f,
-                    ambient = new Vector4(0.0f, 0.0f, 0.0f, 1.0f),
-                    diffuse = Vector4.One,
-                    specular = Vector4.One,
-                },
+
+            SpotLightSerialized spotLightSerialized = new SpotLightSerialized() {
+                cutOff = 5f,
+                outerCutOff = 10f,
+                ambient = new Vector4(0.0f, 0.0f, 0.0f, 1.0f),
+                diffuse = Vector4.One,
+                specular = Vector4.One,
+
             };
 
-            ref var transformComp = ref camSimObj.entity.GetComponent<TransformComp>();
-            transformComp.transform.scale = Vector3.One;
-            transformComp.transform.position = new Vector3(10, 0, -5);
-            transformComp.transform.rotation = new Vector3(0, 90, 0);
+            camSimObj.AddNewSerializedComponent(world, camSerialized);
+            camSimObj.AddNewSerializedComponent(world, spotLightSerialized);
+            camSimObj.InjectAllSerializedComponents(world);
         }
 
         //Directional light entity
