@@ -478,10 +478,9 @@ namespace SimulationSystem.Systems
                 scale = 30,
                 text = "FPS: ",
             };
-
+            simObj.AddNewSerializedComponent(new FPSDisplaySerialized());
             simObj.AddNewSerializedComponent(textRendererSerialized);
 
-            simObj.entity.AddComponent<FPSDisplayerComp>();
             simObj.InjectAllSerializedComponents(world);
 
         }
