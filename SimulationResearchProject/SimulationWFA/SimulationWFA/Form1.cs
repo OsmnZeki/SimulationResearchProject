@@ -48,7 +48,6 @@ namespace SimulationWFA
             foreach (var simObject in simObjects)
             {
                 HierarchySimButton hierarchyButton = new HierarchySimButton();
-                EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
                 hierarchyButton.Location = new Point(10, 30 + hierarchyHeight);
                 hierarchyButton.Name = "hierarchyButton";
                 hierarchyButton.Size = new System.Drawing.Size(75, 23);
