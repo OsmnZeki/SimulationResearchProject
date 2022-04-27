@@ -80,9 +80,19 @@ namespace SimulationSystem
             newParent.child.Add(this);
         }
 
-        public void AddNewSerializedComponent(World world, SerializedComponent serializedComponent)
+        public void AddNewSerializedComponent(SerializedComponent serializedComponent)
         {
             objectData.AddSerializedComponent(serializedComponent);
+        }
+
+        public T GetSerializedComponent<T>() where T : SerializedComponent
+        {
+            foreach (var comp in objectData.GetSerializedComponents())
+            {
+                if (comp.GetType() == typeof(T)) return comp as T;
+            }
+
+            return null;
         }
 
         public void InjectAllSerializedComponents(World world)
@@ -130,21 +140,21 @@ namespace SimulationSystem
             return parentObject.child.ToArray();
         }
 
-        private static void SearchDFS<T>(SimObject simObject,List<SimObject> simObjList)
+        private static void SearchDFS<T>(SimObject rootSimObj,List<SimObject> simObjList)
         {
-            if (simObject != SimObject.Hiearchy)
+            if (rootSimObj != SimObject.Hiearchy)
             {
-                foreach (var item in simObject.objectData.GetSerializedComponents())
+                foreach (var item in rootSimObj.objectData.GetSerializedComponents())
                 {
                     if (item.GetType() == typeof(T))
                     {
-                        simObjList.Add(simObject);
+                        simObjList.Add(rootSimObj);
                         break;
                     }
                 }
             }
 
-            foreach (var child in simObject.child)
+            foreach (var child in rootSimObj.child)
             {
                 SearchDFS<T>(child,simObjList);
             }

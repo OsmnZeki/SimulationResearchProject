@@ -29,9 +29,43 @@ namespace SimulationWFA
             hierarchyHeight = 0;
             InitializeComponent();
             ShowProjectFiles();
+            SceneConfigurationSystemTest.SceneIsReadyEvent += InvokeHierarchy;
             Task.Run(() => RunEditorWindow());
+
+        }
+        
+        public void InvokeHierarchy()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate { CreateHierarchyPanel(); }));
+            } 
         }
 
+        public void CreateHierarchyPanel()
+        {
+            SimObject[] simObjects = SimObject.GetChildren(SimObject.Hiearchy);
+            foreach (var simObject in simObjects)
+            {
+                HierarchySimButton hierarchyButton = new HierarchySimButton();
+                hierarchyButton.Location = new Point(10, 30 + hierarchyHeight);
+                hierarchyButton.Name = "hierarchyButton";
+                hierarchyButton.Size = new System.Drawing.Size(75, 23);
+                hierarchyButton.Text = simObject.objectData.name;
+                hierarchyButton.BackColor = Color.White;
+                hierarchyButton.simObject = simObject;
+                hierarchyButton.id = hierarchyHeight / 30;
+                hierarchyButton.componentPanel.Location = new Point(5, 30);
+                hierarchyButton.componentPanel.Name = "ComponentPanel";
+                hierarchyButton.componentPanel.Size = new System.Drawing.Size(180, 400);
+                hierarchyButton.componentPanel.BackColor = Color.AliceBlue;
+                hierarchyButton.componentPanel.AutoScroll = true;
+                hierarchyButton.BringToFront();
+                hierarchyButton.Click += (sender2, e2) => hierarchyButton_Click(sender2, e2, hierarchyButton.id); //new System.EventHandler(hierarchyButton_Click);
+                hieararchyPanel.Controls.Add(hierarchyButton);
+                hierarchyHeight += 30;
+            }
+        }
         private void ShowProjectFiles() //program açıldığı anda projectste istenilen path içindeki dosyaları gosterir.
         {
             Cursor.Current = Cursors.WaitCursor;
