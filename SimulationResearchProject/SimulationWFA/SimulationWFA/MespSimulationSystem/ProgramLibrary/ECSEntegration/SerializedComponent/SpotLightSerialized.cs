@@ -32,7 +32,7 @@ namespace TheSimulation.SerializedComponent
 
         public override string GetName()
         {
-            return "Spot Light Comp";
+            return "Spot Light Serialized";
         }
     }
 }

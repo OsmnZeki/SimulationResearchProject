@@ -14,11 +14,11 @@ using TheSimulation.SerializedComponent;
 
 namespace SimulationWFA.SerializedEditorClasses
 {
-    public class TransformSerializedEditor : SerializedEditorAbstract
+    public class DirectionalLightSerializedEditor : SerializedEditorAbstract
     {
-        public TransformSerializedEditor(HierarchySimButton hierarchySimButton, Panel inspectorPanel)
+        public DirectionalLightSerializedEditor(HierarchySimButton hierarchySimButton, Panel inspectorPanel)
         {
-            name = "Transform Serialized";
+            name = "Directional Light Serialized";
             size = new Vector2(30, 20);
             point = new Vector2(50, 20);
             simButton = hierarchySimButton;
@@ -26,10 +26,8 @@ namespace SimulationWFA.SerializedEditorClasses
             removeComponentButton = new RemoveComponentButton();
             panel = inspectorPanel;
         }
-
         public override void SetComponentInPanel(SerializedComponent serializedCompItem)
         {
-
             SimTextBox serializedText = new SimTextBox();
             serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
             serializedText.Text = name;
@@ -40,20 +38,21 @@ namespace SimulationWFA.SerializedEditorClasses
             simButton.componentPanel.TotalInspectorPanelHeight += serializedText.Size.Height;
             controls.Add(serializedText);
 
-            ResetButton[] resButton = new ResetButton[3];
+            ResetButton[] resButton = new ResetButton[4];
 
-            Label[] fieldName = new Label[3];
-            string[] vecValues = new string[3];
+            Label[] fieldName = new Label[4];
+            string[] vecValues = new string[4];
             var type = serializedCompItem.GetType();
             FieldInfo[] field = type.GetFields();
 
             for (int idx = 0; idx < 3; idx++)
             {
-                SimTextBox[] serializedFieldTexs = new SimTextBox[3];
-                Vector3 fieldValue = (Vector3)field[idx].GetValue(serializedCompItem);
+                SimTextBox[] serializedFieldTexs = new SimTextBox[4];
+                Vector4 fieldValue = (Vector4)field[idx].GetValue(serializedCompItem);
                 vecValues[0] = fieldValue.X.ToString();
                 vecValues[1] = fieldValue.Y.ToString();
                 vecValues[2] = fieldValue.Z.ToString();
+                vecValues[3] = fieldValue.W.ToString();
 
                 fieldName[idx] = new Label();
                 fieldName[idx].Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
@@ -65,7 +64,7 @@ namespace SimulationWFA.SerializedEditorClasses
                 controls.Add(fieldName[idx]);
 
                 resButton[idx] = new ResetButton();
-                resButton[idx].Location = new Point((int)point.X * 2 + fieldName[idx].Size.Width, simButton.componentPanel.TotalInspectorPanelHeight);
+                resButton[idx].Location = new Point((int)point.X * 3 + fieldName[idx].Size.Width, simButton.componentPanel.TotalInspectorPanelHeight);
                 resButton[idx].Size = new Size((int)point.X, (int)point.Y);
                 resButton[idx].Text = "Reset";
                 resButton[idx].BackColor = Color.White;
@@ -77,7 +76,7 @@ namespace SimulationWFA.SerializedEditorClasses
                 simButton.componentPanel.Controls.Add(resButton[idx]);
                 controls.Add(resButton[idx]);
 
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     serializedFieldTexs[i] = new SimTextBox();
                     serializedFieldTexs[i].Location = new Point((i * 30 + fieldName[idx].Size.Width), simButton.componentPanel.TotalInspectorPanelHeight);
@@ -100,8 +99,6 @@ namespace SimulationWFA.SerializedEditorClasses
                     RemoveComponentButton();
                 }
             }
-
-            panel.Controls.Add(simButton.componentPanel);
         }
 
         private void simulationProject_TextChanged(object sender, EventArgs e)
@@ -125,9 +122,9 @@ namespace SimulationWFA.SerializedEditorClasses
             });
         }
 
-        private Vector3 InitializeItemVector(int textId, string text, dynamic obj)
+        private Vector4 InitializeItemVector(int textId, string text, dynamic obj)
         {
-            Vector3 itemVec = new Vector3(obj.X, obj.Y, obj.Z);
+            Vector4 itemVec = new Vector4(obj.X, obj.Y, obj.Z, obj.W);
             int result = 0;
             switch (textId)
             {
@@ -140,6 +137,9 @@ namespace SimulationWFA.SerializedEditorClasses
                 case 2:
                     itemVec.Z = Int32.TryParse(text, out result) ? result : 0;
                     break;
+                case 3:
+                    itemVec.W = Int32.TryParse(text, out result) ? result : 0;
+                    break;
                 default:
                     break;
             }
@@ -151,7 +151,7 @@ namespace SimulationWFA.SerializedEditorClasses
         {
             ResetButton resetButton = sender as ResetButton;
             string text = "0";
-            if (resetButton.fieldId == 1)
+            if (resetButton.fieldId == 1) //    VECTOR 4 İÇİN DÜZENLE
             {
                 text = "1";
             }
@@ -166,7 +166,7 @@ namespace SimulationWFA.SerializedEditorClasses
         {
             var type = item.GetType();
             var fields = type.GetFields();
-            fields[fieldId].SetValue(item, new Vector3(value, value, value));
+            fields[fieldId].SetValue(item, new Vector4(value, value, value, value));
         }
 
         public override void RemoveComponentButton()
@@ -186,11 +186,11 @@ namespace SimulationWFA.SerializedEditorClasses
         {
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {
-                    simButton.simObject.entity.RemoveComponent<TransformComp>();
-                    simButton.simObject.objectData.RemoveSerializedComp(typeof(TransformSerialized));
+                    simButton.simObject.entity.RemoveComponent<DirectionalLightComp>();
+                    simButton.simObject.objectData.RemoveSerializedComp(typeof(DirectionalLightSerialized));
                 }
             });
-            
+
             foreach (var control in controls)
             {
                 simButton.componentPanel.Controls.Remove(control);

@@ -235,7 +235,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\BoxColliderSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\CameraSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\DirectionalLightSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\MeshRendererSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\PointLightSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\SerializedEditorAbstract.cs" />
+    <Compile Include="SerializedEditorClasses\SpotLightSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\TransformSerializedEditor.cs" />
     <Compile Include="SimTextBox.cs">
       <SubType>Component</SubType>

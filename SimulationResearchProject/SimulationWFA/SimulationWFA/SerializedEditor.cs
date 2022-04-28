@@ -65,54 +65,93 @@ namespace SimulationWFA
 
         public void SetSerializedItemOnEditor(SerializedComponent serializedCompItem, HierarchySimButton simButton, Panel inspectorPanel, int totalCompLenght)
         {
-            int idx = 0;
-            var type = serializedCompItem.GetType();
-            FieldInfo[] fields = type.GetFields();
+            //int idx = 0;
+            //var type = serializedCompItem.GetType();
+            //FieldInfo[] fields = type.GetFields();
 
-            List<Control> vec3Controls = new List<Control>();
-            List<Control> vec4Controls = new List<Control>();
-            List<Control> meshControls = new List<Control>();
-            List<Control> singleCamControls = new List<Control>();
-            List<Control> singleControls = new List<Control>();
-            List<Control> singleTextControls = new List<Control>();
-            PrepareSerializedCompName(simButton, serializedCompItem, vec3Controls, meshControls, singleControls, vec4Controls, singleCamControls, singleTextControls);
+            //List<Control> vec3Controls = new List<Control>();
+            //List<Control> vec4Controls = new List<Control>();
+            //List<Control> meshControls = new List<Control>();
+            //List<Control> singleCamControls = new List<Control>();
+            //List<Control> singleControls = new List<Control>();
+            //List<Control> singleTextControls = new List<Control>();
+            // PrepareSerializedCompName(simButton, serializedCompItem, vec3Controls, meshControls, singleControls, vec4Controls, singleCamControls, singleTextControls);
 
             //foreach (var field in fields)
             //{
             string name = serializedCompItem.GetName();
-                switch (serializedCompItem.GetName())
-                {
-                    case "Transform Serialized":
-                        {
-                            TransformSerializedEditor transformSerializedEditor = new TransformSerializedEditor(simButton, inspectorPanel);
-                            transformSerializedEditor.SetComponentInPanel(serializedCompItem);
-                            break;
-                        }
-                    //case "Mesh":
-                    //    {
-                    //        PrepareMeshCase(simButton, serializedCompItem, meshControls);
-                    //        break;
-                    //    }
-                    //case "Material":
-                    //    {
-                    //        PrepareMaterialCase(simButton, serializedCompItem, vec3Controls, meshControls);
-                    //        break;
-                    //    }
-                    //case "Single":
-                    //    {
-                    //        PrepareFloatCase(simButton, serializedCompItem, field, singleControls, singleCamControls, singleTextControls, idx);
-                    //        break;
-                    //    }
-                    //case "Vector4":
-                    //    {
-                    //        PrepareVector4Case(field, idx, serializedCompItem, simButton, vec4Controls);
-                    //        break;
-                    //    }
-
-                    default:
+            switch (serializedCompItem.GetName())
+            {
+                case "Transform Serialized":
+                    {
+                        TransformSerializedEditor transformSerializedEditor = new TransformSerializedEditor(simButton, inspectorPanel);
+                        transformSerializedEditor.SetComponentInPanel(serializedCompItem);
                         break;
-                //}
-                //idx++;
+                    }
+                case "Camera Serialized":
+                    {
+                        CameraSerializedEditor cameraSerialized = new CameraSerializedEditor(simButton, inspectorPanel);
+                        cameraSerialized.SetComponentInPanel(serializedCompItem);
+                        break;
+
+                    }
+                case "Box Collider Serialized":
+                    {
+                        BoxColliderSerializedEditor boxColliderSerialized = new BoxColliderSerializedEditor(simButton, inspectorPanel);
+                        boxColliderSerialized.SetComponentInPanel(serializedCompItem);
+                        break;
+
+                    }
+                case "Directional Light Serialized":
+                    {
+                        DirectionalLightSerializedEditor directionalLightSerializedEditor = new DirectionalLightSerializedEditor(simButton, inspectorPanel);
+                        directionalLightSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+
+                    }
+                case "Mesh Renderer Serialized":
+                    {
+                        MeshRendererSerializedEditor meshRendererSerializedEditor = new MeshRendererSerializedEditor(simButton, inspectorPanel);
+                        meshRendererSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
+                case "Point Light Serialized":
+                    {
+                        PointLightSerializedEditor pointLightSerializedEditor = new PointLightSerializedEditor(simButton, inspectorPanel);
+                        pointLightSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
+                case "Spot Light Serialized":
+                    {
+                        SpotLightSerializedEditor spotLightSerializedEditor = new SpotLightSerializedEditor(simButton, inspectorPanel);
+                        spotLightSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
+                //case "Mesh":
+                //    {
+                //        PrepareMeshCase(simButton, serializedCompItem, meshControls);
+                //        break;
+                //    }
+                //case "Material":
+                //    {
+                //        PrepareMaterialCase(simButton, serializedCompItem, vec3Controls, meshControls);
+                //        break;
+                //    }
+                //case "Single":
+                //    {
+                //        PrepareFloatCase(simButton, serializedCompItem, field, singleControls, singleCamControls, singleTextControls, idx);
+                //        break;
+                //    }
+                //case "Vector4":
+                //    {
+                //        PrepareVector4Case(field, idx, serializedCompItem, simButton, vec4Controls);
+                //        break;
+                //    }
+
+                default:
+                    break;
+                    //}
+                    //idx++;
             }
 
             //simButton.componentPanel.TotalInspectorPanelHeight += 20;
@@ -515,7 +554,7 @@ namespace SimulationWFA
                 case "Directional Light Comp":
                     EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                         editorFunction = () => {
-                            simButton.simObject.entity.RemoveComponent<DirectionalLightComp>(); 
+                            simButton.simObject.entity.RemoveComponent<DirectionalLightComp>();
                             simButton.simObject.objectData.RemoveSerializedComp(typeof(DirectionalLightSerialized));
                         }
 

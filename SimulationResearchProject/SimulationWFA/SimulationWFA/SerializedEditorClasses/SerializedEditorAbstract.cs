@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace SimulationWFA.SerializedEditorClasses
     public abstract class SerializedEditorAbstract
     {
         public string name { get; set; }
+        public Vector2 size;
+        public Vector2 point;
         public List<Control> controls;
         public HierarchySimButton simButton;
         public RemoveComponentButton removeComponentButton;
