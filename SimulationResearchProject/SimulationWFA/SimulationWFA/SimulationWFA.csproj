@@ -235,6 +235,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\SerializedEditorAbstract.cs" />
+    <Compile Include="SerializedEditorClasses\TransformSerializedEditor.cs" />
     <Compile Include="SimTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

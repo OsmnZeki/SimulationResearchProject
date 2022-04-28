@@ -28,7 +28,7 @@ namespace TheSimulation.SerializedComponent
 
         public override string GetName()
         {
-            return "TextRendererSerialized";
+            return "Text Renderer Serialized";
         }
     }
 }
