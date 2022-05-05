@@ -1,0 +1,9 @@
+{
+  "size": {
+    "X": 10.0,
+    "Y": 0.1,
+    "Z": 10.0
+  },
+  "add": true,
+  "type": "TheSimulation.SerializedComponent.BoxColliderSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+}

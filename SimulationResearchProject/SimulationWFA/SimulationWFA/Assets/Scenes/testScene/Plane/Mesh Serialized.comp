@@ -1,0 +1,11 @@
+{
+  "mesh": {},
+  "material": {
+    "shaderType": 0,
+    "materialType": 0,
+    "texture": null,
+    "transparent": false
+  },
+  "add": true,
+  "type": "TheSimulation.SerializedComponent.MeshRendererSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+}

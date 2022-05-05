@@ -17,6 +17,7 @@ namespace ProgramLibrary
         public static string ModelsPath = Path.Combine(GetAssetPath, "Models");
         public static string ShadersPath = Path.Combine(GetAssetPath, "Shaders");
         public static string TexturesPath = Path.Combine(GetAssetPath, "Textures");
+        public static string ScenesPath = Path.Combine(GetAssetPath, "Scenes");
 
         public static string GetAssetPath { 
             get {

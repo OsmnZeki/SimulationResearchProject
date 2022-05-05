@@ -28,7 +28,9 @@ namespace SimulationSystem.Systems
 
         public override void Awake()
         {
-            CreateEditorCamera();
+            SceneManager.LoadScene("testScene",world);
+
+            /*CreateEditorCamera();
 
             CreateDirectionalLight();
 
@@ -57,13 +59,14 @@ namespace SimulationSystem.Systems
            // CreateDirectionArrows();
 
 
-           // CreateGrass();
+           // CreateGrass();*/
 
             if(SceneIsReadyEvent != null)
             {
                 SceneIsReadyEvent();
             }
 
+            //SceneManager.SaveScene("testScene");
         }
 
         //Camera entity

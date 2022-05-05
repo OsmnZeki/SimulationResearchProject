@@ -39,8 +39,6 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new TransformSystem(), GenericSystemGroup);
             //systemManager.AddSystem(new SceneSelectObjectSystem(), GenericSystemGroup);
 
-
-
             //Custom Systems
 
             systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
@@ -49,9 +47,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new RaycastTestSystem(), GenericSystemGroup);
 
             //
-
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
-
 
             //RenderSystems 
             systemManager.AddSystem(new AnimationSystem(), GenericSystemGroup);
@@ -63,7 +59,6 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
             systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
 
-            
             systemManager.AddSystem(new MespEditorDebugSystem(), GenericSystemGroup);
 
             //EventSystems
