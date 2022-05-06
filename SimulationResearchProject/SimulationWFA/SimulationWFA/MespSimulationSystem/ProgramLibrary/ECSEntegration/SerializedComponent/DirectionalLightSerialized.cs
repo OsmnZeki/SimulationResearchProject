@@ -27,7 +27,7 @@ namespace TheSimulation.SerializedComponent
 
         public override string GetName()
         {
-            return "Directional Light Comp";
+            return "Directional Light Serialized";
         }
     }
 }

@@ -20,7 +20,7 @@ namespace TheSimulation.SerializedComponent
 
         public override string GetName()
         {
-            return "BoxColliderSerialized";
+            return "Box Collider Serialized";
         }
     }
 }

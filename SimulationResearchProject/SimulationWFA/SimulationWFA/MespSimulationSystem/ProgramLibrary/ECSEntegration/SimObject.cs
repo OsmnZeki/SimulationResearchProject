@@ -40,13 +40,10 @@ namespace SimulationSystem
 
         public void RemoveSerializedComp(Type t)
         {
-            foreach (var comp in serializedComponentList)
+            for (int i = 0; i < serializedComponentList.Count; i++)
             {
-                if (comp.GetType() == t) serializedComponentList.Remove(comp);
-                if (serializedComponentList.Count == 0)
-                {
-                    break;
-                }
+                if (serializedComponentList[i].GetType() == t) 
+                    serializedComponentList.Remove(serializedComponentList[i]);
             }
         }
     }

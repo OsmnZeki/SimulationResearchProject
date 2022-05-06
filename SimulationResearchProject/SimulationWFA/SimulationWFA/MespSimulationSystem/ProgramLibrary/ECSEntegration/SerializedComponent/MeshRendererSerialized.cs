@@ -27,7 +27,7 @@ namespace TheSimulation.SerializedComponent
 
         public override string GetName()
         {
-            return "Mesh Serialized";
+            return "Mesh Renderer Serialized";
         }
     }
 }

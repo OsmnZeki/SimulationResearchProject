@@ -148,3 +148,6 @@ Hierarchy de çocuk yapma
 Pause Oynat Frame Oynat Buttonu olcak. || 0
 Projects kısmı yerine sahneleri gösterme olcak.||0
 Algoritma seçme.
+Yeni Editor Sisteminde vector float karısık olan compların dizaynını düzelt. Reset ve text change sistemleri bozuk. 
+Editor remove componentten sonra UpdatePanelHeight metodu ile güncelle yeni konumları.
+Meshi olanların mesh componentinde add yerine var olan component yazsın.
