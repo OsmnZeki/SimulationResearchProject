@@ -38,6 +38,11 @@ namespace RenderLibrary.OpenGLCustomFunctions
         {
             RenderProgramDLL.OpenGLBlendFunc((int)sfactor, (int)dfactor);
         }
+
+        public static void GLDepthFunc(OpenGLEnum func)
+        {
+            RenderProgramDLL.OpenGLDepthFunc((int)func);
+        }
     }
 
     public enum OpenGLEnum

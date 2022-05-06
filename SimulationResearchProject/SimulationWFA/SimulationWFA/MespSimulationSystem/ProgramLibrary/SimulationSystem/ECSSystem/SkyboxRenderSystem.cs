@@ -33,7 +33,7 @@ namespace SimulationSystem
         {
             ref var camComp = ref cameraFilter.Get1(0);
 
-            OpenGLFunctions.GLDisable(OpenGLEnum.GL_DEPTH_TEST);
+            OpenGLFunctions.GLDepthFunc(OpenGLEnum.GL_LEQUAL);
 
             Mat4 view =new Mat4();
             view.matrixAdress = RenderProgramDLL.ReturnMat4FromMat4(camComp.view.matrixAdress);
@@ -43,7 +43,7 @@ namespace SimulationSystem
             ShaderPool.skyboxShader.SetMat4("projection", camComp.projection);
 
             skybox.RenderCubemap();
-            OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
+            OpenGLFunctions.GLDepthFunc(OpenGLEnum.GL_LESS);
         }
 
     }

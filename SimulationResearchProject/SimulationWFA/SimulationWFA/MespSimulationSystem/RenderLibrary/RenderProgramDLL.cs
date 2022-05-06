@@ -353,6 +353,9 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLBlendFunc")]
         public static extern void OpenGLBlendFunc(int sfactor, int dfactor);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "OpenGLDepthFunc")]
+        public static extern void OpenGLDepthFunc(int func);
+
         #endregion
 
         #region TextRendererFunctions
