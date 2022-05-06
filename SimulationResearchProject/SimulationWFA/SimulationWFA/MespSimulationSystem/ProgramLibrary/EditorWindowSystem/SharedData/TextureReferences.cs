@@ -22,5 +22,20 @@ namespace SimulationSystem.SharedData
             AssetUtils.CreateAsset(windowTexture, "windowTexture.texture");*/
         }
 
+        public string[] GetSkyboxPaths()
+        {
+            string[] skyboxPath = new string[6] {
+                (SimPath.ImagesPath + "/skybox/right.jpg"),
+                (SimPath.ImagesPath + "/skybox/left.jpg"),
+                (SimPath.ImagesPath + "/skybox/top.jpg"),
+                (SimPath.ImagesPath + "/skybox/bottom.jpg"),
+                (SimPath.ImagesPath + "/skybox/front.jpg"),
+                (SimPath.ImagesPath + "/skybox/back.jpg"),
+                
+            };
+
+            return skyboxPath;
+        }
+
     }
 }

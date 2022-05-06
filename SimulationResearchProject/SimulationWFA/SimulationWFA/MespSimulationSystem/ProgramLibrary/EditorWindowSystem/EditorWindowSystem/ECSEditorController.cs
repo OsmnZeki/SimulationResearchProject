@@ -52,7 +52,7 @@ namespace SimulationSystem.Systems
             //RenderSystems 
             systemManager.AddSystem(new AnimationSystem(), GenericSystemGroup);
             systemManager.AddSystem(new LightSystem(), GenericSystemGroup);
-            
+
             systemManager.AddSystem(new MeshRenderSystem(), GenericSystemGroup);
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
 
@@ -61,6 +61,7 @@ namespace SimulationSystem.Systems
 
             systemManager.AddSystem(new MespEditorDebugSystem(), GenericSystemGroup);
 
+            systemManager.AddSystem(new SkyboxRenderSystem(), GenericSystemGroup);
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
         }

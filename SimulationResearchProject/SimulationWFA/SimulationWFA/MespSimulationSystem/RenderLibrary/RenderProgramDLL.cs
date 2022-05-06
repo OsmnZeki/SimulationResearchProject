@@ -207,6 +207,12 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "ReturnMat4")]
         public static extern IntPtr ReturnMat4(float value);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ReturnMat3")]
+        public static extern IntPtr ReturnMat3(float value);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ReturnMat4FromMat4")]
+        public static extern IntPtr ReturnMat4FromMat4(IntPtr mat4Adress);
+
         #endregion
 
         #region GLMathunctions
@@ -385,6 +391,19 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "LineRendererCleanUp")]
         public static extern void LineRendererCleanUp(IntPtr textRendererAdress);
 
+
+        #endregion
+
+        #region CubemagpFunctions
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "NewCubemap")]
+        public static extern IntPtr NewCubemap();
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "LoadTextureToCubemap")]
+        public static extern void LoadTextureToCubemap(IntPtr cubemapAdress,IntPtr meshAdress, string[] texturePaths);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "RenderCubemap")]
+        public static extern void RenderCubemap(IntPtr cubemapAdress);
 
         #endregion
 

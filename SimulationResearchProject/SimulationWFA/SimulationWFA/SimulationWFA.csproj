@@ -146,6 +146,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\ClearColorTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\ColliderBoundsUpdateSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\CollisionDetectionSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\SkyboxRenderSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorCameraSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorEventListenSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorInfiniteGridSystem.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\DirectionArrowMesh.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\PreparedModels\QuadPlane.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\RenderData\Model.cs" />
+    <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\Rendering\Cubemap.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\TextRenderer.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\OpenGLFunctions\OpenGLFunctions.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Shaders\ShaderPool.cs" />

@@ -13,7 +13,7 @@ namespace RenderLibrary.Shaders
     {
         public enum ShaderType
         {
-            LitShader, UnlitShader, TransTestShader, OutlineBorderShader, InfiniteGridShader, TextRenderShader, LineRenderShader
+            LitShader, UnlitShader, TransTestShader, OutlineBorderShader, InfiniteGridShader, TextRenderShader, LineRenderShader, SkyboxShader
         }
 
         public static Shader litShader = new Shader(SimPath.ShadersPath + "/object.vs", SimPath.ShadersPath + "/lit.fs", ShaderType.LitShader);
@@ -23,8 +23,9 @@ namespace RenderLibrary.Shaders
         public static Shader infiniteGridShader = new Shader(SimPath.ShadersPath + "/InfiniteGridShader/infiniteGrid.vs", SimPath.ShadersPath + "/InfiniteGridShader/infiniteGrid.fs", ShaderType.InfiniteGridShader);
         public static Shader textRenderShader = new Shader(SimPath.ShadersPath + "/TextRenderShader/textRender.vs", SimPath.ShadersPath + "/TextRenderShader/textRender.fs", ShaderType.TextRenderShader);
         public static Shader lineRenderShader = new Shader(SimPath.ShadersPath + "/LineRendererShader/lineShader.vs", SimPath.ShadersPath + "/LineRendererShader/lineShader.fs", ShaderType.LineRenderShader);
+        public static Shader skyboxShader = new Shader(SimPath.ShadersPath + "/skyboxShader/skybox.vs", SimPath.ShadersPath + "/skyboxShader/skybox.fs", ShaderType.SkyboxShader);
 
-        public static Shader[] allShaders = { litShader, unlitShader, transTestShader, outlineBorderShader, infiniteGridShader, lineRenderShader };
+        public static Shader[] allShaders = { litShader, unlitShader, transTestShader, outlineBorderShader, infiniteGridShader, lineRenderShader, skyboxShader };
         public static Shader[] allLitShader = { litShader };
 
         public static Shader GetShaderByType(ShaderType shaderType)
@@ -37,6 +38,7 @@ namespace RenderLibrary.Shaders
                 case ShaderType.OutlineBorderShader: return outlineBorderShader;
                 case ShaderType.InfiniteGridShader: return infiniteGridShader;
                 case ShaderType.LineRenderShader: return lineRenderShader;
+                case ShaderType.SkyboxShader: return skyboxShader;
             }
 
             return null;

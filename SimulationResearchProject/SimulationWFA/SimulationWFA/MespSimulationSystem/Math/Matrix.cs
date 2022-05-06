@@ -16,8 +16,21 @@ namespace MESPSimulationSystem.Math
         {
             matrixAdress = RenderProgramDLL.ReturnMat4(value);
         }
-
-        
     }
-    
+
+    public class Mat3
+    {
+        public IntPtr matrixAdress;
+
+        public Mat3()
+        {
+
+        }
+
+        public Mat3(float value)
+        {
+            matrixAdress = RenderProgramDLL.ReturnMat3(value);
+        }
+    }
+
 }

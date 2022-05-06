@@ -8,6 +8,7 @@ using Dalak.Ecs;
 using Newtonsoft.Json;
 using ProgramLibrary;
 using SimulationSystem;
+using SimulationSystem.Components;
 using SimulationSystem.ECS.Entegration;
 using TheSimulation.SerializedComponent;
 
@@ -58,6 +59,10 @@ namespace SimulationWFA.MespUtils
                 newSimObj.CreateEntity(world);
 
                 var componentPaths = directoryInfo.GetFiles();
+               
+                newSimObj.objectData.RemoveSerializedComp(typeof(TransformSerialized));
+                newSimObj.entity.RemoveComponent<TransformComp>();
+
                 foreach (var componentPath in componentPaths)
                 {
 
