@@ -134,8 +134,8 @@ namespace SimulationSystem.Systems
                 };
 
                 MeshRendererSerialized meshRendererSerialized = new MeshRendererSerialized() {
-                    material = AssetUtils.LoadFromAsset<Material>("lambMaterial.mat"),
-                    mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
+                    materialPath = "lambMaterial.mat",
+                    meshPath = "cube.mesh",
                 };
 
                 lambSimObj[i].AddNewSerializedComponent(pointLightSerialized);
@@ -175,13 +175,10 @@ namespace SimulationSystem.Systems
         {
             var basicCubeObj = SimObject.NewSimObject("Cube");
             basicCubeObj.CreateEntity(world);
-            
-            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
-            cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
 
             MeshRendererSerialized meshRendererSerialized = new MeshRendererSerialized() {
-                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
-                material = cubeMaterial,
+                meshPath = "cube.mesh",
+                materialPath = "lambMaterial.mat",
             };
 
             ParticleSerialized particleSerialized = new ParticleSerialized() {
@@ -203,6 +200,10 @@ namespace SimulationSystem.Systems
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
             transformComp.transform.position = new Vector3(9.5f, 10, 0);
+
+            ref var meshRendererComp = ref basicCubeObj.entity.GetComponent<MeshRendererComp>();
+            var material = (UnlitMaterial) meshRendererComp.material;
+            material.SetColor(new Vector4(1, 0, 0, 1));
         }
 
         public void CreateBasicCube2()
@@ -419,8 +420,8 @@ namespace SimulationSystem.Systems
             planeSimObj.CreateEntity(world);
 
             MeshRendererSerialized meshRendererSerialized = new MeshRendererSerialized() {
-                material = AssetUtils.LoadFromAsset<LitMaterial>("groundMaterial.mat"),
-                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
+                materialPath = "groundMaterial.mat",
+                meshPath = "cube.mesh",
             };
 
             var transfromSerialized = planeSimObj.GetSerializedComponent<TransformSerialized>();
