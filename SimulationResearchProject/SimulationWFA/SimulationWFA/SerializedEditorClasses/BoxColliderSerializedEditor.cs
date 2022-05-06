@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SimulationSystem.Components;
 using SimulationSystem.ECS.Entegration;
+using SimulationSystem.ECSComponents;
 using SimulationSystem.Systems;
 using TheSimulation.SerializedComponent;
 
@@ -44,7 +45,7 @@ namespace SimulationWFA.SerializedEditorClasses
         {
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {
-                    //simButton.simObject.entity.RemoveComponent<BoxColliderSerialized>(); Box comp yok ?
+                    simButton.simObject.entity.RemoveComponent<ColliderComp>(); 
                     simButton.simObject.objectData.RemoveSerializedComp(typeof(BoxColliderSerialized));
                 }
             });

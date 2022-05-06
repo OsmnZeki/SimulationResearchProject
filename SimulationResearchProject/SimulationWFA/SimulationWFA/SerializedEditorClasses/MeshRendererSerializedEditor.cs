@@ -144,7 +144,7 @@ namespace SimulationWFA.SerializedEditorClasses
         {
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {
-                    simButton.simObject.entity.RemoveComponent<MeshRendererComp>(); //TODO: DÜZELT
+                    simButton.simObject.entity.RemoveComponent<MeshRendererComp>();
                     simButton.simObject.objectData.RemoveSerializedComp(typeof(MeshRendererSerialized));
                 }
 

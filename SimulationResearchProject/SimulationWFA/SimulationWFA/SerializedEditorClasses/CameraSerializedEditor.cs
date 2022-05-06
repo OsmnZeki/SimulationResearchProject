@@ -75,7 +75,7 @@ namespace SimulationWFA.SerializedEditorClasses
             FieldInfo[] field = type.GetFields();
             Label[] label = new Label[4];
             SimTextBox[] simTextBox = new SimTextBox[4];
-
+            ResetButton[] resetButtons = new ResetButton[4];
             for (int idx = 0; idx < 4; idx++)
             {
                 float fieldValue = (float)field[idx].GetValue(serializedCompItem);
@@ -102,13 +102,32 @@ namespace SimulationWFA.SerializedEditorClasses
                 simTextBox[idx].BringToFront();
                 simButton.componentPanel.Controls.Add(simTextBox[idx]);
                 controls.Add(simTextBox[idx]);
-                simButton.componentPanel.TotalInspectorPanelHeight += label[idx].Size.Height;
 
+
+                resetButtons[idx] = new ResetButton();
+                resetButtons[idx].Location = new Point((int)point.X * 2 + 30, simButton.componentPanel.TotalInspectorPanelHeight);
+                resetButtons[idx].Text = "Reset";
+                resetButtons[idx].Size = new Size((int)point.X, (int)point.Y);
+                resetButtons[idx].fieldId = idx;
+                resetButtons[idx].item = serializedCompItem;
+                resetButtons[idx].simPosText = simTextBox;
+                resetButtons[idx].Click += (sender2, e2) => resetButton_Click(sender2, e2);
+                resetButtons[idx].BringToFront();
+                simButton.componentPanel.Controls.Add(resetButtons[idx]);
+                controls.Add(resetButtons[idx]);
+
+                simButton.componentPanel.TotalInspectorPanelHeight += label[idx].Size.Height;
                 if (idx == 3)
                 {
                     RemoveComponentButton();
                 }
             }
+        }
+
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            ResetButton resetButton = sender as ResetButton;
+            resetButton.simPosText[resetButton.fieldId].Text = "0";
         }
 
         private void simulationProject_TextChanged(object sender, EventArgs e)
@@ -118,12 +137,10 @@ namespace SimulationWFA.SerializedEditorClasses
             {
                 textBox.Text = "0";
             }
-
             var type = textBox.serializedItem.GetType();
             var fields = type.GetFields();
-            dynamic obj = fields[textBox.fieldId].GetValue(textBox.serializedItem);
-            fields[textBox.fieldId].SetValue(textBox.serializedItem, textBox.Text);
-
+            object obj = (float)Convert.ToDouble(textBox.Text);  
+            fields[textBox.fieldId].SetValue(textBox.serializedItem, obj);
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {
                 refreshedSimObj = simButton.simObject
             });
