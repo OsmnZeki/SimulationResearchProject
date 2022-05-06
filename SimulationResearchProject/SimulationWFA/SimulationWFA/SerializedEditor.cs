@@ -646,8 +646,7 @@ namespace SimulationWFA
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {
-                    Material material = AssetUtils.LoadFromAsset<Material>(filename);
-                    meshRendererSerialized.material = material;
+                    meshRendererSerialized.materialPath = filename;
                 }
 
             });
@@ -666,8 +665,7 @@ namespace SimulationWFA
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {
-                    Mesh mesh = AssetUtils.LoadFromAsset<Mesh>(filename);
-                    meshRendererSerialized.mesh = mesh;
+                    meshRendererSerialized.meshPath = filename;
                 }
 
             });

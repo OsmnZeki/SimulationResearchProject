@@ -118,47 +118,4 @@ namespace SimulationWFA.MespUtils
         object Serializate();
         object Deserializate(AssetSerializationData data);
     }
-
-
-
-   /* public class LitMaterialSerializationData :  AssetSerializationData
-    {
-        public ShaderType shaderType;
-        public MaterialType materialType;
-        public bool transparent;
-        public Vector4 ambient;
-        public Vector4 dffuse;
-        public Vector4 specular;
-        public float shininess;
-        public int textureFileID = -1;
-
-        public override object Deserialization()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override object Serialization(dynamic data)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class MeshSerializationData : AssetSerializationData
-    {
-        public Vector3[] verticesPos;
-        public Vector3[] normalPos;
-        public Vector2[] texCoord;
-
-        public override object Deserialization()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override object Serialization(dynamic data)
-        {
-            throw new NotImplementedException();
-        }
-    }*/
-
-
 }

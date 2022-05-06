@@ -184,7 +184,9 @@
     <Compile Include="MespUtils\AssetOrganizer.cs" />
     <Compile Include="MespUtils\AssetUtils\AssetUtils.cs" />
     <Compile Include="MespUtils\AssetSerializationData.cs" />
+    <Compile Include="MespUtils\AssetUtils\TempSerializedData.cs" />
     <Compile Include="MespUtils\ListExtensions.cs" />
+    <Compile Include="MespUtils\SceneManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\BitSet.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECS\ComponentIdx.cs" />
