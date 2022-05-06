@@ -12,6 +12,7 @@ namespace SimulationWFA
     {
         public SerializedComponent item = null;
         public SimTextBox[] simPosText = new SimTextBox[3];
+        public CheckBox checkBox = new CheckBox();
         public int fieldId = 0;
     }
 }

@@ -127,6 +127,24 @@ namespace SimulationWFA
                         spotLightSerializedEditor.SetComponentInPanel(serializedCompItem);
                         break;
                     }
+                case "Particle Serialized":
+                    {
+                        ParticleSystemSerializedEditor particleSystemSerializedEditor = new ParticleSystemSerializedEditor(simButton, inspectorPanel);
+                        particleSystemSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
+                case "Trigger Serialized":
+                    {
+                        TriggerSerializedEditor triggerSerializedEditor = new TriggerSerializedEditor(simButton, inspectorPanel);
+                        triggerSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
+                case "Text Renderer Serialized":
+                    {
+                        TextRendererSerializedEditor textRendererSerializedEditor = new TextRendererSerializedEditor(simButton, inspectorPanel);
+                        textRendererSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
                 //case "Mesh":
                 //    {
                 //        PrepareMeshCase(simButton, serializedCompItem, meshControls);

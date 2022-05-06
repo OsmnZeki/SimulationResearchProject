@@ -239,10 +239,13 @@
     <Compile Include="SerializedEditorClasses\CameraSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\DirectionalLightSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\MeshRendererSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\ParticleSystemSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\PointLightSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\SerializedEditorAbstract.cs" />
     <Compile Include="SerializedEditorClasses\SpotLightSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\TextRendererSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\TransformSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\TriggerSerializedEditor.cs" />
     <Compile Include="SimTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
