@@ -33,6 +33,8 @@ namespace SimulationWFA.SerializedEditorClasses
         public override void SetComponentInPanel(SerializedComponent serializedCompItem)
         {
 
+
+
             SimTextBox serializedText = new SimTextBox();
             serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
             serializedText.Text = name;
@@ -49,13 +51,18 @@ namespace SimulationWFA.SerializedEditorClasses
             meshRendLabels.Text = "Mesh";
             meshRendLabels.BackColor = Color.Yellow;
             meshRendLabels.Size = new Size(60, 20);
+            
             simButton.componentPanel.Controls.Add(meshRendLabels);
             controls.Add(meshRendLabels);
+
+            var type = serializedCompItem.GetType();
+            var fields = type.GetFields();
+            dynamic obj = fields[0].GetValue(serializedCompItem);
 
             ComboBox meshComboBoxes = new ComboBox();
             meshComboBoxes = new ComboBox();
             meshComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight);
-            meshComboBoxes.Text = "Add Mesh";
+            meshComboBoxes.Text = obj;
             meshComboBoxes.TextChanged += (sender, e) => meshComboBoxes_Changed(sender, e, serializedCompItem);
             meshComboBoxes.BackColor = Color.White;
 
@@ -77,10 +84,11 @@ namespace SimulationWFA.SerializedEditorClasses
             simButton.componentPanel.Controls.Add(matRendLabels);
             controls.Add(matRendLabels);
 
+            dynamic objMat = fields[1].GetValue(serializedCompItem);
             ComboBox matComboBoxes = new ComboBox();
             matComboBoxes = new ComboBox();
             matComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight);
-            matComboBoxes.Text = "Add Material";
+            matComboBoxes.Text = objMat;
             matComboBoxes.TextChanged += (sender, e) => matComboBoxes_Changed(sender, e, serializedCompItem);
             matComboBoxes.BackColor = Color.White;
 
