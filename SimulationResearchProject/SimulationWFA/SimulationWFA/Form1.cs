@@ -243,6 +243,7 @@ namespace SimulationWFA
 
         private void addComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton) //Inspectorde component eklemeyen button
         {
+            ListBox listBox = new ListBox();
             Button[] buttons = new Button[SerializedComponentPool.SerializedCompTypes.Count];
             int idx = 0;
             foreach (var item in SerializedComponentPool.SerializedCompTypes)
@@ -253,12 +254,15 @@ namespace SimulationWFA
                 buttons[idx].Text = SerializedComponentPool.SerializedCompNames[item.Key];
                 buttons[idx].BackColor = Color.White;
                 buttons[idx].BringToFront();
-                simButton.componentPanel.Controls.Add(buttons[idx]);
                 buttons[idx].Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons);
+                listBox.Items.Add(buttons[idx]);
+                //simButton.componentPanel.Controls.Add(buttons[idx]);
+            //listBox.Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons);
 
                 idx++;
             }
-
+            listBox.Location = new Point(100, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight + 20);
+            simButton.componentPanel.Controls.Add(listBox);
         }
 
         private void componentsButton_Click(object sender, EventArgs e, HierarchySimButton simButton, int idx, Button[] buttons) //Inspectorde componentleri göstermeye yarayan button
@@ -271,15 +275,15 @@ namespace SimulationWFA
 
 
 
-            //if (simButton.serializedComponentList.Contains(serializedComponent.GetName()) == false)
-            //{
+            if (simButton.serializedComponentList.Contains(serializedComponent.GetName()) == false)
+            {
                 serializedEditor.SetSerializedItemOnEditor(serializedComponent, simButton, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
                 simButton.serializedComponentList.Add(serializedComponent.GetName());
-            //}
-            //else
-            //{
-            //    MessageBox.Show("You cannot add one more " + serializedComponent.GetName() + " Component");
-            //}
+            }
+            else
+            {
+                MessageBox.Show("You cannot add one more " + serializedComponent.GetName() + " Component");
+            }
 
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorAddCompSimObjEvent {
                 simObject = simButton.simObject,
