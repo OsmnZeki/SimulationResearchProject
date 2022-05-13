@@ -5,6 +5,7 @@ using SimulationSystem.Components;
 using SimulationSystem.ECS.Entegration;
 using SimulationSystem.ECSComponents;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary.ECSEntegration.SerializedComponent;
+using SimulationWFA.SimulationAlgorithms.AStar;
 using TheSimulation.SerializedComponent;
 
 namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
@@ -22,7 +23,10 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
             {6, typeof(PointLightSerialized)},
             {7, typeof(SpotLightSerialized)},
             {8, typeof(TextRendererSerialized)},
-            {9, typeof(TriggerSerialized)}
+            {9, typeof(TriggerSerialized)},
+            {10, typeof(ObstacleSerialized)},
+            {11, typeof(UnitSerialized)},
+            {12, typeof(TargetSerialized)},
 
            // {2, new TestSystemSerialized()}
         };
@@ -39,6 +43,9 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
             "SpotLightSerialized",
             "TextRendererSerialized",
             "TriggerSerialized",
+            "ObstacleSerialized",
+            "UnitSerialized",
+            "TargetSerialized",
         };
 
         public static Type GetSerializedComponent(string serializedCompName)

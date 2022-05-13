@@ -89,7 +89,7 @@
     </Compile>
     <Compile Include="MespSimulationSystem\Math\MathFunctions.cs" />
     <Compile Include="MespSimulationSystem\Math\Matrix.cs" />
-    <Compile Include="MespSimulationSystem\Math\Vector3Extensions.cs" />
+    <Compile Include="MespSimulationSystem\Math\VectorExtensions.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\Bounds.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\BoxBounds.cs" />
     <Compile Include="MespSimulationSystem\PhysicLibrary\BoxCollider.cs" />
@@ -243,16 +243,35 @@
     <Compile Include="SerializedEditorClasses\CameraSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\DirectionalLightSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\MeshRendererSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\ObstacleSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\ParticleSystemSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\PointLightSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\SerializedEditorAbstract.cs" />
     <Compile Include="SerializedEditorClasses\SpotLightSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\TargetSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\TextRendererSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\TransformSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\TriggerSerializedEditor.cs" />
+    <Compile Include="SerializedEditorClasses\UnitSerializedEditor.cs" />
     <Compile Include="SimTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SimulationAlgorithms\AStar\Grid.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\GridComp.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\GridSystem.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\Heap.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\Line.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\Node.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\ObstacleComp.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\ObstacleInitializeSystem.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\Path.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\Pathfinding.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\PathRequestManager.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\TargetComp.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\UnitComp.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\UnitFollowPathComp.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\UnitFollowPathSystem.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\UnitPathFindSystem.cs" />
     <EmbeddedResource Include="Form1.aa-ER.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>

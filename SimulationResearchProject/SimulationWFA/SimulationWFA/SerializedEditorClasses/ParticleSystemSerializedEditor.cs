@@ -347,6 +347,8 @@ namespace SimulationWFA.SerializedEditorClasses
             }
             simButton.componentPanel.TotalInspectorPanelHeight -= 110;
             controls.Clear();
+            base.removeComponentButton_Click(sender, e);
+
         }
     }
 }

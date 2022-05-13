@@ -38,6 +38,15 @@ namespace ProgramLibrary
             });
         }
 
+        public static void DrawWireBox(Vector3 center, Vector3 size, Vector3 color)
+        {
+            BoxBounds bound = new BoxBounds();
+            bound.Center = center;
+            bound.Size = size;
+
+            DrawWireBox(bound, color);
+        }
+
         public static void DrawWireBox(BoxBounds bound, Vector3 color)
         {
             Vector3[] points = new Vector3[] {
@@ -58,6 +67,34 @@ namespace ProgramLibrary
             };
 
             for(int i = 0; i < 24;)
+            {
+                MespEditorDebugSystem.eventManager.SendEvent(new DrawLineEvent() {
+
+                    from = points[indices[i++]],
+                    to = points[indices[i++]],
+                    color = color,
+                });
+            }
+        }
+
+        public static void DrawWireBoxXZ(Vector3 center, Vector3 size, Vector3 color)
+        {
+
+
+
+            Vector3[] points = new Vector3[] {
+
+                new Vector3(center.X - size.X/2, center.Y, center.Z - size.Z/2),
+                new Vector3(center.X - size.X/2, center.Y, center.Z + size.Z/2),
+                new Vector3(center.X + size.X/2, center.Y, center.Z + size.Z/2),
+                new Vector3(center.X + size.X/2, center.Y, center.Z - size.Z/2),
+            };
+
+            int[] indices = new int[] {
+                0,1,1,2,2,3,3,0
+            };
+
+            for (int i = 0; i < 8;)
             {
                 MespEditorDebugSystem.eventManager.SendEvent(new DrawLineEvent() {
 

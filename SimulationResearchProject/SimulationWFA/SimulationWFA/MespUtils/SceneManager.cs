@@ -21,6 +21,11 @@ namespace SimulationWFA.MespUtils
             var simObjArr = SimObject.FindObjectsOfType<TransformSerialized>();
 
             string saveFolderPath = Path.Combine(SimPath.ScenesPath, sceneName);
+            if (Directory.Exists(saveFolderPath))
+            {
+                Directory.Delete(saveFolderPath,true);
+            }
+
             Directory.CreateDirectory(saveFolderPath);
 
             foreach (var simObj in simObjArr)

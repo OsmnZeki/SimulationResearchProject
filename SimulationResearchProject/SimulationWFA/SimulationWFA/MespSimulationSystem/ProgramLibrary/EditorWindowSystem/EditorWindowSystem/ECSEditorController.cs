@@ -2,6 +2,7 @@
 using SimulationSystem.ECSSystems;
 using SimulationSystem.SharedData;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.Systems;
+using SimulationWFA.SimulationAlgorithms.AStar;
 
 namespace SimulationSystem.Systems
 {
@@ -9,6 +10,8 @@ namespace SimulationSystem.Systems
     {
         public const int GenericSystemGroup = 0; // Always active systems
         public Screen screen;
+
+        PathRequestManager pathRequestManager = new PathRequestManager();
 
         public ECSEditorController(Screen screen)
         {
@@ -20,6 +23,7 @@ namespace SimulationSystem.Systems
             systemManager.Inject(screen);
             systemManager.Inject(new ModelPaths());
             systemManager.Inject(new TextureReferences());
+            systemManager.Inject(pathRequestManager);
         }
 
         public override void AddSystems() // Ecs Sistemleri
@@ -41,10 +45,16 @@ namespace SimulationSystem.Systems
 
             //Custom Systems
 
-            systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new TriggerTestSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new RaycastTestSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new TestSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new TriggerTestSystem(), GenericSystemGroup);
+            //systemManager.AddSystem(new RaycastTestSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new ObstacleInitializeSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new GridSystem(), GenericSystemGroup);
+
+            systemManager.AddSystem(new UnitPathFindSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new UnitFollowPathSystem(), GenericSystemGroup);
+            
 
             //
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);

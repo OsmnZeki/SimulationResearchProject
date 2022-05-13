@@ -32,9 +32,8 @@ namespace SimulationWFA.SerializedEditorClasses
         }
         public override void SetComponentInPanel(SerializedComponent serializedCompItem)
         {
-
-
-
+            MeshRendererSerialized meshRendererSerialized = serializedCompItem as MeshRendererSerialized;
+            bool isCompPathsNull = false;
             SimTextBox serializedText = new SimTextBox();
             serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
             serializedText.Text = name;
@@ -51,23 +50,35 @@ namespace SimulationWFA.SerializedEditorClasses
             meshRendLabels.Text = "Mesh";
             meshRendLabels.BackColor = Color.Yellow;
             meshRendLabels.Size = new Size(60, 20);
-            
+
             simButton.componentPanel.Controls.Add(meshRendLabels);
             controls.Add(meshRendLabels);
 
             var type = serializedCompItem.GetType();
             var fields = type.GetFields();
             dynamic obj = fields[0].GetValue(serializedCompItem);
-
+            if (obj == null)
+            {
+                isCompPathsNull = true;
+                FileInfo fileInfo = new FileInfo(meshFiles[0]);
+                meshRendererSerialized.meshPath = fileInfo.Name;
+            }
             ComboBox meshComboBoxes = new ComboBox();
             meshComboBoxes = new ComboBox();
             meshComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight);
-            meshComboBoxes.Text = obj;
+            if (obj == null)
+            {
+                FileInfo fileInfo = new FileInfo(meshFiles[0]);
+                meshComboBoxes.Text = fileInfo.Name;
+            }
+            else
+                meshComboBoxes.Text = obj;
             meshComboBoxes.TextChanged += (sender, e) => meshComboBoxes_Changed(sender, e, serializedCompItem);
             meshComboBoxes.BackColor = Color.White;
 
             for (int j = 0; j < meshFiles.Length; j++)
             {
+                isCompPathsNull = true;
                 FileInfo fileInfo = new FileInfo(meshFiles[j]);
                 meshComboBoxes.Items.Add(fileInfo.Name.ToString());
             }
@@ -85,10 +96,22 @@ namespace SimulationWFA.SerializedEditorClasses
             controls.Add(matRendLabels);
 
             dynamic objMat = fields[1].GetValue(serializedCompItem);
+            if (objMat == null)
+            {
+                FileInfo fileInfo = new FileInfo(matFiles[0]);
+                meshRendererSerialized.materialPath = fileInfo.Name;
+            }
             ComboBox matComboBoxes = new ComboBox();
             matComboBoxes = new ComboBox();
             matComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight);
-            matComboBoxes.Text = objMat;
+            if (objMat == null)
+            {
+                FileInfo fileInfo = new FileInfo(matFiles[0]);
+                matComboBoxes.Text = fileInfo.Name;
+            }
+            else
+                matComboBoxes.Text = objMat;
+
             matComboBoxes.TextChanged += (sender, e) => matComboBoxes_Changed(sender, e, serializedCompItem);
             matComboBoxes.BackColor = Color.White;
 
@@ -110,7 +133,10 @@ namespace SimulationWFA.SerializedEditorClasses
             removeComponentButton.BringToFront();
             simButton.componentPanel.Controls.Add(removeComponentButton);
             simButton.componentPanel.TotalInspectorPanelHeight += 30;
-
+            if (isCompPathsNull)
+            {
+                serializedCompItem = meshRendererSerialized;
+            }
             controls.Add(removeComponentButton);
         }
 
@@ -170,6 +196,8 @@ namespace SimulationWFA.SerializedEditorClasses
         public override void removeComponentButton_Click(object sender, EventArgs e)
         {
             RemoveComponentButton();
+            base.removeComponentButton_Click(sender, e);
+
         }
 
 

@@ -488,5 +488,11 @@ namespace SimulationSystem.Systems
             simObj.InjectAllSerializedComponents(world);
 
         }
+        //Grid entity
+        public void CreateGridSystem()
+        {
+     
+            
+        }
     }
 }

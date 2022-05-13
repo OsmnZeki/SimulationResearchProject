@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
@@ -20,8 +21,12 @@ namespace SimulationWFA.SerializedEditorClasses
         public RemoveComponentButton removeComponentButton;
         public Panel panel;
         public virtual void SetComponentInPanel(SerializedComponent serializedCompItem) { }
-        public virtual void RemoveComponentButton() { }
-        public virtual void removeComponentButton_Click(object sender, EventArgs e) { }
+        public virtual void RemoveComponentButton() {}
+        public virtual void removeComponentButton_Click(object sender, EventArgs e)
+        {
+            Control[] control = simButton.componentPanel.Controls.Find("AddComponentButton", true);
+            control[0].Location = new Point(100, simButton.componentPanel.TotalInspectorPanelHeight);
+        }
 
     }
 }

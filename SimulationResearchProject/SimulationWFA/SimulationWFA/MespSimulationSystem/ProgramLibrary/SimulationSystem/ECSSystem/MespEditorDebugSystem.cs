@@ -23,17 +23,12 @@ namespace SimulationSystem
     {
         public static MespEventManager eventManager = new MespEventManager();
 
-        public const int LineRendererCount = 10000;
-        public LineRenderer[] lineRendererArray = new LineRenderer[LineRendererCount];
+        public LineRenderer lineRenderer = new LineRenderer();
 
 
         public override void Awake()
         {
-            for (int i = 0; i < LineRendererCount; i++)
-            {
-                lineRendererArray[i] = new LineRenderer();
-                lineRendererArray[i].Setup();
-            }
+            lineRenderer.Setup();
         }
 
 
@@ -46,15 +41,14 @@ namespace SimulationSystem
         {
             OpenGLFunctions.GLDisable(OpenGLEnum.GL_DEPTH_TEST);
             var drawLineData = eventManager.ListenEvents<DrawLineEvent>();
-            int lineRendererCounter = 0;
+
             foreach(var d in drawLineData)
             {
-                lineRendererArray[lineRendererCounter].SetNewColor(d.color);
-                lineRendererArray[lineRendererCounter].SetNewPositions(d.from,d.to);
-                lineRendererArray[lineRendererCounter].LineRender(ShaderPool.lineRenderShader, 3);
-                lineRendererCounter++;
-                if (lineRendererCounter >= LineRendererCount) break;
+                lineRenderer.SetNewColor(d.color);
+                lineRenderer.SetNewPositions(d.from,d.to);
+                lineRenderer.LineRender(ShaderPool.lineRenderShader, 3);
             }
+
             OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
 
         }

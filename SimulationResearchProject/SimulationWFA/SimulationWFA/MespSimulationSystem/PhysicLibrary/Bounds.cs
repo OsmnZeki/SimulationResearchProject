@@ -17,6 +17,7 @@ namespace PhysicLibrary
             }
             set {
                 UpdateCenter(value);
+                UpdateBounds();
             }
         }
         public BoundType boundType;

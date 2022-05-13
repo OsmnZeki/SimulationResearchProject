@@ -33,13 +33,13 @@ namespace SimulationSystem.Systems
                     cameraRay.origin = transfromComp.transform.position;
                     cameraRay.direction = result;
 
-                    if(Physics.Raycast(cameraRay, 0, out var hitEntity, true))
-                    {
-                        var currentSelectedEntity = outlineFilter.GetEntity(0);
-                        currentSelectedEntity.RemoveComponent<OutlineBorderRenderComp>();
+                    //if(Physics.Raycast(cameraRay, 0, out var hitEntity, true))
+                    //{
+                    //    var currentSelectedEntity = outlineFilter.GetEntity(0);
+                    //    currentSelectedEntity.RemoveComponent<OutlineBorderRenderComp>();
 
-                        hitEntity.AddComponent<OutlineBorderRenderComp>();
-                    }
+                    //    hitEntity.AddComponent<OutlineBorderRenderComp>();
+                    //}
 
                 }
             }

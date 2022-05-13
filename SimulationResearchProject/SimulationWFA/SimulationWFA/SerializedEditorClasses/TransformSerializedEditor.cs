@@ -107,7 +107,7 @@ namespace SimulationWFA.SerializedEditorClasses
         private void simulationProject_TextChanged(object sender, EventArgs e)
         {
             SimTextBox textBox = sender as SimTextBox;
-            if (Int32.TryParse(textBox.Text, out int result) == false)
+            if (float.TryParse(textBox.Text, out float result) == false)
             {
                 textBox.Text = "0";
             }
@@ -128,17 +128,17 @@ namespace SimulationWFA.SerializedEditorClasses
         private Vector3 InitializeItemVector(int textId, string text, dynamic obj)
         {
             Vector3 itemVec = new Vector3(obj.X, obj.Y, obj.Z);
-            int result = 0;
+            float result = 0;
             switch (textId)
             {
                 case 0:
-                    itemVec.X = Int32.TryParse(text, out result) ? result : 0;
+                    itemVec.X = float.TryParse(text, out result) ? result : 0;
                     break;
                 case 1:
-                    itemVec.Y = Int32.TryParse(text, out result) ? result : 0;
+                    itemVec.Y = float.TryParse(text, out result) ? result : 0;
                     break;
                 case 2:
-                    itemVec.Z = Int32.TryParse(text, out result) ? result : 0;
+                    itemVec.Z = float.TryParse(text, out result) ? result : 0;
                     break;
                 default:
                     break;
@@ -198,6 +198,8 @@ namespace SimulationWFA.SerializedEditorClasses
             }
             simButton.componentPanel.TotalInspectorPanelHeight -= 110;
             controls.Clear();
+            base.removeComponentButton_Click(sender, e);
+
         }
     }
 }

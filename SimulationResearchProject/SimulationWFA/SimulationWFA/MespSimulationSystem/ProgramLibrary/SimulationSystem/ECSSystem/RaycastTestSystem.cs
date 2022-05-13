@@ -26,12 +26,7 @@ namespace SimulationSystem.Systems
             //Console.WriteLine("x: " + Input.GetMousePosX() + "y: " + Input.GetMousePosY());
 
             ProgramLibrary.MespDebug.DrawRay(ray, 1.45f, new Vector3(1, 0, 0));
-            if ( Physics.Raycast(ray, 1.45f, out var hit))
-            {
 
-              //  Console.WriteLine(hit.GetComponent<DebugNameComp>().name);
-
-            }
         }
 
     }

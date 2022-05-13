@@ -145,6 +145,24 @@ namespace SimulationWFA
                         textRendererSerializedEditor.SetComponentInPanel(serializedCompItem);
                         break;
                     }
+                case "Obstacle Serialized":
+                    {
+                        ObstacleSerializedEditor obstacleSerializedEditor = new ObstacleSerializedEditor(simButton, inspectorPanel);
+                        obstacleSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
+                case "Target Serialized":
+                    {
+                        TargetSerializedEditor targetSerializedEditor = new TargetSerializedEditor(simButton, inspectorPanel);
+                        targetSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
+                case "Unit Serialized":
+                    {
+                        UnitSerializedEditor unitSerializedEditor = new UnitSerializedEditor(simButton, inspectorPanel);
+                        unitSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
                 //case "Mesh":
                 //    {
                 //        PrepareMeshCase(simButton, serializedCompItem, meshControls);

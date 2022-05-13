@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MespSimulationSystem.Math
 {
-    public static class Vector3Extensions
+    public static class VectorExtensions
     {
         public static void Normalize(this Vector3 vect)
         {
@@ -15,6 +15,11 @@ namespace MespSimulationSystem.Math
         }
 
         public static Vector3 normalized(this Vector3 vect)
+        {
+            return vect / vect.Length();
+        }
+
+        public static Vector2 normalized(this Vector2 vect)
         {
             return vect / vect.Length();
         }

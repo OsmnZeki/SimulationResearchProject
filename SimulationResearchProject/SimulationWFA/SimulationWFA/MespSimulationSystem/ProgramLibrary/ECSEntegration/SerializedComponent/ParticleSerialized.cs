@@ -13,7 +13,7 @@ namespace ECSEntegration.SerializedComponent
     public class ParticleSerialized : SimulationSystem.ECS.Entegration.SerializedComponent
     {
         public Vector3 velocity;
-        public float mass;
+        public float mass = 1;
 
         public float drag;
 
