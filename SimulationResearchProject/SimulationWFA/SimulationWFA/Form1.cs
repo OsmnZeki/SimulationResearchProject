@@ -27,6 +27,7 @@ namespace SimulationWFA
         public SimulationProject()
         {
             float x = this.CreateGraphics().DpiX;
+            this.AutoSize = true;
             hierarchyHeight = 0;
             InitializeComponent();
             ShowProjectFiles();

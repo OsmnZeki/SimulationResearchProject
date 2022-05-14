@@ -300,8 +300,8 @@ namespace SimulationWFA
             // 
             // SimulationProject
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.Controls.Add(this.simulationWindowPanel);
             this.Controls.Add(this.inspectorPanel);
@@ -310,6 +310,7 @@ namespace SimulationWFA
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SimulationProject";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.projectsPanel.ResumeLayout(false);
