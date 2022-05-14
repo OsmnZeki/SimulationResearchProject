@@ -34,7 +34,7 @@ namespace ECSEntegration.SerializedComponent
 
         public override string GetName()
         {
-            return "Particle Serialized";
+            return "Particle System Serialized";
         }
     }
 }

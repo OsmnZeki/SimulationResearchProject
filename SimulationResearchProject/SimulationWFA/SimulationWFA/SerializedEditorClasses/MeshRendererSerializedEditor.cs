@@ -129,7 +129,7 @@ namespace SimulationWFA.SerializedEditorClasses
             removeComponentButton.Size = new Size(110, 20);
             removeComponentButton.Text = "RemoveComponent";
             removeComponentButton.BackColor = Color.White;
-            removeComponentButton.Click += (sender, e) => removeComponentButton_Click(sender, e);  //new System.EventHandler(removeComponentButton_Click);
+            removeComponentButton.Click += (sender, e) => removeComponentButton_Click(sender, e, name);  //new System.EventHandler(removeComponentButton_Click);
             removeComponentButton.BringToFront();
             simButton.componentPanel.Controls.Add(removeComponentButton);
             simButton.componentPanel.TotalInspectorPanelHeight += 30;
@@ -193,10 +193,10 @@ namespace SimulationWFA.SerializedEditorClasses
             controls.Clear();
         }
 
-        public override void removeComponentButton_Click(object sender, EventArgs e)
+        public override void removeComponentButton_Click(object sender, EventArgs e, string name)
         {
             RemoveComponentButton();
-            base.removeComponentButton_Click(sender, e);
+            base.removeComponentButton_Click(sender, e,name);
 
         }
 
