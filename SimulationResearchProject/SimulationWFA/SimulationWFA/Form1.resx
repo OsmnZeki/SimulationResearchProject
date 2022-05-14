@@ -122,31 +122,31 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>114, 22</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
     <value>New</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>114, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>Open</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>114, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>114, 22</value>
   </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save As</value>
   </data>
   <data name="exitToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>114, 22</value>
   </data>
   <data name="exitToolStripMenuItem1.Text" xml:space="preserve">
     <value>Exit</value>
@@ -264,42 +264,43 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAu
-        CAAAAk1TRnQBSQFMAgEBAgIAAQEBAAEBARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
-        ARADAAEBAQABIAYAARASAAMZASMDLQFGAy0BRgMtAUYDLQFGAy0BRgMtAUYDLQFGAy0BRgMtAUYDLQFG
-        Ay0BRgMtAUYDLQFGAy0BRgMZASMIAANcAdwDUwGqA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGqA1MBqgNT
-        AaoDUwGqA1wB3IgAA2IB7wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFG
-        Ac8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFDAc4C/wFYAmIB7wgAA1MBqigAA1MBqogA
-        AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/
-        AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AQ0BvQL/CAADUwGqKAADUwGqiAABRgHPAv8BRgHP
-        Av8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHP
-        Av8BRgHPAv8BRgHPAv8BRgHPAv8BDQG9Av8IAANTAaoMAAMgAS4DJwE6FAADUwGqiAABRgHPAv8BRgHP
-        Av8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHP
-        Av8BRgHPAv8BRgHPAv8BRgHPAv8BDQG9Av8IAANTAaoEAAMEAQYDVAGuAw0BEgNQAaMIAANUAa4DBAEG
-        BAADUwGqiAABRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHP
-        Av8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BDQG9Av8IAANTAaoEAANHAYIDLwFK
-        BAADUAGjAw0BEgQAAy8BSgNHAYIEAANTAaqIAAFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFG
-        Ac8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wFGAc8C/wEN
-        Ab0C/wgAA1MBqgQAA1kBxAMEAQYEAAMwAUsDPgFrBAADBAEGA1kBxAQAA1MBqogAAUYBzwL/AUYBzwL/
-        AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/
-        AUYBzwL/AUYBzwL/AUYBzwL/AQ0BvQL/CAADUwGqBAADLwFKA0cBggQAAwMBBANVAbEEAANHAYIDLwFK
-        BAADUwGqiAABRQHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHP
-        Av8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BRgHPAv8BDQG9Av8IAANTAaoIAANAAXAIAANK
-        AYoDHQEqAz8BbwgAA1MBqogAASABwwL/AbUB6AL/AbUB6AL/AbUB6AL/AbUB6AL/AbUB6AL/AbUB6AL/
-        AbUB6AL/AVsB1gL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/AQ0BvQL/CAADUwGq
-        FAADEAEWAxABFgwAA1MBqogAARIBvh7/Ae0B+gL/AVsB1gL/AUYBzwL/AUYBzwL/AUYBzwL/AUYBzwL/
-        AUYBzwL/AQ0BvAL/CAADUwGqKAADUwGqiAABEgG+Af4C/wH3AdgC/wH3AdgC/wH3AdgC/wH3AdgC/wH3
-        AdgC/wH3AdgC/wH3AdgC/wH3AdgB/wHwAfMB2AH/AcEB5AHYAf8BwAHkAdgB/wHAAeQB2AH/AcAB5AHY
-        Af8BwAHeAb0B/wEYAasB/QH/CAADWAHdA1MBqgNTAaoDUwGqAz4BaxgAA1MBqogAAQ4BvQH+Af8BWwHQ
-        AeYB/wFbAdAB5gH/AVsB0AHmAf8BWwHQAeYB/wFbAdAB5gH/AVsB0AHmAf8BWwHQAeYB/wFbAdAB5gH/
-        AVsB0AHmAf8BWwHQAeYB/wFbAdAB5gH/AVsB0AHmAf8BWwHQAeYB/wFcAcwB1AH/AUwBXwFkAfMIAAMz
-        AVMDTwGbAwEBAgQAA1MBqhgAA1MBqogAAQsBvAL/AQsBvAL/AQsBvAL/AQsBvAL/AQsBvAL/AQsBvAL/
-        AQsBvAL/A1sByAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAMhATAMAAMz
-        AVMDTwGbAwEBAgNTAaoYAANTAaqIAAFYAmIB7wELAbwC/wELAbwC/wELAbwC/wELAbwC/wELAbwC/wNb
-        AcgDCwEPMAADMwFTA08BmwNTAaoYAANTAaqIAAMZASMDLQFGAy0BRgMtAUYDLQFGAy0BRQMIAQs4AAMz
-        AVMDWAHdA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGqA1wB3IgAAUIBTQE+BwABPgMAASgDAAFAAwABEAMA
-        AQEBAAEBBQABgBcAA/8DAAHAAQMGAAHfAfsGAAHfAfsGAAHcAfsGAAHQAcsGAAHSAUsGAAHSAUsGAAHS
-        AUsGAAHbARsGAAHfATsGAAHfAfsGAAHBAfsGAAHFAfsGAAHhAfsFAAH/AfEB+wQAAQEB/wH4AQMEAAs=
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAw
+        CAAAAk1TRnQBSQFMAgEBAgEAAQgBAQEIAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABEAMAAQEBAAEgBgABEBIAAxkBIwMtAUYDLQFGAy0BRgMtAUYDLQFGAy0BRgMtAUYDLQFGAy0BRgMt
+        AUYDLQFGAy0BRgMtAUYDLQFGAxkBIwgAA1wB3ANTAaoDUwGqA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGq
+        A1MBqgNTAaoDXAHciAADYgHvAUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/
+        AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUIBzgL/AVgCYgHvCAADUwGqKAADUwGq
+        iAABRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHP
+        Av8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BDAG9Av8IAANTAaooAANTAaqIAAFFAc8C/wFF
+        Ac8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFF
+        Ac8C/wFFAc8C/wFFAc8C/wFFAc8C/wEMAb0C/wgAA1MBqgwAAyABLgMnAToUAANTAaqIAAFFAc8C/wFF
+        Ac8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFF
+        Ac8C/wFFAc8C/wFFAc8C/wFFAc8C/wEMAb0C/wgAA1MBqgQAAwQBBgNUAa4DDQESA1ABowgAA1QBrgME
+        AQYEAANTAaqIAAFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFF
+        Ac8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wEMAb0C/wgAA1MBqgQAA0cBggMv
+        AUoEAANQAaMDDQESBAADLwFKA0cBggQAA1MBqogAAUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/
+        AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/AUUBzwL/
+        AQwBvQL/CAADUwGqBAADWQHEAwQBBgQAAzABSwM+AWsEAAMEAQYDWQHEBAADUwGqiAABRQHPAv8BRQHP
+        Av8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHP
+        Av8BRQHPAv8BRQHPAv8BRQHPAv8BDAG9Av8IAANTAaoEAAMvAUoDRwGCBAADAwEEA1UBsQQAA0cBggMv
+        AUoEAANTAaqIAAFEAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFF
+        Ac8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wFFAc8C/wEMAb0C/wgAA1MBqggAA0ABcAgA
+        A0oBigMdASoDPwFvCAADUwGqiAABHwHDAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHo
+        Av8BtQHoAv8BWgHWAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHPAv8BDAG9Av8IAANT
+        AaoUAAMQARYDEAEWDAADUwGqiAABEQG+Hv8B7QH6Av8BWgHWAv8BRQHPAv8BRQHPAv8BRQHPAv8BRQHP
+        Av8BRQHPAv8BDAG8Av8IAANTAaooAANTAaqIAAERAb4B/gL/AfcB2AL/AfcB2AL/AfcB2AL/AfcB2AL/
+        AfcB2AL/AfcB2AL/AfcB2AL/AfcB2AH/AfAB8wHYAf8BwQHkAdgB/wHAAeQB2AH/AcAB5AHYAf8BwAHk
+        AdgB/wHAAd4BvQH/ARcBqwH9Af8IAANYAd0DUwGqA1MBqgNTAaoDPgFrGAADUwGqiAABDQG9Af4B/wFa
+        AdAB5gH/AVoB0AHmAf8BWgHQAeYB/wFaAdAB5gH/AVoB0AHmAf8BWgHQAeYB/wFaAdAB5gH/AVoB0AHm
+        Af8BWgHQAeYB/wFaAdAB5gH/AVoB0AHmAf8BWgHQAeYB/wFaAdAB5gH/AVsBzAHUAf8BTAFfAWIB8wgA
+        AzMBUwNPAZsDAQECBAADUwGqGAADUwGqiAABCgG8Av8BCgG8Av8BCgG8Av8BCgG8Av8BCgG8Av8BCgG8
+        Av8BCgG8Av8DWwHIATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFYATUCNgFYAyEBMAwA
+        AzMBUwNPAZsDAQECA1MBqhgAA1MBqogAAVgCYgHvAQoBvAL/AQoBvAL/AQoBvAL/AQoBvAL/AQoBvAL/
+        A1sByAMLAQ8wAAMzAVMDTwGbA1MBqhgAA1MBqogAAxkBIwMtAUYDLQFGAy0BRgMtAUYDLQFFAwgBCzgA
+        AzMBUwNYAd0DUwGqA1MBqgNTAaoDUwGqA1MBqgNTAaoDXAHciAABQgFNAT4HAAE+AwABKAMAAUADAAEQ
+        AwABAQEAAQEFAAGAFwAD/wMAAcABAwYAAd8B+wYAAd8B+wYAAdwB+wYAAdABywYAAdIBSwYAAdIBSwYA
+        AdIBSwYAAdsBGwYAAd8BOwYAAd8B+wYAAcEB+wYAAcUB+wYAAeEB+wUAAf8B8QH7BAABAQH/AfgBAwQA
+        Cw==
 </value>
   </data>
   <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -322,7 +323,7 @@
     <value>0</value>
   </data>
   <data name="projectsTreeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 196</value>
+    <value>152, 192</value>
   </data>
   <data name="projectsTreeView.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -538,7 +539,7 @@
     <value>NoControl</value>
   </data>
   <data name="simulateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>291, 388</value>
+    <value>289, 384</value>
   </data>
   <data name="simulateButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 30</value>
@@ -648,6 +649,9 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>50</value>
   </metadata>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="$this.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
