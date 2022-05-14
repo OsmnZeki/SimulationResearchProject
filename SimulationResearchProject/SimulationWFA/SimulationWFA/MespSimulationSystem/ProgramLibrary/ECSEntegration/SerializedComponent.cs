@@ -7,7 +7,7 @@ namespace SimulationSystem.ECS.Entegration
     {
         public bool add = true;
         public Type type;
-        public SimObject ownerSimObj;
+        private SimObject ownerSimObj;
 
         public SerializedComponent()
         {
@@ -16,7 +16,17 @@ namespace SimulationSystem.ECS.Entegration
 
         public abstract void AddComponent(Entity entity,World world);
         public abstract string GetName();
+
+        public SimObject GetOwner()
+        {
+            return ownerSimObj;
+        }
         
+        public void SetOwner(SimObject ownerSimObj)
+        {
+            this.ownerSimObj = ownerSimObj;
+        }
+
     }
     
     public abstract class SerializedComponent<T> : SerializedComponent where T : struct

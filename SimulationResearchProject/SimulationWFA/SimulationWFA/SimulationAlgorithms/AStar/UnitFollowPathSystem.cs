@@ -62,9 +62,9 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                     var pos = transformComp.transform.position;
 
                     var direction = unitFollowPathComp.path.lookPoints[unitFollowPathComp.pathIndex] - transformComp.transform.position;
-                    pos.Y = 0.25f;
+                    
                     pos += direction.normalized() * Time.deltaTime * unitComp.speed * unitFollowPathComp.speedPercent;
-
+                    pos.Y = transformComp.transform.position.Y;
                     ProgramLibrary.MespDebug.DrawLine(transformComp.transform.position, transformComp.transform.position+direction.normalized()*10, new Vector3(1,0,1));
 
                     transformComp.transform.position = pos;

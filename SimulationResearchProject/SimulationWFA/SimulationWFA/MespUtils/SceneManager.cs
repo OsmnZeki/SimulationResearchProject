@@ -77,7 +77,7 @@ namespace SimulationWFA.MespUtils
                     var tempData = (TempSerializedData)JsonConvert.DeserializeObject(dataString, typeof(MespUtils.TempSerializedData));
 
                     var data = (SerializedComponent)JsonConvert.DeserializeObject(dataString, tempData.type);
-
+                    data.SetOwner(newSimObj);
                     newSimObj.AddNewSerializedComponent(data);
                 }
 

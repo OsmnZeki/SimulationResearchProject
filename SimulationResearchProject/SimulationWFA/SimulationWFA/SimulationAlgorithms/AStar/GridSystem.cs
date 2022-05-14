@@ -33,7 +33,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
         }
 
-        public override void PostRender()
+        /*public override void PostRender()
         {
             foreach (var g in gridFilter)
             {
@@ -57,6 +57,6 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                 }
 
             }
-        }
+        }*/
     }
 }

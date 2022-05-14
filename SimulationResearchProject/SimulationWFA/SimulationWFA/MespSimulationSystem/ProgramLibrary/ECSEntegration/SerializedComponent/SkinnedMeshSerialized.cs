@@ -22,7 +22,9 @@ namespace TheSimulation.SerializedComponent
                  rootModel = model,
              };
 
-            skinnedMesh.SetMeshRenderers(world,ref ownerSimObj);
+            var simObj = GetOwner();
+
+            skinnedMesh.SetMeshRenderers(world,ref simObj);
 
         }
 
