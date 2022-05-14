@@ -28,7 +28,7 @@ namespace SimulationWFA.SerializedEditorClasses
         public virtual void removeComponentButton_Click(object sender, EventArgs e, string serializedName)
         {
             Control[] control = simButton.componentPanel.Controls.Find("AddComponentButton", true);
-            control[0].Location = new Point(100, simButton.componentPanel.TotalInspectorPanelHeight);
+            control[0].Location = new Point(100, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             simButton.serializedComponentList.Remove(serializedName);
         }
 

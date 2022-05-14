@@ -31,7 +31,7 @@ namespace SimulationWFA.SerializedEditorClasses
         {
 
             SimTextBox serializedText = new SimTextBox();
-            serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             serializedText.Text = name;
             serializedText.BackColor = Color.Red;
             serializedText.Size = new Size(150, 60 + simButton.componentPanel.TotalInspectorPanelHeight);
@@ -56,7 +56,7 @@ namespace SimulationWFA.SerializedEditorClasses
                 vecValues[2] = fieldValue.Z.ToString();
 
                 fieldName[idx] = new Label();
-                fieldName[idx].Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+                fieldName[idx].Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
                 fieldName[idx].Size = new Size((int)size.X, (int)size.Y);
                 fieldName[idx].Text = field[idx].Name;
                 fieldName[idx].BackColor = Color.AliceBlue;
@@ -65,7 +65,7 @@ namespace SimulationWFA.SerializedEditorClasses
                 controls.Add(fieldName[idx]);
 
                 resButton[idx] = new ResetButton();
-                resButton[idx].Location = new Point((int)point.X * 2 + fieldName[idx].Size.Width, simButton.componentPanel.TotalInspectorPanelHeight);
+                resButton[idx].Location = new Point((int)point.X * 2 + fieldName[idx].Size.Width, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
                 resButton[idx].Size = new Size((int)point.X, (int)point.Y);
                 resButton[idx].Text = "Reset";
                 resButton[idx].BackColor = Color.White;
@@ -80,7 +80,7 @@ namespace SimulationWFA.SerializedEditorClasses
                 for (int i = 0; i < 3; i++)
                 {
                     serializedFieldTexs[i] = new SimTextBox();
-                    serializedFieldTexs[i].Location = new Point((i * 30 + fieldName[idx].Size.Width), simButton.componentPanel.TotalInspectorPanelHeight);
+                    serializedFieldTexs[i].Location = new Point((i * 30 + fieldName[idx].Size.Width), simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
                     serializedFieldTexs[i].Text = vecValues[i];
                     serializedFieldTexs[i].BackColor = Color.Yellow;
                     serializedFieldTexs[i].Size = new Size(30, 20);
@@ -172,7 +172,7 @@ namespace SimulationWFA.SerializedEditorClasses
 
         public override void RemoveComponentButton()
         {
-            removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight);
+            removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             removeComponentButton.Size = new Size(140, 20);
             removeComponentButton.Text = "Remove Component";
             removeComponentButton.BackColor = Color.White;

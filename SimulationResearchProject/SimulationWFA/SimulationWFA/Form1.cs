@@ -233,8 +233,8 @@ namespace SimulationWFA
                 simButton.componentPanel.VerticalScroll.Enabled = true;
 
                 Button addComponentButton = new Button();
-                addComponentButton.Location = new Point(100, simButton.componentPanel.Height);
-                addComponentButton.Size = new Size(100, 20);
+                addComponentButton.Location = new Point(100, simButton.componentPanel.Height - simButton.componentPanel.VerticalScroll.Value);
+                addComponentButton.Size = new Size(100, 30);
                 addComponentButton.BackColor = Color.White;
                 addComponentButton.Text = "Add Component";
                 addComponentButton.Name = "AddComponentButton";
@@ -271,17 +271,19 @@ namespace SimulationWFA
         private void addComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton) //Inspectorde component eklemeyen button
         {
             //ListBox listBox = new ListBox();
+            Control[] addComponentbutton = simButton.componentPanel.Controls.Find("AddComponentButton",true);
+            addComponentbutton[0].Enabled = false;
             Button[] buttons = new Button[SerializedComponentPool.SerializedCompTypes.Count];
             int idx = 0;
             foreach (var item in SerializedComponentPool.SerializedCompTypes)
             {
                 buttons[idx] = new Button();
-                buttons[idx].Location = new Point(100, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight + 20);
+                buttons[idx].Location = new Point(100, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight + 30 - simButton.componentPanel.VerticalScroll.Value);
                 buttons[idx].Size = new Size(100, 20);
                 buttons[idx].Text = SerializedComponentPool.SerializedCompNames[item.Key];
                 buttons[idx].BackColor = Color.White;
                 buttons[idx].BringToFront();
-                buttons[idx].Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons);
+                buttons[idx].Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons, addComponentbutton[0]);
                 //listBox.Items.Add(buttons[idx]);
                 simButton.componentPanel.Controls.Add(buttons[idx]);
             //listBox.Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons);
@@ -292,8 +294,10 @@ namespace SimulationWFA
             //simButton.componentPanel.Controls.Add(listBox);
         }
 
-        private void componentsButton_Click(object sender, EventArgs e, HierarchySimButton simButton, int idx, Button[] buttons) //Inspectorde componentleri göstermeye yarayan button
+        private void componentsButton_Click(object sender, EventArgs e, HierarchySimButton simButton, int idx, Button[] buttons, Control addComponentButton) //Inspectorde componentleri göstermeye yarayan button
         {
+            addComponentButton.Enabled = true;
+
             foreach (var button in buttons)
             {
                 button.Visible = false;
@@ -307,7 +311,7 @@ namespace SimulationWFA
                 serializedEditor.SetSerializedItemOnEditor(serializedComponent, simButton, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
                 simButton.serializedComponentList.Add(serializedComponent.GetName());
                 Control[] control = Controls.Find("AddComponentButton", true);
-                control[0].Location = new Point(100, simButton.componentPanel.TotalInspectorPanelHeight);
+                control[0].Location = new Point(100, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             }
             else
             {

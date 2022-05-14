@@ -30,7 +30,7 @@ namespace SimulationWFA.SerializedEditorClasses
         public override void SetComponentInPanel(SerializedComponent serializedCompItem)
         {
             SimTextBox serializedText = new SimTextBox();
-            serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             serializedText.Text = name;
             serializedText.BackColor = Color.Red;
             serializedText.Size = new Size(150, 60 + simButton.componentPanel.TotalInspectorPanelHeight);
@@ -50,7 +50,7 @@ namespace SimulationWFA.SerializedEditorClasses
             vecValues[2] = fieldValue.Z.ToString();
 
             Label fieldName = new Label();
-            fieldName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            fieldName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             fieldName.Size = new Size((int)size.X, (int)size.Y);
             fieldName.Text = field[0].Name;
             fieldName.BackColor = Color.AliceBlue;
@@ -59,7 +59,7 @@ namespace SimulationWFA.SerializedEditorClasses
             controls.Add(fieldName);
 
             ResetButton resButton = new ResetButton();
-            resButton.Location = new Point((int)point.X * 2 + fieldName.Size.Width, simButton.componentPanel.TotalInspectorPanelHeight);
+            resButton.Location = new Point((int)point.X * 2 + fieldName.Size.Width, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             resButton.Size = new Size((int)point.X, (int)point.Y);
             resButton.Text = "Reset";
             resButton.BackColor = Color.White;
@@ -74,7 +74,7 @@ namespace SimulationWFA.SerializedEditorClasses
             for (int i = 0; i < 3; i++)
             {
                 serializedFieldTexs[i] = new SimTextBox();
-                serializedFieldTexs[i].Location = new Point((i * 30 + fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight);
+                serializedFieldTexs[i].Location = new Point((i * 30 + fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
                 serializedFieldTexs[i].Text = vecValues[i];
                 serializedFieldTexs[i].BackColor = Color.Yellow;
                 serializedFieldTexs[i].Size = new Size(30, 20);
@@ -96,7 +96,7 @@ namespace SimulationWFA.SerializedEditorClasses
             vecPosValues[1] = fieldVPosalue.Y.ToString();
 
             Label fieldPosName = new Label();
-            fieldPosName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            fieldPosName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             fieldPosName.Size = new Size((int)size.X, (int)size.Y);
             fieldPosName.Text = field[1].Name;
             fieldPosName.BackColor = Color.AliceBlue;
@@ -107,7 +107,7 @@ namespace SimulationWFA.SerializedEditorClasses
             for (int i = 0; i < 2; i++)
             {
                 serializedFieldPosTexs[i] = new SimTextBox();
-                serializedFieldPosTexs[i].Location = new Point((i * 30 + fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight);
+                serializedFieldPosTexs[i].Location = new Point((i * 30 + fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
                 serializedFieldPosTexs[i].Text = vecPosValues[i];
                 serializedFieldPosTexs[i].BackColor = Color.Yellow;
                 serializedFieldPosTexs[i].Size = new Size(30, 20);
@@ -124,7 +124,7 @@ namespace SimulationWFA.SerializedEditorClasses
 
 
             Label fieldFloatName = new Label();
-            fieldFloatName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            fieldFloatName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             fieldFloatName.Size = new Size((int)size.X, (int)size.Y);
             fieldFloatName.Text = field[2].Name;
             fieldFloatName.BackColor = Color.AliceBlue;
@@ -135,7 +135,7 @@ namespace SimulationWFA.SerializedEditorClasses
 
             SimTextBox simTextBox = new SimTextBox();
             float val = (float)field[2].GetValue(serializedCompItem);
-            simTextBox.Location = new Point((fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight);
+            simTextBox.Location = new Point((fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             simTextBox.Text = val.ToString();
             simTextBox.BackColor = Color.Yellow;
             simTextBox.Size = new Size(30, 20);
@@ -148,7 +148,7 @@ namespace SimulationWFA.SerializedEditorClasses
             controls.Add(simTextBox);
 
             ResetButton resetButton = new ResetButton();
-            resetButton.Location = new Point((int)point.X * 2 + fieldName.Size.Width, simButton.componentPanel.TotalInspectorPanelHeight);
+            resetButton.Location = new Point((int)point.X * 2 + fieldName.Size.Width, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             resetButton.Size = new Size((int)point.X, (int)point.Y);
             resetButton.Text = "Reset";
             resetButton.BackColor = Color.White;
@@ -163,7 +163,7 @@ namespace SimulationWFA.SerializedEditorClasses
             simButton.componentPanel.TotalInspectorPanelHeight += 20;
 
             Label fieldStringName = new Label();
-            fieldStringName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            fieldStringName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             fieldStringName.Size = new Size((int)size.X, (int)size.Y);
             fieldStringName.Text = field[3].Name;
             fieldStringName.BackColor = Color.AliceBlue;
@@ -174,7 +174,7 @@ namespace SimulationWFA.SerializedEditorClasses
 
             SimTextBox simTextStringBox = new SimTextBox();
             string valString = (string)field[3].GetValue(serializedCompItem);
-            simTextStringBox.Location = new Point((fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight);
+            simTextStringBox.Location = new Point((fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             simTextStringBox.Text = valString;
             simTextStringBox.BackColor = Color.Yellow;
             simTextStringBox.Size = new Size(30 + valString.Length, 20);
@@ -186,7 +186,7 @@ namespace SimulationWFA.SerializedEditorClasses
             controls.Add(simTextStringBox);
 
             ResetButton resetStringButton = new ResetButton();
-            resetStringButton.Location = new Point((int)point.X * 2 + fieldName.Size.Width, simButton.componentPanel.TotalInspectorPanelHeight);
+            resetStringButton.Location = new Point((int)point.X * 2 + fieldName.Size.Width, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             resetStringButton.Size = new Size((int)point.X, (int)point.Y);
             resetStringButton.Text = "Reset";
             resetStringButton.BackColor = Color.White;
@@ -283,7 +283,7 @@ namespace SimulationWFA.SerializedEditorClasses
         }
         public override void RemoveComponentButton()
         {
-            removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight);
+            removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             removeComponentButton.Size = new Size(140, 20);
             removeComponentButton.Text = "Remove Component";
             removeComponentButton.BackColor = Color.White;

@@ -35,7 +35,7 @@ namespace SimulationWFA.SerializedEditorClasses
             MeshRendererSerialized meshRendererSerialized = serializedCompItem as MeshRendererSerialized;
             bool isCompPathsNull = false;
             SimTextBox serializedText = new SimTextBox();
-            serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             serializedText.Text = name;
             serializedText.BackColor = Color.Red;
             serializedText.Size = new Size(150, 60 + simButton.componentPanel.TotalInspectorPanelHeight);
@@ -46,7 +46,7 @@ namespace SimulationWFA.SerializedEditorClasses
 
             Label meshRendLabels = new Label();
             string[] meshFiles = Directory.GetFiles(SimPath.MeshesPath, "*.mesh", SearchOption.AllDirectories);
-            meshRendLabels.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            meshRendLabels.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             meshRendLabels.Text = "Mesh";
             meshRendLabels.BackColor = Color.Yellow;
             meshRendLabels.Size = new Size(60, 20);
@@ -65,7 +65,7 @@ namespace SimulationWFA.SerializedEditorClasses
             }
             ComboBox meshComboBoxes = new ComboBox();
             meshComboBoxes = new ComboBox();
-            meshComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight);
+            meshComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             if (obj == null)
             {
                 FileInfo fileInfo = new FileInfo(meshFiles[0]);
@@ -88,7 +88,7 @@ namespace SimulationWFA.SerializedEditorClasses
 
             Label matRendLabels = new Label();
             string[] matFiles = Directory.GetFiles(SimPath.MaterialsPath, "*.mat", SearchOption.AllDirectories);
-            matRendLabels.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            matRendLabels.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             matRendLabels.Text = "Material";
             matRendLabels.BackColor = Color.Yellow;
             matRendLabels.Size = new Size(60, 20);
@@ -103,7 +103,7 @@ namespace SimulationWFA.SerializedEditorClasses
             }
             ComboBox matComboBoxes = new ComboBox();
             matComboBoxes = new ComboBox();
-            matComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight);
+            matComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             if (objMat == null)
             {
                 FileInfo fileInfo = new FileInfo(matFiles[0]);
@@ -125,7 +125,7 @@ namespace SimulationWFA.SerializedEditorClasses
             simButton.componentPanel.TotalInspectorPanelHeight += matRendLabels.Height;
 
             RemoveComponentButton removeComponentButton = new RemoveComponentButton();
-            removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight);
+            removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             removeComponentButton.Size = new Size(110, 20);
             removeComponentButton.Text = "RemoveComponent";
             removeComponentButton.BackColor = Color.White;

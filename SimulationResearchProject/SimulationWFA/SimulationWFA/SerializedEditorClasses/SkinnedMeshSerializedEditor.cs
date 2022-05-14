@@ -31,7 +31,7 @@ namespace SimulationWFA.SerializedEditorClasses
         public override void RemoveComponentButton()
         {
 
-            removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight);
+            removeComponentButton.Location = new Point(50, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             removeComponentButton.Size = new Size(140, 20);
             removeComponentButton.Text = "Remove Component";
             removeComponentButton.BackColor = Color.White;
@@ -68,7 +68,7 @@ namespace SimulationWFA.SerializedEditorClasses
         {
             SkinnedMeshSerialized skinnedMeshRendererSerialized = serializedCompItem as SkinnedMeshSerialized;
             SimTextBox serializedText = new SimTextBox();
-            serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            serializedText.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             serializedText.Text = name;
             serializedText.BackColor = Color.Red;
             serializedText.Size = new Size(150, 60 + simButton.componentPanel.TotalInspectorPanelHeight);
@@ -79,7 +79,7 @@ namespace SimulationWFA.SerializedEditorClasses
 
             Label skinnedMeshRendLabels = new Label();
             string[] skinnedMeshFiles = Directory.GetDirectories(SimPath.ModelsPath);
-            skinnedMeshRendLabels.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight);
+            skinnedMeshRendLabels.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             skinnedMeshRendLabels.Text = "SkinnedMesh";
             skinnedMeshRendLabels.BackColor = Color.Yellow;
             skinnedMeshRendLabels.Size = new Size(60, 20);
@@ -99,7 +99,7 @@ namespace SimulationWFA.SerializedEditorClasses
             }
 
             ComboBox skinnedMeshComboBoxes = new ComboBox();
-            skinnedMeshComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight);
+            skinnedMeshComboBoxes.Location = new Point(60, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             if (obj == null)
             {
                 FileInfo fileInfo = new FileInfo(skinnedMeshFiles[0]);
