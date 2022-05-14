@@ -26,8 +26,6 @@ namespace SimulationWFA
         HierarchySimButton lastSimButton = null;
         public SimulationProject()
         {
-            float x = this.CreateGraphics().DpiX;
-            this.AutoSize = true;
             hierarchyHeight = 0;
             InitializeComponent();
             ShowProjectFiles();
@@ -178,7 +176,7 @@ namespace SimulationWFA
             var simObject = SimObject.NewSimObject();
             HierarchySimButton hierarchyButton = new HierarchySimButton();
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
-            hierarchyButton.Location = new Point(10, 30 + hierarchyHeight);
+            hierarchyButton.Location = new Point(10, 30 + hierarchyHeight - hieararchyPanel.VerticalScroll.Value);
             hierarchyButton.Name = "hierarchyButton";
             hierarchyButton.Size = new System.Drawing.Size(75, 23);
             hierarchyButton.Text = simObject.objectData.name;
@@ -193,7 +191,6 @@ namespace SimulationWFA
             hierarchyButton.BringToFront();
             hierarchyButton.Click += (sender2, e2) => hierarchyButton_Click(sender2, e2, hierarchyButton.id); //new System.EventHandler(hierarchyButton_Click);
             hieararchyPanel.Controls.Add(hierarchyButton);
-
             TextBox textBox = new TextBox();
             textBox.Name = "textbox";
             textBox.Location = new Point(hierarchyButton.Location.X + 80, hierarchyButton.Location.Y);
@@ -203,8 +200,8 @@ namespace SimulationWFA
             hierarchyButton.BringToFront();
             textBox.TextChanged += (sender2, e2) => hierarchyButton_TextChanged(sender2, e2, hierarchyButton);
             hieararchyPanel.Controls.Add(textBox);
-
             hierarchyHeight += 30;
+            addObjectButton.Location = new Point(addObjectButton.Location.X, hierarchyHeight + 30 - hieararchyPanel.VerticalScroll.Value);
         }
         private void hierarchyButton_TextChanged(object sender, EventArgs e, HierarchySimButton hierarchySimButton)
         {
