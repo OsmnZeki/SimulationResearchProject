@@ -93,9 +93,9 @@ namespace SimulationWFA.SerializedEditorClasses
             string scenegltfPath = null;
             if (obj == null)
             {
-                scenegltfPath = skinnedMeshFiles[0] + Path.DirectorySeparatorChar + "scene.gltf";
-                FileInfo fileInfo = new FileInfo(scenegltfPath);
-                skinnedMeshRendererSerialized.modelPath = fileInfo.FullName;
+                FileInfo fileInfo = new FileInfo(skinnedMeshFiles[0]);
+                scenegltfPath = fileInfo.Name + Path.DirectorySeparatorChar + "scene.gltf";
+                skinnedMeshRendererSerialized.modelPath = scenegltfPath;
             }
 
             ComboBox skinnedMeshComboBoxes = new ComboBox();
@@ -127,7 +127,7 @@ namespace SimulationWFA.SerializedEditorClasses
         {
             SkinnedMeshSerialized skinnedMeshRendererSerialized = serializedCompItem as SkinnedMeshSerialized;
             dynamic obj = sender;
-            string filename = SimPath.ModelsPath + Path.DirectorySeparatorChar + obj.Text + Path.DirectorySeparatorChar + "scene.gltf";
+            string filename =  obj.Text + Path.DirectorySeparatorChar + "scene.gltf";
              
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {

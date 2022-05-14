@@ -233,7 +233,7 @@ namespace SimulationWFA
                 simButton.componentPanel.VerticalScroll.Enabled = true;
 
                 Button addComponentButton = new Button();
-                addComponentButton.Location = new Point(100, 450);
+                addComponentButton.Location = new Point(100, simButton.componentPanel.Height);
                 addComponentButton.Size = new Size(100, 20);
                 addComponentButton.BackColor = Color.White;
                 addComponentButton.Text = "Add Component";

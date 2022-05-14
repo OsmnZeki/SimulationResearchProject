@@ -1,5 +1,5 @@
 {
-  "modelPath": "C:\\Unity\\SimulationResearchProject\\SimulationResearchProject\\SimulationWFA\\SimulationWFA\\Assets\\Models\\ambulance2\\scene.gltf",
+  "modelPath": "ambulance2\\scene.gltf",
   "add": true,
   "type": "TheSimulation.SerializedComponent.SkinnedMeshSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 }

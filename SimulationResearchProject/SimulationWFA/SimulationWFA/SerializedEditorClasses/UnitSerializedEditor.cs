@@ -67,7 +67,7 @@ namespace SimulationWFA.SerializedEditorClasses
             serializedText.Size = new Size(150, 60 + simButton.componentPanel.TotalInspectorPanelHeight);
             serializedText.BringToFront();
             simButton.componentPanel.Controls.Add(serializedText);
-            simButton.componentPanel.TotalInspectorPanelHeight += serializedText.Size.Height;
+            simButton.componentPanel.TotalInspectorPanelHeight += 20;
             controls.Add(serializedText);
 
             Label[] fieldName = new Label[4];
