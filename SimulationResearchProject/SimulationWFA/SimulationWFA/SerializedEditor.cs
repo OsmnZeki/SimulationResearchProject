@@ -163,6 +163,12 @@ namespace SimulationWFA
                         unitSerializedEditor.SetComponentInPanel(serializedCompItem);
                         break;
                     }
+                case "Skinned Mesh Serialized":
+                    {
+                        SkinnedMeshSerializedEditor skinnedMeshSerializedEditor = new SkinnedMeshSerializedEditor(simButton, inspectorPanel);
+                        skinnedMeshSerializedEditor.SetComponentInPanel(serializedCompItem);
+                        break;
+                    }
                 //case "Mesh":
                 //    {
                 //        PrepareMeshCase(simButton, serializedCompItem, meshControls);

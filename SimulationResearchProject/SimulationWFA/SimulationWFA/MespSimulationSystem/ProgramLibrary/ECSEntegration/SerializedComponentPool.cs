@@ -27,6 +27,7 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
             {10, typeof(ObstacleSerialized)},
             {11, typeof(UnitSerialized)},
             {12, typeof(TargetSerialized)},
+            {13, typeof(SkinnedMeshSerialized)},
 
            // {2, new TestSystemSerialized()}
         };
@@ -46,6 +47,7 @@ namespace SimulationWFA.MespSimulationSystem.ProgramLibrary
             "ObstacleSerialized",
             "UnitSerialized",
             "TargetSerialized",
+            "SkinnedMeshSerialized",
         };
 
         public static Type GetSerializedComponent(string serializedCompName)

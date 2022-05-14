@@ -28,7 +28,7 @@ namespace TheSimulation.SerializedComponent
 
         public override string GetName()
         {
-            return "Skinned Mesh Renderer Serialized";
+            return "Skinned Mesh Serialized";
         }
     }
 }
