@@ -66,17 +66,17 @@ namespace SimulationSystem
             }
         }
 
-        public override void PostRender()
-        {
-            foreach (var b in colliderFilter)
-            {
-                ref var boxColliderComp = ref colliderFilter.Get1(b);
-                ref var transformComp = ref colliderFilter.Get2(b);
+        //public override void PostRender()
+        //{
+        //    foreach (var b in colliderFilter)
+        //    {
+        //        ref var boxColliderComp = ref colliderFilter.Get1(b);
+        //        ref var transformComp = ref colliderFilter.Get2(b);
 
-                boxColliderComp.collider.DrawGizmos();
-            }
+        //        boxColliderComp.collider.DrawGizmos();
+        //    }
 
-        }
+        //}
     }
 
 
