@@ -1,4 +1,5 @@
 {
   "add": true,
-  "type": "ECSEntegration.SerializedComponent.TriggerSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  "type": "ECSEntegration.SerializedComponent.TriggerSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "ownerSimObj": null
 }

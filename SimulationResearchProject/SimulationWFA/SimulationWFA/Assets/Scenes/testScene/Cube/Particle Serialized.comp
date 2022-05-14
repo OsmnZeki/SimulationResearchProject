@@ -8,5 +8,6 @@
   "drag": 0.05,
   "useGravity": true,
   "add": true,
-  "type": "ECSEntegration.SerializedComponent.ParticleSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  "type": "ECSEntegration.SerializedComponent.ParticleSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "ownerSimObj": null
 }

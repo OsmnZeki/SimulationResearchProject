@@ -74,6 +74,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new SkyboxRenderSystem(), GenericSystemGroup);
             //EventSystems
             systemManager.AddSystem(new EditorEventListenSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new EditorTransformSyncSystem(), GenericSystemGroup);
         }
     }
 }

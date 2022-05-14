@@ -110,6 +110,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\FPSDisplaySerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\PointLightSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\ParticleSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\SkinnedMeshSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\SpotLightSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TestSystemSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TextRendererSerialized.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\ClearColorTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\ColliderBoundsUpdateSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\CollisionDetectionSystem.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorTransformSyncSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\SkyboxRenderSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorCameraSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\EditorEventListenSystem.cs" />
@@ -247,6 +249,7 @@
     <Compile Include="SerializedEditorClasses\ParticleSystemSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\PointLightSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\SerializedEditorAbstract.cs" />
+    <Compile Include="SerializedEditorClasses\SkinnedMeshSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\SpotLightSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\TargetSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\TextRendererSerializedEditor.cs" />

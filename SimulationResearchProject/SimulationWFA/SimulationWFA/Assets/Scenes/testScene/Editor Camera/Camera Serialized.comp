@@ -4,5 +4,6 @@
   "near": 0.1,
   "far": 100.0,
   "add": true,
-  "type": "TheSimulation.SerializedComponent.CameraSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  "type": "TheSimulation.SerializedComponent.CameraSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "ownerSimObj": null
 }

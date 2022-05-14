@@ -4,5 +4,6 @@
   "turnDst": 1.0,
   "stoppingDst": 10.0,
   "add": true,
-  "type": "SimulationWFA.SimulationAlgorithms.AStar.UnitSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  "type": "SimulationWFA.SimulationAlgorithms.AStar.UnitSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "ownerSimObj": null
 }

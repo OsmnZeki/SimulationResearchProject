@@ -11,5 +11,6 @@
   "scale": 30.0,
   "text": "FPS: ",
   "add": true,
-  "type": "TheSimulation.SerializedComponent.TextRendererSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
+  "type": "TheSimulation.SerializedComponent.TextRendererSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "ownerSimObj": null
 }
