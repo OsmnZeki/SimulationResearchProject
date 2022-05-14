@@ -66,7 +66,7 @@ namespace SimulationSystem
             }
         }
 
-        public override void PostRender()
+        /*public override void PostRender()
         {
             foreach (var b in colliderFilter)
             {
@@ -76,7 +76,7 @@ namespace SimulationSystem
                 boxColliderComp.collider.DrawGizmos();
             }
 
-        }
+        }*/
     }
 
 

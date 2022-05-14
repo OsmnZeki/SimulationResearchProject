@@ -1,8 +1,8 @@
 {
   "pos": {
-    "X": 11.81521,
-    "Y": 23.573698,
-    "Z": -7.10700035
+    "X": 7.03637552,
+    "Y": 10.6421223,
+    "Z": 1.02096665
   },
   "scale": {
     "X": 1.0,
@@ -10,11 +10,10 @@
     "Z": 1.0
   },
   "rotation": {
-    "X": -53.0,
-    "Y": 146.0,
+    "X": -52.0,
+    "Y": -166.0,
     "Z": 0.0
   },
   "add": true,
-  "type": "TheSimulation.SerializedComponent.TransformSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-  "ownerSimObj": null
+  "type": "TheSimulation.SerializedComponent.TransformSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 }

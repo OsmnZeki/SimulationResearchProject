@@ -2,6 +2,5 @@
   "meshPath": "cube.mesh",
   "materialPath": "lambMaterial.mat",
   "add": true,
-  "type": "TheSimulation.SerializedComponent.MeshRendererSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-  "ownerSimObj": null
+  "type": "TheSimulation.SerializedComponent.MeshRendererSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 }

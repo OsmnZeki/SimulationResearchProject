@@ -18,6 +18,5 @@
     "W": 1.0
   },
   "add": true,
-  "type": "TheSimulation.SerializedComponent.DirectionalLightSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
-  "ownerSimObj": null
+  "type": "TheSimulation.SerializedComponent.DirectionalLightSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 }
