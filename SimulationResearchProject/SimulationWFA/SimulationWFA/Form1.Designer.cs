@@ -57,10 +57,10 @@ namespace SimulationWFA
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.projectsPanel = new System.Windows.Forms.Panel();
             this.projectsTreeView = new System.Windows.Forms.TreeView();
+            this.addObjectButton = new System.Windows.Forms.Button();
             this.projectsLabel = new System.Windows.Forms.Label();
             this.hieararchyPanel = new System.Windows.Forms.Panel();
             this.Hierarchy = new System.Windows.Forms.Button();
-            this.addObjectButton = new System.Windows.Forms.Button();
             this.hierarchyLabel = new System.Windows.Forms.Label();
             this.simulationWindowPanel = new System.Windows.Forms.Panel();
             this.simulationWindowLabel = new System.Windows.Forms.Label();
@@ -225,6 +225,13 @@ namespace SimulationWFA
             this.projectsTreeView.Name = "projectsTreeView";
             this.projectsTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.projectsTreeView_NodeMouseDoubleClick);
             // 
+            // addObjectButton
+            // 
+            resources.ApplyResources(this.addObjectButton, "addObjectButton");
+            this.addObjectButton.Name = "addObjectButton";
+            this.addObjectButton.UseVisualStyleBackColor = true;
+            this.addObjectButton.Click += new System.EventHandler(this.addObjectButton_Click);
+            // 
             // projectsLabel
             // 
             resources.ApplyResources(this.projectsLabel, "projectsLabel");
@@ -246,13 +253,6 @@ namespace SimulationWFA
             this.Hierarchy.ForeColor = System.Drawing.SystemColors.ControlLight;
             resources.ApplyResources(this.Hierarchy, "Hierarchy");
             this.Hierarchy.Name = "Hierarchy";
-            // 
-            // addObjectButton
-            // 
-            resources.ApplyResources(this.addObjectButton, "addObjectButton");
-            this.addObjectButton.Name = "addObjectButton";
-            this.addObjectButton.UseVisualStyleBackColor = true;
-            this.addObjectButton.Click += new System.EventHandler(this.addObjectButton_Click);
             // 
             // hierarchyLabel
             // 
