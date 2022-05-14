@@ -27,10 +27,10 @@ namespace SimulationWFA.SerializedEditorClasses
             base.RemoveComponentButton();
         }
 
-        public override void removeComponentButton_Click(object sender, EventArgs e)
+        /*public override void removeComponentButton_Click(object sender, EventArgs e)
         {
             base.removeComponentButton_Click(sender, e);
-        }
+        }*/
 
         public override void SetComponentInPanel(SerializedComponent serializedCompItem)
         {

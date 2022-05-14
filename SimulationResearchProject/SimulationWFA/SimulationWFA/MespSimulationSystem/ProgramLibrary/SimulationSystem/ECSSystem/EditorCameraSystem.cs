@@ -16,6 +16,8 @@ namespace SimulationSystem.Systems
     {
         readonly Filter<CameraComp,TransformComp> cameraFilter = null;
 
+        Screen screen = null;
+
 
         public override void Update()
         {
@@ -54,7 +56,7 @@ namespace SimulationSystem.Systems
                 ref var transformComp = ref cameraFilter.Get2(c);
 
                 cameraComp.view = cameraComp.GetViewMatrix(transformComp.transform);
-                cameraComp.projection = cameraComp.Perspective(800f / 600f);
+                cameraComp.projection = cameraComp.Perspective(screen.GetWidth() / screen.GetHeight());
             }
         }
 

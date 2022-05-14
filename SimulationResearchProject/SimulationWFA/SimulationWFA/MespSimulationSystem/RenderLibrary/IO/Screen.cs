@@ -49,6 +49,16 @@ namespace RenderLibrary.IO
             RenderProgramDLL.ScreenNewFrame(screenAdress);
         }
 
+        public float GetWidth()
+        {
+            return RenderProgramDLL.ScreenGetWidth(screenAdress);
+        }
+
+        public float GetHeight()
+        {
+            return RenderProgramDLL.ScreenGetHeight(screenAdress);
+        }
+
         public void Terminate()
         {
             RenderProgramDLL.ScreenTerminate(screenAdress);

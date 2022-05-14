@@ -20,6 +20,8 @@ namespace SimulationSystem.Systems
 
         Ray cameraRay = new Ray(new Vector3(9.5f, 1.5f, 0), new Vector3(0, -1f, 0));
 
+        Screen screen = null;
+
         public override void Update()
         {
             foreach (var c in cameraFilter)
@@ -27,7 +29,10 @@ namespace SimulationSystem.Systems
                 ref var cameraComp = ref cameraFilter.Get1(c);
                 ref var transfromComp = ref cameraFilter.Get2(c);
 
-                var result = cameraComp.RaycastFromCamera(new Vector2((float)Input.GetMousePosX(), (float)Input.GetMousePosY()), transfromComp.transform);
+                var result = cameraComp.RaycastFromCamera(new Vector2((float)Input.GetMousePosX(), (float)Input.GetMousePosY()), transfromComp.transform, screen);
+
+                Console.WriteLine("Width: " + screen.GetWidth());
+
                 if (Input.GetMouseKeyDown(0))
                 {
                     cameraRay.origin = transfromComp.transform.position;
