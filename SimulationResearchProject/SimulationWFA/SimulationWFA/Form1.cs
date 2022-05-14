@@ -26,7 +26,7 @@ namespace SimulationWFA
         HierarchySimButton lastSimButton = null;
         public SimulationProject()
         {
-
+            float x = this.CreateGraphics().DpiX;
             hierarchyHeight = 0;
             InitializeComponent();
             ShowProjectFiles();
