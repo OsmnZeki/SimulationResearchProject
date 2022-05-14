@@ -35,6 +35,12 @@ namespace RenderLibrary.DLL
         [DllImport(RenderProgramDLLPath, EntryPoint = "SetClearColor")]
         public static extern void SetClearColor(IntPtr screen, float[] clearColor);
 
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenGetWidth")]
+        public static extern float ScreenGetWidth(IntPtr screen);
+
+        [DllImport(RenderProgramDLLPath, EntryPoint = "ScreenGetHeight")]
+        public static extern float ScreenGetHeight(IntPtr screen);
+
         #endregion
 
         #region ShaderFunction

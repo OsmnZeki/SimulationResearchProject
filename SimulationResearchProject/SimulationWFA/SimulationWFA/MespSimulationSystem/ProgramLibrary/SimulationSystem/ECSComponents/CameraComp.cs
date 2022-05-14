@@ -56,12 +56,15 @@ namespace SimulationSystem.Components
             return mat4;
         }
 
-        public Vector3 RaycastFromCamera(Vector2 screenPos,Transform cameraTransform)
+        public Vector3 RaycastFromCamera(Vector2 screenPos,Transform cameraTransform,Screen screen)
         {
             float[] screenPosArr = new float[] { screenPos.X, screenPos.Y };
             float[] resultArr = new float[3];
 
-            RenderProgramDLL.GetRayFromScreenSpace(screenPosArr, Perspective(800 / 600).matrixAdress, GetViewMatrix(cameraTransform).matrixAdress, 800, 600, resultArr);
+            float width = screen.GetWidth();
+            float height = screen.GetHeight();
+
+            RenderProgramDLL.GetRayFromScreenSpace(screenPosArr, Perspective(width / height).matrixAdress, GetViewMatrix(cameraTransform).matrixAdress, width, height, resultArr);
 
             return new Vector3(resultArr[0], resultArr[1], resultArr[2]);
         }
