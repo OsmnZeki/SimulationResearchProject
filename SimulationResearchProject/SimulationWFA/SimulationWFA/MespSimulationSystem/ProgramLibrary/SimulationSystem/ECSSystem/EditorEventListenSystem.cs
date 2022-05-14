@@ -50,6 +50,7 @@ namespace SimulationSystem.Systems
 
            if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))
             {
+                addCompData.serializedComponent.ownerSimObj = addCompData.simObject;
                 addCompData.simObject.AddNewSerializedComponent(addCompData.serializedComponent);
             }
 

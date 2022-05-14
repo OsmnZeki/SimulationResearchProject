@@ -7,6 +7,7 @@ namespace SimulationSystem.ECS.Entegration
     {
         public bool add = true;
         public Type type;
+        public SimObject ownerSimObj;
 
         public SerializedComponent()
         {
