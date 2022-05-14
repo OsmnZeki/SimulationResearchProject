@@ -266,7 +266,7 @@
     <Compile Include="SimulationAlgorithms\AStar\Line.cs" />
     <Compile Include="SimulationAlgorithms\AStar\Node.cs" />
     <Compile Include="SimulationAlgorithms\AStar\ObstacleComp.cs" />
-    <Compile Include="SimulationAlgorithms\AStar\ObstacleInitializeSystem.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\ObstacleUpdateSystem.cs" />
     <Compile Include="SimulationAlgorithms\AStar\Path.cs" />
     <Compile Include="SimulationAlgorithms\AStar\Pathfinding.cs" />
     <Compile Include="SimulationAlgorithms\AStar\PathRequestManager.cs" />

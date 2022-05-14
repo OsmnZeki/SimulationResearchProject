@@ -54,7 +54,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
             }
         }
 
-        void CreateGrid(Vector3 position)
+        public void CreateGrid(Vector3 position)
         {
             grid = new Node[gridSizeX, gridSizeY];
             Vector3 worldBottomLeft = position - Vector3.UnitX * gridWorldSize.X / 2 - Vector3.UnitZ * gridWorldSize.Y / 2;

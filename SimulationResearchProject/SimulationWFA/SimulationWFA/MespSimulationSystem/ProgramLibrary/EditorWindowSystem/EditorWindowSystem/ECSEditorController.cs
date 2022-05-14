@@ -49,7 +49,7 @@ namespace SimulationSystem.Systems
             //systemManager.AddSystem(new PhysicTestSystem(), GenericSystemGroup);
             //systemManager.AddSystem(new TriggerTestSystem(), GenericSystemGroup);
             //systemManager.AddSystem(new RaycastTestSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new ObstacleInitializeSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new ObstacleUpdateSystem(), GenericSystemGroup);
             systemManager.AddSystem(new GridSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new UnitPathFindSystem(), GenericSystemGroup);

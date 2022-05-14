@@ -22,5 +22,6 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
     }
     public struct TargetComp
     {
+
     }
 }

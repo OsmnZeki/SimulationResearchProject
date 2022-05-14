@@ -32,30 +32,31 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
             grid.SetupGrid(transformComp.transform.position);
 
         }
-        //public override void PostRender()
-        //{
-        //    foreach (var g in gridFilter)
-        //    {
-        //        ref var gridComp = ref gridFilter.Get1(g);
-        //        ref var transformComp = ref gridFilter.Get2(g);
-        //        var color = new Vector3(0, 1, 0);
 
-        //        BoxBounds gridBound = new BoxBounds();
-        //        gridBound.Center = transformComp.transform.position;
-        //        gridBound.Size = new Vector3(gridComp.grid.gridWorldSize.X, 0, gridComp.grid.gridWorldSize.Y);
-        //        MespDebug.DrawWireBox(gridBound, color);
+        public override void PostRender()
+        {
+            foreach (var g in gridFilter)
+            {
+                ref var gridComp = ref gridFilter.Get1(g);
+                ref var transformComp = ref gridFilter.Get2(g);
+                var color = new Vector3(0, 1, 0);
 
-        //        if (gridComp.grid != null)
-        //        {
-        //            foreach (Node n in gridComp.grid.grid)
-        //            {
-        //                color = Vector3.Lerp(new Vector3(1,1,1),Vector3.Zero, MathFunctions.InverseLerp(gridComp.grid.penaltyMin, gridComp.grid.penaltyMax, n.movementPenalty));
-        //                color = (n.walkable) ? color : new Vector3(1,0,0);
-        //                MespDebug.DrawWireBoxXZ(n.worldPosition, new Vector3(1 * gridComp.grid.nodeDiameter, 0 , 1 * gridComp.grid.nodeDiameter), color);
-        //            }
-        //        }
+                BoxBounds gridBound = new BoxBounds();
+                gridBound.Center = transformComp.transform.position;
+                gridBound.Size = new Vector3(gridComp.grid.gridWorldSize.X, 0, gridComp.grid.gridWorldSize.Y);
+                MespDebug.DrawWireBox(gridBound, color);
 
-        //    }
-        //}
+                if (gridComp.grid != null)
+                {
+                    foreach (Node n in gridComp.grid.grid)
+                    {
+                        color = Vector3.Lerp(new Vector3(1,1,1),Vector3.Zero, MathFunctions.InverseLerp(gridComp.grid.penaltyMin, gridComp.grid.penaltyMax, n.movementPenalty));
+                        color = (n.walkable) ? color : new Vector3(1,0,0);
+                        MespDebug.DrawWireBoxXZ(n.worldPosition, new Vector3(1 * gridComp.grid.nodeDiameter, 0 , 1 * gridComp.grid.nodeDiameter), color);
+                    }
+                }
+
+            }
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace PhysicLibrary
     {
         public float restitution = 1f;
         public Bounds bound;
-        public PhysicsLayer physicsLayer;
+        public PhysicsLayer physicsLayer = PhysicsLayer.defaultLayer;
 
         public abstract bool IsIntersectWith(Bounds bound, out Contact contact);
         public abstract bool IsIntersectWith(Ray ray, float distance, out Vector3 hitPoint, bool isInfinite = false);
