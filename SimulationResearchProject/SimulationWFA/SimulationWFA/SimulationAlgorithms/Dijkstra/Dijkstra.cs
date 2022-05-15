@@ -9,7 +9,7 @@ using SimulationWFA.SimulationAlgorithms.AStar;
 
 namespace SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm
 {
-    /*public class Dijkstra : ShortestPathAlgorithm
+    public class Dijkstra : ShortestPathAlgorithm
     {
         public class DijkstraNode
         {
@@ -112,5 +112,5 @@ namespace SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm
 
             finished = true;
         }
-    }*/
+    }
 }

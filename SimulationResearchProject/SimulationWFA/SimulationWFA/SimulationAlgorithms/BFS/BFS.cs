@@ -8,7 +8,7 @@ using SimulationWFA.SimulationAlgorithms.AStar;
 
 namespace SimulationWFA.SimulationAlgorithms
 {
-    /*public class BFS : ShortestPathAlgorithm
+    public class BFS : ShortestPathAlgorithm
     {
         public override Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid)
         {
@@ -103,5 +103,5 @@ namespace SimulationWFA.SimulationAlgorithms
             finished = true;
             return;
         }
-    }*/
+    }
 }
