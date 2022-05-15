@@ -57,14 +57,13 @@ namespace SimulationWFA
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.projectsPanel = new System.Windows.Forms.Panel();
             this.projectsTreeView = new System.Windows.Forms.TreeView();
-            this.addObjectButton = new System.Windows.Forms.Button();
             this.projectsLabel = new System.Windows.Forms.Label();
+            this.addObjectButton = new System.Windows.Forms.Button();
             this.hieararchyPanel = new System.Windows.Forms.Panel();
             this.Hierarchy = new System.Windows.Forms.Button();
             this.hierarchyLabel = new System.Windows.Forms.Label();
             this.simulationWindowPanel = new System.Windows.Forms.Panel();
             this.simulationWindowLabel = new System.Windows.Forms.Label();
-            this.simulateButton = new System.Windows.Forms.Button();
             this.inspectorLabel = new System.Windows.Forms.Label();
             this.inspectorPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
@@ -225,18 +224,19 @@ namespace SimulationWFA
             this.projectsTreeView.Name = "projectsTreeView";
             this.projectsTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.projectsTreeView_NodeMouseDoubleClick);
             // 
-            // addObjectButton
-            // 
-            resources.ApplyResources(this.addObjectButton, "addObjectButton");
-            this.addObjectButton.Name = "addObjectButton";
-            this.addObjectButton.UseVisualStyleBackColor = true;
-            this.addObjectButton.Click += new System.EventHandler(this.addObjectButton_Click);
-            // 
             // projectsLabel
             // 
             resources.ApplyResources(this.projectsLabel, "projectsLabel");
             this.projectsLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.projectsLabel.Name = "projectsLabel";
+            // 
+            // addObjectButton
+            // 
+            resources.ApplyResources(this.addObjectButton, "addObjectButton");
+            this.addObjectButton.Name = "addObjectButton";
+            this.addObjectButton.UseVisualStyleBackColor = true;
+            int i = 0;
+            this.addObjectButton.Click += (sender, e) => this.addObjectButton_Click(sender, e, ref i);// new System.EventHandler(this.addObjectButton_Click);
             // 
             // hieararchyPanel
             // 
@@ -267,7 +267,6 @@ namespace SimulationWFA
             this.simulationWindowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
             this.simulationWindowPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.simulationWindowPanel.Controls.Add(this.simulationWindowLabel);
-            this.simulationWindowPanel.Controls.Add(this.simulateButton);
             this.simulationWindowPanel.Name = "simulationWindowPanel";
             // 
             // simulationWindowLabel
@@ -275,14 +274,6 @@ namespace SimulationWFA
             resources.ApplyResources(this.simulationWindowLabel, "simulationWindowLabel");
             this.simulationWindowLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.simulationWindowLabel.Name = "simulationWindowLabel";
-            // 
-            // simulateButton
-            // 
-            resources.ApplyResources(this.simulateButton, "simulateButton");
-            this.simulateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.simulateButton.Name = "simulateButton";
-            this.simulateButton.UseVisualStyleBackColor = false;
-            this.simulateButton.Click += new System.EventHandler(this.simulateButton_Click);
             // 
             // inspectorLabel
             // 
@@ -310,7 +301,6 @@ namespace SimulationWFA
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SimulationProject";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.projectsPanel.ResumeLayout(false);
@@ -357,7 +347,6 @@ namespace SimulationWFA
         private System.Windows.Forms.Label hierarchyLabel;
         private System.Windows.Forms.Panel simulationWindowPanel;
         private System.Windows.Forms.Label simulationWindowLabel;
-        private System.Windows.Forms.Button simulateButton;
         private System.Windows.Forms.Button addObjectButton;
         private System.Windows.Forms.Button Hierarchy;
         private System.Windows.Forms.Label inspectorLabel;

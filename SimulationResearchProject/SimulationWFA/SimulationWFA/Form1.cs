@@ -75,7 +75,9 @@ namespace SimulationWFA
                 hierarchyButton.BringToFront();
                 textBox.TextChanged += (sender2, e2) => hierarchyButton_TextChanged(sender2, e2, hierarchyButton);
                 hieararchyPanel.Controls.Add(textBox);
+
             }
+            addObjectButton.Location = new Point(addObjectButton.Location.X, hierarchyHeight + 30);
         }
         private void ShowProjectFiles() //program açıldığı anda projectste istenilen path içindeki dosyaları gosterir.
         {
@@ -172,9 +174,9 @@ namespace SimulationWFA
             }
         }
 
-        private void addObjectButton_Click(object sender, EventArgs e) //Hierarchy'e obje ekler.
+        private void addObjectButton_Click(object sender, EventArgs e, ref int i) //Hierarchy'e obje ekler.
         {
-            var simObject = SimObject.NewSimObject();
+            var simObject = SimObject.NewSimObject("Empty" + i.ToString());
             HierarchySimButton hierarchyButton = new HierarchySimButton();
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
             hierarchyButton.Location = new Point(10, 30 + hierarchyHeight - hieararchyPanel.VerticalScroll.Value);
@@ -204,13 +206,13 @@ namespace SimulationWFA
             hieararchyPanel.Controls.Add(textBox);
             hierarchyHeight += 30;
             addObjectButton.Location = new Point(addObjectButton.Location.X, hierarchyHeight + 30 - hieararchyPanel.VerticalScroll.Value);
+            i++;
         }
         private void hierarchyButton_TextChanged(object sender, EventArgs e, HierarchySimButton hierarchySimButton)
         {
             TextBox textBox = sender as TextBox;
             hierarchySimButton.Text = textBox.Text;
             hierarchySimButton.simObject.objectData.name = textBox.Text;
-            //hieararchyPanel.Controls.Remove(textBox);
         }
 
         private void hierarchyButton_Click(object sender, EventArgs e, int idx) //Hierarchy' deki objeye tıklandığında girer
@@ -227,7 +229,6 @@ namespace SimulationWFA
                     HierarchySimButton simButtonOld = lastSimButton;
                     simButtonOld.componentPanel.Visible = false;
                 }
-                //Panel componentPanel = new Panel();
                 simButton.componentPanel.Location = new Point(5, 30);
                 simButton.componentPanel.Name = "ComponentPanel";
                 simButton.componentPanel.Size = new System.Drawing.Size(300, 500);
@@ -283,6 +284,7 @@ namespace SimulationWFA
             if (simButton.Location.Y == hierarchyHeight - hieararchyPanel.VerticalScroll.Value)
             {
                 hierarchyHeight -= 30;
+                addObjectButton.Location = new Point(addObjectButton.Location.X, addObjectButton.Location.Y - 30);
             }
             simButton.componentPanel.Visible = false;
             simButton.componentPanel.Controls.Clear();
@@ -355,6 +357,7 @@ namespace SimulationWFA
         {
             SceneManager.SaveScene("testScene");
         }
+
     }
 
 

@@ -233,7 +233,7 @@
     <value>0, 0</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1352, 24</value>
+    <value>985, 24</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
@@ -265,37 +265,37 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAu
-        CAAAAk1TRnQBSQFMAgEBAgEAARgBAQEYAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        CAAAAk1TRnQBSQFMAgEBAgEAASgBAQEoAQEBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABEAMAAQEBAAEgBgABEBIAAxkBIwMtAUYDLQFGAy0BRgMtAUYDLQFGAy0BRgMtAUYDLQFGAy0BRgMt
         AUYDLQFGAy0BRgMtAUYDLQFGAxkBIwgAA1wB3ANTAaoDUwGqA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGq
-        A1MBqgNTAaoDXAHciAADYgHvAUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/
-        AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUABzgL/AVgCYgHvCAADUwGqKAADUwGq
-        iAABQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHP
-        Av8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BCgG9Av8IAANTAaooAANTAaqIAAFDAc8C/wFD
-        Ac8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFD
-        Ac8C/wFDAc8C/wFDAc8C/wFDAc8C/wEKAb0C/wgAA1MBqgwAAyABLgMnAToUAANTAaqIAAFDAc8C/wFD
-        Ac8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFD
-        Ac8C/wFDAc8C/wFDAc8C/wFDAc8C/wEKAb0C/wgAA1MBqgQAAwQBBgNUAa4DDQESA1ABowgAA1QBrgME
-        AQYEAANTAaqIAAFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFD
-        Ac8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wEKAb0C/wgAA1MBqgQAA0cBggMv
-        AUoEAANQAaMDDQESBAADLwFKA0cBggQAA1MBqogAAUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/
-        AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/AUMBzwL/
-        AQoBvQL/CAADUwGqBAADWQHEAwQBBgQAAzABSwM+AWsEAAMEAQYDWQHEBAADUwGqiAABQwHPAv8BQwHP
-        Av8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHP
-        Av8BQwHPAv8BQwHPAv8BQwHPAv8BCgG9Av8IAANTAaoEAAMvAUoDRwGCBAADAwEEA1UBsQQAA0cBggMv
-        AUoEAANTAaqIAAFCAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFD
-        Ac8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wFDAc8C/wEKAb0C/wgAA1MBqggAA0ABcAgA
-        A0oBigMdASoDPwFvCAADUwGqiAABHQHDAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHo
-        Av8BtQHoAv8BWAHWAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHPAv8BCgG9Av8IAANT
-        AaoUAAMQARYDEAEWDAADUwGqiAABDwG+Hv8B7QH6Av8BWAHWAv8BQwHPAv8BQwHPAv8BQwHPAv8BQwHP
-        Av8BQwHPAv8BCgG8Av8IAANTAaooAANTAaqIAAEPAb4B/gL/AfcB2AL/AfcB2AL/AfcB2AL/AfcB2AL/
+        A1MBqgNTAaoDXAHciAADYgHvAUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/
+        AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AT4BzgL/AVgCYgHvCAADUwGqKAADUwGq
+        iAABQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHP
+        Av8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BCAG9Av8IAANTAaooAANTAaqIAAFBAc8C/wFB
+        Ac8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFB
+        Ac8C/wFBAc8C/wFBAc8C/wFBAc8C/wEIAb0C/wgAA1MBqgwAAyABLgMnAToUAANTAaqIAAFBAc8C/wFB
+        Ac8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFB
+        Ac8C/wFBAc8C/wFBAc8C/wFBAc8C/wEIAb0C/wgAA1MBqgQAAwQBBgNUAa4DDQESA1ABowgAA1QBrgME
+        AQYEAANTAaqIAAFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFB
+        Ac8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wEIAb0C/wgAA1MBqgQAA0cBggMv
+        AUoEAANQAaMDDQESBAADLwFKA0cBggQAA1MBqogAAUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/
+        AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/AUEBzwL/
+        AQgBvQL/CAADUwGqBAADWQHEAwQBBgQAAzABSwM+AWsEAAMEAQYDWQHEBAADUwGqiAABQQHPAv8BQQHP
+        Av8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHP
+        Av8BQQHPAv8BQQHPAv8BQQHPAv8BCAG9Av8IAANTAaoEAAMvAUoDRwGCBAADAwEEA1UBsQQAA0cBggMv
+        AUoEAANTAaqIAAFAAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFB
+        Ac8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wFBAc8C/wEIAb0C/wgAA1MBqggAA0ABcAgA
+        A0oBigMdASoDPwFvCAADUwGqiAABGwHDAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHoAv8BtQHo
+        Av8BtQHoAv8BVgHWAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHPAv8BCAG9Av8IAANT
+        AaoUAAMQARYDEAEWDAADUwGqiAABDQG+Hv8B7QH6Av8BVgHWAv8BQQHPAv8BQQHPAv8BQQHPAv8BQQHP
+        Av8BQQHPAv8BCAG8Av8IAANTAaooAANTAaqIAAENAb4B/gL/AfcB2AL/AfcB2AL/AfcB2AL/AfcB2AL/
         AfcB2AL/AfcB2AL/AfcB2AL/AfcB2AH/AfAB8wHYAf8BwQHkAdgB/wHAAeQB2AH/AcAB5AHYAf8BwAHk
-        AdgB/wHAAd4BvQH/ARUBqwH9Af8IAANYAd0DUwGqA1MBqgNTAaoDPgFrGAADUwGqiAABCwG9Af4B/wFY
-        AdAB5gH/AVgB0AHmAf8BWAHQAeYB/wFYAdAB5gH/AVgB0AHmAf8BWAHQAeYB/wFYAdAB5gH/AVgB0AHm
-        Af8BWAHQAeYB/wFYAdAB5gH/AVgB0AHmAf8BWAHQAeYB/wFYAdAB5gH/AVkBzAHUAf8BTAJfAfMIAAMz
-        AVMDTwGbAwEBAgQAA1MBqhgAA1MBqogAAQgBvAL/AQgBvAL/AQgBvAL/AQgBvAL/AQgBvAL/AQgBvAL/
-        AQgBvAL/A1sByAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAMhATAMAAMz
-        AVMDTwGbAwEBAgNTAaoYAANTAaqIAAFYAmIB7wEIAbwC/wEIAbwC/wEIAbwC/wEIAbwC/wEIAbwC/wNb
+        AdgB/wHAAd4BvQH/ARMBqwH9Af8IAANYAd0DUwGqA1MBqgNTAaoDPgFrGAADUwGqiAABCQG9Af4B/wFW
+        AdAB5gH/AVYB0AHmAf8BVgHQAeYB/wFWAdAB5gH/AVYB0AHmAf8BVgHQAeYB/wFWAdAB5gH/AVYB0AHm
+        Af8BVgHQAeYB/wFWAdAB5gH/AVYB0AHmAf8BVgHQAeYB/wFWAdAB5gH/AVcBzAHUAf8BTAJfAfMIAAMz
+        AVMDTwGbAwEBAgQAA1MBqhgAA1MBqogAAQYBvAL/AQYBvAL/AQYBvAL/AQYBvAL/AQYBvAL/AQYBvAL/
+        AQYBvAL/A1sByAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAE1AjYBWAMhATAMAAMz
+        AVMDTwGbAwEBAgNTAaoYAANTAaqIAAFYAmIB7wEGAbwC/wEGAbwC/wEGAbwC/wEGAbwC/wEGAbwC/wNb
         AcgDCwEPMAADMwFTA08BmwNTAaoYAANTAaqIAAMZASMDLQFGAy0BRgMtAUYDLQFGAy0BRQMIAQs4AAMz
         AVMDWAHdA1MBqgNTAaoDUwGqA1MBqgNTAaoDUwGqA1wB3IgAAUIBTQE+BwABPgMAASgDAAFAAwABEAMA
         AQEBAAEBBQABgBcAA/8DAAHAAQMGAAHfAfsGAAHfAfsGAAHcAfsGAAHQAcsGAAHSAUsGAAHSAUsGAAHS
@@ -322,7 +322,7 @@
     <value>0</value>
   </data>
   <data name="projectsTreeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 192</value>
+    <value>169, 167</value>
   </data>
   <data name="projectsTreeView.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -370,10 +370,10 @@
     <value>1</value>
   </data>
   <data name="projectsPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>823, 549</value>
+    <value>515, 319</value>
   </data>
   <data name="projectsPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 241</value>
+    <value>186, 216</value>
   </data>
   <data name="projectsPanel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -394,7 +394,7 @@
     <value>NoControl</value>
   </data>
   <data name="addObjectButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 486</value>
+    <value>50, 256</value>
   </data>
   <data name="addObjectButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -478,10 +478,10 @@
     <value>2</value>
   </data>
   <data name="hieararchyPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>823, 27</value>
+    <value>515, 27</value>
   </data>
   <data name="hieararchyPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 516</value>
+    <value>186, 286</value>
   </data>
   <data name="hieararchyPanel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -531,47 +531,14 @@
   <data name="&gt;&gt;simulationWindowLabel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="simulateButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="simulateButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="simulateButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>289, 544</value>
-  </data>
-  <data name="simulateButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 30</value>
-  </data>
-  <data name="simulateButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="simulateButton.Text" xml:space="preserve">
-    <value>Simulate</value>
-  </data>
-  <data name="&gt;&gt;simulateButton.Name" xml:space="preserve">
-    <value>simulateButton</value>
-  </data>
-  <data name="&gt;&gt;simulateButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;simulateButton.Parent" xml:space="preserve">
-    <value>simulationWindowPanel</value>
-  </data>
-  <data name="&gt;&gt;simulateButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="simulationWindowPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 27</value>
+    <value>0, 27</value>
   </data>
   <data name="simulationWindowPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>809, 762</value>
+    <value>509, 508</value>
   </data>
   <data name="simulationWindowPanel.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="simulationWindowPanel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;simulationWindowPanel.Name" xml:space="preserve">
     <value>simulationWindowPanel</value>
@@ -622,10 +589,10 @@
     <value>True</value>
   </data>
   <data name="inspectorPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>999, 27</value>
+    <value>707, 27</value>
   </data>
   <data name="inspectorPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>341, 762</value>
+    <value>274, 508</value>
   </data>
   <data name="inspectorPanel.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -658,7 +625,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1352, 801</value>
+    <value>985, 547</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
