@@ -5,7 +5,6 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using SimulationWFA.SimulationAlgorithms.AStar;
-using static SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm.Dijkstra;
 //using static SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm.Dijkstra;
 
 namespace SimulationWFA.SimulationAlgorithms
@@ -18,7 +17,8 @@ namespace SimulationWFA.SimulationAlgorithms
             public Node currentSearchingNode;
             //dijkstra
             public Queue<Node> exploringGrid;
-            public DijkstraNode[,] distanceGrid;
+            public Stack<Node> exploringGridStack;
+           // public DijkstraNode[,] distanceGrid;
 
             //astar
             public Heap<Node> openSet;

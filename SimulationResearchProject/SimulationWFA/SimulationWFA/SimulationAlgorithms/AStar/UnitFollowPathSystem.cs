@@ -81,7 +81,13 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
                 for(int i = 0; i < unitFollowPathComp.path.lookPoints.Length-1; i++)
                 {
-                    ProgramLibrary.MespDebug.DrawLine(unitFollowPathComp.path.lookPoints[i], unitFollowPathComp.path.lookPoints[i + 1], new Vector3(0, 0, 1));
+                    var p1 = unitFollowPathComp.path.lookPoints[i];
+                    p1.Y += 0.3f;
+
+                    var p2 = unitFollowPathComp.path.lookPoints[i+1];
+                    p2.Y += 0.3f;
+
+                    ProgramLibrary.MespDebug.DrawLine(p1, p2, new Vector3(0, 0, 1));
                 }
 
             }

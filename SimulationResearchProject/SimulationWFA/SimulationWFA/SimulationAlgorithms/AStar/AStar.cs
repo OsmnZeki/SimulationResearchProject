@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SimulationWFA.SimulationAlgorithms.AStar
 {
-    public class AStar : ShortestPathAlgorithm
+    /*public class AStar : ShortestPathAlgorithm
     {
         public override Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid)
         {
@@ -130,5 +130,5 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
             finished = true;
         }
-    }
+    }*/
 }

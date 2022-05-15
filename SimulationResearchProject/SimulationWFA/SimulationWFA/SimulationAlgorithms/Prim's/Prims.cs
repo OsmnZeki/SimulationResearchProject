@@ -9,7 +9,7 @@ using SimulationWFA.SimulationAlgorithms.AStar;
 
 namespace SimulationWFA.SimulationAlgorithms
 {
-    public class Prims : ShortestPathAlgorithm
+    /*public class Prims : ShortestPathAlgorithm
     {
         public override Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid)
         {
@@ -109,5 +109,5 @@ namespace SimulationWFA.SimulationAlgorithms
             finished = true;
 
         }
-    }
+    }*/
 }

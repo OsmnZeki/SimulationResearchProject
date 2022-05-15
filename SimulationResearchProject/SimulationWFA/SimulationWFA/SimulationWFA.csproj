@@ -280,6 +280,8 @@
     <Compile Include="SimulationAlgorithms\AStar\VisualizeShortestPathAlgorithmSystem.cs" />
     <Compile Include="SimulationAlgorithms\AStar\VisualizeShortestPathComp.cs" />
     <Compile Include="SimulationAlgorithms\CustomAlgorithm\CustomAlgorithm.cs" />
+    <Compile Include="SimulationAlgorithms\BFS.cs" />
+    <Compile Include="SimulationAlgorithms\DFS.cs" />
     <Compile Include="SimulationAlgorithms\Dijkstra\Dijkstra.cs" />
     <Compile Include="SimulationAlgorithms\Prim%27s\Prims.cs" />
     <Compile Include="SimulationAlgorithms\RestartUnitSystem.cs" />
