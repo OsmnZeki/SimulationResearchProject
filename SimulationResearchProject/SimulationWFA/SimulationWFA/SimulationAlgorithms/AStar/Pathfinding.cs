@@ -12,7 +12,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
     {
 
 
-        public Vector3[] FindPath(Vector3 startPos, Vector3 targetPos,Grid grid)
+        public Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid)
         {
 
             Stopwatch sw = new Stopwatch();
@@ -100,12 +100,12 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
             for (int i = 1; i < path.Count; i++)
             {
-                //    Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
-                //    if (directionNew != directionOld)
-                //    {
-                waypoints.Add(path[i].worldPosition);
-            //    }
-            //    directionOld = directionNew;
+                Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
+                if (directionNew != directionOld)
+                {
+                    waypoints.Add(path[i].worldPosition);
+                }
+                directionOld = directionNew;
             }
             return waypoints.ToArray();
         }

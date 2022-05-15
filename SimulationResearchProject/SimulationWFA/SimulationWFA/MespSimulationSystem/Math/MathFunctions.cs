@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using MespSimulationSystem.Math;
 using RenderLibrary.DLL;
 
 namespace MESPSimulationSystem.Math
@@ -10,6 +11,11 @@ namespace MESPSimulationSystem.Math
             return (System.Math.PI / 180) * angle;
         }
 
+        public static double RadianToDegree(double radian)
+        {
+            return (180 /System.Math.PI) * radian;
+        }
+
         public static Vector3 Rotate(Mat4 modelMatrix, float degree, Vector3 axisOfRot, Vector3 direction)
         {
             float[] returnArr = { direction.X, direction.Y, direction.Z };
@@ -17,6 +23,22 @@ namespace MESPSimulationSystem.Math
                 new[] { axisOfRot.X, axisOfRot.Y, axisOfRot.Z }, returnArr);
 
             return new Vector3(returnArr[0], returnArr[1], returnArr[2]);
+        }
+
+        public static Vector3 MoveTowards(Vector3 start, Vector3 end, float movement)
+        {
+            Vector3 dir = (end - start).normalized();
+
+            return start + movement * dir;
+
+        }
+
+        public static double AngleBetween(Vector3 vector1, Vector3 vector2)
+        {
+            double sin = vector1.X * vector2.Y - vector2.X * vector1.Y;
+            double cos = vector1.X * vector2.Y + vector1.Y * vector2.X;
+
+            return System.Math.Atan2(sin, cos) * (180 / System.Math.PI);
         }
 
         public static int RoundToInt(float value)
