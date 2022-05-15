@@ -41,7 +41,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
                     ref var gridComp = ref gridFilter.Get1(0);
 
-                    var waypoints = pathRequestManager.GetDijkstraPath(transformComp.transform.position, targetPosition, gridComp.grid);
+                    var waypoints = pathRequestManager.GetPrimsPath(transformComp.transform.position, targetPosition, gridComp.grid);
 
                     float distance = 0;
 

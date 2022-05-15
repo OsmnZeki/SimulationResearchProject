@@ -13,7 +13,7 @@ namespace SimulationWFA.SimulationAlgorithms
     {
         Pathfinding pathfinding = new Pathfinding();
         Dijkstra dijkstra = new Dijkstra();
-
+        Prims prims = new Prims();
         bool isProcessingPath;
 
         public Vector3[] GetAStarPath(Vector3 pathStart, Vector3 pathEnd,Grid grid)
@@ -28,7 +28,11 @@ namespace SimulationWFA.SimulationAlgorithms
             return waypoint;
         }
 
-
+        public Vector3[] GetPrimsPath(Vector3 pathStart, Vector3 pathEnd, Grid grid)
+        {
+            var waypoint = prims.FindPath(pathStart, pathEnd, grid);
+            return waypoint;
+        }
 
 
     }
