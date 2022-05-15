@@ -86,7 +86,7 @@ namespace SimulationWFA.SimulationAlgorithms
                 }
             }
 
-
+            Stopwatch sw = new Stopwatch();
 
             foundedAlgorithm = null;
             long shortestTimePassed = long.MaxValue;
@@ -95,7 +95,7 @@ namespace SimulationWFA.SimulationAlgorithms
 
             foreach (var algorithm in activeAlgorithms)
             {
-                Stopwatch sw = new Stopwatch();
+                sw.Reset();
                 sw.Start();
 
                 waypoints = algorithm.FindPath(pathStart, pathEnd, grid);
@@ -109,6 +109,7 @@ namespace SimulationWFA.SimulationAlgorithms
 
                 if (sw.ElapsedMilliseconds < shortestTimePassed)
                 {
+                    shortestTimePassed = sw.ElapsedMilliseconds;
                     foundedAlgorithm = algorithm;
                     shortestPathType = algorithm.GetType();
                 }
