@@ -2,6 +2,7 @@
 using SimulationSystem.ECSSystems;
 using SimulationSystem.SharedData;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.Systems;
+using SimulationWFA.SimulationAlgorithms;
 using SimulationWFA.SimulationAlgorithms.AStar;
 
 namespace SimulationSystem.Systems

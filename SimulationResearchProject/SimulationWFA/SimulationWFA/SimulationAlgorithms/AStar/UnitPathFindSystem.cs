@@ -41,7 +41,17 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
                     ref var gridComp = ref gridFilter.Get1(0);
 
-                    var waypoints = pathRequestManager.GetAStarPath(transformComp.transform.position, targetPosition, gridComp.grid);
+                    var waypoints = pathRequestManager.GetDijkstraPath(transformComp.transform.position, targetPosition, gridComp.grid);
+
+                    float distance = 0;
+
+                    for(int i = 0; i < waypoints.Length - 1; i++)
+                    {
+                        distance += Vector3.Distance(waypoints[i],waypoints[i + 1]);
+                    }
+
+                    Console.WriteLine(distance);
+
                     if(waypoints != null)
                     {
                         float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;

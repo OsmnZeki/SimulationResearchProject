@@ -275,6 +275,7 @@
     <Compile Include="SimulationAlgorithms\AStar\UnitFollowPathComp.cs" />
     <Compile Include="SimulationAlgorithms\AStar\UnitFollowPathSystem.cs" />
     <Compile Include="SimulationAlgorithms\AStar\UnitPathFindSystem.cs" />
+    <Compile Include="SimulationAlgorithms\Dijkstra\Dijkstra.cs" />
     <EmbeddedResource Include="Form1.aa-ER.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>

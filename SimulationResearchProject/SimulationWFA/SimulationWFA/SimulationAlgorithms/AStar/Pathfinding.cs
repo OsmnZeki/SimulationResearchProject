@@ -77,7 +77,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
         }
 
 
-        Vector3[] RetracePath(Node startNode, Node endNode)
+        public static Vector3[] RetracePath(Node startNode, Node endNode)
         {
             List<Node> path = new List<Node>();
             Node currentNode = endNode;
@@ -93,7 +93,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
         }
 
-        Vector3[] SimplifyPath(List<Node> path)
+        public static Vector3[] SimplifyPath(List<Node> path)
         {
             List<Vector3> waypoints = new List<Vector3>();
             Vector2 directionOld = Vector2.Zero;
@@ -110,7 +110,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
             return waypoints.ToArray();
         }
 
-        int GetDistance(Node nodeA, Node nodeB)
+        public static int GetDistance(Node nodeA, Node nodeB)
         {
             int dstX = Math.Abs(nodeA.gridX - nodeB.gridX);
             int dstY = Math.Abs(nodeA.gridY - nodeB.gridY);

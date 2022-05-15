@@ -24,7 +24,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
         public Node[,] grid;
 
         public float nodeDiameter;
-        int gridSizeX, gridSizeY;
+        public int gridSizeX, gridSizeY;
 
         public int penaltyMin = int.MaxValue;
         public int penaltyMax = int.MinValue;
