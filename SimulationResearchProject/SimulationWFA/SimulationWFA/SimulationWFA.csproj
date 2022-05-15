@@ -277,6 +277,7 @@
     <Compile Include="SimulationAlgorithms\AStar\UnitPathFindSystem.cs" />
     <Compile Include="SimulationAlgorithms\CustomAlgorithm\CustomAlgorithm.cs" />
     <Compile Include="SimulationAlgorithms\Dijkstra\Dijkstra.cs" />
+    <Compile Include="SimulationAlgorithms\Prim%27s\Prims.cs" />
     <Compile Include="SimulationAlgorithms\ShortestPathAlgorithm.cs" />
     <EmbeddedResource Include="Form1.aa-ER.resx">
       <DependentUpon>Form1.cs</DependentUpon>

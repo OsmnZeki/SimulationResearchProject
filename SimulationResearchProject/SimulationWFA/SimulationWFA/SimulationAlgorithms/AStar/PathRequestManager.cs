@@ -14,7 +14,7 @@ namespace SimulationWFA.SimulationAlgorithms
     {
         Pathfinding pathfinding = new Pathfinding();
         Dijkstra dijkstra = new Dijkstra();
-
+        Prims prims = new Prims();
         bool isProcessingPath;
 
         public Vector3[] StartAlgorithms(Vector3 pathStart, Vector3 pathEnd, Grid grid)
