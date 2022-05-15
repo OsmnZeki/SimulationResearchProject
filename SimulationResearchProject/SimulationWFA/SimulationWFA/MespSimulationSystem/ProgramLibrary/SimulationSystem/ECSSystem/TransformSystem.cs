@@ -17,10 +17,13 @@ namespace SimulationSystem.Systems
             foreach(var t in transformFilter)
             {
                 ref var transformComp = ref transformFilter.Get1(t);
-                var cos = MathFunctions.ConvertToRadians(transformComp.transform.rotation.Y);
-                direction.X = (float)Math.Cos(MathFunctions.ConvertToRadians(transformComp.transform.rotation.Y)) * (float)Math.Cos(MathFunctions.ConvertToRadians(transformComp.transform.rotation.X));
-                direction.Y = (float)Math.Sin(MathFunctions.ConvertToRadians(transformComp.transform.rotation.X));
-                direction.Z = (float)Math.Sin(MathFunctions.ConvertToRadians(transformComp.transform.rotation.Y)) * (float)Math.Cos(MathFunctions.ConvertToRadians(transformComp.transform.rotation.X));
+                var radianY = MathFunctions.ConvertToRadians(transformComp.transform.rotation.Y);
+                var radianX = MathFunctions.ConvertToRadians(transformComp.transform.rotation.X);
+                radianY = Math.Round(radianY,2);
+                radianX = Math.Round(radianX,2);
+                direction.X = (float)Math.Cos(radianY) * (float)Math.Cos(radianX);
+                direction.Y = (float)Math.Sin(radianX);
+                direction.Z = (float)Math.Sin(radianY) * (float)Math.Cos(radianX);
                 
                 transformComp.transform.forward = Vector3.Normalize(direction);
                 transformComp.transform.right = Vector3.Normalize(Vector3.Cross(transformComp.transform.forward, Transform.WorldUp));

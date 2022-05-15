@@ -56,7 +56,6 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new UnitPathFindSystem(), GenericSystemGroup);
             systemManager.AddSystem(new UnitFollowPathSystem(), GenericSystemGroup);
             
-
             //
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);
 

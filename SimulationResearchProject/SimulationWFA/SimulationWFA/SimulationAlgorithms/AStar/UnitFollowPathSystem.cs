@@ -57,32 +57,13 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                         }
                     }
 
-                    //Quaternion targetRotation = Quaternion.LookRotation(path.lookPoints[pathIndex] - transform.position);
-                    //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
-                    
-
                     var direction = unitFollowPathComp.path.lookPoints[unitFollowPathComp.pathIndex] - transformComp.transform.position;
 
-                    var cosX = Vector3.Dot(transformComp.transform.right, direction.normalized());
-                    var angle = Math.Acos(cosX);
-
-                    ProgramLibrary.MespDebug.DrawLine(transformComp.transform.position, transformComp.transform.position + transformComp.transform.right * 10, new Vector3(1, 0, 1));
-                    ProgramLibrary.MespDebug.DrawLine(transformComp.transform.position, transformComp.transform.position + direction.normalized() * 10, new Vector3(1, 1, 1));
-                    //Console.WriteLine(MathFunctions.RadianToDegree(angle));
-
-                    var rotation = transformComp.transform.rotation;
-                    rotation = MathFunctions.MoveTowards(rotation, new Vector3(90, rotation.Y, (float)MathFunctions.RadianToDegree(angle)), Time.deltaTime * 240);
-                    //rotation.Z = (float)MathFunctions.RadianToDegree(angle);
-                    //rotation.X = 90;
-                    transformComp.transform.rotation = rotation;
-
                     var pos = transformComp.transform.position;
-                    pos += transformComp.transform.right * Time.deltaTime * unitComp.speed * unitFollowPathComp.speedPercent;
+                    pos += direction.normalized() * Time.deltaTime * unitComp.speed * unitFollowPathComp.speedPercent;
                     pos.Y = transformComp.transform.position.Y;
                     
-
                     transformComp.transform.position = pos;
-                   // transform.Translate(Vector3.UnitZ * Time.deltaTime * speed * speedPercent, Space.Self);
                 }
 
             }

@@ -11,6 +11,8 @@ namespace PhysicLibrary
     public abstract class Bounds
     {
         private Vector3 center;
+        public Vector3 offset;
+
         public Vector3 Center {
             get {
                 return center;
@@ -24,7 +26,7 @@ namespace PhysicLibrary
 
         public void UpdateCenter(Vector3 newCenter)
         {
-            center = newCenter;
+            center = newCenter+ offset;
         }
 
         public abstract void UpdateBounds();

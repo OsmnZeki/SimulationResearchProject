@@ -29,9 +29,9 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
         public int penaltyMin = int.MaxValue;
         public int penaltyMax = int.MinValue;
 
-        public void SetupGrid(Vector3 position)
+        public void SetupGrid(Vector3 position, BoxBounds unitBound)
         {
-            nodeDiameter = nodeRadius;
+            nodeDiameter = nodeRadius = unitBound.Size.X;
             gridSizeX = MathFunctions.RoundToInt(gridWorldSize.X / nodeDiameter);// Mat.RoundToInt(gridWorldSize.x / nodeDiameter);
             gridSizeY = MathFunctions.RoundToInt(gridWorldSize.Y / nodeDiameter);
 
@@ -45,7 +45,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                 walkableRegionsDictionary.Add(region.terrainMask.layerId, region.terrainPenalty);
             }
 
-            CreateGrid(position);
+            CreateGrid(position, unitBound);
         }
 
         public int MaxSize {
@@ -54,21 +54,19 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
             }
         }
 
-        public void CreateGrid(Vector3 position)
+        public void CreateGrid(Vector3 position,BoxBounds unitBound)
         {
             grid = new Node[gridSizeX, gridSizeY];
             Vector3 worldBottomLeft = position - Vector3.UnitX * gridWorldSize.X / 2 - Vector3.UnitZ * gridWorldSize.Y / 2;
-            BoxBounds bound = new BoxBounds();
-            bound.Size = Vector3.One * nodeDiameter;
 
             for (int x = 0; x < gridSizeX; x++)
             {
                 for (int y = 0; y < gridSizeY; y++)
                 {
                     Vector3 worldPoint = worldBottomLeft + Vector3.UnitX * (x * nodeDiameter + nodeRadius/2) + Vector3.UnitZ * (y * nodeDiameter + nodeRadius/2);
-                    bound.Center = worldPoint;
 
-                    bool walkable = !(Physics.CheckBox(bound, unwalkableMask));
+
+                    bool walkable = !(Physics.CheckBox(worldPoint,unitBound.Size, unwalkableMask));
 
                     int movementPenalty = 0;
 
