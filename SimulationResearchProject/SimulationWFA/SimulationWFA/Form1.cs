@@ -233,7 +233,7 @@ namespace SimulationWFA
                 simButton.componentPanel.VerticalScroll.Enabled = true;
 
                 Button addComponentButton = new Button();
-                addComponentButton.Location = new Point(100, simButton.componentPanel.Height - simButton.componentPanel.VerticalScroll.Value);
+                addComponentButton.Location = new Point(10, simButton.componentPanel.Height - simButton.componentPanel.VerticalScroll.Value);
                 addComponentButton.Size = new Size(100, 30);
                 addComponentButton.BackColor = Color.White;
                 addComponentButton.Text = "Add Component";
@@ -242,7 +242,15 @@ namespace SimulationWFA
                 addComponentButton.BringToFront();
                 simButton.componentPanel.Controls.Add(addComponentButton);
 
-
+                Button removeSimObject = new Button();
+                removeSimObject.Location = new Point(120, simButton.componentPanel.Height - simButton.componentPanel.VerticalScroll.Value);
+                removeSimObject.Size = new Size(130, 30);
+                removeSimObject.BackColor = Color.White;
+                removeSimObject.Text = "Remove " + simButton.simObject.objectData.name;
+                removeSimObject.Name = "RemoveSimObjectButton";
+                removeSimObject.Click += (sender3, e3) => RemoveSimObjectButton_Click(sender3, e3, simButton);
+                removeSimObject.BringToFront();
+                simButton.componentPanel.Controls.Add(removeSimObject);
 
                 foreach (var item in simButton.simObject.objectData.GetSerializedComponents())
                 {
@@ -268,6 +276,11 @@ namespace SimulationWFA
             lastSimButton = simButton;
         }
 
+        private void RemoveSimObjectButton_Click(object sender3, EventArgs e3, HierarchySimButton simButton)
+        {
+            
+        }
+
         private void addComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton) //Inspectorde component eklemeyen button
         {
             //ListBox listBox = new ListBox();
@@ -278,7 +291,7 @@ namespace SimulationWFA
             foreach (var item in SerializedComponentPool.SerializedCompTypes)
             {
                 buttons[idx] = new Button();
-                buttons[idx].Location = new Point(100, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight + 30 - simButton.componentPanel.VerticalScroll.Value);
+                buttons[idx].Location = new Point(10, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight + 30 - simButton.componentPanel.VerticalScroll.Value);
                 buttons[idx].Size = new Size(100, 20);
                 buttons[idx].Text = SerializedComponentPool.SerializedCompNames[item.Key];
                 buttons[idx].BackColor = Color.White;
