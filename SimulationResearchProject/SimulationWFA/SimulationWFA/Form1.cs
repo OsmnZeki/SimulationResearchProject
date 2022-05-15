@@ -280,12 +280,14 @@ namespace SimulationWFA
 
         private void RemoveSimObjectButton_Click(object sender3, EventArgs e3, HierarchySimButton simButton)
         {
-
+            if (simButton.Location.Y == hierarchyHeight - hieararchyPanel.VerticalScroll.Value)
+            {
+                hierarchyHeight -= 30;
+            }
             simButton.componentPanel.Visible = false;
             simButton.componentPanel.Controls.Clear();
             Control[] changeNameTextBox = hieararchyPanel.Controls.Find("ChangeNameTextBox" + simButton.simObject.objectData.name, true);
             Control[] simButtons = hieararchyPanel.Controls.Find("hierarchyButton", true);
-            hierarchyHeight -= 30;
             hieararchyPanel.Controls.Remove(simButton);
             hieararchyPanel.Controls.Remove(changeNameTextBox[0]);
 
@@ -296,7 +298,6 @@ namespace SimulationWFA
 
         private void addComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton) //Inspectorde component eklemeyen button
         {
-            //ListBox listBox = new ListBox();
             Control[] addComponentbutton = simButton.componentPanel.Controls.Find("AddComponentButton", true);
             addComponentbutton[0].Enabled = false;
             Button[] buttons = new Button[SerializedComponentPool.SerializedCompTypes.Count];
@@ -310,14 +311,12 @@ namespace SimulationWFA
                 buttons[idx].BackColor = Color.White;
                 buttons[idx].BringToFront();
                 buttons[idx].Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons, addComponentbutton[0]);
-                //listBox.Items.Add(buttons[idx]);
                 simButton.componentPanel.Controls.Add(buttons[idx]);
-                //listBox.Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons);
+
 
                 idx++;
             }
-            //listBox.Location = new Point(100, (idx * 20) + simButton.componentPanel.TotalInspectorPanelHeight + 20);
-            //simButton.componentPanel.Controls.Add(listBox);
+
         }
 
         private void componentsButton_Click(object sender, EventArgs e, HierarchySimButton simButton, int idx, Button[] buttons, Control addComponentButton) //Inspectorde componentleri göstermeye yarayan button
@@ -336,8 +335,6 @@ namespace SimulationWFA
             {
                 serializedEditor.SetSerializedItemOnEditor(serializedComponent, simButton, inspectorPanel, simButton.simObject.objectData.GetSerializedComponents().Length);
                 simButton.serializedComponentList.Add(serializedComponent.GetName());
-                Control[] control = Controls.Find("AddComponentButton", true);
-                control[0].Location = new Point(100, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
             }
             else
             {
