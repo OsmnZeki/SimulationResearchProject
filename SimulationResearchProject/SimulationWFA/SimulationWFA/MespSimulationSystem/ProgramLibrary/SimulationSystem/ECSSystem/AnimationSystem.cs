@@ -9,7 +9,7 @@ using RenderLibrary.Graphics;
 using RenderLibrary.Shaders;
 using SimulationSystem.ECSComponents;
 using SimulationSystem.SharedData;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace SimulationSystem 
 {

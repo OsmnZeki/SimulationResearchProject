@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace Dalak.Ecs
 {

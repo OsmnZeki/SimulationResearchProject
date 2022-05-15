@@ -35,7 +35,7 @@ namespace SimulationSystem
                     
                     int usedContacts = contactlist.Count;
                     contactResolver.iteration = usedContacts * 2;
-                    contactResolver.ResolveContact(contactlist.ToArray(), usedContacts, Timer.Time.fixedDeltaTime);
+                    contactResolver.ResolveContact(contactlist.ToArray(), usedContacts, TimeUtils.Time.fixedDeltaTime);
                 }
             }
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using RenderLibrary.IO;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace SimulationSystem
 {

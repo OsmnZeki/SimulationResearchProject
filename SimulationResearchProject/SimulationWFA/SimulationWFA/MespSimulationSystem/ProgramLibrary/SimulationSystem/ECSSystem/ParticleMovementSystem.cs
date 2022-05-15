@@ -9,7 +9,7 @@ using PhysicLibrary;
 using RenderLibrary.IO;
 using SimulationSystem.Components;
 using SimulationSystem.ECSComponents;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace SimulationSystem.ECSSystems
 {

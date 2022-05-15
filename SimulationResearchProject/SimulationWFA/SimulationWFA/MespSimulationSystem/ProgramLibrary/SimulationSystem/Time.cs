@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace SimulationSystem.Timer
+namespace SimulationSystem.TimeUtils
 {
     public static class Time
     {

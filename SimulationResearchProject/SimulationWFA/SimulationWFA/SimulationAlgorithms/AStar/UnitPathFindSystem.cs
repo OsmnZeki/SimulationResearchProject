@@ -42,22 +42,10 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
                     ref var gridComp = ref gridFilter.Get1(0);
 
-                    var waypoints = pathRequestManager.StartAlgorithms(transformComp.transform.position, targetPosition, gridComp.grid);
-
-                    float distance = 0;
-
-                    for(int i = 0; i < waypoints.Length - 1; i++)
-                    {
-                        distance += Vector3.Distance(waypoints[i],waypoints[i + 1]);
-                    }
-
-                    Console.WriteLine(distance);
+                    var waypoints = pathRequestManager.StartAlgorithms(transformComp.transform.position, targetPosition, gridComp.grid, out var algoritm);
 
                     if(waypoints != null)
                     {
-                        float sqrMoveThreshold = pathUpdateMoveThreshold * pathUpdateMoveThreshold;
-                        Vector3 targetPosOld = targetPosition;
-
                         var path = new Path(waypoints, transformComp.transform.position, unitComp.turnDst, unitComp.stoppingDst);
 
                         var unitEntity = unitFilter.GetEntity(u);
@@ -66,11 +54,16 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                             pathIndex = 0,
                             speedPercent = 1,
                         };
+
+                        Entity visualizeEntity = world.NewEntity();
+                        visualizeEntity.AddComponent<VisualizeShortestPathComp>() = new VisualizeShortestPathComp() {
+                            shortestPathAlgorithm = algoritm,
+                            visualizeData = new ShortestPathAlgorithm.VisualizeData(),
+                            grid = gridComp.grid,
+                            waypoints = waypoints,
+                            backTracingLimit = 1,
+                        };
                     }
-
-                    
-
-
                 }
 
             }

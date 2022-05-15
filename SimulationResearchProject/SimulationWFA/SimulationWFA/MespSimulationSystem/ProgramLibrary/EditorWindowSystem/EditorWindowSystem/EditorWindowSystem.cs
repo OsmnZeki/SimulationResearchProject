@@ -1,7 +1,7 @@
 ﻿using System;
 using RenderLibrary.IO;
 using SimulationSystem.Systems;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 using RenderLibrary.OpenGLCustomFunctions;
 using RenderLibrary.DLL;
 using PhysicLibrary;

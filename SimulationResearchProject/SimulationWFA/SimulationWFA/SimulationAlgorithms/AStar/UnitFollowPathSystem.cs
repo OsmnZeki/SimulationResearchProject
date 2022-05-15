@@ -8,13 +8,13 @@ using Dalak.Ecs;
 using MespSimulationSystem.Math;
 using MESPSimulationSystem.Math;
 using SimulationSystem.Components;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace SimulationWFA.SimulationAlgorithms.AStar
 {
     public class UnitFollowPathSystem : Dalak.Ecs.System
     {
-        readonly Filter<UnitFollowPathComp, UnitComp, TransformComp> unitFollowFilter = null;
+        readonly Filter<UnitFollowPathComp, UnitComp, TransformComp,StartPathFollowComp> unitFollowFilter = null;
 
         public override void Update()
         {
@@ -35,6 +35,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                         followingPath = false;
                         var entity = unitFollowFilter.GetEntity(u);
                         entity.RemoveComponent<UnitFollowPathComp>();
+                        entity.RemoveComponent<StartPathFollowComp>();
                         return;
                     }
                     else
@@ -53,6 +54,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                         {
                             var entity = unitFollowFilter.GetEntity(u);
                             entity.RemoveComponent<UnitFollowPathComp>();
+                            entity.RemoveComponent<StartPathFollowComp>();
                             return;
                         }
                     }

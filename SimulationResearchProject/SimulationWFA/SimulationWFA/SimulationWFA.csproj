@@ -175,6 +175,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\TriggerTestSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\ECSSystem\UpdateForceSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Time.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\SimulationSystem\Timer.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animation.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Animations\Animator.cs" />
     <Compile Include="MespSimulationSystem\RenderLibrary\Graphics\LineRenderer.cs" />
@@ -270,11 +271,14 @@
     <Compile Include="SimulationAlgorithms\AStar\Path.cs" />
     <Compile Include="SimulationAlgorithms\AStar\AStar.cs" />
     <Compile Include="SimulationAlgorithms\AStar\PathRequestManager.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\StartPathFollowComp.cs" />
     <Compile Include="SimulationAlgorithms\AStar\TargetComp.cs" />
     <Compile Include="SimulationAlgorithms\AStar\UnitComp.cs" />
     <Compile Include="SimulationAlgorithms\AStar\UnitFollowPathComp.cs" />
     <Compile Include="SimulationAlgorithms\AStar\UnitFollowPathSystem.cs" />
     <Compile Include="SimulationAlgorithms\AStar\UnitPathFindSystem.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\VisualizeShortestPathAlgorithmSystem.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\VisualizeShortestPathComp.cs" />
     <Compile Include="SimulationAlgorithms\CustomAlgorithm\CustomAlgorithm.cs" />
     <Compile Include="SimulationAlgorithms\Dijkstra\Dijkstra.cs" />
     <Compile Include="SimulationAlgorithms\Prim%27s\Prims.cs" />

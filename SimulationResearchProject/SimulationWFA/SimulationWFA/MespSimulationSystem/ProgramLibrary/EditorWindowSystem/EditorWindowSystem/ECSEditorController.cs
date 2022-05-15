@@ -54,6 +54,7 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new GridSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new UnitPathFindSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new VisualizeShortestPathAlgorithmSystem(), GenericSystemGroup);
             systemManager.AddSystem(new UnitFollowPathSystem(), GenericSystemGroup);
             
             //

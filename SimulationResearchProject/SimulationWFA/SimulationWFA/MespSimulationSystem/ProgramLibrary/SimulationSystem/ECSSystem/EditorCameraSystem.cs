@@ -8,7 +8,7 @@ using Dalak.Ecs;
 using RenderLibrary.IO;
 using RenderLibrary.Transform;
 using SimulationSystem.Components;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace SimulationSystem.Systems
 {

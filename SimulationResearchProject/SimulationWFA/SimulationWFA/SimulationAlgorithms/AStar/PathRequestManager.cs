@@ -12,16 +12,13 @@ namespace SimulationWFA.SimulationAlgorithms
 {
     public class PathRequestManager
     {
-        AStar.AStar pathfinding = new AStar.AStar();
-        Dijkstra dijkstra = new Dijkstra();
-        //Prims prims = new Prims();
+        IEnumerable<ShortestPathAlgorithm> algorithms;
         bool isProcessingPath;
 
-        public Vector3[] StartAlgorithms(Vector3 pathStart, Vector3 pathEnd, Grid grid)
+        public Vector3[] StartAlgorithms(Vector3 pathStart, Vector3 pathEnd, Grid grid, out ShortestPathAlgorithm foundedAlgorithm)
         {
-            var algorithms = GetAllShortesPathAlgorithm();
-
-            ShortestPathAlgorithm shortestPathAlgorithm;
+            algorithms = GetAllShortesPathAlgorithm();
+            foundedAlgorithm = null;
             long shortestTimePassed = long.MaxValue;
             Type shortestPathType = null;
             Vector3[] waypoints = null;
@@ -37,15 +34,13 @@ namespace SimulationWFA.SimulationAlgorithms
                 Console.WriteLine(algorithm.GetType().Name + " found: " + sw.ElapsedMilliseconds + " ms");
                 if(sw.ElapsedMilliseconds < shortestTimePassed)
                 {
-                    shortestPathAlgorithm = algorithm;
+                    foundedAlgorithm = algorithm;
                     shortestPathType = algorithm.GetType();
                 }
-
             }
 
             Console.WriteLine("Chosen algoritm: " + shortestPathType.Name);
             return waypoints;
-
         }
 
 

@@ -5,14 +5,32 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using SimulationWFA.SimulationAlgorithms.AStar;
+using static SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm.Dijkstra;
 
 namespace SimulationWFA.SimulationAlgorithms
 {
     public abstract class ShortestPathAlgorithm
     {
+        public struct VisualizeData
+        {
+            public List<Node> searchedGrid;
+            public Node currentSearchingNode;
+            //dijkstra
+            public Queue<Node> exploringGrid;
+            public DijkstraNode[,] distanceGrid;
+
+            //astar
+            public Heap<Node> openSet;
+            public HashSet<Node> closedSet;
+        }
+
+        public Node startNode;
+        public Node targetNode;
+        public Grid grid;
 
 
         public abstract Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid);
+        public abstract void VisualizePathSearch(ref VisualizeData visualizeData,out bool finished);
 
 
         public Vector3[] RetracePath(Node startNode, Node endNode)
