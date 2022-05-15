@@ -89,7 +89,7 @@ namespace SimulationWFA.SimulationAlgorithms
             Stopwatch sw = new Stopwatch();
 
             foundedAlgorithm = null;
-            long shortestTimePassed = long.MaxValue;
+            double shortestTimePassed = double.MaxValue;
             Type shortestPathType = null;
             Vector3[] waypoints = null;
 
@@ -101,15 +101,15 @@ namespace SimulationWFA.SimulationAlgorithms
                 waypoints = algorithm.FindPath(pathStart, pathEnd, grid);
 
                 sw.Stop();
-                Console.WriteLine(algorithm.GetType().Name + " found: " + sw.ElapsedMilliseconds + " ms");
+                Console.WriteLine(algorithm.GetType().Name + " found: " + sw.Elapsed.TotalMilliseconds + " ms");
 
-                algorithmMSDictionary[algorithm.GetType().Name] = sw.ElapsedMilliseconds.ToString();
+                algorithmMSDictionary[algorithm.GetType().Name] = sw.Elapsed.TotalMilliseconds.ToString();
                 algorithmDistanceDictionary[algorithm.GetType().Name] = GetDistanceMagnitude(waypoints).ToString();
 
 
-                if (sw.ElapsedMilliseconds < shortestTimePassed)
+                if (sw.Elapsed.TotalMilliseconds < shortestTimePassed)
                 {
-                    shortestTimePassed = sw.ElapsedMilliseconds;
+                    shortestTimePassed = sw.Elapsed.TotalMilliseconds;
                     foundedAlgorithm = algorithm;
                     shortestPathType = algorithm.GetType();
                 }
