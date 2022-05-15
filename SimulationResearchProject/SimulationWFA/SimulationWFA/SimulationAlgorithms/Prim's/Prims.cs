@@ -9,7 +9,7 @@ using SimulationWFA.SimulationAlgorithms.AStar;
 
 namespace SimulationWFA.SimulationAlgorithms
 {
-    public class Prims
+   /* public class Prims
     {
         public class PrimsNode
         {
@@ -82,5 +82,5 @@ namespace SimulationWFA.SimulationAlgorithms
             return waypoints;
 
         }
-    }
+    }*/
 }

@@ -30,6 +30,11 @@ namespace SimulationSystem.Systems
         public EditorFunction editorFunction;
     }
 
+    public struct OnEditorRemoveSimObj : IEvent
+    {
+        public SimObject removedSimObj;
+    }
+
     class EditorEventListenSystem : Dalak.Ecs.System
     {
         public static MespEventManager eventManager = new MespEventManager();
@@ -46,6 +51,12 @@ namespace SimulationSystem.Systems
             {
                 createData.simObject.CreateEntity(world);
                 createData.simObject.InjectAllSerializedComponents(world);
+            }
+
+            if(eventManager.ListenEvent<OnEditorRemoveSimObj>(out var removedData))
+            {
+                removedData.removedSimObj.entity.Destroy();
+                removedData.removedSimObj.RemoveParent();
             }
 
            if (eventManager.ListenEvent<OnEditorAddCompSimObjEvent>(out var addCompData))

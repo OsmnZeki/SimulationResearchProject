@@ -9,7 +9,7 @@ using SimulationWFA.SimulationAlgorithms.AStar;
 
 namespace SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm
 {
-    public class Dijkstra
+    public class Dijkstra : ShortestPathAlgorithm
     {
         public class DijkstraNode
         {
@@ -18,11 +18,8 @@ namespace SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm
 
         }
 
-        public Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid)
+        public override Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-
             Vector3[] waypoints = new Vector3[0];
             bool pathSuccess = false;
 
@@ -49,7 +46,7 @@ namespace SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm
 
                 foreach (Node neighbour in grid.GetNeighbours(currentNode))
                 {
-                    var tempNeighborDist = Pathfinding.GetDistance(neighbour, currentNode);
+                    var tempNeighborDist = GetDistance(neighbour, currentNode);
 
                     if (neighbour.walkable && distanceGrid[neighbour.gridX, neighbour.gridY].distance > distanceGrid[currentNode.gridX, currentNode.gridY].distance + tempNeighborDist+ neighbour.movementPenalty)
                     {
@@ -64,9 +61,7 @@ namespace SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm
 
             }
 
-            sw.Stop();
-            Console.WriteLine("Path found: " + sw.ElapsedMilliseconds + " ms");
-            waypoints = Pathfinding.RetracePath(startNode, targetNode);
+            waypoints = RetracePath(startNode, targetNode);
             return waypoints;
 
         }

@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace SimulationWFA.SimulationAlgorithms.AStar
 {
-    public class Pathfinding
+    public class Pathfinding : ShortestPathAlgorithm
     {
-
-
-        public Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid)
+        public override Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid)
         {
-
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
@@ -75,50 +72,5 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
             }
             return null;
         }
-
-
-        public static Vector3[] RetracePath(Node startNode, Node endNode)
-        {
-            List<Node> path = new List<Node>();
-            Node currentNode = endNode;
-
-            while (currentNode != startNode)
-            {
-                path.Add(currentNode);
-                currentNode = currentNode.parent;
-            }
-            Vector3[] waypoints = SimplifyPath(path);
-            Array.Reverse(waypoints);
-            return waypoints;
-
-        }
-
-        public static Vector3[] SimplifyPath(List<Node> path)
-        {
-            List<Vector3> waypoints = new List<Vector3>();
-            Vector2 directionOld = Vector2.Zero;
-
-            for (int i = 1; i < path.Count; i++)
-            {
-                Vector2 directionNew = new Vector2(path[i - 1].gridX - path[i].gridX, path[i - 1].gridY - path[i].gridY);
-                if (directionNew != directionOld)
-                {
-                    waypoints.Add(path[i].worldPosition);
-                }
-                directionOld = directionNew;
-            }
-            return waypoints.ToArray();
-        }
-
-        public static int GetDistance(Node nodeA, Node nodeB)
-        {
-            int dstX = Math.Abs(nodeA.gridX - nodeB.gridX);
-            int dstY = Math.Abs(nodeA.gridY - nodeB.gridY);
-
-            if (dstX > dstY)
-                return 14 * dstY + 10 * (dstX - dstY);
-            return 14 * dstX + 10 * (dstY - dstX);
-        }
-
     }
 }

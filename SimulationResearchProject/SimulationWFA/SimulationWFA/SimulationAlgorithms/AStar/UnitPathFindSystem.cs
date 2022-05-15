@@ -31,6 +31,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
                 if (Input.GetKeyDown(KeyCode.M))
                 {
+
                     Vector3 targetPosition = new Vector3();
                     foreach (var t in targetFilter)
                     {
@@ -41,7 +42,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
                     ref var gridComp = ref gridFilter.Get1(0);
 
-                    var waypoints = pathRequestManager.GetPrimsPath(transformComp.transform.position, targetPosition, gridComp.grid);
+                    var waypoints = pathRequestManager.StartAlgorithms(transformComp.transform.position, targetPosition, gridComp.grid);
 
                     float distance = 0;
 

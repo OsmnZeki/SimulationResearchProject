@@ -68,16 +68,16 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
                     ProgramLibrary.MespDebug.DrawLine(transformComp.transform.position, transformComp.transform.position + transformComp.transform.right * 10, new Vector3(1, 0, 1));
                     ProgramLibrary.MespDebug.DrawLine(transformComp.transform.position, transformComp.transform.position + direction.normalized() * 10, new Vector3(1, 1, 1));
-                    Console.WriteLine(MathFunctions.RadianToDegree(angle));
+                    //Console.WriteLine(MathFunctions.RadianToDegree(angle));
 
                     var rotation = transformComp.transform.rotation;
-                    rotation = MathFunctions.MoveTowards(rotation, new Vector3(90, rotation.Y, (float)MathFunctions.RadianToDegree(angle)), Time.deltaTime * 120);
+                    rotation = MathFunctions.MoveTowards(rotation, new Vector3(90, rotation.Y, (float)MathFunctions.RadianToDegree(angle)), Time.deltaTime * 240);
                     //rotation.Z = (float)MathFunctions.RadianToDegree(angle);
                     //rotation.X = 90;
                     transformComp.transform.rotation = rotation;
 
                     var pos = transformComp.transform.position;
-                    pos += direction.normalized() * Time.deltaTime * unitComp.speed * unitFollowPathComp.speedPercent;
+                    pos += transformComp.transform.right * Time.deltaTime * unitComp.speed * unitFollowPathComp.speedPercent;
                     pos.Y = transformComp.transform.position.Y;
                     
 
