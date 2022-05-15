@@ -29,7 +29,7 @@ namespace SimulationWFA.SimulationAlgorithms
             { "Custom",  false },
         };
 
-        public static Dictionary<string, string> algorithmMSDictionary = new Dictionary<string, string>() 
+        public static Dictionary<string, string> algorithmMSDictionary = new Dictionary<string, string>()
         {
              { "AStar",  "NONE" },
             { "Dijkstra",  "NONE" },
@@ -52,18 +52,40 @@ namespace SimulationWFA.SimulationAlgorithms
 
         public Vector3[] StartAlgorithms(Vector3 pathStart, Vector3 pathEnd, Grid grid, out ShortestPathAlgorithm foundedAlgorithm)
         {
+            algorithmMSDictionary = new Dictionary<string, string>()
+         {
+             { "AStar",  "NONE" },
+            { "Dijkstra",  "NONE" },
+            { "Prims",  "NONE" },
+            { "DFS",  "NONE" },
+            { "BFS",  "NONE" },
+            { "Custom",  "NONE" },
+        };
+
+            algorithmDistanceDictionary = new Dictionary<string, string>()
+            {
+             { "AStar",  "NONE" },
+            { "Dijkstra",  "NONE" },
+            { "Prims",  "NONE" },
+            { "DFS",  "NONE" },
+            { "BFS",  "NONE" },
+            { "Custom",  "NONE" },
+        };
+
+
+
             algorithms = GetAllShortesPathAlgorithm();
 
             List<ShortestPathAlgorithm> activeAlgorithms = new List<ShortestPathAlgorithm>();
 
-            foreach(var algorithm in algorithms)
+            foreach (var algorithm in algorithms)
             {
                 if (algorithmDictionary[algorithm.GetType().Name])
                 {
                     activeAlgorithms.Add(algorithm);
                 }
             }
-            
+
 
 
             foundedAlgorithm = null;
@@ -71,7 +93,7 @@ namespace SimulationWFA.SimulationAlgorithms
             Type shortestPathType = null;
             Vector3[] waypoints = null;
 
-            foreach(var algorithm in activeAlgorithms)
+            foreach (var algorithm in activeAlgorithms)
             {
                 Stopwatch sw = new Stopwatch();
                 sw.Start();
@@ -110,7 +132,7 @@ namespace SimulationWFA.SimulationAlgorithms
         public float GetDistanceMagnitude(Vector3[] path)
         {
             float totalDistance = 0;
-            for(int i = 0; i < path.Length - 1; i++)
+            for (int i = 0; i < path.Length - 1; i++)
             {
                 totalDistance += (path[i + 1] - path[i]).Length();
             }
