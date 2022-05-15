@@ -45,7 +45,7 @@ namespace SimulationWFA.SerializedEditorClasses
         {
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorFunction {
                 editorFunction = () => {
-                    simButton.simObject.entity.RemoveComponent<ColliderComp>(); 
+                    simButton.simObject.entity.RemoveComponent<ColliderComp>();
                     simButton.simObject.objectData.RemoveSerializedComp(typeof(BoxColliderSerialized));
                 }
             });
@@ -58,7 +58,7 @@ namespace SimulationWFA.SerializedEditorClasses
             controls.Clear();
             simButton.componentPanel.TotalInspectorPanelHeight -= 70;
 
-            base.removeComponentButton_Click(sender,e, name);
+            base.removeComponentButton_Click(sender, e, name);
         }
 
         public override void SetComponentInPanel(SerializedComponent serializedCompItem)
@@ -77,55 +77,57 @@ namespace SimulationWFA.SerializedEditorClasses
             var type = serializedCompItem.GetType();
             FieldInfo[] field = type.GetFields();
 
-            SimTextBox[] serializedFieldTexs = new SimTextBox[3];
-            Vector3 fieldValue = (Vector3)field[0].GetValue(serializedCompItem);
-            vecValues[0] = fieldValue.X.ToString();
-            vecValues[1] = fieldValue.Y.ToString();
-            vecValues[2] = fieldValue.Z.ToString();
-
-            Label fieldName = new Label();
-            fieldName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
-            fieldName.Size = new Size((int)size.X, (int)size.Y);
-            fieldName.Text = field[0].Name;
-            fieldName.BackColor = Color.AliceBlue;
-            fieldName.BringToFront();
-            simButton.componentPanel.Controls.Add(fieldName);
-            controls.Add(fieldName);
-
-            ResetButton resButton = new ResetButton();
-            resButton.Location = new Point((int)point.X * 2 + fieldName.Size.Width, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
-            resButton.Size = new Size((int)point.X, (int)point.Y);
-            resButton.Text = "Reset";
-            resButton.BackColor = Color.White;
-            resButton.fieldId = 0;
-            resButton.item = serializedCompItem;
-            resButton.simPosText = serializedFieldTexs;
-            resButton.Click += (sender2, e2) => resetButton_Click(sender2, e2); // new System.EventHandler(resetButton_Click);
-            resButton.BringToFront();
-            simButton.componentPanel.Controls.Add(resButton);
-            controls.Add(resButton);
-
-            for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 2; j++)
             {
-                serializedFieldTexs[i] = new SimTextBox();
-                serializedFieldTexs[i].Location = new Point((i * 30 + fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
-                serializedFieldTexs[i].Text = vecValues[i];
-                serializedFieldTexs[i].BackColor = Color.Yellow;
-                serializedFieldTexs[i].Size = new Size(30, 20);
-                serializedFieldTexs[i].textId = i;
-                serializedFieldTexs[i].fieldId = 0;
-                serializedFieldTexs[i].serializedItem = serializedCompItem;
-                serializedFieldTexs[i].TextChanged += (sender2, e2) => simulationProject_TextChanged(sender2, e2);
-                serializedFieldTexs[i].BringToFront();
-                simButton.componentPanel.Controls.Add(serializedFieldTexs[i]);
-                controls.Add(serializedFieldTexs[i]);
+                SimTextBox[] serializedFieldTexs = new SimTextBox[3];
+                Vector3 fieldValue = (Vector3)field[j].GetValue(serializedCompItem);
+                vecValues[0] = fieldValue.X.ToString();
+                vecValues[1] = fieldValue.Y.ToString();
+                vecValues[2] = fieldValue.Z.ToString();
 
+                Label fieldName = new Label();
+                fieldName.Location = new Point(0, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
+                fieldName.Size = new Size((int)size.X, (int)size.Y);
+                fieldName.Text = field[j].Name;
+                fieldName.BackColor = Color.AliceBlue;
+                fieldName.BringToFront();
+                simButton.componentPanel.Controls.Add(fieldName);
+                controls.Add(fieldName);
+
+                ResetButton resButton = new ResetButton();
+                resButton.Location = new Point((int)point.X * 2 + fieldName.Size.Width, simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
+                resButton.Size = new Size((int)point.X, (int)point.Y);
+                resButton.Text = "Reset";
+                resButton.BackColor = Color.White;
+                resButton.fieldId = 0;
+                resButton.item = serializedCompItem;
+                resButton.simPosText = serializedFieldTexs;
+                resButton.Click += (sender2, e2) => resetButton_Click(sender2, e2); // new System.EventHandler(resetButton_Click);
+                resButton.BringToFront();
+                simButton.componentPanel.Controls.Add(resButton);
+                controls.Add(resButton);
+
+                for (int i = 0; i < 3; i++)
+                {
+                    serializedFieldTexs[i] = new SimTextBox();
+                    serializedFieldTexs[i].Location = new Point((i * 30 + fieldName.Size.Width), simButton.componentPanel.TotalInspectorPanelHeight - simButton.componentPanel.VerticalScroll.Value);
+                    serializedFieldTexs[i].Text = vecValues[i];
+                    serializedFieldTexs[i].BackColor = Color.Yellow;
+                    serializedFieldTexs[i].Size = new Size(30, 20);
+                    serializedFieldTexs[i].textId = i;
+                    serializedFieldTexs[i].fieldId = j;
+                    serializedFieldTexs[i].serializedItem = serializedCompItem;
+                    serializedFieldTexs[i].TextChanged += (sender2, e2) => simulationProject_TextChanged(sender2, e2);
+                    serializedFieldTexs[i].BringToFront();
+                    simButton.componentPanel.Controls.Add(serializedFieldTexs[i]);
+                    controls.Add(serializedFieldTexs[i]);
+
+                }
+                simButton.componentPanel.TotalInspectorPanelHeight += 20;
             }
-            simButton.componentPanel.TotalInspectorPanelHeight += 20;
-
             RemoveComponentButton();
 
-           // panel.Controls.Add(simButton.componentPanel);
+            // panel.Controls.Add(simButton.componentPanel);
         }
 
         private void simulationProject_TextChanged(object sender, EventArgs e)
