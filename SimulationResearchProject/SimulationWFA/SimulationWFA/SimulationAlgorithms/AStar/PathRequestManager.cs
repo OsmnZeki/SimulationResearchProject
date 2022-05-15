@@ -14,7 +14,7 @@ namespace SimulationWFA.SimulationAlgorithms
     {
         public delegate void OnAlgorithmDoneDelegate();
 
-        public event OnAlgorithmDoneDelegate OnAlgoDoneEvent;
+        public static event OnAlgorithmDoneDelegate OnAlgoDoneEvent;
 
 
         IEnumerable<ShortestPathAlgorithm> algorithms;
