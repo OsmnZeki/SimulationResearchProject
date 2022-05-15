@@ -15,6 +15,8 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
     {
         readonly Filter<ObstacleComp, ColliderComp,TransformComp> obstacleFilter = null;
         readonly Filter<GridComp, TransformComp> gridFilter = null;
+        readonly Filter<UnitComp, ColliderComp> unitFollowFilter = null;
+
         public override void Awake()
         {
             foreach(var o in obstacleFilter)
@@ -24,6 +26,12 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                 ref var transformComp = ref obstacleFilter.Get3(o);
                 colliderComp.collider.physicsLayer = PhysicLibrary.PhysicsLayer.unwalkableLayer;
                 UpdateObstacle(transformComp.transform, ref obstacleComp,ref colliderComp);
+            }
+
+            foreach(var u in unitFollowFilter)
+            {
+                ref var colliderComp = ref unitFollowFilter.Get2(u);
+                (colliderComp.collider.bound as BoxBounds).offset = new System.Numerics.Vector3(0, -0.4f, 0);
             }
         }
 
@@ -51,7 +59,8 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                     ref var gridComp = ref gridFilter.Get1(g);
                     ref var transformComp = ref gridFilter.Get2(g);
 
-                    gridComp.grid.CreateGrid(transformComp.transform.position);
+                    BoxBounds unitBoxBound = unitFollowFilter.Get2(0).collider.bound as BoxBounds;
+                    gridComp.grid.CreateGrid(transformComp.transform.position, unitBoxBound);
                 }
             }
 

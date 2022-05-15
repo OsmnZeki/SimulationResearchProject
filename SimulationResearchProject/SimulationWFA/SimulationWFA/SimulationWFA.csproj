@@ -268,7 +268,7 @@
     <Compile Include="SimulationAlgorithms\AStar\ObstacleComp.cs" />
     <Compile Include="SimulationAlgorithms\AStar\ObstacleUpdateSystem.cs" />
     <Compile Include="SimulationAlgorithms\AStar\Path.cs" />
-    <Compile Include="SimulationAlgorithms\AStar\Pathfinding.cs" />
+    <Compile Include="SimulationAlgorithms\AStar\AStar.cs" />
     <Compile Include="SimulationAlgorithms\AStar\PathRequestManager.cs" />
     <Compile Include="SimulationAlgorithms\AStar\TargetComp.cs" />
     <Compile Include="SimulationAlgorithms\AStar\UnitComp.cs" />

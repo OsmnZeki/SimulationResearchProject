@@ -11,12 +11,14 @@ using PhysicLibrary;
 using ProgramLibrary;
 using RenderLibrary.Transform;
 using SimulationSystem.Components;
+using SimulationSystem.ECSComponents;
 
 namespace SimulationWFA.SimulationAlgorithms.AStar
 {
     public class GridSystem : Dalak.Ecs.System
     {
         readonly Filter<GridComp, TransformComp> gridFilter = null;
+        readonly Filter<UnitComp, ColliderComp> unitFollowFilter = null;
 
         public override void Awake()
         {
@@ -29,7 +31,8 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
             gridEntity.AddComponent<TransformComp>() = new TransformComp() { transform = transform };
 
             ref var transformComp = ref gridEntity.GetComponent<TransformComp>();
-            grid.SetupGrid(transformComp.transform.position);
+            BoxBounds unitBoxBound = unitFollowFilter.Get2(0).collider.bound as BoxBounds;
+            grid.SetupGrid(transformComp.transform.position, unitBoxBound);
 
         }
 

@@ -12,7 +12,7 @@ namespace SimulationWFA.SimulationAlgorithms
 {
     public class PathRequestManager
     {
-        Pathfinding pathfinding = new Pathfinding();
+        AStar.AStar pathfinding = new AStar.AStar();
         Dijkstra dijkstra = new Dijkstra();
         //Prims prims = new Prims();
         bool isProcessingPath;
@@ -32,7 +32,6 @@ namespace SimulationWFA.SimulationAlgorithms
                 sw.Start();
 
                 waypoints = algorithm.FindPath(pathStart, pathEnd, grid);
-
 
                 sw.Stop();
                 Console.WriteLine(algorithm.GetType().Name + " found: " + sw.ElapsedMilliseconds + " ms");
