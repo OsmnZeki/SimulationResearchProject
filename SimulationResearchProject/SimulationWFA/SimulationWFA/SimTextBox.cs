@@ -14,5 +14,9 @@ namespace SimulationWFA
         public SerializedComponent serializedItem = null;
         public int textId = 0;
         public int fieldId = 0;
+
+        public SimTextBox()
+        {
+        }
     }
 }

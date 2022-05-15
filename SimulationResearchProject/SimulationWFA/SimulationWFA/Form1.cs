@@ -33,13 +33,13 @@ namespace SimulationWFA
             Task.Run(() => RunEditorWindow());
 
         }
-        
+
         public void InvokeHierarchy()
         {
             if (this.InvokeRequired)
             {
                 this.Invoke(new MethodInvoker(delegate { CreateHierarchyPanel(); }));
-            } 
+            }
         }
 
         public void CreateHierarchyPanel()
@@ -65,11 +65,12 @@ namespace SimulationWFA
                 hieararchyPanel.Controls.Add(hierarchyButton);
                 hierarchyHeight += 30;
 
-                TextBox textBox = new TextBox();
-                textBox.Name = "textbox";
+                SimTextBox textBox = new SimTextBox();
+                textBox.Name = "ChangeNameTextBox" + simObject.objectData.name;
                 textBox.Location = new Point(hierarchyButton.Location.X + 80, hierarchyButton.Location.Y);
                 textBox.Size = new System.Drawing.Size(75, 23);
                 textBox.Text = "Change Name";
+                textBox.textId = hierarchyHeight / 30;
                 textBox.BackColor = Color.White;
                 hierarchyButton.BringToFront();
                 textBox.TextChanged += (sender2, e2) => hierarchyButton_TextChanged(sender2, e2, hierarchyButton);
@@ -121,12 +122,12 @@ namespace SimulationWFA
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)//Penceredeki exit tool'u
         {
             Close();
-        } 
+        }
 
         private void simulateButton_Click(object sender, EventArgs e) //Editor windowda suan kapalı olan simulate butonu için
         {
 
-        } 
+        }
 
         private void OpenProjectFolder(TreeNodeMouseClickEventArgs e) //Seçilen folder'ın açılması için
         {
@@ -137,7 +138,7 @@ namespace SimulationWFA
             Process process = Process.Start(info);
             Thread.Sleep(2000);
             //SetParent(process.MainWindowHandle, this.Handle);
-        }  
+        }
         private void projectsTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) //Project files kısmında iç içe dosyalarda gezmek için
         {
             if (e.Node.Tag == null)
@@ -169,7 +170,7 @@ namespace SimulationWFA
             {
                 Task.Run(() => OpenProjectFolder(e));
             }
-        } 
+        }
 
         private void addObjectButton_Click(object sender, EventArgs e) //Hierarchy'e obje ekler.
         {
@@ -191,13 +192,14 @@ namespace SimulationWFA
             hierarchyButton.BringToFront();
             hierarchyButton.Click += (sender2, e2) => hierarchyButton_Click(sender2, e2, hierarchyButton.id); //new System.EventHandler(hierarchyButton_Click);
             hieararchyPanel.Controls.Add(hierarchyButton);
-            TextBox textBox = new TextBox();
-            textBox.Name = "textbox";
+            SimTextBox textBox = new SimTextBox();
+            textBox.Name = "ChangeNameTextBox" + simObject.objectData.name;
             textBox.Location = new Point(hierarchyButton.Location.X + 80, hierarchyButton.Location.Y);
             textBox.Size = new System.Drawing.Size(75, 23);
             textBox.Text = "Change Name";
+            textBox.textId = hierarchyHeight / 30;
             textBox.BackColor = Color.White;
-            hierarchyButton.BringToFront();
+            textBox.BringToFront();
             textBox.TextChanged += (sender2, e2) => hierarchyButton_TextChanged(sender2, e2, hierarchyButton);
             hieararchyPanel.Controls.Add(textBox);
             hierarchyHeight += 30;
@@ -215,7 +217,7 @@ namespace SimulationWFA
         {
             HierarchySimButton simButton = sender as HierarchySimButton;
             //Control[] control = Controls.Find("hierarchyButton", true);
-           // HierarchySimButton simButton = (HierarchySimButton)control[idx];
+            // HierarchySimButton simButton = (HierarchySimButton)control[idx];
 
             if (hierarchySimButList.Contains(simButton) == false)
             {
@@ -278,13 +280,24 @@ namespace SimulationWFA
 
         private void RemoveSimObjectButton_Click(object sender3, EventArgs e3, HierarchySimButton simButton)
         {
-            
+
+            simButton.componentPanel.Visible = false;
+            simButton.componentPanel.Controls.Clear();
+            Control[] changeNameTextBox = hieararchyPanel.Controls.Find("ChangeNameTextBox" + simButton.simObject.objectData.name, true);
+            Control[] simButtons = hieararchyPanel.Controls.Find("hierarchyButton", true);
+            hierarchyHeight -= 30;
+            hieararchyPanel.Controls.Remove(simButton);
+            hieararchyPanel.Controls.Remove(changeNameTextBox[0]);
+
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRemoveSimObj {
+                removedSimObj = simButton.simObject
+            });
         }
 
         private void addComponentButton_Click(object sender, EventArgs e, HierarchySimButton simButton) //Inspectorde component eklemeyen button
         {
             //ListBox listBox = new ListBox();
-            Control[] addComponentbutton = simButton.componentPanel.Controls.Find("AddComponentButton",true);
+            Control[] addComponentbutton = simButton.componentPanel.Controls.Find("AddComponentButton", true);
             addComponentbutton[0].Enabled = false;
             Button[] buttons = new Button[SerializedComponentPool.SerializedCompTypes.Count];
             int idx = 0;
@@ -299,7 +312,7 @@ namespace SimulationWFA
                 buttons[idx].Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons, addComponentbutton[0]);
                 //listBox.Items.Add(buttons[idx]);
                 simButton.componentPanel.Controls.Add(buttons[idx]);
-            //listBox.Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons);
+                //listBox.Click += (sender2, e2) => componentsButton_Click(sender2, e2, simButton, item.Key, buttons);
 
                 idx++;
             }
@@ -336,7 +349,7 @@ namespace SimulationWFA
                 serializedComponent = serializedComponent,
             });
 
-            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh {refreshedSimObj = simButton.simObject });
+            EditorEventListenSystem.eventManager.SendEvent(new OnEditorRefresh { refreshedSimObj = simButton.simObject });
         }
 
         #endregion
