@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SimulationWFA.SimulationAlgorithms.AStar;
 using static SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm.Dijkstra;
+//using static SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm.Dijkstra;
 
 namespace SimulationWFA.SimulationAlgorithms
 {
@@ -22,12 +23,14 @@ namespace SimulationWFA.SimulationAlgorithms
             //astar
             public Heap<Node> openSet;
             public HashSet<Node> closedSet;
+
         }
 
         public Node startNode;
         public Node targetNode;
         public Grid grid;
 
+        public bool add;
 
         public abstract Vector3[] FindPath(Vector3 startPos, Vector3 targetPos, Grid grid);
         public abstract void VisualizePathSearch(ref VisualizeData visualizeData,out bool finished);

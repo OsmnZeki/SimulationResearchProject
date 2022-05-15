@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Dalak.Ecs;
 using ProgramLibrary;
+using RenderLibrary.IO;
+using SimulationSystem.Components;
 using SimulationSystem.TimeUtils;
 
 namespace SimulationWFA.SimulationAlgorithms.AStar
@@ -13,8 +15,9 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
     public class VisualizeShortestPathAlgorithmSystem : Dalak.Ecs.System
     {
         readonly Filter<VisualizeShortestPathComp> visualizeFilter = null;
+        readonly Filter<UnitFollowPathComp> unitFollowFilter = null;
 
-        public Timer pathFindTimer = new Timer(.01f);
+        public Timer pathFindTimer = new Timer(.5f);
         public Timer backTracingTimer = new Timer(.5f);
 
         public override void Awake()
@@ -37,8 +40,19 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                 {
                     visualizeComp.finished = true;
                 }
+            }
+
+            if (Input.GetKeyDown(KeyCode.N) && !visualizeFilter.IsEmpty())
+            {
+                var unitEntity = unitFollowFilter.GetEntity(0);
+                unitEntity.AddComponent<StartPathFollowComp>();
+
+                var visualizEntity = visualizeFilter.GetEntity(0);
+                visualizEntity.Destroy();
 
             }
+
+
         }
 
         public override void PostRender()
@@ -70,6 +84,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                 }
                 else
                 {
+                    if (visualizeComp.visualizeData.currentSearchingNode == null) continue;
                     var currentNode = visualizeComp.visualizeData.currentSearchingNode.worldPosition;
                     currentNode.Y += 0.2f;
 

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dalak.Ecs;
 using RenderLibrary.IO;
 using SimulationSystem.Components;
+using SimulationWFA.SimulationAlgorithms.DijkstraAlgorithm;
 
 namespace SimulationWFA.SimulationAlgorithms.AStar
 {
@@ -16,10 +17,13 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
         readonly Filter<TargetComp, TransformComp> targetFilter = null;
         readonly Filter<GridComp> gridFilter = null;
 
+        readonly Filter<VisualizeShortestPathComp> visualizeFilter = null;
+
         PathRequestManager pathRequestManager = null;
 
         public const float minPathUpdateTime = .2f;
         public const float pathUpdateMoveThreshold = .5f;
+
 
         public override void Update()
         {
@@ -46,6 +50,8 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
                     if(waypoints != null)
                     {
+                        unitComp.startPos = transformComp.transform.position;
+
                         var path = new Path(waypoints, transformComp.transform.position, unitComp.turnDst, unitComp.stoppingDst);
 
                         var unitEntity = unitFilter.GetEntity(u);
@@ -54,6 +60,12 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                             pathIndex = 0,
                             speedPercent = 1,
                         };
+
+                        if (!visualizeFilter.IsEmpty())
+                        {
+                            var oldVisualEntity = visualizeFilter.GetEntity(0);
+                            oldVisualEntity.Destroy();
+                        }
 
                         Entity visualizeEntity = world.NewEntity();
                         visualizeEntity.AddComponent<VisualizeShortestPathComp>() = new VisualizeShortestPathComp() {

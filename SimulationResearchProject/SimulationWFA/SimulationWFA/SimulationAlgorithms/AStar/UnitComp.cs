@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using Dalak.Ecs;
@@ -30,7 +31,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
     }
     public struct UnitComp
     {
-
+        public Vector3 startPos;
         public float speed;
         public float turnSpeed;
         public float turnDst;
