@@ -1,7 +1,9 @@
 ﻿using System;
 using Dalak.Ecs;
 using MespEvents;
+using SimulationSystem.Components;
 using SimulationSystem.ECS.Entegration;
+using SimulationSystem.ECSComponents;
 using TheSimulation.SerializedComponent;
 
 namespace SimulationSystem.Systems
@@ -35,9 +37,16 @@ namespace SimulationSystem.Systems
         public SimObject removedSimObj;
     }
 
+    public struct OnEditorChoosingSimObj : IEvent
+    {
+        public SimObject chosedSimObj;
+    }
+
+
     class EditorEventListenSystem : Dalak.Ecs.System
     {
         public static MespEventManager eventManager = new MespEventManager();
+        readonly Filter<MeshRendererComp, TransformComp, OutlineBorderRenderComp> renderFilter = null;
 
         public override void Update()
         {
@@ -46,6 +55,16 @@ namespace SimulationSystem.Systems
 
         private void ListenEditorEvents(World world)
         {
+            if(eventManager.ListenEvent<OnEditorChoosingSimObj>(out var choosingData))
+            {
+                foreach(var r in renderFilter)
+                {
+                    var entity = renderFilter.GetEntity(r);
+                    entity.RemoveComponent<OutlineBorderRenderComp>();
+                }
+
+                choosingData.chosedSimObj.entity.AddComponent<OutlineBorderRenderComp>();
+            }
 
             if (eventManager.ListenEvent<OnEditorCreateSimObjEvent>(out var createData))
             {

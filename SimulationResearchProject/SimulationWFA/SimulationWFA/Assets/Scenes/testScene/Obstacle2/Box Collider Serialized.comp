@@ -4,6 +4,11 @@
     "Y": 1.0,
     "Z": 5.0
   },
+  "offset": {
+    "X": 0.0,
+    "Y": 0.0,
+    "Z": 0.0
+  },
   "add": true,
   "type": "TheSimulation.SerializedComponent.BoxColliderSerialized, SimulationWFA, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
 }
