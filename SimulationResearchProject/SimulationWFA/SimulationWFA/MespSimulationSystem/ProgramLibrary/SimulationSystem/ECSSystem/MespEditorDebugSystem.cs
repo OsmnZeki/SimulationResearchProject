@@ -39,7 +39,7 @@ namespace SimulationSystem
 
         private void ListenEditorDebugEvents(World world)
         {
-            OpenGLFunctions.GLDisable(OpenGLEnum.GL_DEPTH_TEST);
+           // OpenGLFunctions.GLDisable(OpenGLEnum.GL_DEPTH_TEST);
             var drawLineData = eventManager.ListenEvents<DrawLineEvent>();
 
             foreach(var d in drawLineData)
@@ -49,7 +49,7 @@ namespace SimulationSystem
                 lineRenderer.LineRender(ShaderPool.lineRenderShader, 3);
             }
 
-            OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
+          //  OpenGLFunctions.GLEnable(OpenGLEnum.GL_DEPTH_TEST);
 
         }
 

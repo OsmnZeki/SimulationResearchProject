@@ -36,7 +36,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
 
         }
 
-        /*public override void PostRender()
+        public override void PostRender()
         {
             foreach (var g in gridFilter)
             {
@@ -55,11 +55,15 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                     {
                         color = Vector3.Lerp(new Vector3(1,1,1),Vector3.Zero, MathFunctions.InverseLerp(gridComp.grid.penaltyMin, gridComp.grid.penaltyMax, n.movementPenalty));
                         color = (n.walkable) ? color : new Vector3(1,0,0);
-                        MespDebug.DrawWireBoxXZ(n.worldPosition, new Vector3(1 * gridComp.grid.nodeDiameter, 0 , 1 * gridComp.grid.nodeDiameter), color);
+
+                        var gridPosition = n.worldPosition;
+                        gridPosition.Y += 0.2f;
+
+                        MespDebug.DrawWireBoxXZ(gridPosition, new Vector3(1 * gridComp.grid.nodeDiameter, 0 , 1 * gridComp.grid.nodeDiameter), color);
                     }
                 }
 
             }
-        }*/
+        }
     }
 }

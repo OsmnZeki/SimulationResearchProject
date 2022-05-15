@@ -67,9 +67,9 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new OutlineBorderRenderSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new EditorInfiniteGridSystem(), GenericSystemGroup);
-            systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
-
             systemManager.AddSystem(new MespEditorDebugSystem(), GenericSystemGroup);
+
+            systemManager.AddSystem(new TextRendererSystem(), GenericSystemGroup);
 
             systemManager.AddSystem(new SkyboxRenderSystem(), GenericSystemGroup);
             //EventSystems
