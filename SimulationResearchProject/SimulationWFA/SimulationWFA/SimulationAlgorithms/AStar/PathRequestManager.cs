@@ -92,7 +92,7 @@ namespace SimulationWFA.SimulationAlgorithms
             double shortestTimePassed = double.MaxValue;
             Type shortestPathType = null;
             Vector3[] waypoints = null;
-
+            float tempDistance = float.MaxValue;
             foreach (var algorithm in activeAlgorithms)
             {
                 sw.Reset();
@@ -103,13 +103,15 @@ namespace SimulationWFA.SimulationAlgorithms
                 sw.Stop();
                 Console.WriteLine(algorithm.GetType().Name + " found: " + sw.Elapsed.TotalMilliseconds + " ms");
 
+                float currentDist = GetDistanceMagnitude(waypoints);
+
                 algorithmMSDictionary[algorithm.GetType().Name] = sw.Elapsed.TotalMilliseconds.ToString();
-                algorithmDistanceDictionary[algorithm.GetType().Name] = GetDistanceMagnitude(waypoints).ToString();
+                algorithmDistanceDictionary[algorithm.GetType().Name] = currentDist.ToString();
 
 
-                if (sw.Elapsed.TotalMilliseconds < shortestTimePassed)
+                if (currentDist < tempDistance)
                 {
-                    shortestTimePassed = sw.Elapsed.TotalMilliseconds;
+                    tempDistance = currentDist;
                     foundedAlgorithm = algorithm;
                     shortestPathType = algorithm.GetType();
                 }
