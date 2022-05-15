@@ -77,6 +77,12 @@ namespace SimulationSystem
             newParent.child.Add(this);
         }
 
+        public void RemoveParent()
+        {
+            parent.child.Remove(this);
+            parent = null;
+        }
+
         public void AddNewSerializedComponent(SerializedComponent serializedComponent)
         {
             objectData.AddSerializedComponent(serializedComponent);

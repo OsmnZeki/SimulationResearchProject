@@ -17,7 +17,7 @@ namespace SimulationSystem.Systems
             foreach(var t in transformFilter)
             {
                 ref var transformComp = ref transformFilter.Get1(t);
-
+                var cos = MathFunctions.ConvertToRadians(transformComp.transform.rotation.Y);
                 direction.X = (float)Math.Cos(MathFunctions.ConvertToRadians(transformComp.transform.rotation.Y)) * (float)Math.Cos(MathFunctions.ConvertToRadians(transformComp.transform.rotation.X));
                 direction.Y = (float)Math.Sin(MathFunctions.ConvertToRadians(transformComp.transform.rotation.X));
                 direction.Z = (float)Math.Sin(MathFunctions.ConvertToRadians(transformComp.transform.rotation.Y)) * (float)Math.Cos(MathFunctions.ConvertToRadians(transformComp.transform.rotation.X));

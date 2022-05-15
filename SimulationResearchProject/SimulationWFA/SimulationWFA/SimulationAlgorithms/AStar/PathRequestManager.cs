@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -16,20 +17,46 @@ namespace SimulationWFA.SimulationAlgorithms
 
         bool isProcessingPath;
 
-        public Vector3[] GetAStarPath(Vector3 pathStart, Vector3 pathEnd,Grid grid)
+        public Vector3[] StartAlgorithms(Vector3 pathStart, Vector3 pathEnd, Grid grid)
         {
-            var waypoint = pathfinding.FindPath(pathStart, pathEnd, grid);
-            return waypoint;
+            var algorithms = GetAllShortesPathAlgorithm();
+
+            ShortestPathAlgorithm shortestPathAlgorithm;
+            long shortestTimePassed = long.MaxValue;
+            Type shortestPathType = null;
+            Vector3[] waypoints = null;
+
+            foreach(var algorithm in algorithms)
+            {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+
+                waypoints = algorithm.FindPath(pathStart, pathEnd, grid);
+
+
+                sw.Stop();
+                Console.WriteLine(algorithm.GetType().Name + " found: " + sw.ElapsedMilliseconds + " ms");
+                if(sw.ElapsedMilliseconds < shortestTimePassed)
+                {
+                    shortestPathAlgorithm = algorithm;
+                    shortestPathType = algorithm.GetType();
+                }
+
+            }
+
+            Console.WriteLine("Chosen algoritm: " + shortestPathType.Name);
+            return waypoints;
+
         }
 
-        public Vector3[] GetDijkstraPath(Vector3 pathStart, Vector3 pathEnd, Grid grid)
+
+        IEnumerable<ShortestPathAlgorithm> GetAllShortesPathAlgorithm()
         {
-            var waypoint = dijkstra.FindPath(pathStart, pathEnd, grid);
-            return waypoint;
+            return AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .Where(type => type.IsSubclassOf(typeof(ShortestPathAlgorithm)))
+                .Select(type => Activator.CreateInstance(type) as ShortestPathAlgorithm);
         }
-
-
-
 
     }
 }
