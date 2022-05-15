@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using SimulationSystem.ECS.Entegration;
 using ProgramLibrary;
 using SimulationWFA.MespUtils;
+using SimulationWFA.SimulationAlgorithms;
 
 namespace SimulationWFA
 {
@@ -30,6 +31,7 @@ namespace SimulationWFA
             InitializeComponent();
             ShowProjectFiles();
             SceneConfigurationSystemTest.SceneIsReadyEvent += InvokeHierarchy;
+            PathRequestManager.OnAlgoDoneEvent += InvokeAlgorithmsIsDone;
             Task.Run(() => RunEditorWindow());
 
         }
@@ -40,6 +42,31 @@ namespace SimulationWFA
             {
                 this.Invoke(new MethodInvoker(delegate { CreateHierarchyPanel(); }));
             }
+        }
+
+        public void InvokeAlgorithmsIsDone()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate { AlgorithmIsDone(); }));
+            }
+        }
+
+        private void AlgorithmIsDone()
+        {
+            AStarDistanceTextBox.Text = PathRequestManager.algorithmDistanceDictionary["AStar"];
+            DijkstraDistanceTextBox.Text = PathRequestManager.algorithmDistanceDictionary["Dijkstra"];
+            PrimsDistanceTextBox.Text = PathRequestManager.algorithmDistanceDictionary["Prims"];
+            DFSDistanceTextBox.Text = PathRequestManager.algorithmDistanceDictionary["DFS"];
+            BFSDistanceTextBox.Text = PathRequestManager.algorithmDistanceDictionary["BFS"];
+            CustomDistanceTextBox.Text = PathRequestManager.algorithmDistanceDictionary["Custom"];
+
+            AStarMsTextBox.Text = PathRequestManager.algorithmMSDictionary["AStar"];
+            DijkstraMsTextBox.Text = PathRequestManager.algorithmMSDictionary["Dijkstra"];
+            PrimsMsTextBox.Text = PathRequestManager.algorithmMSDictionary["Prims"];
+            DFSMsTextBox.Text = PathRequestManager.algorithmMSDictionary["DFS"];
+            BFSMsTextBox.Text = PathRequestManager.algorithmMSDictionary["BFS"];
+            CustomMsTextBox.Text = PathRequestManager.algorithmMSDictionary["Custom"];
         }
 
         public void CreateHierarchyPanel()
@@ -174,9 +201,9 @@ namespace SimulationWFA
             }
         }
 
-        private void addObjectButton_Click(object sender, EventArgs e, ref int i) //Hierarchy'e obje ekler.
+        private void addObjectButton_Click(object sender, EventArgs e/*, ref int i*/) //Hierarchy'e obje ekler.
         {
-            var simObject = SimObject.NewSimObject("Empty" + i.ToString());
+            var simObject = SimObject.NewSimObject("Empty" /*+ i.ToString()*/);
             HierarchySimButton hierarchyButton = new HierarchySimButton();
             EditorEventListenSystem.eventManager.SendEvent(new OnEditorCreateSimObjEvent { simObject = simObject });
             hierarchyButton.Location = new Point(10, 30 + hierarchyHeight - hieararchyPanel.VerticalScroll.Value);
@@ -206,7 +233,7 @@ namespace SimulationWFA
             hieararchyPanel.Controls.Add(textBox);
             hierarchyHeight += 30;
             addObjectButton.Location = new Point(addObjectButton.Location.X, hierarchyHeight + 30 - hieararchyPanel.VerticalScroll.Value);
-            i++;
+            //i++;
         }
         private void hierarchyButton_TextChanged(object sender, EventArgs e, HierarchySimButton hierarchySimButton)
         {
@@ -357,6 +384,43 @@ namespace SimulationWFA
         {
             SceneManager.SaveScene("testScene");
         }
+
+        private void AStarCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            PathRequestManager.algorithmDictionary["AStar"] = checkBox.Checked;
+        }
+
+        private void DijkstraCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            PathRequestManager.algorithmDictionary["Dijkstra"] = checkBox.Checked;
+        }
+
+        private void PrimsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            PathRequestManager.algorithmDictionary["Prims"] = checkBox.Checked;
+        }
+
+        private void DFSCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            PathRequestManager.algorithmDictionary["DFS"] = checkBox.Checked;
+        }
+
+        private void BFSCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            PathRequestManager.algorithmDictionary["BFS"] = checkBox.Checked;
+        }
+
+        private void CustomCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            PathRequestManager.algorithmDictionary["Custom"] = checkBox.Checked;
+        }
+
 
     }
 
