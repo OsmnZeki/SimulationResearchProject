@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dalak.Ecs;
 using SimulationSystem.ECSComponents;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace SimulationSystem.Systems
 {

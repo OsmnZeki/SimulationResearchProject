@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using MespSimulationSystem.Math;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace PhysicLibrary
 {

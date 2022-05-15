@@ -3,7 +3,7 @@ using PhysicLibrary;
 using RenderLibrary.IO;
 using RenderLibrary.OpenGLCustomFunctions;
 using SimulationSystem.Systems;
-using SimulationSystem.Timer;
+using SimulationSystem.TimeUtils;
 
 namespace SimulationSystem
 {
