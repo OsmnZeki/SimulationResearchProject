@@ -141,6 +141,7 @@ namespace SimulationWFA.SerializedEditorClasses
             }
 
             RemoveComponentButton();
+            base.SetComponentInPanel(serializedCompItem);
 
         }
 

@@ -138,6 +138,7 @@ namespace SimulationWFA.SerializedEditorClasses
                 serializedCompItem = meshRendererSerialized;
             }
             controls.Add(removeComponentButton);
+            base.SetComponentInPanel(serializedCompItem);
         }
 
         private void matComboBoxes_Changed(object sender, EventArgs e, SerializedComponent serializedCompItem)

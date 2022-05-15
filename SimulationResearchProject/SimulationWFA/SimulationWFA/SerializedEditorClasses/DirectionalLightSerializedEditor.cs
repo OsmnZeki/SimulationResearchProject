@@ -99,6 +99,7 @@ namespace SimulationWFA.SerializedEditorClasses
                     RemoveComponentButton();
                 }
             }
+            base.SetComponentInPanel(serializedCompItem);
         }
 
         private void simulationProject_TextChanged(object sender, EventArgs e)

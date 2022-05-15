@@ -124,6 +124,7 @@ namespace SimulationWFA.SerializedEditorClasses
                     RemoveComponentButton();
                 }
             }
+            base.SetComponentInPanel(serializedCompItem);
         }
 
         private void resetButton_Click(object sender, EventArgs e)

@@ -70,6 +70,7 @@ namespace SimulationWFA.SerializedEditorClasses
             controls.Add(serializedText);
 
             RemoveComponentButton();
+            base.SetComponentInPanel(serializedCompItem);
         }
     }
 }

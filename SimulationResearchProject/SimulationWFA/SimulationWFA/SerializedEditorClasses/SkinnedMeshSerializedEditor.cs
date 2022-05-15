@@ -119,8 +119,8 @@ namespace SimulationWFA.SerializedEditorClasses
             simButton.componentPanel.Controls.Add(skinnedMeshComboBoxes);
             simButton.componentPanel.TotalInspectorPanelHeight += skinnedMeshRendLabels.Height;
             controls.Add(skinnedMeshComboBoxes);
-            base.SetComponentInPanel(serializedCompItem);
             RemoveComponentButton();
+            base.SetComponentInPanel(serializedCompItem);
         }
 
         private void skinnedMeshComboBoxes_Changed(object sender, EventArgs e, SerializedComponent serializedCompItem)

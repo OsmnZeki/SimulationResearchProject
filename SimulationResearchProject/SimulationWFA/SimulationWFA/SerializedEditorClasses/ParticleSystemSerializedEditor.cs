@@ -178,6 +178,7 @@ namespace SimulationWFA.SerializedEditorClasses
 
             simButton.componentPanel.TotalInspectorPanelHeight += 20;
             RemoveComponentButton();
+            base.SetComponentInPanel(serializedCompItem);
         }
 
         private void resetButtonForBoolean_Click(object sender, EventArgs e)
