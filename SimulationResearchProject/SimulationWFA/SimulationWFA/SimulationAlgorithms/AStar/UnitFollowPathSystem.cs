@@ -34,8 +34,16 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                     {
                         followingPath = false;
                         var entity = unitFollowFilter.GetEntity(u);
+                        entity.AddComponent<UnitReturnPathComp>() = new UnitReturnPathComp() {
+                            path = unitFollowPathComp.path,
+                            pathPositions = unitFollowPathComp.positionList,
+                            index = unitFollowPathComp.positionList.Count-1,
+                        };
                         entity.RemoveComponent<UnitFollowPathComp>();
-                        entity.RemoveComponent<StartPathFollowComp>();
+                        //entity.RemoveComponent<StartPathFollowComp>();
+
+                        
+
                         return;
                     }
                     else
@@ -50,11 +58,16 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                     if (unitFollowPathComp.pathIndex >= unitFollowPathComp.path.slowDownIndex && unitComp.stoppingDst > 0)
                     {
                         unitFollowPathComp.speedPercent = MathFunctions.Clamp(unitFollowPathComp.path.turnBoundaries[unitFollowPathComp.path.finishLineIndex].DistanceFromPoint(pos2D) / unitComp.stoppingDst, 0, 1);
-                        if (unitFollowPathComp.speedPercent < 0.01f)
+                        if (unitFollowPathComp.speedPercent < 0.1f)
                         {
                             var entity = unitFollowFilter.GetEntity(u);
+                            entity.AddComponent<UnitReturnPathComp>() = new UnitReturnPathComp() {
+                                path = unitFollowPathComp.path,
+                                pathPositions = unitFollowPathComp.positionList,
+                                index = unitFollowPathComp.positionList.Count-1,
+                            };
                             entity.RemoveComponent<UnitFollowPathComp>();
-                            entity.RemoveComponent<StartPathFollowComp>();
+                            //entity.RemoveComponent<StartPathFollowComp>();
                             return;
                         }
                     }
@@ -64,7 +77,9 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                     var pos = transformComp.transform.position;
                     pos += direction.normalized() * Time.deltaTime * unitComp.speed * unitFollowPathComp.speedPercent;
                     pos.Y = transformComp.transform.position.Y;
-                    
+                    unitFollowPathComp.positionList.Add(pos);
+
+
                     transformComp.transform.position = pos;
                 }
 

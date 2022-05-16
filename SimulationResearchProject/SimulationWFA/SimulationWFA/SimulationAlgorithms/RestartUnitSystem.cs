@@ -14,7 +14,7 @@ namespace SimulationWFA.SimulationAlgorithms
     {
         readonly Filter<VisualizeShortestPathComp> visualizeFilter = null;
         readonly Filter<UnitComp, TransformComp> unitFollowFilter = null;
-
+        readonly Filter<TargetComp, TransformComp> targetFilter = null;
 
         public override void Update()
         {
@@ -37,7 +37,16 @@ namespace SimulationWFA.SimulationAlgorithms
 
                     unitEntity.RemoveComponent<StartPathFollowComp>();
                     unitEntity.RemoveComponent<UnitFollowPathComp>();
+                    unitEntity.RemoveComponent<UnitReturnPathComp>();
 
+                }
+
+                foreach(var t in targetFilter)
+                {
+                    ref var targetComp = ref targetFilter.Get1(t);
+                    ref var transfromComp = ref targetFilter.Get2(t);
+
+                    transfromComp.transform.position = targetComp.initialPos;
                 }
             }
         }

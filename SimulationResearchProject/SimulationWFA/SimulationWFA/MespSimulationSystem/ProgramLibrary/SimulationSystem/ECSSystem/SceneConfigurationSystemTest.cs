@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using Dalak.Ecs;
 using ECSEntegration.SerializedComponent;
 using PhysicLibrary;
 using ProgramLibrary;
@@ -61,12 +62,26 @@ namespace SimulationSystem.Systems
 
            // CreateGrass();*/
 
-            if(SceneIsReadyEvent != null)
+            CreateMespVersionText();
+
+            if (SceneIsReadyEvent != null)
             {
                 SceneIsReadyEvent();
             }
 
             //SceneManager.SaveScene("testScene");
+        }
+
+        //Create mesp version text
+        public void CreateMespVersionText()
+        {
+            Entity entity = world.NewEntity();
+            entity.AddComponent<TextRendererComp>() = new TextRendererComp() {
+                text = "MESP ALPHA VERSION V0.1",
+                color = new Vector3(0, 1, 1),
+                UIPosition = new Vector2(0,30),
+                scale = 16f,
+            };
         }
 
         //Camera entity
