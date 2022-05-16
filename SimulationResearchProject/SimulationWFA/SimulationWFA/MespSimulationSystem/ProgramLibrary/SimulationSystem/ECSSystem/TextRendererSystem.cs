@@ -9,6 +9,7 @@ using MESPSimulationSystem.Math;
 using ProgramLibrary;
 using RenderLibrary.Graphics;
 using RenderLibrary.Graphics.Rendering;
+using RenderLibrary.OpenGLCustomFunctions;
 using RenderLibrary.Shaders;
 using SimulationSystem.Components;
 using SimulationSystem.ECSComponents;
@@ -33,9 +34,10 @@ namespace SimulationSystem
         {
             ShaderPool.textRenderShader.Activate();
             ShaderPool.textRenderShader.SetMat4("projection", ortographicProjection);
-
-            foreach(var t in textRendererFilter)
+            OpenGLFunctions.GLDepthFunc(OpenGLEnum.GL_LEQUAL);
+            foreach (var t in textRendererFilter)
             {
+                
                 ref var textRendererComp = ref textRendererFilter.Get1(t);
 
                 if(textRendererComp.textRenderer == null)
@@ -47,8 +49,8 @@ namespace SimulationSystem
 
                 textRendererComp.textRenderer.RenderText(ShaderPool.textRenderShader, textRendererComp.text, textRendererComp.UIPosition, textRendererComp.scale, textRendererComp.color);
             }
+            OpenGLFunctions.GLDepthFunc(OpenGLEnum.GL_LESS);
 
-            
         }
     }
 }

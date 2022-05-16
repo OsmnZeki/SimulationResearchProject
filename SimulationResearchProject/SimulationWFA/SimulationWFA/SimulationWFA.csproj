@@ -115,6 +115,7 @@
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TestSystemSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TextRendererSerialized.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\ECSEntegration\SerializedComponent\TriggerSerialized.cs" />
+    <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\RotateCameraSystem.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\MespEventManager.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\ECSEditorController.cs" />
     <Compile Include="MespSimulationSystem\ProgramLibrary\EditorWindowSystem\EditorWindowSystem\EditorWindowSystem.cs" />
@@ -257,6 +258,11 @@
     <Compile Include="SerializedEditorClasses\TransformSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\TriggerSerializedEditor.cs" />
     <Compile Include="SerializedEditorClasses\UnitSerializedEditor.cs" />
+    <Compile Include="ShowCinematic\CameraRotateSystem.cs" />
+    <Compile Include="ShowCinematic\RotateCameraComp.cs" />
+    <Compile Include="ShowCinematic\ShowMespNameComp.cs" />
+    <Compile Include="ShowCinematic\ShowPositionComp.cs" />
+    <Compile Include="ShowCinematic\SleepingModeSystem.cs" />
     <Compile Include="SimTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

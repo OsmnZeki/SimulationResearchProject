@@ -2,6 +2,7 @@
 using SimulationSystem.ECSSystems;
 using SimulationSystem.SharedData;
 using SimulationWFA.MespSimulationSystem.ProgramLibrary.EditorWindowSystem.Systems;
+using SimulationWFA.ShowCinematic;
 using SimulationWFA.SimulationAlgorithms;
 using SimulationWFA.SimulationAlgorithms.AStar;
 
@@ -58,6 +59,9 @@ namespace SimulationSystem.Systems
             systemManager.AddSystem(new UnitFollowPathSystem(), GenericSystemGroup);
             systemManager.AddSystem(new UnitReturnPathSystem(), GenericSystemGroup);
             systemManager.AddSystem(new RestartUnitSystem(), GenericSystemGroup);
+
+            systemManager.AddSystem(new SleepingModeSystem(), GenericSystemGroup);
+            systemManager.AddSystem(new CameraRotateSystem(), GenericSystemGroup);
             
             //
             systemManager.AddSystem(new EditorCameraSystem(), GenericSystemGroup);

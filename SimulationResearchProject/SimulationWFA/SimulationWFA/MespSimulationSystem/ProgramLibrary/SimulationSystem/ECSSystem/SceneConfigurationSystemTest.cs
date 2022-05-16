@@ -37,30 +37,33 @@ namespace SimulationSystem.Systems
 
             CreateFPSDisplayer();
 
-            CreateLambs();
+            CreateLambs();*/
 
             CreateBasicCube();
-            CreateBasicCube2();
-           // CreateBasicCube3();
-           // CreateBasicCube4();
+           // CreateBasicCube2();
+            CreateBasicCube3();
+            CreateBasicCube4();
+            CreateBasicCube5();
 
-            //CreateBristleback1();
-
-           // CreateGruGru();
-
-            //CreateBristleback2();
-
-           // CreateJunkrat();
-
-          //  CreateTrol();
-
-            //CreateWindow();
-
-            CreatePlane();
-           // CreateDirectionArrows();
+            CreateBristleback1(new Vector3(1000,0,0));
+            CreateBristleback1(new Vector3(960, 0, 0));
 
 
-           // CreateGrass();*/
+            /*// 
+
+             //CreateBristleback2();
+
+            // CreateJunkrat();
+
+           //  CreateTrol();
+
+             //CreateWindow();
+
+             CreatePlane();
+            // CreateDirectionArrows();
+
+
+            // CreateGrass();*/
 
             CreateMespVersionText();
 
@@ -196,29 +199,34 @@ namespace SimulationSystem.Systems
                 materialPath = "lambMaterial.mat",
             };
 
-            ParticleSerialized particleSerialized = new ParticleSerialized() {
-                useGravity = true,
-                mass = 1f,
-                drag = 0.05f,
-            };
 
-            BoxColliderSerialized boxColliderSerialized = new BoxColliderSerialized() {
-                
-                size = basicCubeObj.GetSerializedComponent<TransformSerialized>().scale,
-            };
 
             basicCubeObj.AddNewSerializedComponent(meshRendererSerialized);
-            basicCubeObj.AddNewSerializedComponent(particleSerialized);
-            basicCubeObj.AddNewSerializedComponent(boxColliderSerialized);
             basicCubeObj.InjectAllSerializedComponents(world);
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
-            transformComp.transform.position = new Vector3(9.5f, 10, 0);
+            transformComp.transform.position = new Vector3(980, 5, 20);
 
             ref var meshRendererComp = ref basicCubeObj.entity.GetComponent<MeshRendererComp>();
             var material = (UnlitMaterial) meshRendererComp.material;
             material.SetColor(new Vector4(1, 0, 0, 1));
+
+
+            Particle rg = new Particle();
+            rg.SetMass(1f);
+            rg.velocity = new Vector3(0,-40,0);
+            rg.useGravity = false;
+
+            basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
+                particle = rg,
+            };
+
+            SphereCollider sphereCollider = new SphereCollider();
+            (sphereCollider.bound as SphereBounds).radius = .5f;
+            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = sphereCollider,
+            };
         }
 
         public void CreateBasicCube2()
@@ -254,7 +262,7 @@ namespace SimulationSystem.Systems
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
-            transformComp.transform.position = new Vector3(10,20, 0);
+            transformComp.transform.position = new Vector3(980, 0, 20);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
             cubeMaterial.SetColor(new Vector4(0, 0, 1, 1));
@@ -290,7 +298,7 @@ namespace SimulationSystem.Systems
 
             ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
             transformComp.transform.scale = Vector3.One;
-            transformComp.transform.position = new Vector3(10, 5, 0);
+            transformComp.transform.position = new Vector3(980, 3, 20);
 
             UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
             cubeMaterial.SetColor(new Vector4(1, 0, 0, 1));
@@ -302,7 +310,7 @@ namespace SimulationSystem.Systems
 
             Particle rg = new Particle();
             rg.SetMass(1f);
-            rg.velocity = new Vector3(0,15,0);
+            rg.velocity = new Vector3(0,60,0);
             rg.useGravity = false;
 
             basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
@@ -318,8 +326,43 @@ namespace SimulationSystem.Systems
             basicCubeObj.entity.AddComponent<CanMoveTestTag>();
         }
 
+        public void CreateBasicCube5()
+        {
+            var basicCubeObj = SimObject.NewSimObject();
+            basicCubeObj.CreateEntity(world);
+            basicCubeObj.InjectAllSerializedComponents(world);
 
-        public void CreateGruGru()
+            ref var transformComp = ref basicCubeObj.entity.GetComponent<TransformComp>();
+            transformComp.transform.scale = Vector3.One;
+            transformComp.transform.position = new Vector3(980, 6, 20);
+
+            UnlitMaterial cubeMaterial = AssetUtils.LoadFromAsset<UnlitMaterial>("lambMaterial.mat");
+            cubeMaterial.SetColor(new Vector4(0, 0, 1, 1));
+
+            basicCubeObj.entity.AddComponent<MeshRendererComp>() = new MeshRendererComp {
+                mesh = AssetUtils.LoadFromAsset<Mesh>("cube.mesh"),
+                material = cubeMaterial,
+            };
+
+            Particle rg = new Particle();
+            rg.SetMass(1f, true);
+            rg.velocity = Vector3.Zero;
+            rg.useGravity = false;
+
+            basicCubeObj.entity.AddComponent<ParticleComp>() = new ParticleComp {
+                particle = rg,
+            };
+
+            SphereCollider sphereCollider = new SphereCollider();
+            (sphereCollider.bound as SphereBounds).radius = .5f;
+            basicCubeObj.entity.AddComponent<ColliderComp>() = new ColliderComp {
+                collider = sphereCollider,
+            };
+
+            basicCubeObj.entity.AddComponent<CanMoveTestTag>();
+        }
+
+        public void CreateGruGru(Vector3 pos)
         {
             var humanModel = ModelLoader.LoadModel(modelReferences.GruGruPath);
 
@@ -340,11 +383,13 @@ namespace SimulationSystem.Systems
             skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
 
             rootSimObj.GetTransform().scale = new Vector3(0.05f);
+            rootSimObj.GetTransform().position = pos;
+            rootSimObj.GetTransform().rotation = new Vector3(0,180,0);
         }
 
 
 
-        public void CreateBristleback1()
+        public void CreateBristleback1(Vector3 pos)
         {
             var humanModel = ModelLoader.LoadModel(modelReferences.BristlebackPath);
 
@@ -361,10 +406,14 @@ namespace SimulationSystem.Systems
                 rootModel = humanModel,
             };
 
+
             ref var skinnedMeshComp = ref rootSimObj.entity.GetComponent<SkinnedMeshRendererComp>();
             skinnedMeshComp.SetMeshRenderers(world, ref rootSimObj);
 
             rootSimObj.GetTransform().scale = new Vector3(0.05f);
+            rootSimObj.GetTransform().position = pos;
+
+
         }
 
         public void CreateBristleback2()
