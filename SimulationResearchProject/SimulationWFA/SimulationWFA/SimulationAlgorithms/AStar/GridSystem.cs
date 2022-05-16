@@ -24,7 +24,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
         {
             var gridEntity = world.NewEntity();
             Grid grid = new Grid();
-            grid.gridWorldSize = new Vector2(15, 15);
+            grid.gridWorldSize = new Vector2(20, 20);
             grid.nodeRadius = 0.5f;
             gridEntity.AddComponent<GridComp>() = new GridComp() { grid = grid };
             var transform = new Transform(new Vector3(0,0,0), Vector3.One, Vector3.Zero);
