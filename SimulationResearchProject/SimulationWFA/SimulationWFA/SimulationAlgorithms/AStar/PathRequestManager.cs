@@ -105,10 +105,9 @@ namespace SimulationWFA.SimulationAlgorithms
                 Console.WriteLine(algorithm.GetType().Name + " found: " + sw.Elapsed.TotalMilliseconds + " ms");
 
                 float currentDist = GetDistanceMagnitude(waypoints);
-
-                algorithmMSDictionary[algorithm.GetType().Name] = sw.Elapsed.TotalMilliseconds.ToString();
+                double currentShortestTimePassed = sw.Elapsed.TotalMilliseconds;
+                algorithmMSDictionary[algorithm.GetType().Name] = currentShortestTimePassed.ToString();
                 algorithmDistanceDictionary[algorithm.GetType().Name] = currentDist.ToString();
-
 
                 if (currentDist < tempDistance)
                 {
@@ -116,6 +115,20 @@ namespace SimulationWFA.SimulationAlgorithms
                     foundedAlgorithm = algorithm;
                     shortestPathType = algorithm.GetType();
                 }
+
+                else if (currentDist == tempDistance && currentShortestTimePassed < shortestTimePassed)
+                {
+                    tempDistance = currentDist;
+                    foundedAlgorithm = algorithm;
+                    shortestPathType = algorithm.GetType();
+                }
+
+                if (currentShortestTimePassed < shortestTimePassed)
+                {
+                    shortestTimePassed = currentShortestTimePassed;
+                }
+
+                
             }
             findedAlgorithmName = shortestPathType.Name;
             if (OnAlgoDoneEvent != null) OnAlgoDoneEvent();
