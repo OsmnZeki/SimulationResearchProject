@@ -34,6 +34,7 @@ namespace SimulationWFA.SimulationAlgorithms
                     var entity = unitFollowFilter.GetEntity(u);
                     entity.RemoveComponent<UnitReturnPathComp>();
                     entity.RemoveComponent<StartPathFollowComp>();
+                    continue;
                 }
                 var unitPos = unitReturnPathComp.pathPositions[unitReturnPathComp.index];
                 transformComp.transform.position = unitPos;
