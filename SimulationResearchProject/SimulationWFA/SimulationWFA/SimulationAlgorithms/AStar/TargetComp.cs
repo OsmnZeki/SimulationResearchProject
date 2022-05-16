@@ -22,6 +22,6 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
     }
     public struct TargetComp
     {
-
+        public Vector3 initialPos;
     }
 }

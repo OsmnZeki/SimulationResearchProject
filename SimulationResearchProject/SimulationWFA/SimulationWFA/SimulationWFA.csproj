@@ -286,6 +286,8 @@
     <Compile Include="SimulationAlgorithms\Prim%27s\Prims.cs" />
     <Compile Include="SimulationAlgorithms\RestartUnitSystem.cs" />
     <Compile Include="SimulationAlgorithms\ShortestPathAlgorithm.cs" />
+    <Compile Include="SimulationAlgorithms\UnitReturnPathComp.cs" />
+    <Compile Include="SimulationAlgorithms\UnitReturnPathSystem.cs" />
     <EmbeddedResource Include="Form1.aa-ER.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>

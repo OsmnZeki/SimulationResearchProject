@@ -42,6 +42,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                         ref var targetComp = ref targetFilter.Get1(t);
                         ref var targetTransformComp = ref targetFilter.Get2(t);
                         targetPosition = targetTransformComp.transform.position;
+                        targetComp.initialPos = targetPosition;
                     }
 
                     ref var gridComp = ref gridFilter.Get1(0);
@@ -59,6 +60,7 @@ namespace SimulationWFA.SimulationAlgorithms.AStar
                             path = path,
                             pathIndex = 0,
                             speedPercent = 1,
+                            positionList = new List<Vector3>(),
                         };
 
                         if (!visualizeFilter.IsEmpty())
