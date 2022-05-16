@@ -108,6 +108,7 @@ namespace SimulationWFA
             this.simulationWindowLabel = new System.Windows.Forms.Label();
             this.inspectorLabel = new System.Windows.Forms.Label();
             this.inspectorPanel = new System.Windows.Forms.Panel();
+            this.ChoosenAlgoTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.projectsPanel.SuspendLayout();
             this.hieararchyPanel.SuspendLayout();
@@ -313,6 +314,7 @@ namespace SimulationWFA
             resources.ApplyResources(this.simulationWindowPanel, "simulationWindowPanel");
             this.simulationWindowPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
             this.simulationWindowPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.simulationWindowPanel.Controls.Add(this.ChoosenAlgoTextBox);
             this.simulationWindowPanel.Controls.Add(this.panel6);
             this.simulationWindowPanel.Controls.Add(this.DijsktraPanel);
             this.simulationWindowPanel.Controls.Add(this.panel4);
@@ -612,6 +614,14 @@ namespace SimulationWFA
             this.inspectorPanel.Controls.Add(this.inspectorLabel);
             this.inspectorPanel.Name = "inspectorPanel";
             // 
+            // ChoosenAlgoTextBox
+            // 
+            this.ChoosenAlgoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
+            this.ChoosenAlgoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.ChoosenAlgoTextBox, "ChoosenAlgoTextBox");
+            this.ChoosenAlgoTextBox.ForeColor = System.Drawing.Color.White;
+            this.ChoosenAlgoTextBox.Name = "ChoosenAlgoTextBox";
+            // 
             // SimulationProject
             // 
             resources.ApplyResources(this, "$this");
@@ -728,6 +738,7 @@ namespace SimulationWFA
         private System.Windows.Forms.CheckBox AStarCheckBox;
         private System.Windows.Forms.TextBox AStarMsTextBox;
         private System.Windows.Forms.TextBox AStarDistanceTextBox;
+        private System.Windows.Forms.TextBox ChoosenAlgoTextBox;
     }
 }
 

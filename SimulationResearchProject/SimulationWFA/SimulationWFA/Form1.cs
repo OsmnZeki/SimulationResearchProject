@@ -67,6 +67,8 @@ namespace SimulationWFA
             DFSMsTextBox.Text = PathRequestManager.algorithmMSDictionary["DFS"];
             BFSMsTextBox.Text = PathRequestManager.algorithmMSDictionary["BFS"];
             CustomMsTextBox.Text = PathRequestManager.algorithmMSDictionary["Custom"];
+
+            ChoosenAlgoTextBox.Text = PathRequestManager.findedAlgorithmName; 
         }
 
         public void CreateHierarchyPanel()

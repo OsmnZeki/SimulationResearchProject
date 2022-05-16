@@ -16,6 +16,7 @@ namespace SimulationWFA.SimulationAlgorithms
 
         public static event OnAlgorithmDoneDelegate OnAlgoDoneEvent;
 
+        public static string findedAlgorithmName = "NONE";
 
         IEnumerable<ShortestPathAlgorithm> algorithms;
         bool isProcessingPath;
@@ -73,7 +74,7 @@ namespace SimulationWFA.SimulationAlgorithms
         };
 
 
-
+            findedAlgorithmName = "NONE";
             algorithms = GetAllShortesPathAlgorithm();
 
             List<ShortestPathAlgorithm> activeAlgorithms = new List<ShortestPathAlgorithm>();
@@ -116,7 +117,7 @@ namespace SimulationWFA.SimulationAlgorithms
                     shortestPathType = algorithm.GetType();
                 }
             }
-
+            findedAlgorithmName = shortestPathType.Name;
             if (OnAlgoDoneEvent != null) OnAlgoDoneEvent();
 
             Console.WriteLine("Chosen algoritm: " + shortestPathType.Name);
