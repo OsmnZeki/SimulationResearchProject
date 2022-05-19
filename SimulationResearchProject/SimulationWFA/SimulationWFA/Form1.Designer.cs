@@ -63,6 +63,7 @@ namespace SimulationWFA
             this.Hierarchy = new System.Windows.Forms.Button();
             this.hierarchyLabel = new System.Windows.Forms.Label();
             this.simulationWindowPanel = new System.Windows.Forms.Panel();
+            this.ChoosenAlgoTextBox = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.CustomCheckBox = new System.Windows.Forms.CheckBox();
             this.CustomMsTextBox = new System.Windows.Forms.TextBox();
@@ -108,7 +109,6 @@ namespace SimulationWFA
             this.simulationWindowLabel = new System.Windows.Forms.Label();
             this.inspectorLabel = new System.Windows.Forms.Label();
             this.inspectorPanel = new System.Windows.Forms.Panel();
-            this.ChoosenAlgoTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.projectsPanel.SuspendLayout();
             this.hieararchyPanel.SuspendLayout();
@@ -323,6 +323,14 @@ namespace SimulationWFA
             this.simulationWindowPanel.Controls.Add(this.AStarPanel);
             this.simulationWindowPanel.Controls.Add(this.simulationWindowLabel);
             this.simulationWindowPanel.Name = "simulationWindowPanel";
+            // 
+            // ChoosenAlgoTextBox
+            // 
+            this.ChoosenAlgoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
+            this.ChoosenAlgoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.ChoosenAlgoTextBox, "ChoosenAlgoTextBox");
+            this.ChoosenAlgoTextBox.ForeColor = System.Drawing.Color.White;
+            this.ChoosenAlgoTextBox.Name = "ChoosenAlgoTextBox";
             // 
             // panel6
             // 
@@ -613,14 +621,6 @@ namespace SimulationWFA
             this.inspectorPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.inspectorPanel.Controls.Add(this.inspectorLabel);
             this.inspectorPanel.Name = "inspectorPanel";
-            // 
-            // ChoosenAlgoTextBox
-            // 
-            this.ChoosenAlgoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(27)))), ((int)(((byte)(29)))));
-            this.ChoosenAlgoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.ChoosenAlgoTextBox, "ChoosenAlgoTextBox");
-            this.ChoosenAlgoTextBox.ForeColor = System.Drawing.Color.White;
-            this.ChoosenAlgoTextBox.Name = "ChoosenAlgoTextBox";
             // 
             // SimulationProject
             // 
